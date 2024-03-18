@@ -10,13 +10,13 @@
       <li class="dropdown">
         <a class="menu-toggle nav-link has-dropdown"><i data-feather="home"></i><span>Tổng quan</span></a>
         <ul class="dropdown-menu">
-          <li><a class="nav-link" href="/admin/"><i data-feather="monitor"></i><span>Bảng điều khiển</span></a></li>
+          <li><a *ngIf="user.idQuyen === 1 || user.idQuyen === 3" class="nav-link" href="/admin/"><i data-feather="monitor"></i><span>Bảng điều khiển</span></a></li>
           <li><a class="nav-link" href="/admin/profile"><i data-feather="user"></i><span>Thông tin tài khoản</span></a></li>
-          <li><a class="nav-link" href="/admin/doithongtin"><i data-feather="edit"></i><span>Đổi mật khẩu</span></a></li>
+          <li><a class="nav-link" href="/admin/doithongtin"><i data-feather="edit"></i><span>Đổi thông tin</span></a></li>
         </ul>
       </li> 
 
-      <li class="dropdown">
+      <li class="dropdown" *ngIf="user.idQuyen === 1 || user.idQuyen === 3">
         <a href="#" class="menu-toggle nav-link has-dropdown"><i data-feather="package"></i><span>Thông tin sản phẩm</span></a>
         <ul class="dropdown-menu">
           <li><a class="nav-link" href="/admin/qlsanpham"><i data-feather="box"></i><span>Quản lý sản phẩm</span></a></li>
@@ -25,7 +25,7 @@
         </ul>
       </li>
 
-      <li class="dropdown">
+      <li class="dropdown" *ngIf="user.idQuyen === 1 || user.idQuyen === 3">
         <a href="#" class="menu-toggle nav-link has-dropdown"><i
             data-feather="shopping-bag"></i><span>Thông tin đơn vị</span></a>
         <ul class="dropdown-menu">
@@ -35,7 +35,7 @@
         </ul>
       </li>
       
-      <li class="dropdown">
+      <li class="dropdown" *ngIf="user.idQuyen === 1 || user.idQuyen === 3">
         <a href="#" class="menu-toggle nav-link has-dropdown"><i
             data-feather="clipboard"></i><span>Thông tin hoá đơn</span></a>
         <ul class="dropdown-menu">
@@ -51,12 +51,12 @@
             data-feather="user"></i><span>Thông tin người dùng</span></a>
         <ul class="dropdown-menu">
           <li *ngIf="user.idQuyen === 1"><a class="nav-link" href="/admin/qlnguoidung"><i data-feather="user"></i><span>Quản lý người dùng</span></a></li>
-          <li><a class="nav-link" href="/admin/qlquyen"><i data-feather="lock"></i><span>Quản lý quyền</span></a></li>
+          <li *ngIf="user.idQuyen === 1"><a class="nav-link" href="/admin/qlquyen"><i data-feather="lock"></i><span>Quản lý quyền</span></a></li>
           <li><a class="nav-link" href="/admin/qltintuc"><i data-feather="square"></i><span>Quản lý tin tức</span></a></li>
         </ul>
       </li>
 
-      <li class="dropdown">
+      <li class="dropdown" *ngIf="user.idQuyen === 1 || user.idQuyen === 3">
         <a href="#" class="menu-toggle nav-link has-dropdown"><i data-feather="copy"></i><span>Thông tin website</span></a>
         <ul class="dropdown-menu">
           <li><a class="nav-link" href="/admin/qlgioithieu"><i data-feather="star"></i><span>Quản lý giới thiệu</span></a></li>

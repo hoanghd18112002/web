@@ -28,7 +28,12 @@
                 <div class="col-lg-6">
                     <div class="checkout-billing-details-wrap">
                         <h2>Thông tin khách hàng</h2>
-                        <div class="billing-form-wrap">             
+                        <div class="billing-form-wrap">       
+                            <div class="single-input-item">
+                                <label for="Email" class="required">Email</label>
+                                <input type="text" id="Email" name="Email" [(ngModel)]="user.email" required readonly/>
+                            </div>
+
                             <div class="single-input-item">
                                 <label for="Ten" class="required">Họ và tên</label>
                                 <input type="text" id="Ten" name="Ten" [(ngModel)]="user.ten" placeholder="Nhập họ và tên" required />

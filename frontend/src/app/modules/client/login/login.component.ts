@@ -55,9 +55,11 @@ export class LoginComponent {
             localStorage.setItem('user', user);
             if (res.data.idQuyen == 2) {
                 location.assign('/');
-            } else {
-                location.assign('/admin/');
-            }
+            } else if (res.data.idQuyen == 1 || res.data.idQuyen == 3){
+                location.assign('/admin/profile');
+            } else{
+                location.assign('/admin/profile');
+            }      
         } else {
             swal.fire({
                 icon: 'error',

@@ -86,6 +86,7 @@ namespace Backend.Controllers
             }
         }
 
+        [AllowAnonymous]
         [Route("get-random/{sl}")]
         [HttpGet]
         public IActionResult GetRandom(int sl)
@@ -102,6 +103,7 @@ namespace Backend.Controllers
             }
         }
 
+        [AllowAnonymous]
         [Route("get-by-id/{id}")]
         [HttpGet]
         public IActionResult GetByID(int id)
