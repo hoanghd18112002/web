@@ -11,7 +11,7 @@
  Target Server Version : 100427
  File Encoding         : 65001
 
- Date: 18/03/2024 09:27:44
+ Date: 18/03/2024 16:14:21
 */
 
 SET NAMES utf8mb4;
@@ -583,7 +583,7 @@ CREATE TABLE `nguoidung`  (
   PRIMARY KEY (`ID`) USING BTREE,
   INDEX `NguoiDung_Quyen_IDQuyen`(`IDQuyen`) USING BTREE,
   CONSTRAINT `NguoiDung_Quyen_IDQuyen` FOREIGN KEY (`IDQuyen`) REFERENCES `quyen` (`ID`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE = InnoDB AUTO_INCREMENT = 56 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = DYNAMIC;
+) ENGINE = InnoDB AUTO_INCREMENT = 9 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of nguoidung
@@ -591,7 +591,7 @@ CREATE TABLE `nguoidung`  (
 INSERT INTO `nguoidung` VALUES (1, 'phamduchoang', 'e10adc3949ba59abbe56e057f20f883e', 'hoanghd18112002@gmail.com', 'Phạm Đức Hoàng', '2002-11-08 00:00:00', 'Hải Dương', '0906090112', 1, 'avatar.png', 1, 1, b'1', '1f326bbd-b676-4645-af02-1263138513f8');
 INSERT INTO `nguoidung` VALUES (2, 'lengocmai', 'e10adc3949ba59abbe56e057f20f883e', 'lengocmai@gmail.com', 'Lê Ngọc Mai', '2001-10-08 00:00:00', 'Hưng Yên', '0987654321', 0, 'lengocmai.png', 1, 2, b'1', '1f326bbd-b676-4645-af02-1263138513f8');
 INSERT INTO `nguoidung` VALUES (3, 'phamhaihuan', 'e10adc3949ba59abbe56e057f20f883e', 'phamhaihuan@gmail.com', 'Phạm Hải Huấn', '2002-12-08 00:00:00', 'Hưng Yên', '098234567', 1, 'phamhaihuan.png', 1, 1, b'1', '1f326bbd-b676-4645-af02-1263138513f8');
-INSERT INTO `nguoidung` VALUES (4, 'tranmylinh', 'e10adc3949ba59abbe56e057f20f883e', 'tranMyLinh@gmail.com', 'Trần Mỹ Linh', '2002-09-17 00:00:00', 'Hà Nội', '093567567', 0, 'tranmylinh.png', 1, 2, b'1', '1f326bbd-b676-4645-af02-1263138513f8');
+INSERT INTO `nguoidung` VALUES (4, 'tranmylinh', 'e10adc3949ba59abbe56e057f20f883e', 'tranMyLinh@gmail.com', 'Trần Mỹ Linh', '2002-09-17 00:00:00', 'Hà Nội', '093567567', 0, 'tranmylinh.png', 1, 4, b'1', '1f326bbd-b676-4645-af02-1263138513f8');
 INSERT INTO `nguoidung` VALUES (5, 'phamducduy', 'e10adc3949ba59abbe56e057f20f883e', 'phamducduy@gmail.com', 'Phạm Đức Duy', '2002-12-08 00:00:00', 'Bắc Giang', '098765567', 1, 'phamducduy.png', 1, 2, b'1', '1f326bbd-b676-4645-af02-1263138513f8');
 INSERT INTO `nguoidung` VALUES (6, 'phamvanhoan', 'e10adc3949ba59abbe56e057f20f883e', 'phamvanhoan@gmail.com', 'Phạm Văn Hoàn', '2002-10-19 00:00:00', '123 Điện Biên Phủ tp Hải Dương', '0987654321', 1, 'phamvanhoan.png', 1, 3, b'1', '1f326bbd-b676-4645-af02-1263138513f8');
 
@@ -666,7 +666,7 @@ CREATE TABLE `phuongthucthanhtoan`  (
 -- ----------------------------
 INSERT INTO `phuongthucthanhtoan` VALUES (1, 'Thanh toán khi giao hàng', 'Thanh toán bằng tiền mặt khi giao hàng.', 1);
 INSERT INTO `phuongthucthanhtoan` VALUES (2, 'Chuyển khoản ngân hàng', 'Chuyển khoản ngân hàng nội địa vào tài khoản của website', 1);
-INSERT INTO `phuongthucthanhtoan` VALUES (3, 'Thanh toán quốc tế', 'Thanh toán qua PayPal, bạn có thể thanh toán bằng thẻ ghi nợ visa hoặc master card nếu bạn không có tài khoản PayPal.', 1);
+INSERT INTO `phuongthucthanhtoan` VALUES (3, 'Thanh toán quốc tế', 'Thanh toán qua PayPal, bạn có thể thanh toán bằng thẻ ghi nợ visa hoặc master card nếu bạn không có tài khoản PayPal.', 0);
 
 -- ----------------------------
 -- Table structure for quyen
@@ -685,8 +685,8 @@ CREATE TABLE `quyen`  (
 -- ----------------------------
 INSERT INTO `quyen` VALUES (1, 'Quản trị hệ thống', 'Là người có quyền cao nhất trong hệ thống', 1);
 INSERT INTO `quyen` VALUES (2, 'Khách hàng', 'Là người mua hàng trên hệ thống', 1);
-INSERT INTO `quyen` VALUES (3, 'Nhân viên', 'Là người có quyền chỉ sau quản trị hệ thống (không được quản lý người dùng).', 0);
-INSERT INTO `quyen` VALUES (5, 'Tra cứu', 'Là người có thể vào hệ thống xem thông tin.', 0);
+INSERT INTO `quyen` VALUES (3, 'Nhân viên', 'Là người có quyền chỉ sau quản trị hệ thống.', 1);
+INSERT INTO `quyen` VALUES (4, 'Cộng tác viên viên bài', 'Là người có thể vào hệ thống và quản lý viết tin tức.', 1);
 
 -- ----------------------------
 -- Table structure for sanpham
@@ -1531,7 +1531,7 @@ BEGIN
     
     SET start_index = (p_pageindex - 1) * p_pagesize;
 		
-		SELECT COUNT(*) INTO total_count FROM donhang;
+		SELECT COUNT(*) INTO total_count FROM donhang WHERE idnguoidung = p_id;
 		
     SELECT d.*, p.ten AS TenPhuongThuc, CAST(SUM(c.gia * c.soluong) AS SIGNED) AS TongTien, total_count AS TotalCount
 		FROM donhang d
