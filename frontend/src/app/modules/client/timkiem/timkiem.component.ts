@@ -67,13 +67,7 @@ export class TimkiemComponent {
       this.IDNhaSanXuat = params['idNhaSanXuat'];
       this.MinGia = params['minGia'];
       this.MaxGia = params['maxGia'];
-  
-      this.ten = this.ten === "" ? null : this.ten;
-      this.IDLoai = this.IDLoai === "" ? null : this.IDLoai;
-      this.IDNhaSanXuat = this.IDNhaSanXuat === "" ? null : this.IDNhaSanXuat;
-      this.MinGia = this.MinGia === "" ? null : this.MinGia;
-      this.MaxGia = this.MaxGia === "" ? null : this.MaxGia;
-  
+      
       const SanPham = {
         page: this.p,
         pageSize: this.pageSize,

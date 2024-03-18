@@ -148,19 +148,32 @@ export class QlnguoidungComponent {
       sdt: this.sdt,
       gioiTinh: this.gioiTinh.toString(),
       trangThai: this.trangThai ? '1' : '0',
-      idQuyen: this.idQuyen
+      idQuyen: this.idQuyen,
+      confirmationLink: `${window.location.origin}/confirm`
     }
 
     this.id = this.idQuyen;
 
     this.nguoiDungService.create(nguoidung).subscribe(res => {
+      if (res.success) {
+        swal.fire({
+            icon: 'success',
+            title: 'Thành công',
+            text: res.message
+        }).then(() => {
+          this.getall(this.id);
+        });
+      } else{
+        swal.fire({
+          icon: 'error',
+          title: 'Lỗi',
+          text: res.message
+      }).then(() => {
+          
+      });
+      }
+
       this.getall(this.id);
-      swal.fire({
-        icon: 'success',
-        title: res.message,
-        showConfirmButton: true,
-        timer: 1500
-      });(res.message);
   
       // Đóng modal khi tạo thành công
       const addModal = this.addModal.nativeElement;

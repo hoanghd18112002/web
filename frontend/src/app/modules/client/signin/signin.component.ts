@@ -63,10 +63,6 @@ export class SigninComponent {
       return;
     }
 
-    const check: any = {
-      taiKhoan: this.TaiKhoan,
-      email: this.Email
-    }
     // Tạo đối tượng nguoidung
     const nguoidung: any = {
       taiKhoan: this.TaiKhoan,
@@ -80,26 +76,23 @@ export class SigninComponent {
       idQuyen: "2",
       confirmationLink: `${window.location.origin}/confirm`
     };
-    this.nguoiDungService.kiemtra(check).subscribe(res => {
-      if (res.success === true) {
-        this.nguoiDungService.create(nguoidung).subscribe(res => {
-          if (res.success) {
-            swal.fire({
-                icon: 'success',
-                title: 'Thành công',
-                text: res.message
-            }).then(() => {
-                location.assign('/login');
-            });
-          }
+    this.nguoiDungService.create(nguoidung).subscribe(res => {
+      if (res.success) {
+        swal.fire({
+            icon: 'success',
+            title: 'Thành công',
+            text: res.message
+        }).then(() => {
+            location.assign('/login');
         });
-      } else {
-        // Hiển thị thông báo lỗi khi tài khoản hoặc email đã tồn tại
+      } else{
         swal.fire({
           icon: 'error',
           title: 'Lỗi',
           text: res.message
-        });
+      }).then(() => {
+          
+      });
       }
     });
   }

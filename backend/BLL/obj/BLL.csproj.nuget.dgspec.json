@@ -1,15 +1,15 @@
 {
   "format": 1,
   "restore": {
-    "D:\\PhamDucHoang\\DoAn\\DoAnTN\\Web\\Backend\\BLL\\BLL.csproj": {}
+    "D:\\PhamDucHoang\\DoAn\\DoAnTN\\Web\\backend\\BLL\\BLL.csproj": {}
   },
   "projects": {
-    "D:\\PhamDucHoang\\DoAn\\DoAnTN\\Web\\Backend\\BLL\\BLL.csproj": {
+    "D:\\PhamDucHoang\\DoAn\\DoAnTN\\Web\\backend\\BLL\\BLL.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\PhamDucHoang\\DoAn\\DoAnTN\\Web\\Backend\\BLL\\BLL.csproj",
+        "projectUniqueName": "D:\\PhamDucHoang\\DoAn\\DoAnTN\\Web\\backend\\BLL\\BLL.csproj",
         "projectName": "BLL",
-        "projectPath": "D:\\PhamDucHoang\\DoAn\\DoAnTN\\Web\\Backend\\BLL\\BLL.csproj",
+        "projectPath": "D:\\PhamDucHoang\\DoAn\\DoAnTN\\Web\\backend\\BLL\\BLL.csproj",
         "packagesPath": "C:\\Users\\Admin\\.nuget\\packages\\",
         "outputPath": "D:\\PhamDucHoang\\DoAn\\DoAnTN\\Web\\backend\\BLL\\obj\\",
         "projectStyle": "PackageReference",
@@ -33,11 +33,11 @@
           "net6.0": {
             "targetAlias": "net6.0",
             "projectReferences": {
-              "D:\\PhamDucHoang\\DoAn\\DoAnTN\\Web\\Backend\\DAL\\DAL.csproj": {
-                "projectPath": "D:\\PhamDucHoang\\DoAn\\DoAnTN\\Web\\Backend\\DAL\\DAL.csproj"
+              "D:\\PhamDucHoang\\DoAn\\DoAnTN\\Web\\backend\\DAL\\DAL.csproj": {
+                "projectPath": "D:\\PhamDucHoang\\DoAn\\DoAnTN\\Web\\backend\\DAL\\DAL.csproj"
               },
-              "D:\\PhamDucHoang\\DoAn\\DoAnTN\\Web\\Backend\\Model\\Model.csproj": {
-                "projectPath": "D:\\PhamDucHoang\\DoAn\\DoAnTN\\Web\\Backend\\Model\\Model.csproj"
+              "D:\\PhamDucHoang\\DoAn\\DoAnTN\\Web\\backend\\Model\\Model.csproj": {
+                "projectPath": "D:\\PhamDucHoang\\DoAn\\DoAnTN\\Web\\backend\\Model\\Model.csproj"
               }
             }
           }
@@ -81,12 +81,12 @@
         }
       }
     },
-    "D:\\PhamDucHoang\\DoAn\\DoAnTN\\Web\\Backend\\DAL\\DAL.csproj": {
+    "D:\\PhamDucHoang\\DoAn\\DoAnTN\\Web\\backend\\DAL\\DAL.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\PhamDucHoang\\DoAn\\DoAnTN\\Web\\Backend\\DAL\\DAL.csproj",
+        "projectUniqueName": "D:\\PhamDucHoang\\DoAn\\DoAnTN\\Web\\backend\\DAL\\DAL.csproj",
         "projectName": "DAL",
-        "projectPath": "D:\\PhamDucHoang\\DoAn\\DoAnTN\\Web\\Backend\\DAL\\DAL.csproj",
+        "projectPath": "D:\\PhamDucHoang\\DoAn\\DoAnTN\\Web\\backend\\DAL\\DAL.csproj",
         "packagesPath": "C:\\Users\\Admin\\.nuget\\packages\\",
         "outputPath": "D:\\PhamDucHoang\\DoAn\\DoAnTN\\Web\\backend\\DAL\\obj\\",
         "projectStyle": "PackageReference",
@@ -110,8 +110,8 @@
           "net6.0": {
             "targetAlias": "net6.0",
             "projectReferences": {
-              "D:\\PhamDucHoang\\DoAn\\DoAnTN\\Web\\Backend\\Model\\Model.csproj": {
-                "projectPath": "D:\\PhamDucHoang\\DoAn\\DoAnTN\\Web\\Backend\\Model\\Model.csproj"
+              "D:\\PhamDucHoang\\DoAn\\DoAnTN\\Web\\backend\\Model\\Model.csproj": {
+                "projectPath": "D:\\PhamDucHoang\\DoAn\\DoAnTN\\Web\\backend\\Model\\Model.csproj"
               }
             }
           }
@@ -171,12 +171,12 @@
         }
       }
     },
-    "D:\\PhamDucHoang\\DoAn\\DoAnTN\\Web\\Backend\\Model\\Model.csproj": {
+    "D:\\PhamDucHoang\\DoAn\\DoAnTN\\Web\\backend\\Model\\Model.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\PhamDucHoang\\DoAn\\DoAnTN\\Web\\Backend\\Model\\Model.csproj",
+        "projectUniqueName": "D:\\PhamDucHoang\\DoAn\\DoAnTN\\Web\\backend\\Model\\Model.csproj",
         "projectName": "Model",
-        "projectPath": "D:\\PhamDucHoang\\DoAn\\DoAnTN\\Web\\Backend\\Model\\Model.csproj",
+        "projectPath": "D:\\PhamDucHoang\\DoAn\\DoAnTN\\Web\\backend\\Model\\Model.csproj",
         "packagesPath": "C:\\Users\\Admin\\.nuget\\packages\\",
         "outputPath": "D:\\PhamDucHoang\\DoAn\\DoAnTN\\Web\\backend\\Model\\obj\\",
         "projectStyle": "PackageReference",

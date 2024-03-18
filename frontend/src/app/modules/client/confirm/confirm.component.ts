@@ -31,15 +31,9 @@ export class ConfirmComponent implements OnInit {
       token: this.emailConfirmationToken
     }
     // Gửi yêu cầu xác nhận email với token đến backend
-    this.nguoiDungService.confirmemail(obj).subscribe(
-      (res) => {
-        // Xác nhận thành công
-        this.confirmationSuccess = true;
+    this.nguoiDungService.confirmemail(obj).subscribe(res =>{
+      console.log(res);
       },
-      (error) => {
-        // Xác nhận thất bại
-        this.confirmationError = error;
-      }
     );
   }
 }

@@ -24,7 +24,7 @@ namespace DAL
             message.Subject = "Xác nhận email đăng ký Galio";
 
             var bodyBuilder = new BodyBuilder();
-            bodyBuilder.HtmlBody = $"Xin chào,<br/><br/>Vui lòng nhấp vào liên kết sau để xác nhận email của bạn: <a href='{confirmationLink}?token={token}'>Xác nhận</a>";
+            bodyBuilder.HtmlBody = $"Cảm ơn bạn đã đăng ký,<br/><br/>Vui lòng nhấp vào liên kết sau để xác nhận email của bạn: <a href='{confirmationLink}?token={token}'>Xác nhận</a>";
             message.Body = bodyBuilder.ToMessageBody();
 
             using (var client = new SmtpClient())

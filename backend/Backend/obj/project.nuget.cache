@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "I2072N7PsPWWIOlw20cRgFCcPBwL81iLngOSPTLCKH7HVXVra7/heWN0Vagv/R+xhjeeHObzUFh9P3plBajsQw==",
+  "dgSpecHash": "CK2P8nzX9Xp0oEN6jL+iaiqB93qPP2GA0ghkQWwOqBXd+XCAs0MA+EZy06gxik4RnNI0HBeDpINWUdsZCJ+rBw==",
   "success": true,
-  "projectFilePath": "D:\\PhamDucHoang\\DoAn\\DoAnTN\\Web\\Backend\\Backend\\Backend.csproj",
+  "projectFilePath": "D:\\PhamDucHoang\\DoAn\\DoAnTN\\Web\\backend\\Backend\\Backend.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Admin\\.nuget\\packages\\bouncycastle.cryptography\\2.2.1\\bouncycastle.cryptography.2.2.1.nupkg.sha512",
     "C:\\Users\\Admin\\.nuget\\packages\\epplus\\7.0.10\\epplus.7.0.10.nupkg.sha512",

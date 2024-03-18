@@ -88,47 +88,18 @@ namespace Backend.Controllers
         }
 
         [AllowAnonymous]
-        [Route("check")]
-        [HttpPost]
-        public IActionResult Check([FromBody] NguoiDungModel model)
-        {
-            try
-            {
-                var kq = _nguoiDungbll.Check(model.TaiKhoan, model.Email);
-                if (kq != null)
-                    return Ok(new { success = false, message = "Tài khoản hoặc email đã tồn tại trong hệ thống", data = kq });
-                return Ok(new { success = true, message = "Tài khoản và email hợp lệ" });
-            }
-            catch (Exception ex)
-            {
-                return StatusCode(500, new { success = false, message = "Đã xảy ra lỗi: " + ex.Message });
-            }
-        }
-
-        [Route("get-by-id/{id}")]
-        [HttpGet]
-        public IActionResult GetByID(int id)
-        {
-            try
-            {
-                var kq = _nguoiDungbll.GetByID(id);
-                return Ok(new { success = true, message = "Lấy theo ID thành công", data = kq });
-            }
-            catch (Exception ex)
-            {
-                return StatusCode(500, new { success = false, message = "Đã xảy ra lỗi: " + ex.Message });
-            }
-        }
-
-        [AllowAnonymous]
         [Route("create")]
         [HttpPost]
         public IActionResult Create([FromBody] NguoiDungModel model)
         {
             try
             {
+                var kq = _nguoiDungbll.Check(model.TaiKhoan, model.Email);
+                if (kq != null)
+                    return Ok(new { success = false, message = "Tài khoản hoặc email đã tồn tại trong hệ thống", data = kq });
+
                 model.MatKhau = CalculateMD5Hash(model.MatKhau);
-                model.Token = Guid.NewGuid().ToString();
+                model.Token = GenerateToken(32);
 
                 _nguoiDungbll.Create(model);
 
@@ -271,6 +242,16 @@ namespace Backend.Controllers
                 }
 
                 return stringBuilder.ToString();
+            }
+        }
+
+        public static string GenerateToken(int length)
+        {
+            using (var rng = new RNGCryptoServiceProvider())
+            {
+                var bytes = new byte[length];
+                rng.GetBytes(bytes);
+                return Convert.ToBase64String(bytes);
             }
         }
     }
