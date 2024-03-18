@@ -1,0 +1,67 @@
+<!-- breadcrumb area start -->
+<div class="breadcrumb-area">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <div class="breadcrumb-wrap">
+                    <nav aria-label="breadcrumb">
+                        <ul class="breadcrumb">
+                            <li class="breadcrumb-item"><a href="/">Trang chủ</a></li>
+                            <li class="breadcrumb-item active" aria-current="page">Đăng nhập</li>
+                        </ul>
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- breadcrumb area end -->
+
+<!-- login register wrapper start -->
+<div class="login-register-wrapper">
+    <div class="container">
+        <div class="member-area-from-wrap">
+            <div class="row justify-content-center align-items-center">
+                <!-- Login Content Start -->
+                <div class="col-lg-6">
+                    <div class="login-reg-form-wrap pr-lg-50">
+                        <h2>Đăng nhập</h2>
+                        <form (ngSubmit)="Login()">
+                            <div class="single-input-item">
+                                <label for="TaiKhoan">Tài khoản</label>
+                                <input type="email" name="TaiKhoan" [(ngModel)]="TaiKhoan" placeholder="Nhập tài khoản hoặc email" />
+                            </div>
+                            <div class="single-input-item">
+                                <label for="MatKhau">Mật khẩu:</label>
+                                <input type="password" name="MatKhau" [(ngModel)]="MatKhau" placeholder="Nhập mật khẩu" />
+                            </div>                            
+                            <div class="single-input-item">
+                                <div class="login-reg-form-meta d-flex align-items-center justify-content-between">
+                                    <div class="remember-meta">
+                                        <div class="custom-control custom-checkbox">
+                                            <input type="checkbox" class="custom-control-input" id="rememberMe">
+                                            <label class="custom-control-label" for="rememberMe">Ghi nhớ</label>
+                                        </div>
+                                    </div>
+                                    <a href="#" class="forget-pwd">Quên mật khẩu?</a>
+                                </div>
+                            </div>              
+                            <div class="single-input-item">
+                                <div class="login-reg-form-meta d-flex align-items-center justify-content-between">
+                                    <div class="single-input-item">
+                                        <button type="submit" class="sqr-btn">Đăng nhập</button>
+                                    </div>
+                                    <div class="single-input-item">
+                                        <span>Bạn chưa có tài khoản? </span><a href="/signin">Đăng ký</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                <!-- Login Content End --> 
+            </div>
+        </div>
+    </div>
+</div>
+<!-- login register wrapper end -->

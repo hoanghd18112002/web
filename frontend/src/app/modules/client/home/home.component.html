@@ -1,0 +1,165 @@
+<!-- hero slider start -->
+<app-slide></app-slide>
+<!-- hero slider end -->
+
+<!-- new product start -->
+<div class="brand-area pt-28 pb-30">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <div class="section-title mb-30">
+                    <div class="title-icon">
+                        <i class="fa fa-flash"></i>
+                    </div>
+                    <h3>Sản phẩm mới</h3>
+                </div> <!-- section title end -->
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-12">
+                <div class="brand-active slick-padding slick-arrow-style">
+
+                    <!-- product single item start -->
+                    <div *ngFor="let sp of ListSanPhamMoi">
+                        <div class="product-item">
+                            <div class="product-thumb">
+                                <a href="/chitietsanpham/{{ sp.id }}">
+                                    <img style="width: 210px; height: 210px;" src="/assets/client/img/sanpham/{{ sp.anh }}" class="img-pri" alt="">
+                                </a>
+                                <div class="product-label ml-160">
+                                    <span>mới</span>
+                                </div>
+                                <div class="product-action-link mt-170">
+                                    <a (click)="addToCart(sp.id)"><i class="fa fa-shopping-cart"></i></a>
+                                </div>
+                            </div>
+                            <div class="product-content text-center border-top">
+                                <a href="/chitietsanpham/{{ sp.id }}" class="product-title text-dark font-weight-bold">{{ sp.ten }}</a>
+                                <div class="pricebox">
+                                    <ng-container *ngIf="sp.phanTram === null || sp.phanTram === undefined">
+                                        <span class="price text-danger">Giá: {{ sp.gia | number:'1.0-0' }} đ</span><br/>
+                                    </ng-container>
+                                    <ng-container *ngIf="sp.phanTram !== null && sp.phanTram !== undefined">
+                                        <span class="price text-danger">Giá giảm giá: {{ sp.giaGiamGia | number:'1.0-0' }} đ</span><br/>
+                                        <span class="strikethrough text-muted"><s>Giá cũ: {{ sp.gia | number:'1.0-0' }} đ</s></span>
+                                    </ng-container>
+                                </div>                                              
+                            </div>
+                        </div>
+                    </div>
+                    <!-- product single item end -->
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- new product end -->
+
+<!-- new product start -->
+<div class="brand-area pt-28 pb-30">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <div class="section-title mb-30">
+                    <div class="title-icon">
+                        <i class="fa fa-times"></i>
+                    </div>
+                    <h3>Sản phẩm bán chạy</h3>
+                </div> <!-- section title end -->
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-12">
+                <div class="brand-active slick-padding slick-arrow-style">
+
+                    <!-- product single item start -->
+                    <div *ngFor="let sp of ListSanPhamBanChay">
+                        <div class="product-item">
+                            <div class="product-thumb">
+                                <a href="/chitietsanpham/{{ sp.id }}">
+                                    <img style="width: 210px; height: 210px;" src="/assets/client/img/sanpham/{{ sp.anh }}" class="img-pri" alt="">
+                                </a>
+                                <div class="product-label ml-160">
+                                    <span>Hot</span>
+                                </div>
+                                <div class="product-action-link mt-170">
+                                    <a (click)="addToCart(sp.id)"><i class="fa fa-shopping-cart"></i></a>
+                                </div>
+                            </div>
+                            <div class="product-content text-center border-top">
+                                <a href="/chitietsanpham/{{ sp.id }}" class="product-title text-dark font-weight-bold">{{ sp.ten }}</a>
+                                <div class="pricebox">
+                                    <ng-container *ngIf="sp.phanTram === null || sp.phanTram === undefined">
+                                        <span class="price text-danger">Giá: {{ sp.gia | number:'1.0-0' }} đ</span><br/>
+                                    </ng-container>
+                                    <ng-container *ngIf="sp.phanTram !== null && sp.phanTram !== undefined">
+                                        <span class="price text-danger">Giá giảm giá: {{ sp.giaGiamGia | number:'1.0-0' }} đ</span><br/>
+                                        <span class="strikethrough text-muted"><s>Giá cũ: {{ sp.gia | number:'1.0-0' }} đ</s></span>
+                                    </ng-container>
+                                </div>                                              
+                            </div>
+                        </div>
+                    </div>
+                    <!-- product single item end -->
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- new product end -->
+
+<!-- new product start -->
+<div class="brand-area pt-28 pb-30">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <div class="section-title mb-30">
+                    <div class="title-icon">
+                        <i class="fa fa-flash"></i>
+                    </div>
+                    <h3>Sản phẩm giảm giá</h3>
+                </div> <!-- section title end -->
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-12">
+                <div class="brand-active slick-padding slick-arrow-style">
+
+                    <!-- product single item start -->
+                    <div *ngFor="let sp of ListSanPhamGiamGia">
+                        <div class="product-item">
+                            <div class="product-thumb">
+                                <a href="/chitietsanpham/{{ sp.id }}">
+                                    <img style="width: 210px; height: 210px;" src="/assets/client/img/sanpham/{{ sp.anh }}" class="img-pri" alt="">
+                                </a>
+                                <div class="product-label ml-160">
+                                    <span>{{ sp.phanTram }} %</span>
+                                </div>
+                                <div class="product-action-link mt-170">
+                                    <a (click)="addToCart(sp.id)"><i class="fa fa-shopping-cart"></i></a>
+                                </div>
+                            </div>
+                            <div class="product-content text-center border-top">
+                                <a href="/chitietsanpham/{{ sp.id }}" class="product-title text-dark font-weight-bold">{{ sp.ten }}</a>
+                                <div class="pricebox">
+                                    <ng-container *ngIf="sp.phanTram === null || sp.phanTram === undefined">
+                                        <span class="price text-danger">Giá: {{ sp.gia | number:'1.0-0' }} đ</span><br/>
+                                    </ng-container>
+                                    <ng-container *ngIf="sp.phanTram !== null && sp.phanTram !== undefined">
+                                        <span class="price text-danger">Giá giảm giá: {{ sp.giaGiamGia | number:'1.0-0' }} đ</span><br/>
+                                        <span class="strikethrough text-muted"><s>Giá cũ: {{ sp.gia | number:'1.0-0' }} đ</s></span>
+                                    </ng-container>
+                                </div>                                              
+                            </div>
+                        </div>
+                    </div>
+                    <!-- product single item end -->
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- new product end -->

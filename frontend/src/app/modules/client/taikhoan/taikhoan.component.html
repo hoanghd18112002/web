@@ -1,0 +1,357 @@
+<!-- breadcrumb area start -->
+<div class="breadcrumb-area">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <div class="breadcrumb-wrap">
+                    <nav aria-label="breadcrumb">
+                        <ul class="breadcrumb">
+                            <li class="breadcrumb-item"><a href="/">Trang chủ</a></li>
+                            <li class="breadcrumb-item active" aria-current="page">Tài khoản</li>
+                        </ul>
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- breadcrumb area end -->
+
+<!-- my account wrapper start -->
+<div class="my-account-wrapper">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <!-- My Account Page Start -->
+                <div class="myaccount-page-wrapper">
+                    <!-- My Account Tab Menu Start -->
+                    <div class="row">
+                        <div class="col-lg-3 col-md-4">
+                            <div class="myaccount-tab-menu nav" role="tablist">
+                                <a href="#dashboad" class="active" data-toggle="tab"><i class="fa fa-dashboard"></i>Bảng điều khiển</a>
+                                <a href="#account-info" data-toggle="tab"><i class="fa fa-user"></i> Chi tiết tài khoản</a>
+                                <a href="#orders" data-toggle="tab"><i class="fa fa-cart-arrow-down"></i> Đơn hàng</a>
+                                <a href="#chance" data-toggle="tab"><i class="fa fa-key"></i> Thay đổi thông tin</a>
+                                <a href="#payment-method" data-toggle="tab"><i class="fa fa-credit-card"></i> Tài khoản ngân hàng</a>
+                                <a (click)="deleteUser()"><i class="fa fa-sign-out"></i> Đăng xuất</a>
+                            </div>
+                        </div>
+                        <!-- My Account Tab Menu End -->
+
+                        <!-- My Account Tab Content Start -->
+                        <div class="col-lg-9 col-md-8">
+                            <div class="tab-content" id="myaccountContent">
+                                <!-- Single Tab Content Start -->
+                                <div class="tab-pane fade show active" id="dashboad" role="tabpanel">
+                                    <div class="myaccount-content">
+                                        <h3>Bảng điều khiển</h3>
+                                        <div class="welcome">
+                                            <p>Xin chào, <strong>{{ Ten }}</strong> (Nếu không phải <strong>{{ Ten }} !</strong><a href="login-register.html" class="logout"> Đăng xuất</a>)</p>
+                                        </div>
+                                        <p class="mb-0">Từ bảng điều khiển tài khoản của bạn. bạn có thể dễ dàng kiểm tra và xem các đơn đặt hàng gần đây của mình, quản lý địa chỉ giao hàng và thanh toán cũng như chỉnh sửa chi tiết mật khẩu và tài khoản của mình.</p>
+                                    </div>
+                                </div>
+                                <!-- Single Tab Content End -->
+
+                                <!-- Single Tab Content Start -->
+                                <div class="tab-pane fade" id="account-info" role="tabpanel">
+                                    <div class="myaccount-content">
+                                        <h3>Chi tiết tài khoản</h3>
+                                        <form>
+                                            <div class="card">
+                                                <div class="card-body">
+                        
+                                                    <div class="container mt-5">
+                                                        <div class="row">
+                                                            <div class="col-md-5 text-center">
+                                                                <img style="width: 300px; height: 300px;" src="/assets/client/img/nguoidung/{{ Anh }}" alt="avatar">
+                                                            </div>
+                                                            <div class="col-md-7">
+                                                                <h3 class="mb-3"><b>{{ Ten }}</b></h3>
+                                                                <p class="mt-2"><strong>Email:</strong> {{ Email }}</p>
+                                                                <p class="mt-2"><strong>Tài khoản:</strong> {{ TaiKhoan }}</p>
+                                                                <p class="mt-2"><strong>Địa chỉ:</strong> {{ DiaChi }}</p>
+                                                                <p class="mt-2"><strong>Quyền:</strong> {{ TenQuyen }}</p>
+                                                                <p class="mt-2"><strong>Số điện thoại:</strong> {{ SDT }}</p>
+                                                                <p class="mt-2"><strong>Ngày sinh:</strong> {{ NgayTao | date: 'dd/MM/yyyy' }}</p>
+                                                                <p class="mt-2"><strong>Giới tính: </strong> 
+                                                                    <span *ngIf="GioiTinh === 1" class="badge badge-blue">Nam</span> 
+                                                                    <span *ngIf="GioiTinh === 0" class="badge badge-pink">Nữ</span> 
+                                                                </p>
+                                                            </div>
+                                                        </div>
+                                                    </div>                                                                                               
+                                                </div>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div> <!-- Single Tab Content End -->
+
+                                <!-- Single Tab Content Start -->
+                                <div class="tab-pane fade" id="chance" role="tabpanel">
+                                    <div class="myaccount-content">
+                                        <h3>Chi tiết tài khoản</h3>
+                                        <div class="account-details-form">
+                                            <form>
+                                                <div class="row">
+                                                    <div class="col-lg-6">
+                                                        <div class="single-input-item">
+                                                            <label for="email">Email</label>
+                                                            <input class="form-control" type="text" placeholder="{{ Email }}" required readonly/>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-lg-6">
+                                                        <div class="single-input-item">
+                                                            <label for="taiKhoan">Tài khoản</label>
+                                                            <input class="form-control" type="text" placeholder="{{ TaiKhoan }}" required readonly/>
+                                                        </div>
+                                                    </div>
+                                                </div> 
+                                                <div class="single-input-item">
+                                                    <label for="diaChi" class="required">Địa chỉ</label>
+                                                    <input class="form-control" type="text" placeholder="Nhập địa chỉ" required [(ngModel)]="DiaChi" name="DiaChi"/>
+                                                </div>
+                                                <div class="row">
+                                                    <div class="col-lg-6">
+                                                        <div class="single-input-item">
+                                                            <label for="ten" class="required">Họ và tên</label>
+                                                            <input class="form-control" type="text" placeholder="Nhập họ và tên" required [(ngModel)]="Ten" name="Ten"/>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-lg-6">
+                                                        <div class="single-input-item">
+                                                            <label for="tenQuyen">Vai trò</label>
+                                                            <input class="form-control" type="text" placeholder="{{ TenQuyen }}" required readonly name="TenQuyen"/>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="single-input-item">
+                                                    <label for="Anh" class="required">Ảnh</label>
+                                                    <input class="mb-10" type="file" required name="Anh" [(ngModel)]="Anh" (change)="onFileChange($event)"/>
+                                                    <img style="width: 150px; height: 150px;" src="/assets/client/img/nguoidung/{{ Anh }}" alt="avatar">
+                                                </div>                                      
+                                                <div class="row">
+                                                    <div class="col-lg-4">
+                                                        <div class="single-input-item">
+                                                            <label for="sdt" class="required">Số điện thoại</label>
+                                                            <input class="form-control" type="text" placeholder="Nhập số điện thoại" required [(ngModel)]="SDT" name="SDT"/>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-lg-4">
+                                                        <div class="single-input-item">
+                                                            <label for="ngaySinh">Ngày Tạo:</label>
+                                                            <input class="form-control" type="date" required [(ngModel)]="NgayTao" name="NgayTao" readonly/>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-lg-4">
+                                                        <div class="single-input-item">
+                                                            <label for="gioiTinh">Giới tính</label>
+                                                            <select class="form-control" id="gioiTinh" name="gioiTinh" required [(ngModel)]="GioiTinh" name="GioiTinh">
+                                                                <option value="1">Nam</option>
+                                                                <option value="0">Nữ</option>
+                                                            </select>                                                            
+                                                        </div>
+                                                    </div>
+                                                </div>                     
+                                                <div class="row">
+                                                    <div class="col-lg-4">
+                                                        <div class="single-input-item">
+                                                            <label for="MatKhauCu" class="required">Mật khẩu cũ</label>
+                                                            <input type="password" placeholder="Nhập mật khẩu cũ" required [(ngModel)]="MatKhauCu" name="MatKhauCu"/>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-lg-4">
+                                                        <div class="single-input-item">
+                                                            <label for="MatKhauMoi">Nhập mật khẩu mới</label>
+                                                            <input type="password" placeholder="Nhập lại mật khẩu" required [(ngModel)]="MatKhauMoi" name="MatKhauMoi"/>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-lg-4">
+                                                        <div class="single-input-item">
+                                                            <label for="NhapLaiMatKhauMoi">Nhập lại mật khẩu mới</label>
+                                                            <input type="password" placeholder="Nhập lại mật khẩu" required [(ngModel)]="NhapLaiMatKhauMoi" name="NhapLaiMatKhauMoi"/>
+                                                        </div>
+                                                    </div>
+                                                </div>                                                      
+                                                <div class="single-input-item">
+                                                    <button type="submit" class="check-btn sqr-btn" (click)="edit()">Lưu thông tin</button>
+                                                </div>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div> <!-- Single Tab Content End --> 
+
+                                <!-- Single Tab Content Start -->
+                                <div class="tab-pane fade" id="orders" role="tabpanel">
+                                    <div class="myaccount-content">
+                                        <h3>Đơn hàng của bạn</h3>
+                                        <div class="myaccount-table table-responsive text-center">
+                                            <table class="table table-bordered">
+                                                <thead class="thead-light">
+                                                    <tr>
+                                                        <th>STT</th>
+                                                        <th>Ngày đặt</th>
+                                                        <th>Trạng thái</th>
+                                                        <th>Tổng tiền</th>
+                                                        <th>Hành động</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody *ngFor="let dh of ListDonHang, let i = index">
+                                                    <tr>
+                                                        <td>{{ i + 1 }}</td>
+                                                        <td>{{ dh.ngayDat | date: 'HH:mm:ss dd/MM/yyyy' }}</td>
+                                                        <td>
+                                                            <span *ngIf="dh.trangThai === 0" class="badge badge-warning">Chờ xử lý</span>
+                                                            <span *ngIf="dh.trangThai === 1" class="badge badge-success">Đã duyệt</span>
+                                                            <span *ngIf="dh.trangThai === 2" class="badge badge-danger">Đã huỷ</span>
+                                                        </td> 
+                                                        <td>{{ dh.tongTien | number:'1.0-0' }} đ</td>
+                                                        <td><button data-toggle="modal" data-target="#viewModal" (click)="thongTinDonHang(dh.id)" class="check-btn sqr-btn ">Chi tiết</button></td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                    <div class="paginatoin-area text-center pt-30 pb-30">
+                                        <div class="row mt-3">
+                                            <div class="col-12">
+                                                <ul class="pagination justify-content-center">
+                                                    <li class="page-item" [class.disabled]="p === 1" (click)="pageChanged(1)">
+                                                        <a class="page-link">Đầu</a>
+                                                    </li>
+                                                    <li class="page-item" *ngIf="p > 3">
+                                                        <a class="page-link">...</a>
+                                                    </li>
+                                                    <li class="page-item" *ngFor="let page of visiblePages" [class.active]="page === p"
+                                                        (click)="pageChanged(page)">
+                                                        <a class="page-link">{{ page }}</a>
+                                                    </li>
+                                                    <li class="page-item" *ngIf="p < totalPages - 2">
+                                                        <a class="page-link">...</a>
+                                                    </li>
+                                                    <li class="page-item" [class.disabled]="p === totalPages" (click)="pageChanged(totalPages)">
+                                                        <a class="page-link">Cuối</a>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>   
+                                </div>
+                                <!-- Single Tab Content End -->
+
+                                <!-- Single Tab Content Start -->
+                                <div class="tab-pane fade" id="payment-method" role="tabpanel">
+                                    <div class="myaccount-content">
+                                        <h3>Tài khoản ngân hàng</h3>
+                                        <p class="saved-message">Bạn chưa thể lưu phương thức thanh toán của mình.</p>
+                                    </div>
+                                </div>
+                                <!-- Single Tab Content End -->
+                   
+                            </div>
+                        </div> <!-- My Account Tab Content End -->
+                    </div>
+                </div> <!-- My Account Page End -->
+            </div>
+        </div>
+    </div>
+</div>
+<!-- my account wrapper end -->
+
+<!-- Modal xem -->
+<div #viewModal class="modal fade" id="viewModal">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <!-- Tiêu đề Modal -->
+            <div class="modal-header">
+                <h4 class="modal-title mt-10">THÔNG TIN ĐƠN HÀNG</h4>
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+            </div>
+
+            <!-- Nội dung Modal -->
+            <div class="modal-body">
+                <form>
+                    <div class="card">
+                        <div class="card-body">
+                            <div class="form-row">
+                                <div class="form-group col-md-8">
+                                    <label for="ten">Tên: <a class="text-success"> {{ ten }} </a></label>
+                                </div>
+                                <div class="form-group col-md-4">
+                                    <label for="diaChi">Ngày đặt: <a class="text-success"> {{ ngayDat | date: 'HH:mm:ss dd/MM/yyyy' }} </a></label>
+                                </div>
+                            </div>
+                            <div class="form-row">
+                                <div class="form-group col-md-8">
+                                    <label for="sdt">Địa chỉ: <a class="text-success"> {{ diaChi }} </a></label>
+                                </div>
+                                <div class="form-group col-md-4">
+                                    <label for="ngayDat">Số điện thoại: <a class="text-success"> {{ sdt }} </a></label>
+                                </div>
+                            </div>
+                            <div class="form-row">
+                                <div class="form-group col-md-8">
+                                    <label for="kieuGiaoHang">Kiểu giao hàng: 
+                                        <a class="text-success">
+                                            <ng-container *ngIf="kieuGiaoHang === 1">Giao hàng thông thường</ng-container>
+                                            <ng-container *ngIf="kieuGiaoHang === 2">Giao hàng tiết kiệm</ng-container>
+                                            <ng-container *ngIf="kieuGiaoHang === 3">Giao hàng nhanh</ng-container>
+                                        </a>
+                                    </label>
+                                </div>
+                                <div class="form-group col-md-4">
+                                    <label for="trangThai">Trạng thái: 
+                                        <ng-container *ngIf="trangThai === 0"><a class="text-warning"> Chờ xử lý </a></ng-container>
+                                        <ng-container *ngIf="trangThai === 1"><a class="text-success"> Đã duyệt </a></ng-container>
+                                        <ng-container *ngIf="trangThai === 2"><a class="text-danger"> Đã huỷ </a></ng-container>
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="form-row"> 
+                                <div class="form-group col-md-8">
+                                    <label for="tenPhuongThuc">Phương thức thanh toán: <a class="text-success"> {{ tenPhuongThuc }} </a></label>
+                                </div>
+                                <div class="form-group col-md-4">
+                                    <label for="ngayDat">Tổng hoá đơn: <a class="text-success"> {{ Tong | number:'1.0-0' }} đ</a></label>
+                                </div>
+                            </div>
+                            <div class="form-row"> 
+                                <div class="form-group col-md-12">
+                                    <label for="ghiChu">Ghi chú: {{ ghiChu }}</label>
+                                </div>
+                            </div>
+                            <table class="table table-hover" style="width:100%;">
+                                <thead id="mainTable" class="table table-striped">
+                                    <tr>
+                                        <th>#</th>
+                                        <th>Sản phẩm</th>
+                                        <th>Giá</th>
+                                        <th>Số lượng</th>
+                                        <th>Thành tiền</th>
+                                    </tr>
+                                </thead>
+                                <tbody *ngFor="let ct of ListCTDonHang, let i = index">
+                                    <tr>
+                                        <td>{{ i + 1 }}</td>
+                                        <td>{{ ct.tenSanPham }}</td>
+                                        <td>{{ ct.gia | number:'1.0-0' }} đ</td>
+                                        <td>{{ ct.soLuong }}</td>
+                                        <td>{{ ct.gia * ct.soLuong | number:'1.0-0' }} đ</td>
+                                    </tr>
+                                </tbody>                        
+                            </table>
+                        </div>
+                    </div>                                               
+                </form>
+            </div>
+
+            <!-- Footer Modal -->
+            <div class="modal-footer">
+                <ng-container *ngIf="trangThai === 0">
+                    <button type="button" class="btn btn-danger" data-dismiss="modal" (click)="update(id)">Huỷ</button>
+                </ng-container>
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Đóng</button>
+            </div>
+        </div>
+    </div>
+</div>

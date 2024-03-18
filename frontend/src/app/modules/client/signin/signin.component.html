@@ -1,0 +1,98 @@
+<!-- breadcrumb area start -->
+<div class="breadcrumb-area">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <div class="breadcrumb-wrap">
+                    <nav aria-label="breadcrumb">
+                        <ul class="breadcrumb">
+                            <li class="breadcrumb-item"><a href="/">Trang chủ</a></li>
+                            <li class="breadcrumb-item active" aria-current="page">Đăng ký</li>
+                        </ul>
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- breadcrumb area end -->
+
+<!-- login register wrapper start -->
+<div class="login-register-wrapper">
+    <div class="container">
+        <div class="member-area-from-wrap">
+            <div class="row justify-content-center align-items-center">
+                <!-- Register Content Start -->
+                <div class="col-lg-6">
+                    <div class="login-reg-form-wrap mt-md-34 mt-sm-34">
+                        <h2>Đăng ký</h2>
+                        <form (ngSubmit)="Signin()">
+                            <div class="single-input-item">
+                                <label for="Ten">Họ và tên</label>
+                                <input type="text" placeholder="Nhập họ và tên" name="Ten" [(ngModel)]="Ten"/>
+                            </div>
+                            <div class="row">
+                                <div class="col-lg-6">
+                                    <div class="single-input-item">
+                                        <label for="TaiKhoan">Tài khoản</label>
+                                        <input type="text" placeholder="Nhập tài khoản" name="TaiKhoan" [(ngModel)]="TaiKhoan"/>
+                                    </div>
+                                </div>
+                                <div class="col-lg-6">
+                                    <div class="single-input-item">
+                                        <label for="SDT">Số điện thoại</label>
+                                        <input type="text" placeholder="Nhập số điện thoại" name="SDT" [(ngModel)]="SDT"/>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="single-input-item">
+                                <label for="Email">Email</label>
+                                <input type="email" placeholder="Nhập email" name="Email" [(ngModel)]="Email"/>
+                            </div>
+                            <div class="single-input-item">
+                                <label for="DiaChi">Địa chỉ</label>
+                                <input type="text" placeholder="Nhập địa chỉ" name="DiaChi" [(ngModel)]="DiaChi"/>
+                            </div>
+                            <div class="row">
+                                <div class="col-lg-6">
+                                    <div class="single-input-item">
+                                        <label for="MatKhau">Mật khẩu</label>
+                                        <input type="password" placeholder="Nhập mật khẩu" name="MatKhau" [(ngModel)]="MatKhau"/>
+                                    </div>
+                                </div>
+                                <div class="col-lg-6">
+                                    <div class="single-input-item">
+                                        <label for="NhapLaiMatKhau">Nhập lại mật khẩu</label>
+                                        <input type="password" placeholder="Nhập lại mật khẩu" name="NhapLaiMatKhau" [(ngModel)]="NhapLaiMatKhau"/>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="single-input-item">
+                                <div class="login-reg-form-meta">
+                                    <div class="remember-meta">
+                                        <div class="custom-control custom-checkbox">
+                                            <input type="checkbox" class="custom-control-input" id="subnewsletter" [checked]="isTermsChecked" (change)="onTermsChange($event)">
+                                            <label class="custom-control-label" for="subnewsletter">Đồng ý với các <a href="/dieukhoandichvu"><b>Điều khoản</b></a> của website</label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="single-input-item">
+                                <div class="login-reg-form-meta d-flex align-items-center justify-content-between">
+                                    <div class="single-input-item">
+                                        <button type="submit" class="sqr-btn">Đăng ký</button>
+                                    </div>
+                                    <div class="single-input-item">
+                                        <span>Bạn đã có tài khoản? </span><a href="/login">Đăng nhập</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                <!-- Register Content End -->
+            </div>
+        </div>
+    </div>
+</div>
+<!-- login register wrapper end -->

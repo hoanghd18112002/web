@@ -1,0 +1,154 @@
+<!-- breadcrumb area start -->
+<div class="breadcrumb-area">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <div class="breadcrumb-wrap">
+                    <nav aria-label="breadcrumb">
+                        <ul class="breadcrumb">
+                            <li class="breadcrumb-item"><a href="/">Trang chủ</a></li>
+                            <li class="breadcrumb-item"><a href="/cart">Giỏ hàng</a></li>
+                            <li class="breadcrumb-item active" aria-current="page">Thanh toán</li>
+                        </ul>
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- breadcrumb area end -->
+
+<!-- checkout main wrapper start -->
+<div class="checkout-page-wrapper">
+    <div class="container">
+
+        <form (ngSubmit)="ThanhToan()">
+            <div class="row">
+                <!-- Checkout Billing Details -->
+                <div class="col-lg-6">
+                    <div class="checkout-billing-details-wrap">
+                        <h2>Thông tin khách hàng</h2>
+                        <div class="billing-form-wrap">             
+                            <div class="single-input-item">
+                                <label for="Ten" class="required">Họ và tên</label>
+                                <input type="text" id="Ten" name="Ten" [(ngModel)]="user.ten" placeholder="Nhập họ và tên" required />
+                            </div>
+
+                            <div class="single-input-item">
+                                <label for="DiaChi" class="required">Địa chỉ</label>
+                                <input type="text" id="DiaChi" name="DiaChi" [(ngModel)]="user.diaChi" placeholder="Nhập địa chỉ" required />
+                            </div>
+
+                            <div class="single-input-item">
+                                <label for="SDT" class="required">Số điện thoại</label>
+                                <input type="text" id="SDT" name="SDT" [(ngModel)]="user.sdt" placeholder="Nhập số điện thoại" required />
+                            </div>
+
+                            <div class="single-input-item">
+                                <label for="ghichu" class="required mb-20">Phương thức thanh toán</label>
+                                <ng-container *ngFor="let pt of ListPhuongThuc">
+                                    <div class="single-payment-method show">
+                                        <div class="payment-method-name">
+                                            <div class="custom-control custom-radio">
+                                                <input type="radio" [id]="'paymentMethod_' + pt.id" name="paymentmethod" [value]="pt.id"
+                                                        class="custom-control-input" [(ngModel)]="loaiThanhToan" [checked]="pt.id === loaiThanhToan" />
+                                                <label class="custom-control-label" [for]="'paymentMethod_' + pt.id">{{ pt.ten }}</label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </ng-container>                                
+                            </div>
+                            
+                            <div class="single-input-item">
+                                <label for="GhiChu">Ghi chú</label>
+                                <textarea id="GhiChu" name="GhiChu" name="GhiChu" [(ngModel)]="GhiChu" cols="30" rows="3" placeholder="Nhập ghi chú..."></textarea>
+                            </div>                                                
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Order Summary Details -->
+                <div class="col-lg-6">
+                    <div class="order-summary-details mt-md-26 mt-sm-26">
+                        <h2>Chi tiết đơn hàng</h2>
+                        <div class="order-summary-content mb-sm-4">
+                            <!-- Order Summary Table -->
+                            <div class="order-summary-table table-responsive text-center">
+                                <table class="table table-bordered">
+                                    <thead>
+                                        <tr>
+                                            <th>Tên sản phẩm</th>
+                                            <th>Tổng tiền</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody *ngFor="let gh of ListGioHang">
+                                        <tr>
+                                            <td><a href="#">{{ gh.ten }} <strong> × {{ gh.soluong }}</strong></a></td>
+                                            <td>{{ gh.gia * gh.soluong | number:'1.0-0' }} đ</td>
+                                        </tr>
+                                    </tbody>
+                                    <tfoot>
+                                        <tr>
+                                            <td>Số lượng</td>
+                                            <td><strong>{{ SoLuong }} sản phẩm</strong></td>
+                                        </tr>
+                                        <tr>
+                                            <td>Thành tiền</td>
+                                            <td><strong>{{ TongGia | number:'1.0-0' }} đ</strong></td>
+                                        </tr>
+                                        <tr>
+                                            <td>Kiểu giao hàng</td>
+                                            <td class="d-flex justify-content-center">
+                                                <ul class="shipping-type">
+                                                    <li>
+                                                        <div class="custom-control custom-radio">
+                                                            <input type="radio" id="1" name="shipping" class="custom-control-input"
+                                                                    [(ngModel)]="loaiShip" value="1" (change)="updateTotalAmount()" checked />
+                                                            <label class="custom-control-label" for="1">Giao hàng thông thường: 100.000 đ</label>
+                                                        </div>
+                                                    </li>
+                                                    <li>
+                                                        <div class="custom-control custom-radio">
+                                                            <input type="radio" id="2" name="shipping" class="custom-control-input"
+                                                                    [(ngModel)]="loaiShip" value="2" (change)="updateTotalAmount()" />
+                                                            <label class="custom-control-label" for="2">Giao hàng tiết kiệm: 0 đ</label>
+                                                        </div>
+                                                    </li>
+                                                    <li>
+                                                        <div class="custom-control custom-radio">
+                                                            <input type="radio" id="3" name="shipping" class="custom-control-input"
+                                                                    [(ngModel)]="loaiShip" value="3" (change)="updateTotalAmount()" />
+                                                            <label class="custom-control-label" for="3">Giao hàng nhanh: 200.000 đ</label>
+                                                        </div>
+                                                    </li>
+                                                </ul>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>Tổng hoá đơn</td>
+                                            <td><strong>{{ TongHoaDon | number:'1.0-0' }} đ</strong></td>
+                                        </tr>
+                                    </tfoot>
+                                </table>
+                            </div>
+                            <!-- Order Payment Method -->
+                            <div class="order-payment-method">                         
+                                <div class="summary-footer-area">
+                                    <div class="custom-control custom-checkbox mb-14">
+                                        <input type="checkbox" class="custom-control-input" id="terms" [checked]="isTermsChecked" (change)="onTermsChange($event)" />
+                                        <label class="custom-control-label" for="terms">
+                                            Tôi đã đọc và đồng ý với các điều khoản của website.
+                                            <a href="/dieukhoandichvu" style="text-decoration: underline;">Điều khoản dịch vụ</a>
+                                        </label>
+                                    </div>
+                                    <button type="submit" class="check-btn sqr-btn">Xác nhận thanh toán</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+<!-- checkout main wrapper end -->

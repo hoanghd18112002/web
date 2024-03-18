@@ -1,0 +1,292 @@
+<div class="main-content">
+    <section class="section">
+        <div class="section-body">
+            <div class="row">
+                <div class="col-12">
+                    <div class="card">
+                        <div class="card-header">
+                            <h4>QUẢN LÝ TIN TỨC</h4>
+                        </div>
+                        <div class="card-body">
+
+                            <button type="submit" class="btn btn-primary" data-toggle="modal" data-target="#addModal" (click)="loadForm()"><i class="fas fa-plus"></i> Thêm</button>
+                            <button type="submit" class="btn btn-dark ml-1" data-toggle="modal" [attr.data-target]="modalTagel" (click)="viewClick(1)"><i class="fas fa-eye"></i> Xem</button>
+                            <button type="submit" class="btn btn-warning ml-1" data-toggle="modal" [attr.data-target]="modalTagel" (click)="viewClick(2)"><i class="fas fa-edit"></i> Sửa</button>
+                            <button type="submit" class="btn btn-danger ml-1" data-toggle="modal" [attr.data-target]="modalTagel" (click)="viewClick(3)"><i class="fas fa-trash"></i> Xoá</button>
+                    
+                            <div class="float-right mt-4">
+                                <div class="input-group">
+                                    <input class="form-control" type="search" placeholder="Bạn đang tìm gì.." aria-label="Search" data-width="200" id="searchInput" [(ngModel)]="searchTerm">
+                                    <div class="input-group-append">
+                                        <button class="btn btn-outline-secondary" type="submit" (click)="getall()"><i class="fas fa-search"></i></button>
+                                    </div>
+                                </div>
+                            </div>
+          
+                            <div class="table-responsive mt-5">
+                                <table class="table table-hover" style="width:100%;">
+                                    <thead id="mainTable" class="table table-striped">
+                                        <tr class="text-center">
+                                            <th>#</th>
+                                            <th>Tiêu đề</th>
+                                            <th>Ảnh</th>
+                                            <th>Ngày đăng</th>
+                                            <th>Người đăng</th>
+                                            <th>Trạng thái</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody *ngFor="let tt of ListTinTuc; let i = index">
+                                        <tr (click)="onRowClick(tt)" [class.selected]="selectedRow === tt" class="text-center">
+                                            <td>{{ i + 1 }}</td>
+                                            <td>{{ tt.tieuDe | slice: 0:100}}</td>
+                                            <td>
+                                                <img style="width: 300px; height: 150px;" src="/assets/client/img/tintuc/{{ tt.anh }}"/>                                                 
+                                            </td>
+                                            <td>{{ tt.ngayDang | date: 'HH:mm:ss dd/MM/yyyy' }}</td>
+                                            <td>{{ tt.ten }}</td>
+                                            <td>
+                                                <span *ngIf="tt.trangThai === 1" class="badge badge-success">Hoạt động</span>
+                                                <span *ngIf="tt.trangThai === 0" class="badge badge-danger">Khoá</span>
+                                            </td>
+                                        </tr>
+                                    </tbody>                        
+                                </table>
+                            </div>
+                        </div>
+                        <div class="paginatoin-area float-right pt-30 pb-30">
+                            <div class="row mt-3">
+                                <div class="col-12">
+                                    <ul class="pagination justify-content-center">
+                                        <li class="page-item" [class.disabled]="p === 1" (click)="pageChanged(1)">
+                                            <a class="page-link">Đầu</a>
+                                        </li>
+                                        <li class="page-item" *ngIf="p > 3">
+                                            <a class="page-link">...</a>
+                                        </li>
+                                        <li class="page-item" *ngFor="let page of visiblePages" [class.active]="page === p"
+                                            (click)="pageChanged(page)">
+                                            <a class="page-link">{{ page }}</a>
+                                        </li>
+                                        <li class="page-item" *ngIf="p < totalPages - 2">
+                                            <a class="page-link">...</a>
+                                        </li>
+                                        <li class="page-item" [class.disabled]="p === totalPages" (click)="pageChanged(totalPages)">
+                                            <a class="page-link">Cuối</a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>   
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>
+
+<!-- Modal thêm -->
+<div #addModal class="modal fade" id="addModal">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <!-- Tiêu đề Modal -->
+            <div class="modal-header">
+                <h4 class="modal-title mt-10">THÊM TIN TỨC</h4>
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+            </div>
+
+            <!-- Nội dung Modal -->
+            <div class="modal-body">
+                <div class="text-center">
+                    <a class="text-danger">Các trường có dấu (*) không được để trống</a>
+                </div>
+                <form>
+                    <div class="card-body">
+                        <div class="form-row">
+                            <div class="form-group col-12">
+                                <label for="tieuDe">Tiêu đề<a class="text-danger"> (*)</a>:</label>
+                                <textarea class="form-control" rows="3" name="tieuDe" [(ngModel)]="tieuDe" placeholder="Nhập tiêu đề"></textarea>
+                            </div>
+                            <div class="row">
+                                <div class="form-group col-md-5">
+                                    <label for="anh">Ảnh<a class="text-danger"> (*)</a>:</label>
+                                    <input type="file" class="form-control" name="anh" [(ngModel)]="anh" (change)="onFileChange($event)" />
+                                </div>
+                                <div class="form-group col-md-4">
+                                    <label for="ten">Người đăng:</label>
+                                    <input class="form-control" value="{{ user.ten }}" readonly/>
+                                </div>
+                                <div class="form-group col-md-3">
+                                    <label for="trangThai" class="d-block">Trạng thái:</label>
+                                    <div class="custom-control custom-switch ml-10">
+                                        <input type="checkbox" class="custom-control-input" id="trangThai" name="trangThai" [(ngModel)]="trangThai">
+                                        <label class="custom-control-label" for="trangThai">Hoạt động</label>
+                                    </div>
+                                </div>
+                            </div>                               
+                            <div class="form-group col-12">
+                                <label for="noiDung">Nội dung<a class="text-danger"> (*)</a>:</label>
+                                <angular-editor [placeholder]="'Nhập nội dung'" name="noiDung" [(ngModel)]="noiDung"></angular-editor>
+                            </div>
+                        </div>
+                    </div>
+                </form>                  
+            </div>
+
+            <!-- Footer Modal -->
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Huỷ</button>
+                <button type="button" class="btn btn-primary" (click)="add()">Tạo mới</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal xem -->
+<div #viewModal class="modal fade" id="viewModal">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <!-- Tiêu đề Modal -->
+            <div class="modal-header">
+                <h4 class="modal-title mt-10">XEM TIN TỨC</h4>
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+            </div>
+
+            <!-- Nội dung Modal -->
+            <div class="modal-body">
+                <form>
+                    <div class="card">
+                        <div class="card-body">
+                            <div class="news-container">
+                                <div class="news-header">
+                                    <h3><b>{{ tieuDe }}</b></h3>
+                                </div>
+                                <div class="additional-info">
+                                    <div class="news-text"><strong>Ngày đăng:</strong> {{ ngayDang | date: 'HH:mm:ss dd/MM/yyyy' }}</div>
+                                    <div class="news-text"><strong>Người đăng:</strong> {{ ten }}</div>
+                                    <div class="news-text">
+                                        <strong>Trạng thái: 
+                                            <span *ngIf="trangThai === 1" class="badge badge-success">Hoạt động</span>
+                                            <span *ngIf="trangThai === 0" class="badge badge-danger">Khoá</span>
+                                        </strong>
+                                    </div>
+                                </div>
+                                <div class="news-content">
+                                    <div class="image-container text-center">
+                                        <img src="/assets/client/img/tintuc/{{ anh }}" alt="Ảnh tin tức" class="news-image" />
+                                    </div>
+                                    <div class="text-container mt-5">
+                                        <div class="news-text" [innerHTML]="noiDung">{{ noiDung }}</div>
+                                    </div>
+                                </div>
+                            </div>                        
+                        </div>
+                    </div>
+                </form>
+            </div>
+
+            <!-- Footer Modal -->
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Đóng</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal sửa -->
+<div #updateModal class="modal fade" id="updateModal">
+    <div class="modal-dialog modal-lg">
+          <div class="modal-content">
+              <!-- Tiêu đề Modal -->
+              <div class="modal-header">
+                  <h4 class="modal-title mt-10">SỬA TIN TỨC</h4>
+                  <button type="button" class="close" data-dismiss="modal">&times;</button>
+              </div>
+
+              <!-- Nội dung Modal -->
+              <div class="modal-body">
+                <div class="text-center">
+                    <a class="text-danger">Các trường có dấu (*) không được để trống</a>
+                </div>
+                <form>
+                    <div class="card-body">
+                        <div class="form-row">
+                            <div class="form-group col-12">
+                                <label for="tieuDe">Tiêu đề<a class="text-danger"> (*)</a>:</label>
+                                <textarea class="form-control" rows="3" name="tieuDe" [(ngModel)]="tieuDe" placeholder="Nhập tiêu đề"></textarea>
+                            </div>
+                            <div class="row">
+                                <div class="form-group col-md-5">
+                                    <label for="anh">Ảnh<a class="text-danger"> (*)</a>:</label>
+                                    <input type="file" class="form-control" name="anh" [(ngModel)]="anh" (change)="onFileChange($event)" />
+                                </div>
+                                <div class="form-group col-md-4">
+                                    <label for="ten">Người đăng:</label>
+                                    <input class="form-control" name="ten" [(ngModel)]="ten" value="" readonly/>
+                                </div>
+                                <div class="form-group col-md-3">
+                                    <label for="trangThai" class="d-block">Trạng thái:</label>
+                                    <div class="custom-control custom-switch ml-10">
+                                        <input type="checkbox" class="custom-control-input" id="trangThai" name="trangThai" [(ngModel)]="trangThai">
+                                        <label class="custom-control-label" for="trangThai">Hoạt động</label>
+                                    </div>
+                                </div>
+                            </div>                               
+                            <div class="form-group col-12">
+                                <label for="noiDung">Nội dung<a class="text-danger"> (*)</a>:</label>
+                                <angular-editor [placeholder]="'Nhập nội dung'" name="noiDung" [(ngModel)]="noiDung"></angular-editor>
+                            </div>             
+                        </div>
+                    </div>
+                </form>
+            </div>
+
+            <!-- Footer Modal -->
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Huỷ</button>
+                <button type="button" class="btn btn-primary" (click)="update()">Sửa</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal xoá -->
+<div #deleteModal class="modal fade" id="deleteModal">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <!-- Tiêu đề Modal -->
+            <div class="modal-header">
+                <h4 class="modal-title mt-10">XOÁ TIN TỨC</h4>
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+            </div>
+
+            <!-- Nội dung Modal -->
+            <div class="modal-body">
+                Bạn có chắc chắn muốn xoá
+            </div>
+
+            <!-- Footer Modal -->
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Huỷ</button>
+                <button type="button" class="btn btn-primary" (click)="delete()">Xác nhận</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal thông báo chưa chọn dòng dữ liệu -->
+<div class="modal fade" id="messageModal" tabindex="-1">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title mt-10">THÔNG BÁO</h5>
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+            </div>
+            <div class="modal-body">
+                Hãy chọn một dòng dữ liệu trước khi xử lý.
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary" data-dismiss="modal">Đóng</button>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,204 @@
+<div class="main-content">
+    <section class="section">
+        <div class="section-body">
+            <div class="row">
+                <div class="col-12">
+                    <div class="card">
+                        <div class="card-header">
+                            <h4>QUẢN LÝ ĐƠN HÀNG</h4>
+                        </div>
+                        <div class="card-body">
+
+                            <button type="submit" class="btn btn-dark ml-1" data-toggle="modal" [attr.data-target]="modalTagel" (click)="viewClick(1)"><i class="fas fa-eye"></i> Xem</button>
+
+                            <div class="float-right mt-4">
+                                <div class="input-group">
+                                    <input class="form-control" type="search" placeholder="Bạn đang tìm gì.." aria-label="Search" data-width="200" id="searchInput" [(ngModel)]="searchTerm">
+                                    <div class="input-group-append">
+                                        <button class="btn btn-outline-secondary" type="submit" (click)="getall()"><i class="fas fa-search"></i></button>
+                                    </div>
+                                </div>
+                            </div>
+          
+                            <div class="table-responsive mt-5">
+                                <table class="table table-hover" style="width:100%;">
+                                    <thead id="mainTable" class="table table-striped">
+                                        <tr class="text-center">
+                                            <th>#</th>
+                                            <th>Tên khách</th>
+                                            <th>Địa chỉ</th>
+                                            <th>Ngày đặt</th>
+                                            <th>Phương thức</th>
+                                            <th>Tài khoản</th>
+                                            <th>Trạng thái</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody *ngFor="let dh of ListDonHang; let i = index">
+                                        <tr (click)="onRowClick(dh)" [class.selected]="selectedRow === dh" class="text-center">
+                                            <td>{{ i + 1 }}</td>
+                                            <td>{{ dh.ten }}</td>
+                                            <td>{{ dh.diaChi }}</td>
+                                            <td>{{ dh.ngayDat | date: 'HH:mm:ss dd/MM/yyyy' }}</td>
+                                            <td>{{ dh.tenPhuongThuc }}</td>
+                                            <td>{{ dh.taiKhoan }}</td>
+                                            <td>
+                                                <span *ngIf="dh.trangThai === 0" class="badge badge-warning">Chờ xử lý</span>
+                                                <span *ngIf="dh.trangThai === 1" class="badge badge-success">Đã duyệt</span>
+                                                <span *ngIf="dh.trangThai === 2" class="badge badge-danger">Đã huỷ</span>
+                                            </td>
+                                        </tr>
+                                    </tbody>                        
+                                </table>
+                            </div>
+                        </div>
+                        <div class="paginatoin-area float-right pt-30 pb-30">
+                            <div class="row mt-3">
+                                <div class="col-12">
+                                    <ul class="pagination justify-content-center">
+                                        <li class="page-item" [class.disabled]="p === 1" (click)="pageChanged(1)">
+                                            <a class="page-link">Đầu</a>
+                                        </li>
+                                        <li class="page-item" *ngIf="p > 3">
+                                            <a class="page-link">...</a>
+                                        </li>
+                                        <li class="page-item" *ngFor="let page of visiblePages" [class.active]="page === p"
+                                            (click)="pageChanged(page)">
+                                            <a class="page-link">{{ page }}</a>
+                                        </li>
+                                        <li class="page-item" *ngIf="p < totalPages - 2">
+                                            <a class="page-link">...</a>
+                                        </li>
+                                        <li class="page-item" [class.disabled]="p === totalPages" (click)="pageChanged(totalPages)">
+                                            <a class="page-link">Cuối</a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>   
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>
+
+<!-- Modal xem -->
+<div #viewModal class="modal fade" id="viewModal">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <!-- Tiêu đề Modal -->
+            <div class="modal-header">
+                <h4 class="modal-title mt-10">THÔNG TIN ĐƠN HÀNG</h4>
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+            </div>
+
+            <!-- Nội dung Modal -->
+            <div class="modal-body">
+                <form>
+                    <div class="card">
+                        <div class="card-body">
+                            <div class="form-row">
+                                <div class="form-group col-md-4">
+                                    <label for="ten">Tên: <a class="text-success"> {{ ten }} </a></label>
+                                </div>
+                                <div class="form-group col-md-4">
+                                    <label for="taiKhoan">Tài khoản: <a class="text-success"> {{ taiKhoan }} </a></label>
+                                </div>
+                                <div class="form-group col-md-4">
+                                    <label for="diaChi">Ngày đặt: <a class="text-success"> {{ ngayDat | date: 'HH:mm:ss dd/MM/yyyy' }} </a></label>
+                                </div>
+                            </div>
+                            <div class="form-row">
+                                <div class="form-group col-md-8">
+                                    <label for="sdt">Địa chỉ: <a class="text-success"> {{ diaChi }} </a></label>
+                                </div>
+                                <div class="form-group col-md-4">
+                                    <label for="ngayDat">Số điện thoại: <a class="text-success"> {{ sdt }} </a></label>
+                                </div>
+                            </div>
+                            <div class="form-row">
+                                <div class="form-group col-md-8">
+                                    <label for="kieuGiaoHang">Kiểu giao hàng: 
+                                        <a class="text-success">
+                                            <ng-container *ngIf="kieuGiaoHang === 1">Giao hàng thông thường</ng-container>
+                                            <ng-container *ngIf="kieuGiaoHang === 2">Giao hàng tiết kiệm</ng-container>
+                                            <ng-container *ngIf="kieuGiaoHang === 3">Giao hàng nhanh</ng-container>
+                                        </a>
+                                    </label>
+                                </div>
+                                <div class="form-group col-md-4">
+                                    <label for="trangThai">Trạng thái: 
+                                        <ng-container *ngIf="trangThai === 0"><a class="text-warning"> Chờ xử lý </a></ng-container>
+                                        <ng-container *ngIf="trangThai === 1"><a class="text-success"> Đã duyệt </a></ng-container>
+                                        <ng-container *ngIf="trangThai === 2"><a class="text-danger"> Đã huỷ </a></ng-container>
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="form-row"> 
+                                <div class="form-group col-md-8">
+                                    <label for="tenPhuongThuc">Phương thức thanh toán: <a class="text-success"> {{ tenPhuongThuc }} </a></label>
+                                </div>
+                                <div class="form-group col-md-4">
+                                    <label for="ngayDat">Tổng hoá đơn: <a class="text-success"> {{ Tong | number:'1.0-0' }} đ</a></label>
+                                </div>
+                            </div>
+                            <div class="form-row"> 
+                                <div class="form-group col-md-12">
+                                    <label for="ghiChu">Ghi chú: {{ ghiChu }}</label>
+                                </div>
+                            </div>
+                            <table class="table table-hover" style="width:100%;">
+                                <thead id="mainTable" class="table table-striped">
+                                    <tr class="text-center">
+                                        <th>#</th>
+                                        <th>Sản phẩm</th>
+                                        <th>Giá</th>
+                                        <th>Số lượng</th>
+                                        <th>Thành tiền</th>
+                                    </tr>
+                                </thead>
+                                <tbody *ngFor="let ct of ListCTDonHang, let i = index">
+                                    <tr class="text-center">
+                                        <td>{{ i + 1 }}</td>
+                                        <td>{{ ct.tenSanPham }}</td>
+                                        <td>{{ ct.gia | number:'1.0-0' }} đ</td>
+                                        <td>{{ ct.soLuong }}</td>
+                                        <td>{{ ct.gia * ct.soLuong | number:'1.0-0' }} đ</td>
+                                    </tr>
+                                </tbody>                        
+                            </table>
+                        </div>
+                    </div>                                               
+                </form>
+            </div>
+
+            <!-- Footer Modal -->
+            <div class="modal-footer">
+                <button type="button" class="btn btn-success ml-1" (click)="exportToExcel()"><i class="fas fa-save"></i> In</button>
+                <ng-container *ngIf="trangThai === 0">
+                    <button type="button" class="btn btn-success" data-dismiss="modal" (click)="update(1)">Duyệt</button>
+                    <button type="button" class="btn btn-danger" data-dismiss="modal" (click)="update(2)">Huỷ</button>
+                </ng-container>
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Đóng</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal thông báo chưa chọn dòng dữ liệu -->
+<div class="modal fade" id="messageModal" tabindex="-1">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title mt-10">THÔNG BÁO</h5>
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+            </div>
+            <div class="modal-body">
+                Hãy chọn một dòng dữ liệu trước khi xử lý.
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary" data-dismiss="modal">Đóng</button>
+            </div>
+        </div>
+    </div>
+</div>

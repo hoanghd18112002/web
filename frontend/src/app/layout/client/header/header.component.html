@@ -1,0 +1,175 @@
+<header>
+
+    <!-- header top start -->
+    <div class="header-top-area bg-gray text-center text-md-left">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-6 col-md-5">
+                    <div class="header-call-action">
+                        <a href="#">
+                            <i class="fa fa-envelope"></i>
+                            hoanghd18112002@gmail.com
+                        </a>
+                        <a href="/test">
+                            <i class="fa fa-phone"></i>
+                            0906.090.112
+                        </a>
+                    </div>
+                </div>
+                <div class="col-lg-6 col-md-7">
+                    <div class="header-top-right float-md-right float-none">
+                        <nav>
+                            <ul>
+                                <li>
+                                    <ng-container *ngIf="user && user.idQuyen !== 2">
+                                        <a href="/admin">Admin</a>
+                                    </ng-container>                                                           
+                                </li>
+                                <li>
+                                    <div class="dropdown header-top-dropdown">
+                                        <a class="dropdown-toggle" id="myaccount" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                            {{ user ? user.ten : 'Tài khoản' }}
+                                            <i class="fa fa-angle-down"></i>
+                                        </a>
+                                        <div class="dropdown-menu" aria-labelledby="myaccount">
+                                            <a class="dropdown-item" *ngIf="!user" href="/login">Đăng nhập</a>
+                                            <a class="dropdown-item" *ngIf="!user" href="/signin">Đăng ký</a>
+                                            <a class="dropdown-item" *ngIf="user" href="/taikhoan">Tài khoản</a>
+                                            <a class="dropdown-item" *ngIf="user" (click)="deleteUser()">Đăng xuất</a>
+                                        </div>
+                                    </div>                                    
+                                </li>
+                                <li>
+                                    <a href="/cart">Giỏ hàng</a>
+                                </li>
+                                <li>
+                                    <a href="/lienhe">Liên hệ</a>
+                                </li>
+                                <li>
+                                    <a href="/dieukhoandichvu">Điều khoản</a>
+                                </li>
+                            </ul>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- header top end -->
+
+    <!-- header middle start -->
+    <div class="header-middle-area pt-20 pb-20">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-3">
+                    <div class="brand-logo">
+                        <a href="/">
+                            <img src="/assets/client/img/logo/logo.png" alt="brand logo">
+                        </a>
+                    </div>
+                </div> <!-- end logo area -->
+                <div class="col-lg-9">
+                    <div class="header-middle-right">
+                        <div class="header-middle-shipping mb-20">
+                            <div class="single-block-shipping">
+                                <div class="shipping-icon">
+                                    <i class="fa fa-clock-o"></i>
+                                </div>
+                                <div class="shipping-content">
+                                    <h5>Thời gian làm việc</h5>
+                                    <span>Mon- Sun: 8.00 - 18.00</span>
+                                </div>
+                            </div> <!-- end single shipping -->
+                            <div class="single-block-shipping">
+                                <div class="shipping-icon">
+                                    <i class="fa fa-truck"></i>
+                                </div>
+                                <div class="shipping-content">
+                                    <h5>GIAO HÀNG</h5>
+                                    <span>Giao hàng nhanh chóng</span>
+                                </div>
+                            </div> <!-- end single shipping -->
+                            <div class="single-block-shipping">
+                                <div class="shipping-icon">
+                                    <i class="fa fa-money"></i>
+                                </div>
+                                <div class="shipping-content">
+                                    <h5>HOÀN TIỀN 100%</h5>
+                                    <span>Trong vòng 30 ngày sau khi giao hàng</span>
+                                </div>
+                            </div> <!-- end single shipping -->
+                        </div>
+                        <div class="header-middle-block">
+                            <div class="header-middle-searchbox">
+                                <input type="text" [(ngModel)]="timkiem" placeholder="Bạn đang tìm gì...">
+                                <button (click)="search()" class="search-btn"><i class="fa fa-search"></i></button>
+                            </div>
+                            <a href="/cart" class="header-mini-cart">
+                                <div class="mini-cart-btn">
+                                    <i class="fa fa-shopping-cart"></i>
+                                    <span class="cart-notification">{{ SoLuong }}</span>
+                                </div>
+                                <div class="cart-total-price" style="font-size: 14px">
+                                    <span>{{ TongGia | number:'1.0-0' }} đ</span>
+                                </div>
+                            </a>                              
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- header middle end -->
+
+    <!-- main menu area start -->
+    <div class="main-header-wrapper bdr-bottom1">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="main-header-inner">
+                        <div class="category-toggle-wrap">
+                            <div class="category-toggle">
+                                Danh mục sản phẩm
+                                <div class="cat-icon">
+                                    <i class="fa fa-angle-down"></i>
+                                </div>
+                            </div>
+                            <nav class="category-menu" [ngClass]="{'hm-1': isHomePage, 'category-style-2': !isHomePage}">
+                                <ul>
+                                    <ng-container *ngFor="let mn of ListDanhMuc">
+                                        <li><a href="/danhmucsanpham/{{ mn.id }}"><img style="width: 20px;" src="/assets/client/img/icon/{{ mn.bieuTuong }}" /> <i></i> {{ mn.ten }} </a></li>     
+                                    </ng-container>
+                                </ul>
+                            </nav>                            
+                        </div>
+                        <div class="main-menu">
+                            <nav id="mobile-menu">
+                                <ul>
+                                    <ng-container *ngFor="let mn of ListMenu; let isFirst = first">
+                                        <li [class.active]="isFirst">
+                                          <a href="{{ mn.link }}">
+                                            <i class="fa fa-home" *ngIf="isFirst"></i> 
+                                            {{ mn.ten }}
+                                            <i class="fa fa-angle-down" *ngIf="mn.children && mn.children.length > 0"></i>
+                                          </a>
+                                          <ul *ngIf="mn.children && mn.children.length > 0" class="dropdown">
+                                            <li *ngFor="let child of mn.children">
+                                              <a [href]="child.link">{{ child.ten }}</a>
+                                            </li>
+                                          </ul>
+                                        </li>
+                                    </ng-container>                                                                                                                       
+                                </ul>
+                            </nav>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12 d-block d-lg-none">
+                    <div class="mobile-menu"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- main menu area end -->
+
+</header>

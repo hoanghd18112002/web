@@ -1,0 +1,115 @@
+<!-- breadcrumb area start -->
+<div class="breadcrumb-area">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <div class="breadcrumb-wrap">
+                    <nav aria-label="breadcrumb">
+                        <ul class="breadcrumb">
+                            <li class="breadcrumb-item"><a href="/">Trang chủ</a></li>
+                            <li class="breadcrumb-item active" aria-current="page">Giỏ hàng</li>
+                        </ul>
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- breadcrumb area end -->
+
+<div class="wrapper box-layout">
+
+    <!-- cart main wrapper start -->
+    <div class="cart-main-wrapper">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-9">
+
+                    <!-- Cart Table Area -->
+                    <div class="cart-table table-responsive">
+                        <table class="table table-bordered">
+                            <thead>
+                                <tr>
+                                    <th class="pro-thumbnail">Ảnh</th>
+                                    <th class="pro-title">Tên sản phẩm</th>
+                                    <th class="pro-price">Giá tiền</th>
+                                    <th class="pro-quantity">Số lượng</th>
+                                    <th class="pro-subtotal">Tổng tiền</th>
+                                    <th class="pro-remove">Xoá</th>
+                                </tr>
+                            </thead>
+                            <tbody *ngIf="ListGioHang.length > 0; else emptyCart">
+                                <tr *ngFor="let gh of ListGioHang">
+                                    <td class="pro-thumbnail">
+                                        <a href="/chitietsanpham/{{ gh.ID }}"><img class="img-fluid" src="/assets/client/img/sanpham/{{ gh.anh }}" alt="Product"/></a>
+                                    </td>
+                                    <td class="pro-title">
+                                        <a href="/chitietsanpham/{{ gh.ID }}">{{ gh.ten }}</a>
+                                    </td>
+                                    <td class="pro-price">
+                                        <span>{{ gh.gia | number:'1.0-0' }} đ</span>
+                                    </td>
+                                    <td class="pro">
+                                        <div class="d-flex align-items-center">
+                                          <button class="btn btn-sm" type="button" (click)="giamGioHang(gh.id)">-</button>
+                                          <input type="text" class="form-control text-center" [value]="gh.soluong" readonly/>
+                                          <button class="btn btn-sm" type="button" (click)="tangGioHang(gh.id)">+</button>
+                                        </div>
+                                      </td>                                                                         
+                                    <td class="pro-subtotal">
+                                        <span>{{ gh.gia * gh.soluong | number:'1.0-0' }} đ</span>
+                                    </td>
+                                    <td class="pro-remove">
+                                        <a (click)="deleteGioHang(gh.id)"><i class="fa fa-trash-o"></i></a>
+                                    </td>
+                                </tr>
+                              </tbody>
+                              
+                              <ng-template #emptyCart>
+                                <tr>
+                                  <td colspan="12">Hiện bạn chưa thêm sản phẩm vào giỏ hàng</td>
+                                </tr>
+                              </ng-template> 
+                              
+                        </table>
+                    </div>
+    
+                    <!-- Cart Update Option -->
+                    <div class="cart-update-option d-block d-md-flex justify-content-between">
+                        <div class="cart-update mt-sm-16">
+                            <a href="/" class="sqr-btn">Tiếp tục mua hàng</a>
+                        </div>
+                        <div class="cart-update mt-sm-16">
+                            <a style="color: white" class="sqr-btn" (click)="deleteAllGioHang()">Dọn dẹp giỏ hàng</a>
+                        </div>
+                    </div>
+                    
+                </div>
+
+                <div class="col-lg-3">
+                    <!-- Cart Calculation Area -->
+                    <div class="cart-calculator-wrapper mt-0">
+                        <div class="cart-calculate-items">
+                            <h3>Tổng giỏ hàng</h3>
+                            <div class="table-responsive">
+                                <table class="table">
+                                    <tr>
+                                        <td>Số lượng</td>
+                                        <td>{{ SoLuong }} sản phẩm</td>
+                                    </tr>
+                                    <tr class="total">
+                                        <td>Tổng đơn hàng</td>
+                                        <td class="total-amount">{{ TongGia | number:'1.0-0' }} đ</td>
+                                    </tr>
+                                </table>
+                            </div>
+                        </div>
+                        <a style="color: white" (click)="thanhToan()" class="sqr-btn d-block">Thanh toán</a>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <!-- cart main wrapper end -->
+</div>

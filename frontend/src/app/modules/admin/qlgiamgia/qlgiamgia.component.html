@@ -1,0 +1,165 @@
+<div class="main-content">
+    <section class="section">
+        <div class="section-body">
+            <div class="row">
+                <div class="col-md-8 col-xs-12">
+                    <div class="card">
+                        <div class="card-header">
+                            <h4>QUẢN LÝ GIẢM GIÁ</h4>
+                        </div>
+                        <div class="card-body">
+                    
+                            <div class="float-right mt-4">
+                                <div class="input-group">
+                                    <input class="form-control" type="search" placeholder="Bạn đang tìm gì.." aria-label="Search" data-width="200" id="searchInput" [(ngModel)]="searchTerm">
+                                    <div class="input-group-append">
+                                        <button class="btn btn-outline-secondary" type="submit" (click)="getsanpham()"><i class="fas fa-search"></i></button>
+                                    </div>
+                                </div>
+                            </div>
+          
+                            <div class="table-responsive mt-5">
+                                <table class="table table-hover" style="width:100%;">
+                                    <thead id="mainTable" class="table table-striped">
+                                        <tr class="text-center">
+                                            <th>#</th>
+                                            <th>Tên</th>
+                                            <th>Ảnh</th>
+                                            <th>Giá</th>
+                                            <th>Giá sau khi giảm</th>
+                                            <th>Tình trạng</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody *ngFor="let sp of ListSanPham; let i = index">
+                                        <tr (click)="onRowClick(sp)" [class.selected]="selectedRow === sp" class="text-center">
+                                            <td>{{ i + 1 }}</td> 
+                                            <td>{{ sp.ten }}</td> 
+                                            <td>
+                                                <img style="width: 100px; height: 100px;" src="/assets/client/img/sanpham/{{ sp.anh }}">
+                                            </td> 
+                                            <td>{{ sp.gia | number:'1.0-0' }} đ</td> 
+                                            <td>
+                                                <ng-container *ngIf="sp.giaGiamGia !== null">{{ sp.giaGiamGia | number:'1.0-0' }} đ</ng-container>
+                                            </td> 
+                                            <td> 
+                                                <span *ngIf="sp.giaGiamGia !== null" class="badge badge-success">Đã giảm giá</span> 
+                                                <span *ngIf="sp.giaGiamGia === null" class="badge badge-danger">Chưa giảm giá</span> 
+                                            </td>
+                                        </tr>
+                                    </tbody>                        
+                                </table>
+                            </div>
+                        </div>
+                        <div class="paginatoin-area float-right pt-30 pb-30">
+                            <div class="row mt-3">
+                                <div class="col-12">
+                                    <ul class="pagination justify-content-center">
+                                        <li class="page-item" [class.disabled]="p === 1" (click)="pageChanged(1)">
+                                            <a class="page-link">Đầu</a>
+                                        </li>
+                                        <li class="page-item" *ngIf="p > 3">
+                                            <a class="page-link">...</a>
+                                        </li>
+                                        <li class="page-item" *ngFor="let page of visiblePages" [class.active]="page === p"
+                                            (click)="pageChanged(page)">
+                                            <a class="page-link">{{ page }}</a>
+                                        </li>
+                                        <li class="page-item" *ngIf="p < totalPages - 2">
+                                            <a class="page-link">...</a>
+                                        </li>
+                                        <li class="page-item" [class.disabled]="p === totalPages" (click)="pageChanged(totalPages)">
+                                            <a class="page-link">Cuối</a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>   
+                    </div>
+                </div>
+                <div class="col-md-4 col-xs-12">
+                    <div class="card">
+                        <div class="card-header">
+                            <h4>GIẢM GIÁ SẢN PHẨM</h4>
+                        </div>
+                        <div class="card-body">
+                            <div class="form-row">
+                                <div class="form-group col-6">
+                                    <label for="phanTram">Phần trăm <a class="text-danger"> (*)</a>:</label>
+                                    <input class="form-control" name="phanTram" [(ngModel)]="phanTram" [readonly]="readonly"/>   
+                                </div>  
+                                <div class="form-group col-6">
+                                    <label for="tenSanPham">Sản phẩm <a class="text-danger"> (*)</a>:</label>
+                                    <input class="form-control" name="tenSanPham" [(ngModel)]="tenSanPham" readonly/>   
+                                </div>
+                            </div> 
+                            <div class="form-row">
+                                <div class="form-group col-6">
+                                    <label for="ngayBatDau">Ngày bắt đầu <a class="text-danger"> (*)</a>:</label>
+                                    <input type="date" class="form-control" name="ngayBatDau" [(ngModel)]="ngayBatDau" [readonly]="readonly"/>   
+                                </div>  
+                                <div class="form-group col-6">
+                                    <label for="ngayKetThuc">Ngày kết thúc <a class="text-danger"> (*)</a>:</label>
+                                    <input type="date" class="form-control" name="ngayKetThuc" [(ngModel)]="ngayKetThuc" [readonly]="readonly"/>   
+                                </div> 
+                            </div>         
+                        </div>
+                        <div class="paginatoin-area float-right pt-30 pb-30">
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-success" data-toggle="modal" data-target="#saveModal" [disabled]="btnLuu">Lưu</button>
+                                <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#deleteModal" [disabled]="btnXoa">Xoá</button>
+                            </div>
+                        </div>                          
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>
+
+<!-- Modal lưu -->
+<div #saveModal class="modal fade" id="saveModal">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <!-- Tiêu đề Modal -->
+            <div class="modal-header">
+                <h4 class="modal-title mt-10">LƯU GIẢM GIÁ</h4>
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+            </div>
+
+            <!-- Nội dung Modal -->
+            <div class="modal-body">
+                Bạn có chắc chắn muốn lưu
+            </div>
+
+            <!-- Footer Modal -->
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Huỷ</button>
+                <button type="button" class="btn btn-primary" (click)="save()">Xác nhận</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal xoá -->
+<div #deleteModal class="modal fade" id="deleteModal">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <!-- Tiêu đề Modal -->
+            <div class="modal-header">
+                <h4 class="modal-title mt-10">XOÁ GIẢM GIÁ</h4>
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+            </div>
+
+            <!-- Nội dung Modal -->
+            <div class="modal-body">
+                Bạn có chắc chắn muốn xoá
+            </div>
+
+            <!-- Footer Modal -->
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Huỷ</button>
+                <button type="button" class="btn btn-primary" (click)="delete()">Xác nhận</button>
+            </div>
+        </div>
+    </div>
+</div>

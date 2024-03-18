@@ -1,0 +1,81 @@
+<!-- breadcrumb area start -->
+<div class="breadcrumb-area">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <div class="breadcrumb-wrap">
+                    <nav aria-label="breadcrumb">
+                        <ul class="breadcrumb">
+                            <li class="breadcrumb-item"><a href="/">Trang chủ</a></li>
+                            <li class="breadcrumb-item active" aria-current="page">Giới thiệu</li>
+                        </ul>
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- breadcrumb area end -->
+
+<!-- about wrapper start -->
+<div class="about-us-wrapper pt-4">
+    <div class="container">
+        <ng-container *ngFor="let gt of ListGioiThieu">
+            <div class="row">
+                <!-- About Text Start -->
+                <div [ngClass]="{'col-lg-6': gt.anh, 'col-lg-12': !gt.anh}">
+                    <div class="about-text-wrap" [innerHTML]="gt.noiDung"></div>
+                </div>                
+                <!-- About Text End -->
+                <!-- About Image Start -->
+                <ng-container *ngIf="gt.anh !== null && gt.anh !== ''">
+                    <div class="col-lg-5 ml-auto">
+                        <div class="about-image-wrap mt-md-26 mt-sm-26">                  
+                            <img src="/assets/client/img/gioithieu/{{ gt.anh }}" alt="About" />
+                        </div>                    
+                    </div>
+                </ng-container>
+                <!-- About Image End -->
+            </div>
+            <br/>
+        </ng-container>
+    </div>
+</div>
+<!-- about wrapper end -->
+
+<!-- choosing area start -->
+<div class="choosing-area pt-28">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <div class="title-box text-center mb-30">
+                    <h3>Tại sao nên chọn chúng tôi ?</h3>
+                </div>
+            </div>
+        </div> <!-- section title end -->
+        <div class="row">
+            <div class="col-lg-4">
+                <div class="single-choose-item text-center mb-md-30 mb-sm-30">
+                    <i class="fa fa-globe"></i>
+                    <h4>Miễn phí giao hàng</h4>
+                    <p>Galio Shop là một mẫu thương mại điện tử rất mượt mà và gọn gàng với khả năng vô tận.</p>
+                </div>
+            </div>
+            <div class="col-lg-4">
+                <div class="single-choose-item text-center mb-md-30 mb-sm-30">
+                    <i class="fa fa-plane"></i>
+                    <h4>Giao hàng nhanh</h4>
+                    <p>Galio Shop là một mẫu thương mại điện tử rất mượt mà và gọn gàng với khả năng vô tận.</p>
+                </div>
+            </div>
+            <div class="col-lg-4">
+                <div class="single-choose-item text-center mb-md-30 mb-sm-30">
+                    <i class="fa fa-comments"></i>
+                    <h4>Hỗ trợ khách hàng</h4>
+                    <p>Galio Shop là một mẫu thương mại điện tử rất mượt mà và gọn gàng với khả năng vô tận.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- choosing area end -->

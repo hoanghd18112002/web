@@ -1,0 +1,222 @@
+<!-- breadcrumb area start -->
+<div class="breadcrumb-area">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <div class="breadcrumb-wrap">
+                    <nav aria-label="breadcrumb">
+                        <ul class="breadcrumb">
+                            <li class="breadcrumb-item"><a href="/">Trang chủ</a></li>
+                            <li class="breadcrumb-item active" aria-current="page">Danh mục sản phẩm</li>
+                        </ul>
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- breadcrumb area end -->
+
+<!-- page wrapper start -->
+<div class="page-main-wrapper">
+    <div class="container">
+        <div class="row">
+            <!-- sidebar start -->
+            <div class="col-lg-3 order-2 order-lg-1">
+                <div class="shop-sidebar-wrap mt-md-28 mt-sm-28">
+                    <!-- sidebar categorie start -->
+                    <div class="sidebar-widget mb-30">
+                        <div class="sidebar-category">
+                            <ul>
+                                <li class="title"><i class="fa fa-bars"></i> Loại sản phẩm</li>
+                                <ng-container *ngFor="let mn of ListDanhMuc">
+                                    <li><a href="/danhmucsanpham/{{ mn.id }}">{{ mn.ten }}</a><span>({{ mn.soLuong }})</span></li>
+                                </ng-container>
+                            </ul>
+                        </div>
+                    </div>
+                    <!-- sidebar categorie start -->
+
+                    <!-- product size start -->
+                    <div class="sidebar-widget mb-30">
+                        <div class="sidebar-title mb-10">
+                            <h3>Giá sản phẩm</h3>
+                        </div>
+                        <div class="sidebar-widget-body">
+                            <ul>
+                                <li><i class="fa fa-angle-right"></i><a (click)="searchGia(2000000, 0)">dưới 2.000.000</a><span>VND</span></li>
+                                <li><i class="fa fa-angle-right"></i><a (click)="searchGia(2000000, 5000000)">2.000.000 - 5.000.000</a><span>VND</span></li>
+                                <li><i class="fa fa-angle-right"></i><a (click)="searchGia(5000000, 10000000)">5.000.000 - 10.000.000</a><span>VND</span></li>
+                                <li><i class="fa fa-angle-right"></i><a (click)="searchGia(10000000, 15000000)">10.000.000 - 15.000.000</a><span>VND</span></li>
+                                <li><i class="fa fa-angle-right"></i><a (click)="searchGia(15000000, 20000000)">15.000.000 - 20.000.000</a><span>VND</span></li>
+                                <li><i class="fa fa-angle-right"></i><a (click)="searchGia(0, 20000000)">trên 20.000.000</a><span>VND</span></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <!-- product size end -->
+
+                    <!-- sidebar categorie start -->
+                    <div class="sidebar-widget mb-30">
+                        <div class="sidebar-category">
+                            <ul>
+                                <li class="title"><i class="fa fa-bars"></i> Nhà sản xuất</li>
+                                <ng-container *ngFor="let nsx of ListNhaSanXuat">
+                                    <li><a (click)="searchNhaSanXuat(nsx.id)">{{ nsx.ten }}</a><span>({{ nsx.soLuong }})</span></li>
+                                </ng-container>
+                            </ul>
+                        </div>
+                    </div>
+                    <!-- sidebar categorie start -->
+
+                    <!-- sidebar banner start -->
+                    <div class="sidebar-widget mb-30">
+                        <div class="img-container fix img-full">
+                            <a><img src="/assets/client/img/banner/banner_shop.jpg" alt=""></a>
+                        </div>
+                    </div>
+                    <!-- sidebar banner end -->
+                </div>
+            </div>
+            <!-- sidebar end -->
+
+            <!-- product main wrap start -->
+            <div class="col-lg-9 order-1 order-lg-2">
+                <!-- product view wrapper area start -->
+                <div class="shop-product-wrapper">
+                    <!-- shop product top wrap start -->
+                    <div class="shop-top-bar">
+                        <div class="row">
+                            <div class="col-lg-7 col-md-6">
+                                <div class="top-bar-left">
+                                    <div class="product-view-mode mr-70 mr-sm-0">
+                                        <a data-target="grid"><i class="fa fa-th"></i></a>
+                                        <a class="active" data-target="list"><i class="fa fa-list"></i></a>
+                                    </div>
+                                    <div class="product-amount">
+                                        <p>Có tổng {{ totalItems }} sản phẩm</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-5 col-md-6">
+                                <div class="top-bar-right">
+                                    <div class="product-short">
+                                        <p>Sắp xếp: </p>
+                                        <select class="nice-select" name="sortby">
+                                            <option value="trending">Ngày thêm</option>
+                                            <option value="sales">Bán chạy</option>
+                                            <option value="sales">Giảm giá</option>
+                                            <option value="sales">Ngẫu nhiên</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- shop product top wrap start -->
+
+                    <!-- product item start -->
+                    <div class="shop-product-wrap list row">
+
+                        <ng-container *ngFor="let sp of ListSanPham">
+                            <div class="col-lg-3 col-md-4 col-sm-6">
+                                <!-- product single grid item start -->
+                                <div class="product-item fix mb-30">
+
+                                    <!-- product single item start -->
+                                    <div class="product-item fix">
+                                        <div class="product-thumb">
+                                            <a href="/chitietsanpham/{{ sp.id }}">
+                                                <img src="/assets/client/img/sanpham/{{ sp.anh }}" class="img-pri" alt="">
+                                            </a>
+                                            <ng-container *ngIf="sp.phanTram !== null && sp.phanTram !== undefined">
+                                                <div class="product-label ml-140">
+                                                    <span>{{ sp.phanTram }} %</span>
+                                                </div>
+                                            </ng-container>
+                                            <div class="product-action-link mt-154">
+                                                <a (click)="addToCart(sp.id)"><i class="fa fa-shopping-cart"></i></a>
+                                            </div>
+                                        </div>
+                                        <div class="product-content text-center border-top">
+                                            <a href="/chitietsanpham/{{ sp.id }}" class="product-title text-dark font-weight-bold">{{ sp.ten }}</a>
+                                            <div class="pricebox">
+                                                <ng-container *ngIf="sp.phanTram === null || sp.phanTram === undefined">
+                                                    <span class="price text-danger">Giá: {{ sp.gia | number:'1.0-0' }} đ</span><br/>
+                                                </ng-container>
+                                                <ng-container *ngIf="sp.phanTram !== null && sp.phanTram !== undefined">
+                                                    <span class="price text-danger">Giá giảm giá: {{ sp.giaGiamGia | number:'1.0-0' }} đ</span><br/>
+                                                    <span class="strikethrough text-muted"><s>Giá cũ: {{ sp.gia | number:'1.0-0' }} đ</s></span>
+                                                </ng-container>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- product single item end -->
+
+                                </div>
+                                <!-- product single grid item end -->
+                                <!-- product single list item start -->
+                                <div class="product-list-item mb-30">
+                                    <div class="product-thumb">
+                                        <a href="/chitietsanpham/{{ sp.id }}">
+                                            <img src="/assets/client/img/sanpham/{{ sp.anh }}" class="img-pri" alt="">
+                                        </a>                                                                                      
+                                    </div>
+                                    <div class="product-list-content">
+                                        <h3><a href="/chitietsanpham/{{ sp.id }}">{{ sp.ten }}</a></h3>
+                                        <div class="pricebox">
+                                            <ng-container *ngIf="sp.phanTram === null || sp.phanTram === undefined">
+                                                <span class="regular-price">{{ sp.gia | number:'1.0-0' }} đ</span>
+                                            </ng-container>
+                                            <ng-container *ngIf="sp.phanTram !== null && sp.phanTram !== undefined">
+                                                <span class="regular-price">{{ sp.giaGiamGia | number:'1.0-0' }} đ</span>
+                                                <span class="old-price"><del>{{ sp.gia | number:'1.0-0' }} đ</del></span>
+                                            </ng-container>
+                                        </div>
+                                        <p>{{ sp.moTa | slice:0:100 }}</p>
+                                        <div class="product-list-action-link">
+                                            <a (click)="addToCart(sp.id)" class="buy-btn" data-toggle="tooltip" data-placement="top" title="Thêm vào giỏ hàng" style="cursor: pointer;">Mua hàng<i class="fa fa-shopping-cart"></i> </a>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- product single list item start -->
+                            </div> <!-- product single column end -->
+                        </ng-container>
+
+                    </div>
+                    <!-- product item end -->
+                </div>
+                <!-- product view wrapper area end -->
+
+                <!-- start pagination area -->
+                <div class="paginatoin-area text-center pt-30 pb-30">
+                    <div class="row mt-3">
+                        <div class="col-12">
+                            <ul class="pagination justify-content-center">
+                                <li class="page-item" [class.disabled]="p === 1" (click)="pageChanged(1)">
+                                    <a class="page-link">Đầu</a>
+                                </li>
+                                <li class="page-item" *ngIf="p > 3">
+                                    <a class="page-link">...</a>
+                                </li>
+                                <li class="page-item" *ngFor="let page of visiblePages" [class.active]="page === p"
+                                    (click)="pageChanged(page)">
+                                    <a class="page-link">{{ page }}</a>
+                                </li>
+                                <li class="page-item" *ngIf="p < totalPages - 2">
+                                    <a class="page-link">...</a>
+                                </li>
+                                <li class="page-item" [class.disabled]="p === totalPages" (click)="pageChanged(totalPages)">
+                                    <a class="page-link">Cuối</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>      
+                <!-- end pagination area -->
+
+            </div>
+            <!-- product main wrap end -->
+        </div>
+    </div>
+</div>
+<!-- page wrapper end -->

@@ -1,0 +1,5 @@
+#app {
+    height: 100vh; /* Thiết lập chiều cao của phần tử #app bằng chiều cao của viewport */
+}
+
+/* Phần CSS khác cho phần tử .page-description, a, và các phần tử khác có thể được thêm ở đây */

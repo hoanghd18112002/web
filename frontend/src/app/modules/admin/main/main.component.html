@@ -1,0 +1,129 @@
+<div class="main-content">
+    <section class="section">
+        <div class="row ">
+            <div class="col-xl-3 col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                <div class="card">
+                    <div class="card-statistic-4">
+                        <div class="align-items-center justify-content-between">
+                            <div class="row ">
+                                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 pr-0 pt-3">
+                                    <div class="card-content">
+                                        <h5 class="mb-1 font-15 font-weight-bold">SỐ ĐƠN HÀNG</h5>
+                                        <h2 class="mb-3 font-18 font-weight-bold">{{ ThongKeSoLuong.soLuongDonHang }}</h2>
+                                    </div>
+                                </div>
+                                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 pl-0">
+                                    <div class="banner-img">
+                                        <img src="/assets/admin/img/banner/1.png" alt="">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xl-3 col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                <div class="card">
+                    <div class="card-statistic-4">
+                        <div class="align-items-center justify-content-between">
+                            <div class="row ">
+                                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 pr-0 pt-3">
+                                    <div class="card-content">
+                                        <h5 class="mb-1 font-15 font-weight-bold">NGƯỜI DÙNG</h5>
+                                        <h2 class="mb-3 font-18 font-weight-bold">{{ ThongKeSoLuong.soLuongNguoiDung }}</h2>
+                                    </div>
+                                </div>
+                                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 pl-0">
+                                    <div class="banner-img">
+                                        <img src="/assets/admin/img/banner/2.png" alt="">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xl-3 col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                <div class="card">
+                    <div class="card-statistic-4">
+                        <div class="align-items-center justify-content-between">
+                            <div class="row ">
+                                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 pr-0 pt-3">
+                                    <div class="card-content">
+                                        <h5 class="mb-1 font-15 font-weight-bold">SẢN PHẨM</h5>
+                                        <h2 class="mb-3 font-18 font-weight-bold">{{ ThongKeSoLuong.soLuongSanPham }}</h2>
+                                    </div>
+                                </div>
+                                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 pl-0">
+                                    <div class="banner-img">
+                                        <img src="/assets/admin/img/banner/3.png" alt="">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xl-3 col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                <div class="card">
+                    <div class="card-statistic-4">
+                        <div class="align-items-center justify-content-between">
+                            <div class="row ">
+                                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 pr-0 pt-3">
+                                    <div class="card-content">
+                                        <h5 class="mb-1 font-15 font-weight-bold">DOANH SỐ</h5>
+                                        <h2 class="mb-3 font-18 font-weight-bold">{{ ThongKeSoLuong.doanhSo | number:'1.0-0' }} đ</h2>
+                                    </div>
+                                </div>
+                                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 pl-0">
+                                    <div class="banner-img">
+                                        <img src="/assets/admin/img/banner/4.png" alt="">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-12 col-sm-12 col-lg-12">
+                <div class="card ">
+                    <div class="card-header">
+                        <h4>THỐNG KÊ DOANH THU THEO THÁNG</h4>
+                    </div>
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-lg-10 mx-auto text-center">
+                                <canvas id="chart">{{ chart }}</canvas>
+                            </div>
+                        </div>
+                    </div>                    
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-12 col-sm-12 col-lg-6">
+                <div class="card">
+                    <div class="card-header">
+                        <h4>THỐNG KÊ LOẠI SẢN PHẨM BÁN CHẠY</h4>
+                    </div>
+                    <div class="card-body">
+                        <canvas id="chart1">{{ chart1 }}</canvas>
+                    </div>
+                </div>
+            </div>
+            <div class="col-12 col-sm-12 col-lg-6">
+                <div class="card">
+                    <div class="card-header">
+                        <h4>THỐNG KẾ SẢN PHẨM BÁN CHẠY</h4>
+                    </div>
+                    <div class="card-body">
+                        <canvas id="chart2">{{ chart2 }}</canvas>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>
+  

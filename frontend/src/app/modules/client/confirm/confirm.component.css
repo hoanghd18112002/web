@@ -1,0 +1,28 @@
+/* Thiết kế phần tiêu đề */
+.contact-area h1 {
+    font-size: 36px;
+    color: #333;
+    margin-bottom: 20px;
+}
+
+/* Thiết kế phần nội dung */
+.contact-area p {
+    font-size: 18px;
+    color: #666;
+    margin-bottom: 10px;
+}
+
+/* Thiết kế liên kết */
+.contact-area a {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #d43815;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
+
+.contact-area a:hover {
+    background-color: #0056b3;
+}

@@ -1,0 +1,123 @@
+{
+  "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
+  "version": 1,
+  "newProjectRoot": "projects",
+  "projects": {
+    "front-end": {
+      "projectType": "application",
+      "schematics": {},
+      "root": "",
+      "sourceRoot": "src",
+      "prefix": "app",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:browser",
+          "options": {
+            "outputPath": "dist/front-end",
+            "index": "src/index.html",
+            "main": "src/main.ts",
+            "baseHref": "/",
+            "polyfills": [
+              "zone.js"
+            ],
+            "tsConfig": "tsconfig.app.json",
+            "assets": [
+              "src/favicon.ico",
+              "src/assets"
+            ],
+            "styles": [
+              "src/styles.css",
+
+              "src/assets/admin/css/app.min.css",
+              "src/assets/admin/bundles/datatables/datatables.min.css",
+              "src/assets/admin/bundles/datatables/DataTables-1.10.16/css/dataTables.bootstrap4.min.css",
+              "src/assets/admin/css/style.css",
+              "src/assets/admin/css/components.css",
+              "src/assets/admin/css/custom.css",
+
+              "src/assets/client/css/bootstrap.min.css",
+              "src/assets/client/css/font-awesome.min.css",
+              "src/assets/client/css/helper.min.css",
+              "src/assets/client/css/plugins.css",
+              "src/assets/client/css/style.css",
+              "src/assets/client/css/skin-default.css"
+            ],
+            "scripts": [
+              "src/assets/client/js/vendor/modernizr-3.6.0.min.js",
+              "src/assets/client/js/vendor/jquery-3.3.1.min.js",
+              "src/assets/client/js/vendor/popper.min.js",
+              "src/assets/client/js/plugins.js",
+              "src/assets/client/js/ajax-mail.js",
+              "src/assets/client/js/switcher.js"
+            ]
+          },
+          "configurations": {
+            "production": {
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "500kb",
+                  "maximumError": "1mb"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "2kb",
+                  "maximumError": "4kb"
+                }
+              ],
+              "outputHashing": "all"
+            },
+            "development": {
+              "buildOptimizer": false,
+              "optimization": false,
+              "vendorChunk": true,
+              "extractLicenses": false,
+              "sourceMap": true,
+              "namedChunks": true
+            }
+          },
+          "defaultConfiguration": "production"
+        },
+        "serve": {
+          "builder": "@angular-devkit/build-angular:dev-server",
+          "configurations": {
+            "production": {
+              "browserTarget": "front-end:build:production"
+            },
+            "development": {
+              "browserTarget": "front-end:build:development"
+            }
+          },
+          "defaultConfiguration": "development"
+        },
+        "extract-i18n": {
+          "builder": "@angular-devkit/build-angular:extract-i18n",
+          "options": {
+            "browserTarget": "front-end:build"
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "polyfills": [
+              "zone.js",
+              "zone.js/testing"
+            ],
+            "tsConfig": "tsconfig.spec.json",
+            "assets": [
+              "src/favicon.ico",
+              "src/assets"
+            ],
+            "styles": [
+              "src/styles.css"
+            ],
+            "scripts": []
+          }
+        }
+      }
+    }
+  },
+  "cli": {
+    "analytics": "17915ed1-b6f2-416d-bc72-4820a720cc24"
+  }
+}
