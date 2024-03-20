@@ -35,14 +35,14 @@ namespace Backend.Controllers
             try
             {
                 var nguoidung = _nguoiDungbll.Check(model.TaiKhoan, model.Email);
-                if (nguoidung.EmailConfimed == false)
-                    return Ok(new { success = false, message = "Tài khoản chưa được xác minh, vui lòng xác minh trong email của bạn" });
-                
                 model.MatKhau = CalculateMD5Hash(model.MatKhau);
 
                 var kq = _nguoiDungbll.Login(model.TaiKhoan, model.MatKhau);
                 if (kq == null)
                     return BadRequest(new { success = false, message = "Tài khoản hoặc mật khẩu không chính xác" });
+
+                if (kq.EmailConfimed == false)
+                    return Ok(new { success = false, message = "Tài khoản chưa được xác minh, vui lòng xác minh trong email của bạn" });                       
                 return Ok(new { success = true, message = "Đăng nhập thành công", data = kq });
             }
             catch (Exception ex)

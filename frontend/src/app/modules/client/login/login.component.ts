@@ -33,7 +33,6 @@ export class LoginComponent {
         taiKhoan: this.TaiKhoan,
         matKhau: this.MatKhau,
     };
-
     this.service.login(nguoidung).subscribe(res => {
         if (!res.success) {
             swal.fire({

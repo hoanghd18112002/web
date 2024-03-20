@@ -41,10 +41,10 @@
                             <tbody *ngIf="ListGioHang.length > 0; else emptyCart">
                                 <tr *ngFor="let gh of ListGioHang">
                                     <td class="pro-thumbnail">
-                                        <a href="/chitietsanpham/{{ gh.ID }}"><img class="img-fluid" src="/assets/client/img/sanpham/{{ gh.anh }}" alt="Product"/></a>
+                                        <a href="/chitietsanpham/{{ gh.id }}"><img class="img-fluid" src="/assets/client/img/sanpham/{{ gh.anh }}" alt="Product"/></a>
                                     </td>
                                     <td class="pro-title">
-                                        <a href="/chitietsanpham/{{ gh.ID }}">{{ gh.ten }}</a>
+                                        <a href="/chitietsanpham/{{ gh.id }}">{{ gh.ten }}</a>
                                     </td>
                                     <td class="pro-price">
                                         <span>{{ gh.gia | number:'1.0-0' }} đ</span>

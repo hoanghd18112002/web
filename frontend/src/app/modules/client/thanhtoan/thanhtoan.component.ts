@@ -103,7 +103,6 @@ export class ThanhtoanComponent {
             idSanPham: this.ListGioHang[i].id,
             idDonHang: id,
           }
-          console.log(ctdonhang);
           this.donHangService.createCTDonHang(ctdonhang).subscribe(res => {});
         }
       });
@@ -152,5 +151,4 @@ export class ThanhtoanComponent {
       default: break;
     }
   }
-
 }
