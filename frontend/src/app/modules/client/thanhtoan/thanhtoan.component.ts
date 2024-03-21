@@ -4,6 +4,8 @@ import { DonHangService } from 'src/app/service/donhang.service';
 import { PhuongThucService } from 'src/app/service/phuongthuc.service';
 import { AuthService } from 'src/app/service/auth.service';
 import swal from 'sweetalert2';
+import { VnPayService } from 'src/app/service/vnpay.service';
+import { PaymentInformation } from 'src/app/models/vnpayment.model';
 
 @Component({
   selector: 'app-thanhtoan',
@@ -30,6 +32,7 @@ export class ThanhtoanComponent {
     private phuongThucService: PhuongThucService,
     private donHangService: DonHangService,
     private authService: AuthService,
+    private vnPayService: VnPayService,
   ) {}
 
   ngOnInit(){
@@ -64,15 +67,14 @@ export class ThanhtoanComponent {
             if (result.isConfirmed) {
                 // Thực hiện tạo đơn hàng và xóa giỏ hàng khi người dùng xác nhận thanh toán
                 this.createDonHang();
-                localStorage.removeItem('cart');
                 // Thông báo thanh toán thành công
                 swal.fire({
                     icon: 'success',
                     title: 'Thành công!',
                     text: 'Thanh toán thành công! Cảm ơn bạn đã sử dụng dịch vụ.'
                 }).then(() => {
-                    // Chuyển hướng người dùng đến trang chủ sau khi thanh toán thành công
-                    location.assign('/');
+                    // // Chuyển hướng người dùng đến trang chủ sau khi thanh toán thành công
+                    // location.assign('/');
                 });
             }
         });
@@ -94,7 +96,6 @@ export class ThanhtoanComponent {
     this.donHangService.createDonHang(donhang).subscribe(res => {
       this.donHangService.getnew().subscribe(res => {
         const id = res.data.id
-        console.log(id);
         for(let i = 0; i < this.ListGioHang.length; i++)
         {
           const ctdonhang: any = {
@@ -105,7 +106,34 @@ export class ThanhtoanComponent {
           }
           this.donHangService.createCTDonHang(ctdonhang).subscribe(res => {});
         }
+        this.vnPay(id);
       });
+    });
+    localStorage.removeItem('cart');
+  }
+
+  //Thanh toán online
+  vnPay(id: number){
+    const payment: PaymentInformation = {
+      orderId: id,
+      name: this.user.ten,
+      amount: this.TongHoaDon,
+      orderDescription: this.GhiChu,
+      orderType: "other",
+      url: `${window.location.origin}/`
+    }
+
+    this.vnPayService.vnpay(payment).subscribe(res => { 
+      if(res.success){
+        window.location.href = res.data;
+      }
+      else{
+        swal.fire({
+          icon: 'warning',
+          title: 'Cảnh báo',
+          text: res.message
+      });
+      }
     });
   }
 

@@ -161,7 +161,7 @@ namespace Backend.Controllers
 
                     // Chuyển đổi package Excel thành một mảng byte
                     var fileBytes = package.GetAsByteArray();
-                    return File(fileBytes, "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet", "hoa-don.xlsx");
+                    return File(fileBytes, "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet", "donhang.xlsx");
                 }
             }
             catch (Exception ex)

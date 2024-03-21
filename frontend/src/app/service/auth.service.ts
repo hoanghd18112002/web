@@ -10,7 +10,9 @@ export class AuthService {
   private apiUrl = 'http://localhost:5226/api/nguoidung';
   private currentUser: any;
 
-  constructor(private http: HttpClient) {}
+  constructor(
+    private http: HttpClient
+  ) {}
 
   login(nguoidung: object): Observable<any> {
     return this.http.post<any>(`${this.apiUrl}/login`, nguoidung).pipe(

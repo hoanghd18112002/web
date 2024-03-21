@@ -123,6 +123,12 @@ builder.Services.Configure<MailSettings>(builder.Configuration.GetSection("MailS
 builder.Services.AddTransient<IEmailDAL, EmailDAL>();
 builder.Services.AddTransient<IEmailBLL, EmailBLL>();
 
+//Cấu hình VnPay
+builder.Services.AddTransient<IVnPayDAL, VnPayDAL>();
+builder.Services.AddTransient<IVnPayBLL, VnPayBLL>();
+
+builder.Services.AddHttpContextAccessor();
+
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();

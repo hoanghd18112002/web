@@ -11,7 +11,7 @@
  Target Server Version : 100427
  File Encoding         : 65001
 
- Date: 18/03/2024 16:14:21
+ Date: 21/03/2024 22:07:38
 */
 
 SET NAMES utf8mb4;
@@ -32,7 +32,7 @@ CREATE TABLE `ctdonhang`  (
   INDEX `CTDonHang_DonHang_IDDonHang`(`IDDonHang`) USING BTREE,
   CONSTRAINT `CTDonHang_DonHang_IDDonHang` FOREIGN KEY (`IDDonHang`) REFERENCES `donhang` (`ID`) ON DELETE CASCADE ON UPDATE CASCADE,
   CONSTRAINT `CTDonHang_SanPham_IDSanPham` FOREIGN KEY (`IDSanPham`) REFERENCES `sanpham` (`ID`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE = InnoDB AUTO_INCREMENT = 95 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = DYNAMIC;
+) ENGINE = InnoDB AUTO_INCREMENT = 147 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of ctdonhang
@@ -85,11 +85,10 @@ INSERT INTO `ctdonhang` VALUES (86, 1, 8100000, 5, 50);
 INSERT INTO `ctdonhang` VALUES (87, 2, 10390000, 48, 50);
 INSERT INTO `ctdonhang` VALUES (88, 2, 5421500, 49, 50);
 INSERT INTO `ctdonhang` VALUES (89, 1, 43590000, 47, 50);
-INSERT INTO `ctdonhang` VALUES (90, 1, 22690000, 50, 63);
-INSERT INTO `ctdonhang` VALUES (91, 1, 5421500, 49, 63);
-INSERT INTO `ctdonhang` VALUES (92, 1, 23660000, 15, 63);
-INSERT INTO `ctdonhang` VALUES (93, 4, 43590000, 47, 63);
-INSERT INTO `ctdonhang` VALUES (94, 1, 10390000, 48, 63);
+INSERT INTO `ctdonhang` VALUES (143, 2, 5421500, 49, 59);
+INSERT INTO `ctdonhang` VALUES (144, 1, 10390000, 48, 59);
+INSERT INTO `ctdonhang` VALUES (145, 2, 5421500, 49, 60);
+INSERT INTO `ctdonhang` VALUES (146, 1, 10390000, 48, 60);
 
 -- ----------------------------
 -- Table structure for cthoadonnhap
@@ -290,7 +289,7 @@ CREATE TABLE `donhang`  (
   INDEX `DonHang_PhuongThucThanhToan_IDPhuongThuc`(`IDPhuongThuc`) USING BTREE,
   CONSTRAINT `DonHang_NguoiDung_IDNguoiDung` FOREIGN KEY (`IDNguoiDung`) REFERENCES `nguoidung` (`ID`) ON DELETE CASCADE ON UPDATE CASCADE,
   CONSTRAINT `DonHang_PhuongThucThanhToan_IDPhuongThuc` FOREIGN KEY (`IDPhuongThuc`) REFERENCES `phuongthucthanhtoan` (`ID`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE = InnoDB AUTO_INCREMENT = 64 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = DYNAMIC;
+) ENGINE = InnoDB AUTO_INCREMENT = 61 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of donhang
@@ -315,7 +314,8 @@ INSERT INTO `donhang` VALUES (22, 'Phạm Đức Hoàng', 'Hải Dương', '0906
 INSERT INTO `donhang` VALUES (23, 'Phạm Đức Hoàng', 'Hải Dương', '0906090112', '2023-12-21 09:41:54', 1, 'Cẩn thận hàng dễ vỡ', 0, 1, 1);
 INSERT INTO `donhang` VALUES (49, 'Lê Ngọc Mai', 'Hưng Yên', '0987654321', '2023-12-22 21:08:11', 1, 'Gửi hàng nhanh nhá', 2, 1, 2);
 INSERT INTO `donhang` VALUES (50, 'Lê Ngọc Mai', 'Hưng Yên', '0987654321', '2023-12-22 21:13:08', 1, 'Cẩn thận hàng dễ vỡ', 1, 1, 2);
-INSERT INTO `donhang` VALUES (63, 'Phạm Đức Hoàng', 'Hải Dương 123', '0906090112', '2024-03-15 18:31:47', 2, '123', 1, 1, 1);
+INSERT INTO `donhang` VALUES (59, 'Phạm Thanh Dương', 'hải dương', '0987654321', '2024-03-21 13:38:56', 1, '', 0, 1, 9);
+INSERT INTO `donhang` VALUES (60, 'Phạm Thanh Dương', 'hải dương', '0987654321', '2024-03-21 20:32:41', 1, '', 0, 2, 9);
 
 -- ----------------------------
 -- Table structure for giamgia
@@ -583,7 +583,7 @@ CREATE TABLE `nguoidung`  (
   PRIMARY KEY (`ID`) USING BTREE,
   INDEX `NguoiDung_Quyen_IDQuyen`(`IDQuyen`) USING BTREE,
   CONSTRAINT `NguoiDung_Quyen_IDQuyen` FOREIGN KEY (`IDQuyen`) REFERENCES `quyen` (`ID`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE = InnoDB AUTO_INCREMENT = 9 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = DYNAMIC;
+) ENGINE = InnoDB AUTO_INCREMENT = 10 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of nguoidung
@@ -594,6 +594,7 @@ INSERT INTO `nguoidung` VALUES (3, 'phamhaihuan', 'e10adc3949ba59abbe56e057f20f8
 INSERT INTO `nguoidung` VALUES (4, 'tranmylinh', 'e10adc3949ba59abbe56e057f20f883e', 'tranMyLinh@gmail.com', 'Trần Mỹ Linh', '2002-09-17 00:00:00', 'Hà Nội', '093567567', 0, 'tranmylinh.png', 1, 4, b'1', '1f326bbd-b676-4645-af02-1263138513f8');
 INSERT INTO `nguoidung` VALUES (5, 'phamducduy', 'e10adc3949ba59abbe56e057f20f883e', 'phamducduy@gmail.com', 'Phạm Đức Duy', '2002-12-08 00:00:00', 'Bắc Giang', '098765567', 1, 'phamducduy.png', 1, 2, b'1', '1f326bbd-b676-4645-af02-1263138513f8');
 INSERT INTO `nguoidung` VALUES (6, 'phamvanhoan', 'e10adc3949ba59abbe56e057f20f883e', 'phamvanhoan@gmail.com', 'Phạm Văn Hoàn', '2002-10-19 00:00:00', '123 Điện Biên Phủ tp Hải Dương', '0987654321', 1, 'phamvanhoan.png', 1, 3, b'1', '1f326bbd-b676-4645-af02-1263138513f8');
+INSERT INTO `nguoidung` VALUES (9, 'phamthanhduong', 'e10adc3949ba59abbe56e057f20f883e', 'concao10duoi@gmail.com', 'Phạm Thanh Dương', '2024-03-20 17:03:43', 'hải dương', '0987654321', 1, 'avatar.png', 1, 2, b'1', 'pN2xq4AbYvvXOhDdYSmpnylBu/0mtSBpCkNQSeNjoAY=');
 
 -- ----------------------------
 -- Table structure for nhacungcap
@@ -706,7 +707,7 @@ CREATE TABLE `sanpham`  (
   INDEX `SanPham_NhaSanXuat_IDNhaSanXuat`(`IDNhaSanXuat`) USING BTREE,
   CONSTRAINT `SanPham_LoaiSanPham_IDLoai` FOREIGN KEY (`IDLoai`) REFERENCES `loaisanpham` (`ID`) ON DELETE CASCADE ON UPDATE CASCADE,
   CONSTRAINT `SanPham_NhaSanXuat_IDNhaSanXuat` FOREIGN KEY (`IDNhaSanXuat`) REFERENCES `nhasanxuat` (`ID`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE = InnoDB AUTO_INCREMENT = 95 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = DYNAMIC;
+) ENGINE = InnoDB AUTO_INCREMENT = 96 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of sanpham
@@ -771,7 +772,7 @@ CREATE TABLE `slide`  (
   `Anh` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL,
   `TrangThai` int NULL DEFAULT NULL,
   PRIMARY KEY (`ID`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 3 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = DYNAMIC;
+) ENGINE = InnoDB AUTO_INCREMENT = 4 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of slide
@@ -791,7 +792,7 @@ CREATE TABLE `thongso`  (
   PRIMARY KEY (`ID`) USING BTREE,
   INDEX `ThongSo_SanPham_IDSanPham`(`IDSanPham`) USING BTREE,
   CONSTRAINT `ThongSo_SanPham_IDSanPham` FOREIGN KEY (`IDSanPham`) REFERENCES `sanpham` (`ID`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE = InnoDB AUTO_INCREMENT = 400 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = DYNAMIC;
+) ENGINE = InnoDB AUTO_INCREMENT = 401 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of thongso
