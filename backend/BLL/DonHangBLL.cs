@@ -20,9 +20,9 @@ namespace BLL
         {
             return _res.GetByNguoiDung(pageIndex, pageSize, out total, id);
         }
-        public List<DonHangModel> GetAll(int pageIndex, int pageSize, out int total, int? TrangThai)
+        public List<DonHangModel> GetAll(int pageIndex, int pageSize, out int total, int? ID, int? TrangThai)
         {
-            return _res.GetAll(pageIndex, pageSize, out total, TrangThai);
+            return _res.GetAll(pageIndex, pageSize, out total, ID, TrangThai);
         }
         public DonHangModel GetNew()
         {

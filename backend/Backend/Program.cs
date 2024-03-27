@@ -126,7 +126,6 @@ builder.Services.AddTransient<IEmailBLL, EmailBLL>();
 //Cấu hình VnPay
 builder.Services.AddTransient<IVnPayDAL, VnPayDAL>();
 builder.Services.AddTransient<IVnPayBLL, VnPayBLL>();
-
 builder.Services.AddHttpContextAccessor();
 
 builder.Services.AddControllers();

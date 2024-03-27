@@ -6,7 +6,7 @@
                 <div class="breadcrumb-wrap">
                     <nav aria-label="breadcrumb">
                         <ul class="breadcrumb">
-                            <li class="breadcrumb-item"><a href="/">Trang chủ</a></li>
+                            <li class="breadcrumb-item"><a routerLink="/">Trang chủ</a></li>
                             <li class="breadcrumb-item active" aria-current="page">Danh sách tin tức</li>
                         </ul>
                     </nav>
@@ -30,19 +30,19 @@
                             <div class="col-lg-4 col-md-6">
                                 <div class="blog-item mb-26">
                                     <div class="blog-thumb img-full fix">
-                                        <a href="/chitiettintuc/{{ tt.id }}">
+                                        <a routerLink="/chitiettintuc/{{ tt.id }}">
                                             <img src="/assets/client/img/tintuc/{{ tt.anh }}" alt="">
                                         </a>
                                     </div>
                                     <div class="blog-content">
-                                        <h3><a href="/chitiettintuc/{{ tt.id }}">{{ tt.tieuDe | slice:0:100 }}</a></h3>
+                                        <h3><a routerLink="/chitiettintuc/{{ tt.id }}">{{ tt.tieuDe | slice:0:100 }}</a></h3>
                                         <div class="blog-meta">
                                             <span class="posted-author">by: {{ tt.ten }} </span>
                                             <span class="post-date">{{ tt.ngayDang | date: 'HH:mm:ss dd/MM/yyyy' }}</span>
                                         </div>
                                         <p [innerHTML]="tt.noiDung | slice: 0:100"></p>
                                     </div>
-                                    <a href="/chitiettintuc/{{ tt.id }}" >Đọc thêm <i class="fa fa-long-arrow-right"></i></a>
+                                    <a routerLink="/chitiettintuc/{{ tt.id }}" >Đọc thêm <i class="fa fa-long-arrow-right"></i></a>
                                 </div>
                             </div>
                             <!-- end single blog item -->

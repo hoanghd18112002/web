@@ -6,7 +6,7 @@
                 <div class="breadcrumb-wrap">
                     <nav aria-label="breadcrumb">
                         <ul class="breadcrumb">
-                            <li class="breadcrumb-item"><a href="/">Trang chủ</a></li>
+                            <li class="breadcrumb-item"><a routerLink="/">Trang chủ</a></li>
                             <li class="breadcrumb-item active" aria-current="page">Chi tiết tin tức</li>
                         </ul>
                     </nav>
@@ -28,12 +28,12 @@
                         <ng-container *ngFor="let tt of ListTinTucNgauNhien">
                             <div class="recent-post mb-20">
                                 <div class="recent-post-thumb">
-                                    <a href="/chitiettintuc/{{ tt.id }}">
+                                    <a routerLink="/chitiettintuc/{{ tt.id }}">
                                         <img src="/assets/client/img/tintuc/{{ tt.anh }}" alt="">
                                     </a>
                                 </div>
                                 <div class="recent-post-des">
-                                    <span><a href="/chitiettintuc/{{ tt.id }}">{{ tt.tieuDe | slice:0:20 }}...</a></span>
+                                    <span><a routerLink="/chitiettintuc/{{ tt.id }}">{{ tt.tieuDe | slice:0:20 }}...</a></span>
                                     <span class="post-date">{{ tt.ngayDang | date: 'dd/MM/yyyy' }}</span>
                                 </div>
                             </div> <!-- end single popular item -->
@@ -55,18 +55,18 @@
                                     <div class="blog-details">
                                         <h3 class="blog-heading">{{ tintuc.tieuDe }}</h3>
                                         <div class="blog-meta">
-                                            <a class="author" href="#"><i class="icon-people"></i> {{ tintuc.ten }}</a>
-                                            <a class="post-time" href="#"><i class="icon-calendar"></i> {{ tintuc.ngayDang | date: 'HH:mm:ss dd/MM/yyyy' }}</a>
+                                            <a class="author" routerLink="#"><i class="icon-people"></i> {{ tintuc.ten }}</a>
+                                            <a class="post-time" routerLink="#"><i class="icon-calendar"></i> {{ tintuc.ngayDang | date: 'HH:mm:ss dd/MM/yyyy' }}</a>
                                         </div>
                                         <p [innerHTML]="tintuc.noiDung"></p>
                                     </div>
                                 </div>
                                 <div class="blog-sharing text-center mt-34 mt-sm-34">
                                     <h4>share this post:</h4>
-                                    <a href="#"><i class="fa fa-facebook"></i></a>
-                                    <a href="#"><i class="fa fa-twitter"></i></a>
-                                    <a href="#"><i class="fa fa-pinterest"></i></a>
-                                    <a href="#"><i class="fa fa-google-plus"></i></a>
+                                    <a routerLink="#"><i class="fa fa-facebook"></i></a>
+                                    <a routerLink="#"><i class="fa fa-twitter"></i></a>
+                                    <a routerLink="#"><i class="fa fa-pinterest"></i></a>
+                                    <a routerLink="#"><i class="fa fa-google-plus"></i></a>
                                 </div>
                             </div>                 
                         </div>

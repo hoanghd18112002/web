@@ -9,15 +9,15 @@ namespace Model
     public class DonHangModel
     {
         public int ID { get; set; }
-        public string Ten { get; set; }
+        public string? Ten { get; set; }
         public string? DiaChi { get; set; }
         public string? SDT { get; set; }
         public DateTime? NgayDat { get; set; }
         public int KieuGiaoHang { get; set; }
         public string? GhiChu { get; set; }
-        public int TrangThai { get; set; }
-        public int IDPhuongThuc { get; set; }
-        public int IDNguoiDung { get; set; }
+        public int? TrangThai { get; set; }
+        public int? IDPhuongThuc { get; set; }
+        public int? IDNguoiDung { get; set; }
         public string? TenPhuongThuc { get; set; }
         public string? TaiKhoan { get; set; }
         public long TongTien { get; set; }

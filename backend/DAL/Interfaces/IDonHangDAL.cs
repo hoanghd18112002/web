@@ -10,7 +10,7 @@ namespace DAL.Interfaces
     public interface IDonHangDAL
     {
         List<DonHangModel> GetByNguoiDung(int pageIndex, int pageSize, out int total, int? id);
-        List<DonHangModel> GetAll(int pageIndex, int pageSize, out int total, int? TrangThai);
+        List<DonHangModel> GetAll(int pageIndex, int pageSize, out int total, int? ID, int? TrangThai);
         DonHangModel GetNew();
         DonHangModel GetByID(int id);
         bool Create(DonHangModel model);

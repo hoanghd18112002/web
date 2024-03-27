@@ -12,9 +12,11 @@ namespace Backend.Controllers
     public class VnPayController : ControllerBase
     {
         private IVnPayBLL _bll;
-        public VnPayController(IVnPayBLL bll)
+        private IDonHangBLL _blldonhang;
+        public VnPayController(IVnPayBLL bll, IDonHangBLL blldonhang)
         {
             _bll = bll;
+            _blldonhang = blldonhang;
         }
 
         [Route("vnpay")]
@@ -39,6 +41,13 @@ namespace Backend.Controllers
             try
             {
                 var response = _bll.PaymentExecute(Request.Query);
+                if (response.Success)
+                {
+                    DonHangModel model = new DonHangModel();
+                    model.ID = int.Parse(response.OrderId);
+                    model.TrangThai = 4;
+                    _blldonhang.Update(model);
+                }
                 return Ok(response);
             }
             catch (Exception ex)

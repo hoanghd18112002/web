@@ -73,8 +73,8 @@ export class ThanhtoanComponent {
                     title: 'Thành công!',
                     text: 'Thanh toán thành công! Cảm ơn bạn đã sử dụng dịch vụ.'
                 }).then(() => {
-                    // // Chuyển hướng người dùng đến trang chủ sau khi thanh toán thành công
-                    // location.assign('/');
+                    // Chuyển hướng người dùng đến trang chủ sau khi thanh toán thành công
+                    location.assign('/');
                 });
             }
         });
@@ -106,7 +106,9 @@ export class ThanhtoanComponent {
           }
           this.donHangService.createCTDonHang(ctdonhang).subscribe(res => {});
         }
-        this.vnPay(id);
+        if (this.loaiThanhToan === 2) {
+          this.vnPay(id);
+        }
       });
     });
     localStorage.removeItem('cart');
@@ -120,7 +122,7 @@ export class ThanhtoanComponent {
       amount: this.TongHoaDon,
       orderDescription: this.GhiChu,
       orderType: "other",
-      url: `${window.location.origin}/`
+      url: `${window.location.origin}/camon`
     }
 
     this.vnPayService.vnpay(payment).subscribe(res => { 

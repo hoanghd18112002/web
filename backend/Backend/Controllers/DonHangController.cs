@@ -61,6 +61,13 @@ namespace Backend.Controllers
             {
                 var page = int.Parse(formData["page"].ToString());
                 var pageSize = int.Parse(formData["pageSize"].ToString());
+                int? id = null;
+
+                if (formData.Keys.Contains("id") && !string.IsNullOrEmpty(Convert.ToString(formData["id"])))
+                {
+                    id = int.Parse(formData["id"].ToString());
+                }
+
                 int? trangThai = null;
 
                 if (formData.Keys.Contains("trangThai") && !string.IsNullOrEmpty(Convert.ToString(formData["trangThai"])))
@@ -69,7 +76,7 @@ namespace Backend.Controllers
                 }
 
                 int total = 0;
-                var data = _bll.GetAll(page, pageSize, out total, trangThai);
+                var data = _bll.GetAll(page, pageSize, out total, id, trangThai);
 
                 var response = new
                 {

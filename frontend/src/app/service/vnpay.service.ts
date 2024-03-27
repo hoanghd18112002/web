@@ -17,8 +17,9 @@ export class VnPayService {
     return this.http.post<any>(`${this.apiUrl}/vnpay`, object, { headers });
   }
 
-  callback(): Observable<any> {
+  callback(data: any): Observable<any> {
+    const queryString = Object.keys(data).map(key => key + '=' + encodeURIComponent(data[key])).join('&');
     const headers = new HttpHeaders().set('Authorization', 'Bearer ' + _user.token);
-    return this.http.post<any>(`${this.apiUrl}/callback`, {}, { headers }); 
+    return this.http.get<any>(`${this.apiUrl}/callback?${queryString}`, { headers });
   }
 }

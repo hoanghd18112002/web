@@ -12,7 +12,7 @@ using System.Text;
 
 namespace Backend.Controllers
 {
-    [Authorize]
+    [Authorize(Roles = "1")]
     [Route("api/[controller]")]
     [ApiController]
     public class NguoiDungController : ControllerBase

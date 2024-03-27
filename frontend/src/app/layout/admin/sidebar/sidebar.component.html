@@ -1,7 +1,7 @@
 <div class="main-sidebar sidebar-style-2">
   <aside id="sidebar-wrapper">
     <div class="sidebar-brand">
-      <a href="/admin/"> <img alt="image" src="/assets/admin/img/logo.png" class="header-logo" /> <span
+      <a routerLink="/admin/"> <img alt="image" src="/assets/admin/img/logo.png" class="header-logo" /> <span
           class="logo-name">  Galio</span>
       </a>
     </div>
@@ -10,60 +10,60 @@
       <li class="dropdown">
         <a class="menu-toggle nav-link has-dropdown"><i data-feather="home"></i><span>Tổng quan</span></a>
         <ul class="dropdown-menu">
-          <li><a *ngIf="user.idQuyen === 1 || user.idQuyen === 3" class="nav-link" href="/admin/"><i data-feather="monitor"></i><span>Bảng điều khiển</span></a></li>
-          <li><a class="nav-link" href="/admin/profile"><i data-feather="user"></i><span>Thông tin tài khoản</span></a></li>
-          <li><a class="nav-link" href="/admin/doithongtin"><i data-feather="edit"></i><span>Đổi thông tin</span></a></li>
+          <li><a *ngIf="user.idQuyen === 1 || user.idQuyen === 3" class="nav-link" routerLink="/admin/"><i data-feather="monitor"></i><span>Bảng điều khiển</span></a></li>
+          <li><a class="nav-link" routerLink="/admin/profile"><i data-feather="user"></i><span>Thông tin tài khoản</span></a></li>
+          <li><a class="nav-link" routerLink="/admin/doithongtin"><i data-feather="edit"></i><span>Đổi thông tin</span></a></li>
         </ul>
       </li> 
 
       <li class="dropdown" *ngIf="user.idQuyen === 1 || user.idQuyen === 3">
-        <a href="#" class="menu-toggle nav-link has-dropdown"><i data-feather="package"></i><span>Thông tin sản phẩm</span></a>
+        <a class="menu-toggle nav-link has-dropdown"><i data-feather="package"></i><span>Thông tin sản phẩm</span></a>
         <ul class="dropdown-menu">
-          <li><a class="nav-link" href="/admin/qlsanpham"><i data-feather="box"></i><span>Quản lý sản phẩm</span></a></li>
-          <li><a class="nav-link" href="/admin/qlgiamgia"><i data-feather="chevrons-down"></i><span>Quản lý giảm giá</span></a></li>
-          <li><a class="nav-link" href="/admin/nhapkho"><i data-feather="truck"></i><span>Nhập kho</span></a></li>
+          <li><a class="nav-link" routerLink="/admin/qlsanpham"><i data-feather="box"></i><span>Quản lý sản phẩm</span></a></li>
+          <li><a class="nav-link" routerLink="/admin/qlgiamgia"><i data-feather="chevrons-down"></i><span>Quản lý giảm giá</span></a></li>
+          <li><a class="nav-link" routerLink="/admin/nhapkho"><i data-feather="truck"></i><span>Nhập kho</span></a></li>
         </ul>
       </li>
 
       <li class="dropdown" *ngIf="user.idQuyen === 1 || user.idQuyen === 3">
-        <a href="#" class="menu-toggle nav-link has-dropdown"><i
+        <a class="menu-toggle nav-link has-dropdown"><i
             data-feather="shopping-bag"></i><span>Thông tin đơn vị</span></a>
         <ul class="dropdown-menu">
-          <li><a class="nav-link" href="/admin/qlnhasanxuat"><i data-feather="layers"></i><span>Quản lý nhà sản xuất</span></a></li>
-          <li><a class="nav-link" href="/admin/qlloaisanpham"><i data-feather="list"></i><span>Quản lý loại sản phẩm</span></a></li>
-          <li><a class="nav-link" href="/admin/qlnhacungcap"><i data-feather="layout"></i><span>Quản lý nhà cung cấp</span></a></li>
+          <li><a class="nav-link" routerLink="/admin/qlnhasanxuat"><i data-feather="layers"></i><span>Quản lý nhà sản xuất</span></a></li>
+          <li><a class="nav-link" routerLink="/admin/qlloaisanpham"><i data-feather="list"></i><span>Quản lý loại sản phẩm</span></a></li>
+          <li><a class="nav-link" routerLink="/admin/qlnhacungcap"><i data-feather="layout"></i><span>Quản lý nhà cung cấp</span></a></li>
         </ul>
       </li>
       
       <li class="dropdown" *ngIf="user.idQuyen === 1 || user.idQuyen === 3">
-        <a href="#" class="menu-toggle nav-link has-dropdown"><i
+        <a class="menu-toggle nav-link has-dropdown"><i
             data-feather="clipboard"></i><span>Thông tin hoá đơn</span></a>
         <ul class="dropdown-menu">
-          <li><a class="nav-link" href="/admin/qldonhang"><i data-feather="clipboard"></i><span>Quản lý đơn hàng</span></a></li>
-          <li><a class="nav-link" href="/admin/qlhoadonnhap"><i data-feather="inbox"></i><span>Quản lý hoá đơn nhập</span></a></li>
-          <li><a class="nav-link" href="/admin/qlphuongthuc"><i data-feather="info"></i><span>Quản lý phương thức</span></a></li>
-          <li><a class="nav-link" href="/admin/qlkho"><i data-feather="map"></i><span>Quản lý kho</span></a></li>
+          <li><a class="nav-link" routerLink="/admin/qldonhang"><i data-feather="clipboard"></i><span>Quản lý đơn hàng</span></a></li>
+          <li><a class="nav-link" routerLink="/admin/qlhoadonnhap"><i data-feather="inbox"></i><span>Quản lý hoá đơn nhập</span></a></li>
+          <li><a class="nav-link" routerLink="/admin/qlphuongthuc"><i data-feather="info"></i><span>Quản lý phương thức</span></a></li>
+          <li><a class="nav-link" routerLink="/admin/qlkho"><i data-feather="map"></i><span>Quản lý kho</span></a></li>
         </ul>
       </li>
 
       <li class="dropdown">
-        <a href="#" class="menu-toggle nav-link has-dropdown"><i
+        <a class="menu-toggle nav-link has-dropdown"><i
             data-feather="user"></i><span>Thông tin người dùng</span></a>
         <ul class="dropdown-menu">
-          <li *ngIf="user.idQuyen === 1"><a class="nav-link" href="/admin/qlnguoidung"><i data-feather="user"></i><span>Quản lý người dùng</span></a></li>
-          <li *ngIf="user.idQuyen === 1"><a class="nav-link" href="/admin/qlquyen"><i data-feather="lock"></i><span>Quản lý quyền</span></a></li>
-          <li><a class="nav-link" href="/admin/qltintuc"><i data-feather="square"></i><span>Quản lý tin tức</span></a></li>
+          <li *ngIf="user.idQuyen === 1"><a class="nav-link" routerLink="/admin/qlnguoidung"><i data-feather="user"></i><span>Quản lý người dùng</span></a></li>
+          <li *ngIf="user.idQuyen === 1"><a class="nav-link" routerLink="/admin/qlquyen"><i data-feather="lock"></i><span>Quản lý quyền</span></a></li>
+          <li><a class="nav-link" routerLink="/admin/qltintuc"><i data-feather="square"></i><span>Quản lý tin tức</span></a></li>
         </ul>
       </li>
 
       <li class="dropdown" *ngIf="user.idQuyen === 1 || user.idQuyen === 3">
-        <a href="#" class="menu-toggle nav-link has-dropdown"><i data-feather="copy"></i><span>Thông tin website</span></a>
+        <a class="menu-toggle nav-link has-dropdown"><i data-feather="copy"></i><span>Thông tin website</span></a>
         <ul class="dropdown-menu">
-          <li><a class="nav-link" href="/admin/qlgioithieu"><i data-feather="star"></i><span>Quản lý giới thiệu</span></a></li>
-          <li><a class="nav-link" href="/admin/qlmenu"><i data-feather="grid"></i><span>Quản lý menu</span></a></li>
-          <li><a class="nav-link" href="/admin/qllienhe"><i data-feather="file"></i><span>Quản lý liên hệ</span></a></li>
-          <li><a class="nav-link" href="/admin/qlslide"><i data-feather="image"></i><span>Quản lý slide</span></a></li>
-          <li><a class="nav-link" href="/admin/qldieukhoan"><i data-feather="file-minus"></i><span>Quản lý điều khoản</span></a></li>
+          <li><a class="nav-link" routerLink="/admin/qlgioithieu"><i data-feather="star"></i><span>Quản lý giới thiệu</span></a></li>
+          <li><a class="nav-link" routerLink="/admin/qlmenu"><i data-feather="grid"></i><span>Quản lý menu</span></a></li>
+          <li><a class="nav-link" routerLink="/admin/qllienhe"><i data-feather="file"></i><span>Quản lý liên hệ</span></a></li>
+          <li><a class="nav-link" routerLink="/admin/qlslide"><i data-feather="image"></i><span>Quản lý slide</span></a></li>
+          <li><a class="nav-link" routerLink="/admin/qldieukhoan"><i data-feather="file-minus"></i><span>Quản lý điều khoản</span></a></li>
         </ul>
       </li>
 

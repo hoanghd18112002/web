@@ -51,6 +51,7 @@ export class QlloaisanphamComponent {
     this.loaiSanPhamService.getall(obj).subscribe(res => {
       this.ListLoaiSanPham = res.data;
       this.totalItems = res.totalItems;
+      console.log(res);
       this.calculateTotalPages();
     });
   }

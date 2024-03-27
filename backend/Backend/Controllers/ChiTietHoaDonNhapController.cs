@@ -9,7 +9,7 @@ using OfficeOpenXml;
 
 namespace Backend.Controllers
 {
-    [Authorize]
+    [Authorize(Roles = "1, 3")]
     [Route("api/[controller]")]
     [ApiController]
     public class ChiTietHoaDonNhapController : ControllerBase

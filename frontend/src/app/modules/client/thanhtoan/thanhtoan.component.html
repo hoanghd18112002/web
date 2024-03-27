@@ -6,8 +6,8 @@
                 <div class="breadcrumb-wrap">
                     <nav aria-label="breadcrumb">
                         <ul class="breadcrumb">
-                            <li class="breadcrumb-item"><a href="/">Trang chủ</a></li>
-                            <li class="breadcrumb-item"><a href="/cart">Giỏ hàng</a></li>
+                            <li class="breadcrumb-item"><a routerLink="/">Trang chủ</a></li>
+                            <li class="breadcrumb-item"><a routerLink="/cart">Giỏ hàng</a></li>
                             <li class="breadcrumb-item active" aria-current="page">Thanh toán</li>
                         </ul>
                     </nav>
@@ -88,7 +88,7 @@
                                     </thead>
                                     <tbody *ngFor="let gh of ListGioHang">
                                         <tr>
-                                            <td><a href="#">{{ gh.ten }} <strong> × {{ gh.soluong }}</strong></a></td>
+                                            <td><a routerLink="#">{{ gh.ten }} <strong> × {{ gh.soluong }}</strong></a></td>
                                             <td>{{ gh.gia * gh.soluong | number:'1.0-0' }} đ</td>
                                         </tr>
                                     </tbody>
@@ -143,7 +143,7 @@
                                         <input type="checkbox" class="custom-control-input" id="terms" [checked]="isTermsChecked" (change)="onTermsChange($event)" />
                                         <label class="custom-control-label" for="terms">
                                             Tôi đã đọc và đồng ý với các điều khoản của website.
-                                            <a href="/dieukhoandichvu" style="text-decoration: underline;">Điều khoản dịch vụ</a>
+                                            <a routerLink="/dieukhoandichvu" style="text-decoration: underline;">Điều khoản dịch vụ</a>
                                         </label>
                                     </div>
                                     <button type="submit" class="check-btn sqr-btn">Xác nhận thanh toán</button>

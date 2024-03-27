@@ -24,7 +24,6 @@ namespace DAL
         public string CreatePaymentUrl(PaymentInformationModel model, HttpContext context)
         {
             var timeNow = TimeZoneInfo.ConvertTimeFromUtc(DateTime.UtcNow, TimeZoneInfo.Local);
-            var tick = DateTime.Now.Ticks.ToString();
 
             var pay = new VnPayLibrary();
 
@@ -39,7 +38,7 @@ namespace DAL
             pay.AddRequestData("vnp_OrderInfo", "Thanh toan cho don hang: " + model.OrderId);
             pay.AddRequestData("vnp_OrderType", model.OrderType);
             pay.AddRequestData("vnp_ReturnUrl", model.Url);
-            pay.AddRequestData("vnp_TxnRef", tick);
+            pay.AddRequestData("vnp_TxnRef", model.OrderId.ToString());
 
             var paymentUrl =
                 pay.CreateRequestUrl(_configuration["Vnpay:BaseUrl"], _configuration["Vnpay:HashSecret"]);

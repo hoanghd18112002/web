@@ -63,6 +63,7 @@ import { NhapkhoComponent } from './modules/admin/nhapkho/nhapkho.component';
 import { DoithongtinComponent } from './modules/admin/doithongtin/doithongtin.component';
 import { ErroradminComponent } from './modules/admin/erroradmin/erroradmin.component';
 import { ConfirmComponent } from './modules/client/confirm/confirm.component';
+import { CamonComponent } from './modules/client/camon/camon.component';
 
 @NgModule({
   declarations: [
@@ -119,7 +120,8 @@ import { ConfirmComponent } from './modules/client/confirm/confirm.component';
     ErroradminComponent,
     NhapkhoComponent,
     DoithongtinComponent,
-    ConfirmComponent
+    ConfirmComponent,
+    CamonComponent
   ],
   imports: [
     BrowserModule,

@@ -5,7 +5,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace Backend.Controllers
 {
-    [Authorize]
+    [Authorize(Roles = "1, 3")]
     [Route("api/[controller]")]
     [ApiController]
     public class ThongKeController : ControllerBase

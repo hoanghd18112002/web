@@ -13,7 +13,7 @@
 
                             <div class="float-right mt-4">
                                 <div class="input-group">
-                                    <input class="form-control" type="search" placeholder="Bạn đang tìm gì.." aria-label="Search" data-width="200" id="searchInput" [(ngModel)]="searchTerm">
+                                    <input class="form-control" type="search" placeholder="Nhập mã đơn hàng" aria-label="Search" data-width="200" id="searchInput" [(ngModel)]="searchTerm">
                                     <div class="input-group-append">
                                         <button class="btn btn-outline-secondary" type="submit" (click)="getall()"><i class="fas fa-search"></i></button>
                                     </div>
@@ -21,6 +21,9 @@
                             </div>
           
                             <div class="table-responsive mt-5">
+                                <div class="float-right mt-2">
+                                    <span>Tổng số lượng: {{ totalItems }}</span>
+                                </div> 
                                 <table class="table table-hover" style="width:100%;">
                                     <thead id="mainTable" class="table table-striped">
                                         <tr class="text-center">
@@ -45,6 +48,10 @@
                                                 <span *ngIf="dh.trangThai === 0" class="badge badge-warning">Chờ xử lý</span>
                                                 <span *ngIf="dh.trangThai === 1" class="badge badge-success">Đã duyệt</span>
                                                 <span *ngIf="dh.trangThai === 2" class="badge badge-danger">Đã huỷ</span>
+                                                <span *ngIf="dh.trangThai === 3" class="badge badge-warning">Chưa thanh toán</span>
+                                                <span *ngIf="dh.trangThai === 4" class="badge badge-success">Đã thanh toán</span>
+                                                <span *ngIf="dh.trangThai === 5" class="badge badge-info">Đang giao</span>
+                                                <span *ngIf="dh.trangThai === 6" class="badge badge-success">Đã nhận hàng</span>
                                             </td>
                                         </tr>
                                     </tbody>                        
@@ -105,16 +112,16 @@
                                     <label for="taiKhoan">Tài khoản: <a class="text-success"> {{ taiKhoan }} </a></label>
                                 </div>
                                 <div class="form-group col-md-4">
-                                    <label for="diaChi">Ngày đặt: <a class="text-success"> {{ ngayDat | date: 'HH:mm:ss dd/MM/yyyy' }} </a></label>
-                                </div>
+                                    <label for="diaChi">Mã đơn hàng: <a class="text-success"> {{ id }} </a></label>
+                                </div>                           
                             </div>
                             <div class="form-row">
                                 <div class="form-group col-md-8">
                                     <label for="sdt">Địa chỉ: <a class="text-success"> {{ diaChi }} </a></label>
                                 </div>
                                 <div class="form-group col-md-4">
-                                    <label for="ngayDat">Số điện thoại: <a class="text-success"> {{ sdt }} </a></label>
-                                </div>
+                                    <label for="diaChi">Ngày đặt: <a class="text-success"> {{ ngayDat | date: 'HH:mm:ss dd/MM/yyyy' }} </a></label>
+                                </div>                         
                             </div>
                             <div class="form-row">
                                 <div class="form-group col-md-8">
@@ -127,24 +134,31 @@
                                     </label>
                                 </div>
                                 <div class="form-group col-md-4">
-                                    <label for="trangThai">Trạng thái: 
-                                        <ng-container *ngIf="trangThai === 0"><a class="text-warning"> Chờ xử lý </a></ng-container>
-                                        <ng-container *ngIf="trangThai === 1"><a class="text-success"> Đã duyệt </a></ng-container>
-                                        <ng-container *ngIf="trangThai === 2"><a class="text-danger"> Đã huỷ </a></ng-container>
-                                    </label>
-                                </div>
+                                    <label for="ngayDat">Số điện thoại: <a class="text-success"> {{ sdt }} </a></label>
+                                </div>                           
                             </div>
                             <div class="form-row"> 
                                 <div class="form-group col-md-8">
                                     <label for="tenPhuongThuc">Phương thức thanh toán: <a class="text-success"> {{ tenPhuongThuc }} </a></label>
                                 </div>
                                 <div class="form-group col-md-4">
-                                    <label for="ngayDat">Tổng hoá đơn: <a class="text-success"> {{ Tong | number:'1.0-0' }} đ</a></label>
-                                </div>
+                                    <label for="trangThai">Trạng thái: 
+                                        <ng-container *ngIf="trangThai === 0"><a class="text-warning"> Chờ xử lý </a></ng-container>
+                                        <ng-container *ngIf="trangThai === 1"><a class="text-success"> Đã duyệt </a></ng-container>
+                                        <ng-container *ngIf="trangThai === 2"><a class="text-danger"> Đã huỷ </a></ng-container>
+                                        <ng-container *ngIf="trangThai === 3"><a class="text-warning"> Chưa thanh toán </a></ng-container>
+                                        <ng-container *ngIf="trangThai === 4"><a class="text-success"> Đã thanh toán </a></ng-container>
+                                        <ng-container *ngIf="trangThai === 5"><a class="text-info"> Đang giao </a></ng-container>
+                                        <ng-container *ngIf="trangThai === 6"><a class="text-success"> Đã nhận hàng </a></ng-container>
+                                    </label>
+                                </div>                             
                             </div>
                             <div class="form-row"> 
-                                <div class="form-group col-md-12">
+                                <div class="form-group col-md-8">
                                     <label for="ghiChu">Ghi chú: {{ ghiChu }}</label>
+                                </div>
+                                <div class="form-group col-md-4">
+                                    <label for="ngayDat">Tổng hoá đơn: <a class="text-success"> {{ Tong | number:'1.0-0' }} đ</a></label>
                                 </div>
                             </div>
                             <table class="table table-hover" style="width:100%;">
@@ -177,7 +191,15 @@
                 <button type="button" class="btn btn-success ml-1" (click)="exportToExcel()"><i class="fas fa-save"></i> In</button>
                 <ng-container *ngIf="trangThai === 0">
                     <button type="button" class="btn btn-success" data-dismiss="modal" (click)="update(1)">Duyệt</button>
+                </ng-container>
+                <ng-container *ngIf="trangThai === 0 || trangThai === 3">
                     <button type="button" class="btn btn-danger" data-dismiss="modal" (click)="update(2)">Huỷ</button>
+                </ng-container>
+                <ng-container *ngIf="trangThai === 1">
+                    <button type="button" class="btn btn-info" data-dismiss="modal" (click)="update(5)">Giao hàng</button>
+                </ng-container>
+                <ng-container *ngIf="trangThai === 5">
+                    <button type="button" class="btn btn-success" data-dismiss="modal" (click)="update(6)">Hoàn thành</button>
                 </ng-container>
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Đóng</button>
             </div>

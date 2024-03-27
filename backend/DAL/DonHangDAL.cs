@@ -37,7 +37,7 @@ namespace DAL
                 throw ex;
             }
         }
-        public List<DonHangModel> GetAll(int pageIndex, int pageSize, out int total, int? TrangThai)
+        public List<DonHangModel> GetAll(int pageIndex, int pageSize, out int total, int? ID, int? TrangThai)
         {
             string msgError = "";
             total = 0;
@@ -46,6 +46,7 @@ namespace DAL
                 var dt = _dbHelper.ExecuteSProcedureReturnDataTable(out msgError, "sp_donhang_getall_desc",
                     "@p_pageindex", pageIndex,
                     "@p_pagesize", pageSize,
+                    "@p_id", ID,
                     "@p_trangthai", TrangThai);
                 if (!string.IsNullOrEmpty(msgError))
                     throw new Exception(msgError);

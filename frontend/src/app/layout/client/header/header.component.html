@@ -6,11 +6,11 @@
             <div class="row">
                 <div class="col-lg-6 col-md-5">
                     <div class="header-call-action">
-                        <a href="#">
+                        <a routerLink="#">
                             <i class="fa fa-envelope"></i>
                             hoanghd18112002@gmail.com
                         </a>
-                        <a href="/test">
+                        <a routerLink="/test">
                             <i class="fa fa-phone"></i>
                             0906.090.112
                         </a>
@@ -22,7 +22,7 @@
                             <ul>
                                 <li>
                                     <ng-container *ngIf="user && user.idQuyen !== 2">
-                                        <a href="/admin/profile">Admin</a>
+                                        <a routerLink="/admin/profile">Admin</a>
                                     </ng-container>                                                           
                                 </li>
                                 <li>
@@ -32,21 +32,21 @@
                                             <i class="fa fa-angle-down"></i>
                                         </a>
                                         <div class="dropdown-menu" aria-labelledby="myaccount">
-                                            <a class="dropdown-item" *ngIf="!user" href="/login">Đăng nhập</a>
-                                            <a class="dropdown-item" *ngIf="!user" href="/signin">Đăng ký</a>
-                                            <a class="dropdown-item" *ngIf="user" href="/taikhoan">Tài khoản</a>
+                                            <a class="dropdown-item" *ngIf="!user" routerLink="/login">Đăng nhập</a>
+                                            <a class="dropdown-item" *ngIf="!user" routerLink="/signin">Đăng ký</a>
+                                            <a class="dropdown-item" *ngIf="user" routerLink="/taikhoan">Tài khoản</a>
                                             <a class="dropdown-item" *ngIf="user" (click)="deleteUser()">Đăng xuất</a>
                                         </div>
                                     </div>                                    
                                 </li>
                                 <li>
-                                    <a href="/cart">Giỏ hàng</a>
+                                    <a routerLink="/cart">Giỏ hàng</a>
                                 </li>
                                 <li>
-                                    <a href="/lienhe">Liên hệ</a>
+                                    <a routerLink="/lienhe">Liên hệ</a>
                                 </li>
                                 <li>
-                                    <a href="/dieukhoandichvu">Điều khoản</a>
+                                    <a routerLink="/dieukhoandichvu">Điều khoản</a>
                                 </li>
                             </ul>
                         </nav>
@@ -63,7 +63,7 @@
             <div class="row align-items-center">
                 <div class="col-lg-3">
                     <div class="brand-logo">
-                        <a href="/">
+                        <a routerLink="/">
                             <img src="/assets/client/img/logo/logo.png" alt="brand logo">
                         </a>
                     </div>
@@ -104,7 +104,7 @@
                                 <input type="text" [(ngModel)]="timkiem" placeholder="Bạn đang tìm gì...">
                                 <button (click)="search()" class="search-btn"><i class="fa fa-search"></i></button>
                             </div>
-                            <a href="/cart" class="header-mini-cart">
+                            <a routerLink="/cart" class="header-mini-cart">
                                 <div class="mini-cart-btn">
                                     <i class="fa fa-shopping-cart"></i>
                                     <span class="cart-notification">{{ SoLuong }}</span>
@@ -137,24 +137,24 @@
                             <nav class="category-menu" [ngClass]="{'hm-1': isHomePage, 'category-style-2': !isHomePage}">
                                 <ul>
                                     <ng-container *ngFor="let mn of ListDanhMuc">
-                                        <li><a href="/danhmucsanpham/{{ mn.id }}"><img style="width: 20px;" src="/assets/client/img/icon/{{ mn.bieuTuong }}" /> <i></i> {{ mn.ten }} </a></li>     
+                                        <li><a routerLink="/danhmucsanpham/{{ mn.id }}"><img style="width: 20px;" src="/assets/client/img/icon/{{ mn.bieuTuong }}" /> <i></i> {{ mn.ten }} </a></li>     
                                     </ng-container>
                                 </ul>
-                            </nav>                            
+                            </nav>                        
                         </div>
                         <div class="main-menu">
                             <nav id="mobile-menu">
                                 <ul>
                                     <ng-container *ngFor="let mn of ListMenu; let isFirst = first">
                                         <li [class.active]="isFirst">
-                                          <a href="{{ mn.link }}">
+                                          <a routerLink="{{ mn.link }}">
                                             <i class="fa fa-home" *ngIf="isFirst"></i> 
                                             {{ mn.ten }}
                                             <i class="fa fa-angle-down" *ngIf="mn.children && mn.children.length > 0"></i>
                                           </a>
                                           <ul *ngIf="mn.children && mn.children.length > 0" class="dropdown">
                                             <li *ngFor="let child of mn.children">
-                                              <a [href]="child.link">{{ child.ten }}</a>
+                                              <a [routerLink]="child.link">{{ child.ten }}</a>
                                             </li>
                                           </ul>
                                         </li>

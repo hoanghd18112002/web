@@ -1,9 +1,11 @@
 import { Component, ElementRef, ViewChild } from '@angular/core';
 import { CTDonHang } from 'src/app/models/ctdonhang.model';
 import { DonHang } from 'src/app/models/donhang.model';
+import { PaymentInformation } from 'src/app/models/vnpayment.model';
 import { AuthService } from 'src/app/service/auth.service';
 import { DonHangService } from 'src/app/service/donhang.service';
 import { NguoiDungService } from 'src/app/service/nguoidung.service';
+import { VnPayService } from 'src/app/service/vnpay.service';
 import swal from 'sweetalert2';
 
 @Component({
@@ -55,7 +57,8 @@ export class TaikhoanComponent {
   constructor(
     private donHangService: DonHangService, 
     private authService: AuthService, 
-    private nguoiDungService: NguoiDungService
+    private nguoiDungService: NguoiDungService,
+    private vnPayService: VnPayService
   ) {}
 
   ngOnInit(){
@@ -195,6 +198,31 @@ export class TaikhoanComponent {
         for (let i = 0; i < modalBackdrop.length; i++) {
             modalBackdrop[i].remove();
         }
+    });
+  }
+
+  //Thanh toán online
+  vnPay(id: number){
+    const payment: PaymentInformation = {
+      orderId: id,
+      name: this.ten,
+      amount: this.Tong,
+      orderDescription: this.ghiChu,
+      orderType: "other",
+      url: `${window.location.origin}/camon`
+    }
+
+    this.vnPayService.vnpay(payment).subscribe(res => { 
+      if(res.success){
+        window.location.href = res.data;
+      }
+      else{
+        swal.fire({
+          icon: 'warning',
+          title: 'Cảnh báo',
+          text: res.message
+      });
+      }
     });
   }
   

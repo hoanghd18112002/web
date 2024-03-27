@@ -1,18 +1,19 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Menu } from 'src/app/models/menu.model';
 import { LoaiSanPham } from 'src/app/models/loaisanpham.model';
 import { LoaiSanPhamService } from 'src/app/service/loaisanpham.service';
 import { MenuService } from 'src/app/service/menu.service';
-import { Router } from '@angular/router';
+import { Router, NavigationEnd } from '@angular/router';
 import { CartService } from 'src/app/service/cart.service';
 import { AuthService } from 'src/app/service/auth.service';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.css']
 })
-export class HeaderComponent implements OnInit {
+export class HeaderComponent implements OnInit, OnDestroy {
   ListMenu: Menu[] = [];
   ListDanhMuc: LoaiSanPham[] = [];
 
@@ -23,28 +24,42 @@ export class HeaderComponent implements OnInit {
   timkiem: string = '';
   isHomePage: boolean = true;
 
+  routerSubscription: Subscription;
+
   constructor(
     private _router: Router,
     private loaiSanPhamService: LoaiSanPhamService, 
     private menuService: MenuService,
     private cartService: CartService,
     private authService: AuthService,
-  ) {}
+  ) {
+    // Subscribe to router events
+    this.routerSubscription = this._router.events.subscribe(event => {
+      if (event instanceof NavigationEnd) {
+        this.isHomePage = event.url === '/';
+      }
+    });
+  }
 
   ngOnInit() {
     this.getallmenu();
     this.getalldanhmuc();
     this.loadGioHang();
-    this.loadUser()
-
+    this.loadUser();
+    
     this.cartService.cartUpdated.subscribe(() => {
       this.loadGioHang();
     });
-
-    this.isHomePage = this._router.url === '/';
   }
 
-  //Load người dùng
+  ngOnDestroy() {
+    // Unsubscribe from router events
+    if (this.routerSubscription) {
+      this.routerSubscription.unsubscribe();
+    }
+  }
+
+  // Load người dùng
   loadUser() {
     this.user = this.authService.loadUser();
   }  

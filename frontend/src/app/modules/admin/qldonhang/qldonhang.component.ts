@@ -13,6 +13,7 @@ export class QldonhangComponent {
   ListDonHang: DonHang[] = [];
   ListCTDonHang: CTDonHang[] = [];
   
+  id: number = 0;
   ten: string = '';
   diaChi: string = '';
   sdt: string = '';
@@ -47,7 +48,8 @@ export class QldonhangComponent {
   getall(){
     const obj = {
       page: this.p,
-      pageSize: this.pageSize
+      pageSize: this.pageSize,
+      id: this.searchTerm
     };
     this.donHangService.getall(obj).subscribe(res => {
       this.ListDonHang = res.data;
@@ -132,6 +134,7 @@ export class QldonhangComponent {
   onRowClick(donHang: DonHang) {
     this.selectedRow = donHang;
 
+    this.id = this.selectedRow.id;
     this.ten = this.selectedRow.ten;
     this.diaChi = this.selectedRow.diaChi;
     this.sdt = this.selectedRow.sdt;

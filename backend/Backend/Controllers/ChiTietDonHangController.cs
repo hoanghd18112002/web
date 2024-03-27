@@ -109,7 +109,11 @@ namespace Backend.Controllers
                     {
                         0 => "Đang xử lý",
                         1 => "Đã duyệt",
-                        2 => "Đã huỷ"
+                        2 => "Đã huỷ",
+                        3 => "Chưa thanh toán",
+                        4 => "Đã thanh toán",
+                        5 => "Đang giao",
+                        6 => "Đã nhận hàng"
                     };
 
                     worksheet.Cells["D5"].Value = "Trạng thái: " + trangThaiText;

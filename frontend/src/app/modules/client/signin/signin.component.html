@@ -6,7 +6,7 @@
                 <div class="breadcrumb-wrap">
                     <nav aria-label="breadcrumb">
                         <ul class="breadcrumb">
-                            <li class="breadcrumb-item"><a href="/">Trang chủ</a></li>
+                            <li class="breadcrumb-item"><a routerLink="/">Trang chủ</a></li>
                             <li class="breadcrumb-item active" aria-current="page">Đăng ký</li>
                         </ul>
                     </nav>
@@ -72,7 +72,7 @@
                                     <div class="remember-meta">
                                         <div class="custom-control custom-checkbox">
                                             <input type="checkbox" class="custom-control-input" id="subnewsletter" [checked]="isTermsChecked" (change)="onTermsChange($event)">
-                                            <label class="custom-control-label" for="subnewsletter">Đồng ý với các <a href="/dieukhoandichvu"><b>Điều khoản</b></a> của website</label>
+                                            <label class="custom-control-label" for="subnewsletter">Đồng ý với các <a routerLink="/dieukhoandichvu"><b>Điều khoản</b></a> của website</label>
                                         </div>
                                     </div>
                                 </div>
@@ -83,7 +83,7 @@
                                         <button type="submit" class="sqr-btn">Đăng ký</button>
                                     </div>
                                     <div class="single-input-item">
-                                        <span>Bạn đã có tài khoản? </span><a href="/login">Đăng nhập</a>
+                                        <span>Bạn đã có tài khoản? </span><a routerLink="/login">Đăng nhập</a>
                                     </div>
                                 </div>
                             </div>

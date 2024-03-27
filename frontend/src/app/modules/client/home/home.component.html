@@ -23,7 +23,7 @@
                     <div *ngFor="let sp of ListSanPhamMoi">
                         <div class="product-item">
                             <div class="product-thumb">
-                                <a href="/chitietsanpham/{{ sp.id }}">
+                                <a routerLink="/chitietsanpham/{{ sp.id }}">
                                     <img style="width: 210px; height: 210px;" src="/assets/client/img/sanpham/{{ sp.anh }}" class="img-pri" alt="">
                                 </a>
                                 <div class="product-label ml-160">
@@ -34,7 +34,7 @@
                                 </div>
                             </div>
                             <div class="product-content text-center border-top">
-                                <a href="/chitietsanpham/{{ sp.id }}" class="product-title text-dark font-weight-bold">{{ sp.ten }}</a>
+                                <a routerLink="/chitietsanpham/{{ sp.id }}" class="product-title text-dark font-weight-bold">{{ sp.ten }}</a>
                                 <div class="pricebox">
                                     <ng-container *ngIf="sp.phanTram === null || sp.phanTram === undefined">
                                         <span class="price text-danger">Giá: {{ sp.gia | number:'1.0-0' }} đ</span><br/>
@@ -77,7 +77,7 @@
                     <div *ngFor="let sp of ListSanPhamBanChay">
                         <div class="product-item">
                             <div class="product-thumb">
-                                <a href="/chitietsanpham/{{ sp.id }}">
+                                <a routerLink="/chitietsanpham/{{ sp.id }}">
                                     <img style="width: 210px; height: 210px;" src="/assets/client/img/sanpham/{{ sp.anh }}" class="img-pri" alt="">
                                 </a>
                                 <div class="product-label ml-160">
@@ -88,7 +88,7 @@
                                 </div>
                             </div>
                             <div class="product-content text-center border-top">
-                                <a href="/chitietsanpham/{{ sp.id }}" class="product-title text-dark font-weight-bold">{{ sp.ten }}</a>
+                                <a routerLink="/chitietsanpham/{{ sp.id }}" class="product-title text-dark font-weight-bold">{{ sp.ten }}</a>
                                 <div class="pricebox">
                                     <ng-container *ngIf="sp.phanTram === null || sp.phanTram === undefined">
                                         <span class="price text-danger">Giá: {{ sp.gia | number:'1.0-0' }} đ</span><br/>
@@ -131,7 +131,7 @@
                     <div *ngFor="let sp of ListSanPhamGiamGia">
                         <div class="product-item">
                             <div class="product-thumb">
-                                <a href="/chitietsanpham/{{ sp.id }}">
+                                <a routerLink="/chitietsanpham/{{ sp.id }}">
                                     <img style="width: 210px; height: 210px;" src="/assets/client/img/sanpham/{{ sp.anh }}" class="img-pri" alt="">
                                 </a>
                                 <div class="product-label ml-160">
@@ -142,7 +142,7 @@
                                 </div>
                             </div>
                             <div class="product-content text-center border-top">
-                                <a href="/chitietsanpham/{{ sp.id }}" class="product-title text-dark font-weight-bold">{{ sp.ten }}</a>
+                                <a routerLink="/chitietsanpham/{{ sp.id }}" class="product-title text-dark font-weight-bold">{{ sp.ten }}</a>
                                 <div class="pricebox">
                                     <ng-container *ngIf="sp.phanTram === null || sp.phanTram === undefined">
                                         <span class="price text-danger">Giá: {{ sp.gia | number:'1.0-0' }} đ</span><br/>

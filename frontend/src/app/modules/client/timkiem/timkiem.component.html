@@ -6,7 +6,7 @@
                 <div class="breadcrumb-wrap">
                     <nav aria-label="breadcrumb">
                         <ul class="breadcrumb">
-                            <li class="breadcrumb-item"><a href="/">Trang chủ</a></li>
+                            <li class="breadcrumb-item"><a routerLink="/">Trang chủ</a></li>
                             <li class="breadcrumb-item active" aria-current="page">Tìm kiếm nâng cao</li>
                         </ul>
                     </nav>
@@ -119,7 +119,7 @@
                                     <!-- product single item start -->
                                     <div class="product-item fix">
                                         <div class="product-thumb">
-                                            <a href="/chitietsanpham/{{ sp.id }}">
+                                            <a routerLink="/chitietsanpham/{{ sp.id }}">
                                                 <img src="/assets/client/img/sanpham/{{ sp.anh }}" class="img-pri" alt="">
                                             </a>
                                             <div class="product-action-link mt-154">
@@ -127,7 +127,7 @@
                                             </div>
                                         </div>
                                         <div class="product-content text-center border-top">
-                                            <a href="/chitietsanpham/{{ sp.id }}" class="product-title text-dark font-weight-bold">{{ sp.ten }}</a>
+                                            <a routerLink="/chitietsanpham/{{ sp.id }}" class="product-title text-dark font-weight-bold">{{ sp.ten }}</a>
                                             <div class="pricebox">
                                                 <ng-container *ngIf="sp.phanTram === null || sp.phanTram === undefined">
                                                     <span class="price text-danger">Giá: {{ sp.gia | number:'1.0-0' }} đ</span><br/>
@@ -146,12 +146,12 @@
                                 <!-- product single list item start -->
                                 <div class="product-list-item mb-30">
                                     <div class="product-thumb">
-                                        <a href="/chitietsanpham/{{ sp.id }}">
+                                        <a routerLink="/chitietsanpham/{{ sp.id }}">
                                             <img src="/assets/client/img/sanpham/{{ sp.anh }}" class="img-pri" alt="">
                                         </a>                                                                                      
                                     </div>
                                     <div class="product-list-content">
-                                        <h3><a href="/chitietsanpham/{{ sp.id }}">{{ sp.ten }}</a></h3>
+                                        <h3><a routerLink="/chitietsanpham/{{ sp.id }}">{{ sp.ten }}</a></h3>
                                         <div class="pricebox">
                                             <ng-container *ngIf="sp.phanTram === null || sp.phanTram === undefined">
                                                 <span class="regular-price">{{ sp.gia | number:'1.0-0' }} đ</span>
@@ -163,7 +163,7 @@
                                         </div>
                                         <p>{{ sp.moTa | slice:0:100 }}</p>
                                         <div class="product-list-action-link">
-                                            <a (click)="addToCart(sp.id)" class="buy-btn" href="#" data-toggle="tooltip" data-placement="top" title="Thêm vào giỏ hàng">Mua hàng<i class="fa fa-shopping-cart"></i> </a>
+                                            <a (click)="addToCart(sp.id)" class="buy-btn" routerLink="#" data-toggle="tooltip" data-placement="top" title="Thêm vào giỏ hàng">Mua hàng<i class="fa fa-shopping-cart"></i> </a>
                                         </div>
                                     </div>
                                 </div>

@@ -48,6 +48,7 @@ import { QlgiamgiaComponent } from './modules/admin/qlgiamgia/qlgiamgia.componen
 import { NhapkhoComponent } from './modules/admin/nhapkho/nhapkho.component';
 import { DoithongtinComponent } from './modules/admin/doithongtin/doithongtin.component';
 import { ConfirmComponent } from './modules/client/confirm/confirm.component';
+import { CamonComponent } from './modules/client/camon/camon.component';
 
 const routes: Routes = [
   {
@@ -264,6 +265,11 @@ const routes: Routes = [
         path: 'confirm',
         component: ConfirmComponent,
         title: 'Xác nhận - Cửa hàng điện máy'
+      },
+      {
+        path: 'camon',
+        component: CamonComponent,
+        title: 'Cảm ơn đã xử dụng dịch vụ - Cửa hàng điện máy'
       },
     ]
   },

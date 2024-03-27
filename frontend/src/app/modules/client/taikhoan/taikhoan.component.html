@@ -6,7 +6,7 @@
                 <div class="breadcrumb-wrap">
                     <nav aria-label="breadcrumb">
                         <ul class="breadcrumb">
-                            <li class="breadcrumb-item"><a href="/">Trang chủ</a></li>
+                            <li class="breadcrumb-item"><a routerLink="/">Trang chủ</a></li>
                             <li class="breadcrumb-item active" aria-current="page">Tài khoản</li>
                         </ul>
                     </nav>
@@ -46,7 +46,7 @@
                                     <div class="myaccount-content">
                                         <h3>Bảng điều khiển</h3>
                                         <div class="welcome">
-                                            <p>Xin chào, <strong>{{ Ten }}</strong> (Nếu không phải <strong>{{ Ten }} !</strong><a href="login-register.html" class="logout"> Đăng xuất</a>)</p>
+                                            <p>Xin chào, <strong>{{ Ten }}</strong> (Nếu không phải <strong>{{ Ten }} !</strong><a routerLink="#" class="logout"> Đăng xuất</a>)</p>
                                         </div>
                                         <p class="mb-0">Từ bảng điều khiển tài khoản của bạn. bạn có thể dễ dàng kiểm tra và xem các đơn đặt hàng gần đây của mình, quản lý địa chỉ giao hàng và thanh toán cũng như chỉnh sửa chi tiết mật khẩu và tài khoản của mình.</p>
                                     </div>
@@ -204,6 +204,10 @@
                                                             <span *ngIf="dh.trangThai === 0" class="badge badge-warning">Chờ xử lý</span>
                                                             <span *ngIf="dh.trangThai === 1" class="badge badge-success">Đã duyệt</span>
                                                             <span *ngIf="dh.trangThai === 2" class="badge badge-danger">Đã huỷ</span>
+                                                            <span *ngIf="dh.trangThai === 3" class="badge badge-warning">Chưa thanh toán</span>
+                                                            <span *ngIf="dh.trangThai === 4" class="badge badge-success">Đã thanh toán</span>
+                                                            <span *ngIf="dh.trangThai === 5" class="badge badge-info">Đang giao</span>
+                                                            <span *ngIf="dh.trangThai === 6" class="badge badge-success">Đã nhận hàng</span>
                                                         </td> 
                                                         <td>{{ dh.tongTien | number:'1.0-0' }} đ</td>
                                                         <td><button data-toggle="modal" data-target="#viewModal" (click)="thongTinDonHang(dh.id)" class="check-btn sqr-btn ">Chi tiết</button></td>
@@ -278,16 +282,16 @@
                                     <label for="ten">Tên: <a class="text-success"> {{ ten }} </a></label>
                                 </div>
                                 <div class="form-group col-md-4">
-                                    <label for="diaChi">Ngày đặt: <a class="text-success"> {{ ngayDat | date: 'HH:mm:ss dd/MM/yyyy' }} </a></label>
-                                </div>
+                                    <label for="diaChi">Mã đơn hàng: <a class="text-success"> {{ id }} </a></label>
+                                </div>                              
                             </div>
                             <div class="form-row">
                                 <div class="form-group col-md-8">
                                     <label for="sdt">Địa chỉ: <a class="text-success"> {{ diaChi }} </a></label>
                                 </div>
                                 <div class="form-group col-md-4">
-                                    <label for="ngayDat">Số điện thoại: <a class="text-success"> {{ sdt }} </a></label>
-                                </div>
+                                    <label for="diaChi">Ngày đặt: <a class="text-success"> {{ ngayDat | date: 'HH:mm:ss dd/MM/yyyy' }} </a></label>
+                                </div>                              
                             </div>
                             <div class="form-row">
                                 <div class="form-group col-md-8">
@@ -300,24 +304,31 @@
                                     </label>
                                 </div>
                                 <div class="form-group col-md-4">
-                                    <label for="trangThai">Trạng thái: 
-                                        <ng-container *ngIf="trangThai === 0"><a class="text-warning"> Chờ xử lý </a></ng-container>
-                                        <ng-container *ngIf="trangThai === 1"><a class="text-success"> Đã duyệt </a></ng-container>
-                                        <ng-container *ngIf="trangThai === 2"><a class="text-danger"> Đã huỷ </a></ng-container>
-                                    </label>
-                                </div>
+                                    <label for="ngayDat">Số điện thoại: <a class="text-success"> {{ sdt }} </a></label>
+                                </div>                            
                             </div>
                             <div class="form-row"> 
                                 <div class="form-group col-md-8">
                                     <label for="tenPhuongThuc">Phương thức thanh toán: <a class="text-success"> {{ tenPhuongThuc }} </a></label>
                                 </div>
                                 <div class="form-group col-md-4">
-                                    <label for="ngayDat">Tổng hoá đơn: <a class="text-success"> {{ Tong | number:'1.0-0' }} đ</a></label>
-                                </div>
+                                    <label for="trangThai">Trạng thái: 
+                                        <ng-container *ngIf="trangThai === 0"><a class="text-warning"> Chờ xử lý </a></ng-container>
+                                        <ng-container *ngIf="trangThai === 1"><a class="text-success"> Đã duyệt </a></ng-container>
+                                        <ng-container *ngIf="trangThai === 2"><a class="text-danger"> Đã huỷ </a></ng-container>
+                                        <ng-container *ngIf="trangThai === 3"><a class="text-warning"> Chưa thanh toán </a></ng-container>
+                                        <ng-container *ngIf="trangThai === 4"><a class="text-success"> Đã thanh toán </a></ng-container>
+                                        <ng-container *ngIf="trangThai === 5"><a class="text-info"> Đang giao </a></ng-container>
+                                        <ng-container *ngIf="trangThai === 6"><a class="text-success"> Đã nhận hàng </a></ng-container>
+                                    </label>
+                                </div>                              
                             </div>
                             <div class="form-row"> 
-                                <div class="form-group col-md-12">
+                                <div class="form-group col-md-8">
                                     <label for="ghiChu">Ghi chú: {{ ghiChu }}</label>
+                                </div>
+                                <div class="form-group col-md-4">
+                                    <label for="ngayDat">Tổng hoá đơn: <a class="text-success"> {{ Tong | number:'1.0-0' }} đ</a></label>
                                 </div>
                             </div>
                             <table class="table table-hover" style="width:100%;">
@@ -347,8 +358,11 @@
 
             <!-- Footer Modal -->
             <div class="modal-footer">
-                <ng-container *ngIf="trangThai === 0">
+                <ng-container *ngIf="trangThai === 0 || trangThai === 3">
                     <button type="button" class="btn btn-danger" data-dismiss="modal" (click)="update(id)">Huỷ</button>
+                </ng-container>
+                <ng-container *ngIf="trangThai === 3">
+                    <button type="button" class="btn btn-success" data-dismiss="modal" (click)="vnPay(id)">Thanh toán</button>
                 </ng-container>
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Đóng</button>
             </div>

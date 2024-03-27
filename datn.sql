@@ -11,7 +11,7 @@
  Target Server Version : 100427
  File Encoding         : 65001
 
- Date: 21/03/2024 22:07:38
+ Date: 27/03/2024 16:41:23
 */
 
 SET NAMES utf8mb4;
@@ -32,7 +32,7 @@ CREATE TABLE `ctdonhang`  (
   INDEX `CTDonHang_DonHang_IDDonHang`(`IDDonHang`) USING BTREE,
   CONSTRAINT `CTDonHang_DonHang_IDDonHang` FOREIGN KEY (`IDDonHang`) REFERENCES `donhang` (`ID`) ON DELETE CASCADE ON UPDATE CASCADE,
   CONSTRAINT `CTDonHang_SanPham_IDSanPham` FOREIGN KEY (`IDSanPham`) REFERENCES `sanpham` (`ID`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE = InnoDB AUTO_INCREMENT = 147 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = DYNAMIC;
+) ENGINE = InnoDB AUTO_INCREMENT = 162 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of ctdonhang
@@ -85,10 +85,9 @@ INSERT INTO `ctdonhang` VALUES (86, 1, 8100000, 5, 50);
 INSERT INTO `ctdonhang` VALUES (87, 2, 10390000, 48, 50);
 INSERT INTO `ctdonhang` VALUES (88, 2, 5421500, 49, 50);
 INSERT INTO `ctdonhang` VALUES (89, 1, 43590000, 47, 50);
-INSERT INTO `ctdonhang` VALUES (143, 2, 5421500, 49, 59);
-INSERT INTO `ctdonhang` VALUES (144, 1, 10390000, 48, 59);
-INSERT INTO `ctdonhang` VALUES (145, 2, 5421500, 49, 60);
-INSERT INTO `ctdonhang` VALUES (146, 1, 10390000, 48, 60);
+INSERT INTO `ctdonhang` VALUES (159, 1, 8100000, 5, 67);
+INSERT INTO `ctdonhang` VALUES (160, 1, 4647000, 49, 68);
+INSERT INTO `ctdonhang` VALUES (161, 1, 10390000, 48, 68);
 
 -- ----------------------------
 -- Table structure for cthoadonnhap
@@ -289,33 +288,33 @@ CREATE TABLE `donhang`  (
   INDEX `DonHang_PhuongThucThanhToan_IDPhuongThuc`(`IDPhuongThuc`) USING BTREE,
   CONSTRAINT `DonHang_NguoiDung_IDNguoiDung` FOREIGN KEY (`IDNguoiDung`) REFERENCES `nguoidung` (`ID`) ON DELETE CASCADE ON UPDATE CASCADE,
   CONSTRAINT `DonHang_PhuongThucThanhToan_IDPhuongThuc` FOREIGN KEY (`IDPhuongThuc`) REFERENCES `phuongthucthanhtoan` (`ID`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE = InnoDB AUTO_INCREMENT = 61 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = DYNAMIC;
+) ENGINE = InnoDB AUTO_INCREMENT = 69 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of donhang
 -- ----------------------------
-INSERT INTO `donhang` VALUES (1, 'Phạm Đức Hoàng', 'Hải Dương', '0906090112', '2023-02-25 15:41:20', 1, 'Gửi hàng nhanh nhá', 1, 1, 1);
-INSERT INTO `donhang` VALUES (2, 'Lê Ngọc Mai', 'Hưng Yên', '0987654321', '2023-01-25 15:41:20', 1, 'Cẩn thận hàng dễ vỡ', 1, 1, 2);
-INSERT INTO `donhang` VALUES (3, 'Phạm Hải Huấn', 'Hưng Yên', '098234567', '2022-12-25 15:41:20', 2, 'Gửi hàng nhanh nhá', 1, 1, 3);
-INSERT INTO `donhang` VALUES (4, 'Trần Mỹ Linh', 'Hà Nội', '093567567', '2022-11-25 15:41:20', 2, 'Cẩn thận hàng dễ vỡ', 1, 2, 4);
-INSERT INTO `donhang` VALUES (5, 'Phạm Đức Duy', 'Bắc Giang', '098765567', '2022-10-25 15:41:20', 1, 'Gửi hàng nhanh nhá', 1, 2, 5);
-INSERT INTO `donhang` VALUES (9, 'Phạm Văn Hoàn', '123 Điện Biên Phủ tp Hải Dương', '0987654321', '2022-09-03 09:51:12', 3, 'Cẩn thận hàng dễ vỡ', 1, 2, 6);
-INSERT INTO `donhang` VALUES (10, 'Lê Ngọc Mai', 'Hưng Yên', '0987654321', '2023-01-03 09:52:40', 1, 'Gửi hàng nhanh nhá', 1, 2, 1);
-INSERT INTO `donhang` VALUES (11, 'Phạm Hải Huấn', 'Hưng Yên', '098234567', '2023-02-05 14:46:10', 2, 'Cẩn thận hàng dễ vỡ', 1, 2, 1);
-INSERT INTO `donhang` VALUES (12, 'Trần Mỹ Linh', 'Hà Nội', '093567567', '2023-03-07 17:59:41', 1, 'Cẩn thận hàng dễ vỡ', 1, 2, 1);
-INSERT INTO `donhang` VALUES (13, 'Phạm Đức Hoàng', 'Hải Dương', '0906090112', '2023-09-20 10:13:56', 3, 'Hàng dễ vỡ', 1, 1, 1);
-INSERT INTO `donhang` VALUES (14, 'Phạm Đức Hoàng', 'Hải Dương', '0906090112', '2023-05-20 10:17:07', 1, 'Gửi hàng nhanh nhá', 1, 1, 1);
-INSERT INTO `donhang` VALUES (15, 'Phạm Đức Hoàng', 'Hải Dương', '0906090112', '2023-06-20 10:19:14', 1, 'Cẩn thận hàng dễ vỡ', 1, 1, 1);
-INSERT INTO `donhang` VALUES (18, 'Phạm Đức Hoàng', 'Hải Dương', '0906090112', '2023-11-20 20:52:47', 1, 'Gửi hàng nhanh nhá', 1, 1, 1);
-INSERT INTO `donhang` VALUES (19, 'Phạm Đức Hoàng', 'Hải Dương', '0906090112', '2023-10-20 20:54:38', 1, 'Cẩn thận hàng dễ vỡ', 1, 1, 1);
-INSERT INTO `donhang` VALUES (20, 'Phạm Đức Hoàng', 'Hải Dương', '0906090112', '2023-12-20 20:56:43', 1, 'Gửi hàng nhanh nhá', 2, 1, 1);
-INSERT INTO `donhang` VALUES (21, 'Phạm Đức Hoàng', 'Hải Dương', '0906090112', '2023-12-20 21:14:10', 1, 'Cẩn thận hàng dễ vỡ', 1, 1, 1);
-INSERT INTO `donhang` VALUES (22, 'Phạm Đức Hoàng', 'Hải Dương', '0906090112', '2023-12-21 08:45:10', 1, 'Gửi hàng nhanh nhá', 1, 1, 1);
-INSERT INTO `donhang` VALUES (23, 'Phạm Đức Hoàng', 'Hải Dương', '0906090112', '2023-12-21 09:41:54', 1, 'Cẩn thận hàng dễ vỡ', 0, 1, 1);
+INSERT INTO `donhang` VALUES (1, 'Phạm Đức Hoàng', 'Hải Dương', '0906090112', '2023-02-25 15:41:20', 1, 'Gửi hàng nhanh nhá', 6, 1, 1);
+INSERT INTO `donhang` VALUES (2, 'Lê Ngọc Mai', 'Hưng Yên', '0987654321', '2023-01-25 15:41:20', 1, 'Cẩn thận hàng dễ vỡ', 6, 1, 2);
+INSERT INTO `donhang` VALUES (3, 'Phạm Hải Huấn', 'Hưng Yên', '098234567', '2022-12-25 15:41:20', 2, 'Gửi hàng nhanh nhá', 6, 1, 3);
+INSERT INTO `donhang` VALUES (4, 'Trần Mỹ Linh', 'Hà Nội', '093567567', '2022-11-25 15:41:20', 2, 'Cẩn thận hàng dễ vỡ', 6, 2, 4);
+INSERT INTO `donhang` VALUES (5, 'Phạm Đức Duy', 'Bắc Giang', '098765567', '2022-10-25 15:41:20', 1, 'Gửi hàng nhanh nhá', 6, 2, 5);
+INSERT INTO `donhang` VALUES (9, 'Phạm Văn Hoàn', '123 Điện Biên Phủ tp Hải Dương', '0987654321', '2022-09-03 09:51:12', 3, 'Cẩn thận hàng dễ vỡ', 6, 2, 6);
+INSERT INTO `donhang` VALUES (10, 'Lê Ngọc Mai', 'Hưng Yên', '0987654321', '2023-01-03 09:52:40', 1, 'Gửi hàng nhanh nhá', 6, 2, 1);
+INSERT INTO `donhang` VALUES (11, 'Phạm Hải Huấn', 'Hưng Yên', '098234567', '2023-02-05 14:46:10', 2, 'Cẩn thận hàng dễ vỡ', 6, 2, 1);
+INSERT INTO `donhang` VALUES (12, 'Trần Mỹ Linh', 'Hà Nội', '093567567', '2023-03-07 17:59:41', 1, 'Cẩn thận hàng dễ vỡ', 6, 2, 1);
+INSERT INTO `donhang` VALUES (13, 'Phạm Đức Hoàng', 'Hải Dương', '0906090112', '2023-09-20 10:13:56', 3, 'Hàng dễ vỡ', 6, 1, 1);
+INSERT INTO `donhang` VALUES (14, 'Phạm Đức Hoàng', 'Hải Dương', '0906090112', '2023-05-20 10:17:07', 1, 'Gửi hàng nhanh nhá', 5, 1, 1);
+INSERT INTO `donhang` VALUES (15, 'Phạm Đức Hoàng', 'Hải Dương', '0906090112', '2023-06-20 10:19:14', 1, 'Cẩn thận hàng dễ vỡ', 3, 1, 1);
+INSERT INTO `donhang` VALUES (18, 'Phạm Đức Hoàng', 'Hải Dương', '0906090112', '2023-11-20 20:52:47', 1, 'Gửi hàng nhanh nhá', 6, 1, 1);
+INSERT INTO `donhang` VALUES (19, 'Phạm Đức Hoàng', 'Hải Dương', '0906090112', '2023-10-20 20:54:38', 1, 'Cẩn thận hàng dễ vỡ', 2, 1, 1);
+INSERT INTO `donhang` VALUES (20, 'Phạm Đức Hoàng', 'Hải Dương', '0906090112', '2023-12-20 20:56:43', 1, 'Gửi hàng nhanh nhá', 6, 1, 1);
+INSERT INTO `donhang` VALUES (21, 'Phạm Đức Hoàng', 'Hải Dương', '0906090112', '2023-12-20 21:14:10', 1, 'Cẩn thận hàng dễ vỡ', 0, 1, 1);
+INSERT INTO `donhang` VALUES (22, 'Phạm Đức Hoàng', 'Hải Dương', '0906090112', '2023-12-21 08:45:10', 1, 'Gửi hàng nhanh nhá', 4, 1, 1);
+INSERT INTO `donhang` VALUES (23, 'Phạm Đức Hoàng', 'Hải Dương', '0906090112', '2023-12-21 09:41:54', 1, 'Cẩn thận hàng dễ vỡ', 3, 1, 1);
 INSERT INTO `donhang` VALUES (49, 'Lê Ngọc Mai', 'Hưng Yên', '0987654321', '2023-12-22 21:08:11', 1, 'Gửi hàng nhanh nhá', 2, 1, 2);
-INSERT INTO `donhang` VALUES (50, 'Lê Ngọc Mai', 'Hưng Yên', '0987654321', '2023-12-22 21:13:08', 1, 'Cẩn thận hàng dễ vỡ', 1, 1, 2);
-INSERT INTO `donhang` VALUES (59, 'Phạm Thanh Dương', 'hải dương', '0987654321', '2024-03-21 13:38:56', 1, '', 0, 1, 9);
-INSERT INTO `donhang` VALUES (60, 'Phạm Thanh Dương', 'hải dương', '0987654321', '2024-03-21 20:32:41', 1, '', 0, 2, 9);
+INSERT INTO `donhang` VALUES (50, 'Lê Ngọc Mai', 'Hưng Yên', '0987654321', '2023-12-22 21:13:08', 1, 'Cẩn thận hàng dễ vỡ', 4, 1, 2);
+INSERT INTO `donhang` VALUES (67, 'Phạm Đức Hoàng', 'Hải Dương', '0906090112', '2024-03-25 21:25:34', 1, '', 5, 2, 1);
+INSERT INTO `donhang` VALUES (68, 'Phạm Đức Hoàng', 'Hải Dương', '0906090112', '2024-03-25 22:08:02', 3, '', 6, 2, 1);
 
 -- ----------------------------
 -- Table structure for giamgia
@@ -329,7 +328,7 @@ CREATE TABLE `giamgia`  (
   `IDSanPham` int NULL DEFAULT NULL,
   PRIMARY KEY (`ID`) USING BTREE,
   CONSTRAINT `GiamGia_SanPham_IDSanPham` FOREIGN KEY (`ID`) REFERENCES `sanpham` (`ID`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE = InnoDB AUTO_INCREMENT = 26 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = DYNAMIC;
+) ENGINE = InnoDB AUTO_INCREMENT = 27 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of giamgia
@@ -344,7 +343,7 @@ INSERT INTO `giamgia` VALUES (7, 71, '2023-03-09 00:00:00', '2025-01-01 00:00:00
 INSERT INTO `giamgia` VALUES (8, 35, '2023-01-01 00:00:00', '2025-01-01 00:00:00', 15);
 INSERT INTO `giamgia` VALUES (9, 10, '2023-01-01 00:00:00', '2025-01-01 00:00:00', 22);
 INSERT INTO `giamgia` VALUES (10, 30, '2023-01-01 00:00:00', '2025-01-01 00:00:00', 39);
-INSERT INTO `giamgia` VALUES (11, 65, '2023-01-01 00:00:00', '2025-01-01 00:00:00', 49);
+INSERT INTO `giamgia` VALUES (11, 70, '2023-01-01 00:00:00', '2025-01-01 00:00:00', 49);
 
 -- ----------------------------
 -- Table structure for giasanpham
@@ -1479,24 +1478,28 @@ DROP PROCEDURE IF EXISTS `sp_donhang_getall_desc`;
 delimiter ;;
 CREATE PROCEDURE `sp_donhang_getall_desc`(IN p_pageindex INT,
     IN p_pagesize INT,
-		IN p_trangthai INT)
+    IN p_id INT,
+    IN p_trangthai INT)
 BEGIN
-		DECLARE start_index INT;
+    DECLARE start_index INT;
     DECLARE total_count INT;
     
     SET start_index = (p_pageindex - 1) * p_pagesize;
-		
-		SELECT COUNT(*) INTO total_count FROM donhang;
-		
-		SELECT d.*, p.ten AS TenPhuongThuc, n.taikhoan AS TaiKhoan, CAST(SUM(c.gia * c.soluong) AS SIGNED) AS TongTien, total_count AS TotalCount
-		FROM donhang d
-		INNER JOIN phuongthucthanhtoan p ON d.idphuongthuc = p.id
-		INNER JOIN ctdonhang c ON d.ID = c.IDDonHang
-		INNER JOIN nguoidung n ON d.idnguoidung = n.id
-		WHERE IFNULL(p_trangthai, d.trangthai) = d.trangthai 
-		GROUP BY d.ID
-		ORDER BY d.ngaydat DESC
-		LIMIT start_index, p_pagesize;
+    
+    SELECT COUNT(*) INTO total_count 
+    FROM donhang 
+    WHERE IFNULL(p_trangthai, trangthai) = trangthai AND IFNULL(p_id, id) = id;
+    
+    SELECT d.*, p.ten AS TenPhuongThuc, n.taikhoan AS TaiKhoan, CAST(SUM(c.gia * c.soluong) AS SIGNED) AS TongTien, total_count AS TotalCount
+    FROM donhang d
+    INNER JOIN phuongthucthanhtoan p ON d.idphuongthuc = p.id
+    INNER JOIN ctdonhang c ON d.ID = c.IDDonHang
+    INNER JOIN nguoidung n ON d.idnguoidung = n.id
+    WHERE IFNULL(p_trangthai, d.trangthai) = d.trangthai 
+    AND IFNULL(p_id, d.id) = d.id
+    GROUP BY d.ID
+    ORDER BY d.ngaydat DESC
+    LIMIT start_index, p_pagesize;
 END
 ;;
 delimiter ;
@@ -2955,7 +2958,7 @@ BEGIN
 		INNER JOIN donhang dh ON c.iddonhang = dh.id 
 		LEFT JOIN giamgia k ON s.id = k.idsanpham
 		LEFT JOIN ctkho ct ON s.id = ct.idsanpham
-		WHERE (CURDATE() BETWEEN g.NgayBatDau AND g.NgayKetThuc) AND dh.trangthai = 1 AND dh.ngaydat >= CURDATE() - INTERVAL 30 DAY
+		WHERE (CURDATE() BETWEEN g.NgayBatDau AND g.NgayKetThuc) AND dh.trangthai = 6 AND dh.ngaydat >= CURDATE() - INTERVAL 30 DAY
 		GROUP BY s.id, s.ten, s.anh, s.trangthai, g.gia, k.phantram, GiaGiamGia
 		ORDER BY SUM(c.soluong) DESC, dh.ngaydat DESC
 		LIMIT p_sl;
@@ -3357,7 +3360,7 @@ BEGIN
 		FROM sanpham s 
 		INNER JOIN ctdonhang c ON s.id = c.idsanpham
 		INNER JOIN donhang d ON c.iddonhang = d.id
-		WHERE d.TrangThai = 1
+		WHERE d.TrangThai = 6
 		GROUP BY s.id, s.ten, s.anh
 		LIMIT p_sl;
 END
@@ -3375,7 +3378,7 @@ BEGIN
 					 SUM(c.soluong * c.gia) AS DoanhThuTheoThang
     FROM donhang d 
     INNER JOIN ctdonhang c ON d.id = c.iddonhang
-    WHERE d.trangthai = 1
+    WHERE d.trangthai = 6
     GROUP BY ThoiGian
     ORDER BY YEAR(d.ngaydat) ASC, MONTH(d.ngaydat) ASC
 		LIMIT p_sl;
@@ -3395,7 +3398,7 @@ BEGIN
 		INNER JOIN ctdonhang c ON s.id = c.idsanpham
 		INNER JOIN donhang d ON c.iddonhang = d.id
 		INNER JOIN loaisanpham l ON l.id = s.idloai
-		WHERE d.trangthai = 1
+		WHERE d.trangthai = 6
 		GROUP BY l.ten
 		LIMIT p_sl;
 END

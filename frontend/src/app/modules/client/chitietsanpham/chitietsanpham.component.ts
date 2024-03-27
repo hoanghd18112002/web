@@ -23,7 +23,7 @@ export class ChitietsanphamComponent implements OnInit {
   
   IdLoai: any;
   SoLuongMua: number = 1;
-
+  id: any;
   sanpham: SanPham = new SanPham();
 
   constructor(
@@ -38,7 +38,6 @@ export class ChitietsanphamComponent implements OnInit {
 
   ngOnInit(){
     this.getbyid();
-    this.getsanphamtuongtu(1);
     this.getsanphamngaunhien();
     this.getloaisanpham();
     this.getnhasanxuat();
@@ -57,16 +56,16 @@ export class ChitietsanphamComponent implements OnInit {
   //Lấy sản phẩm theo id
   getbyid() {
     this._route.params.subscribe(params => {
-      const id = params['id'];
-      this.sanPhamService.getbyid(id).subscribe(res => {
+      this.id = params['id'];
+      this.sanPhamService.getbyid(this.id).subscribe(res => {
         this.sanpham = res.data;
-        this.getsanphamtuongtu(this.sanpham.idLoai)
+        this.getsanphamtuongtu()
       });
     });
   }
   
   //Lấy sản phẩm sản phẩm tương tự
-  getsanphamtuongtu(idLoai: number) {
+  getsanphamtuongtu() {
     const SanPham = {
       page: 1,
       pageSize: 8,
@@ -77,24 +76,22 @@ export class ChitietsanphamComponent implements OnInit {
       minGia: null,
       maxGia: null,
       idNhaSanXuat: null,
-      idLoai: idLoai,
+      idLoai: this.sanpham.idLoai,
     };
     this.sanPhamService.search(SanPham).subscribe(res => {
-      if (Array.isArray(res.data) && res.data.length > 0) {
-        this.ListSanPhamTuongTu = res.data.filter((item: any) => item.ID !== this.sanpham.id).slice(0, 8);
-      }
+      this.ListSanPhamTuongTu = res.data.filter((item: any) => item.ID !== this.sanpham.id).slice(0, 8);
     });    
   }
 
   //Lấy thông số theo sản phẩm
   getbysanpham() {
-  this._route.params.subscribe((params) => {
-    var id = params['id'];
-    this.thongSoService.getbysanpham(id).subscribe(res => {
-      this.ListThongSo = res.data;
+    this._route.params.subscribe((params) => {
+      var id = params['id'];
+      this.thongSoService.getbysanpham(id).subscribe(res => {
+        this.ListThongSo = res.data;
+      });
     });
-  });
-}
+  }
 
   //Tìm kiếm theo nhà sản xuất
   searchNhaSanXuat(idNhaSanXuat: number) {
