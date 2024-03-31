@@ -269,7 +269,7 @@ const routes: Routes = [
       {
         path: 'camon',
         component: CamonComponent,
-        title: 'Cảm ơn đã xử dụng dịch vụ - Cửa hàng điện máy'
+        title: 'Cảm ơn - Cửa hàng điện máy'
       },
     ]
   },

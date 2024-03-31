@@ -14,6 +14,10 @@ export class MainComponent {
   ThongKeDoanhThuSanPham: ThongKeDoanhThuSanPham[] = [];
   ThongKeDoanhThuLoaiSanPham: ThongKeDoanhThuLoaiSanPham[] = []
 
+  soThang: number = 12;
+  soLoaiSanPham: number = 5;
+  soSanPham: number = 5;
+
   chart: any;
   chart1: any;
   chart2: any;
@@ -30,7 +34,7 @@ export class MainComponent {
 
   //Lấy danh sách toàn bộ doanh thu theo tháng
   LoadDoanhThuTheoThang(){
-    this.thongKeService.getdoanhthutheothang(12).subscribe(res => {
+    this.thongKeService.getdoanhthutheothang(this.soThang).subscribe(res => {
       this.ThongKeDoanhThu = res.data;
 
       const thoiGian = this.ThongKeDoanhThu.map(item => item.thoiGian);
@@ -47,6 +51,10 @@ export class MainComponent {
         }]
       };
 
+      if (this.chart) {
+        this.chart.destroy();
+      }
+
       this.chart = new Chart("chart", {
         type: 'bar',
         data: data
@@ -56,7 +64,7 @@ export class MainComponent {
 
   //Lấy danh sách loại sản phẩm bán chạy nhất
   LoadDoanhThuLoaiSanPham(){
-    this.thongKeService.getloaisanphambanchay(5).subscribe(res => {
+    this.thongKeService.getloaisanphambanchay(this.soLoaiSanPham).subscribe(res => {
       this.ThongKeDoanhThuLoaiSanPham = res.data;
 
       const loaisanpham = this.ThongKeDoanhThuLoaiSanPham.map(item => item.tenLoai);
@@ -83,6 +91,10 @@ export class MainComponent {
         }]
       };
 
+      if (this.chart1) {
+        this.chart1.destroy();
+      }
+
       this.chart1 = new Chart("chart1", {
         type: 'doughnut',
         data: data
@@ -92,7 +104,7 @@ export class MainComponent {
 
   //Lấy danh sách sản phẩm bán chạy nhất
   LoadDoanhThuSanPham() {
-    this.thongKeService.getdoanhthusanpham(5).subscribe(res => {
+    this.thongKeService.getdoanhthusanpham(this.soSanPham).subscribe(res => {
       this.ThongKeDoanhThuSanPham = res.data;
 
       const ten = this.ThongKeDoanhThuSanPham.map(item => item.ten);
@@ -119,10 +131,14 @@ export class MainComponent {
         }]
       };
 
+      if (this.chart2) {
+        this.chart2.destroy();
+      }
+
       this.chart2 = new Chart("chart2", {
         type: 'polarArea',
         data: data,
-        options: {} // Adjust options if needed
+        options: {}
       });
     });
   } 

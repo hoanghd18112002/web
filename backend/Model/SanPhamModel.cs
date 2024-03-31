@@ -12,14 +12,14 @@ namespace Model
         public int ID { get; set; }
         public string? Ten { get; set; }
         public string? MoTa { get; set; }
+        public int? SoLuong { get; set; }
         public string? Anh { get; set; }
         public DateTime? NgayTao { get; set; }
-        public int TrangThai { get; set; }
-        public int IDNhaSanXuat { get; set; }
-        public int IDLoai { get; set; }
+        public int? TrangThai { get; set; }
+        public int? IDNhaSanXuat { get; set; }
+        public int? IDLoai { get; set; }
         public int? Gia { get; set; }
         public int? PhanTram { get; set; }
-        public int? SoLuong { get; set; }
         public int? GiaGiamGia { get; set; }
         public string? TenNhaSanXuat { get; set; }
         public string? TenLoai { get; set; }

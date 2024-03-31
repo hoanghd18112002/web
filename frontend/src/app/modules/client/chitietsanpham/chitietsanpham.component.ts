@@ -8,6 +8,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { ThongSo } from 'src/app/models/thongso.model';
 import { CartService } from 'src/app/service/cart.service';
 import { ThongSoService } from 'src/app/service/thongso.service';
+import swal from 'sweetalert2';
 
 @Component({
   selector: 'app-chitietsanpham',
@@ -46,11 +47,7 @@ export class ChitietsanphamComponent implements OnInit {
 
   //Thêm vào giỏ hàng
   addToCart(id: number, soluong: number) {
-    if (this.sanpham.soLuong === null) {
-      alert('Sản phẩm đã hết hàng, mời bạn mua sản phẩm khác');
-    } else {
-      this.cartService.addToCart(id, soluong);
-    }
+    this.cartService.addToCart(id, soluong);
   }
   
   //Lấy sản phẩm theo id

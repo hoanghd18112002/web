@@ -13,45 +13,53 @@ export class CartService {
         private sanPhamService: SanPhamService,
     ) {}
 
-    //Thêm vào giỏ hàng
     addToCart(id: number, soluong: number) {
         this.sanPhamService.getbyid(id).subscribe(res => {
-            const sanpham = {
-                id: res.data.id,
-                ten: res.data.ten,
-                anh: res.data.anh,
-                soluong: soluong,
-                gia: res.data.gia,
-            };
 
-            //Kiểm tra có giảm giá không
-            if(res.data.phanTram != null){
-                sanpham.gia = res.data.giaGiamGia;
-            }
-        
-            let cart: any[] = JSON.parse(localStorage.getItem('cart') || '[]');
-            
-            const check = cart.find((item: any) => item.id === sanpham.id);
-        
-            //Đã tồn tại thì + soluong, chưa thì thêm mới
-            if (check) {
-                check.soluong += soluong;
+            if (soluong > res.data.soLuong) {
+                swal.fire({
+                    icon: 'error',
+                    title: 'Sản phẩm đã hết hàng',
+                    text: 'Mời bạn mua sản phẩm khác',
+                });
             } else {
-                cart.push({ ...sanpham });
+                const sanpham = {
+                    id: res.data.id,
+                    ten: res.data.ten,
+                    anh: res.data.anh,
+                    soluong: soluong,
+                    gia: res.data.gia,
+                };
+    
+                // Kiểm tra có giảm giá không
+                if (res.data.phanTram != null) {
+                    sanpham.gia = res.data.giaGiamGia;
+                }
+            
+                let cart: any[] = JSON.parse(localStorage.getItem('cart') || '[]');
+                
+                const check = cart.find((item: any) => item.id === sanpham.id);
+            
+                // Đã tồn tại thì + soluong, chưa thì thêm mới
+                if (check) {
+                    check.soluong += soluong;
+                } else {
+                    cart.push({ ...sanpham });
+                }
+            
+                localStorage.setItem('cart', JSON.stringify(cart));
+    
+                swal.fire({
+                    icon: 'success',
+                    title: 'Đã thêm vào giỏ hàng!',
+                    showConfirmButton: true,
+                    timer: 1500
+                });
+    
+                this.cartUpdated.next();
             }
-        
-            localStorage.setItem('cart', JSON.stringify(cart));
-
-            swal.fire({
-                icon: 'success',
-                title: 'Đã thêm vào giỏ hàng!',
-                showConfirmButton: true,
-                timer: 1500
-            });
-
-            this.cartUpdated.next();
         });
-    }
+    }    
 
     // Load giỏ hàng header
     loadGioHang() {

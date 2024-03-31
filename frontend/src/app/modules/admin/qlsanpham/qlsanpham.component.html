@@ -36,6 +36,7 @@
                                             <th>Tên nhà sản xuất</th>
                                             <th>Tên loại</th>
                                             <th>Giá</th>
+                                            <th>Số lượng</th>
                                             <th>Trạng thái</th>
                                         </tr>
                                     </thead>
@@ -49,6 +50,7 @@
                                             <td>{{ sp.tenNhaSanXuat }}</td> 
                                             <td>{{ sp.tenLoai }}</td> 
                                             <td>{{ sp.gia | number:'1.0-0' }} đ</td> 
+                                            <td>{{ sp.soLuong }}</td> 
                                             <td> 
                                                 <span *ngIf="sp.trangThai === 1" class="badge badge-success">Hoạt động</span> 
                                                 <span *ngIf="sp.trangThai === 0" class="badge badge-danger">Khoá</span> 

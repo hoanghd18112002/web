@@ -19,9 +19,11 @@ export class CamonComponent {
   ) {}
 
   ngOnInit() {
+    //Lấy params trên url lưu vào biến params
     this.route.queryParams.subscribe(params => {
+      //xoá params hiển thị trên url
       this.router.navigate([], { queryParams: {} });
-      console.log(params);
+      //Gọi callback truyền params
       this.callback(params);
     });
   }

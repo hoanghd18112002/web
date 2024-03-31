@@ -6,6 +6,7 @@ import { AuthService } from 'src/app/service/auth.service';
 import swal from 'sweetalert2';
 import { VnPayService } from 'src/app/service/vnpay.service';
 import { PaymentInformation } from 'src/app/models/vnpayment.model';
+import { SanPhamService } from 'src/app/service/sanpham.service';
 
 @Component({
   selector: 'app-thanhtoan',
@@ -33,6 +34,7 @@ export class ThanhtoanComponent {
     private donHangService: DonHangService,
     private authService: AuthService,
     private vnPayService: VnPayService,
+    private sanPhamService: SanPhamService,
   ) {}
 
   ngOnInit(){
@@ -65,17 +67,7 @@ export class ThanhtoanComponent {
             cancelButtonText: 'Hủy'
         }).then((result) => {
             if (result.isConfirmed) {
-                // Thực hiện tạo đơn hàng và xóa giỏ hàng khi người dùng xác nhận thanh toán
                 this.createDonHang();
-                // Thông báo thanh toán thành công
-                swal.fire({
-                    icon: 'success',
-                    title: 'Thành công!',
-                    text: 'Thanh toán thành công! Cảm ơn bạn đã sử dụng dịch vụ.'
-                }).then(() => {
-                    // Chuyển hướng người dùng đến trang chủ sau khi thanh toán thành công
-                    location.assign('/');
-                });
             }
         });
     }
@@ -83,35 +75,59 @@ export class ThanhtoanComponent {
 
   //Thêm đơn hàng
   createDonHang(){
-    const donhang: any = {
-      ten: this.user.ten,
-      diaChi: this.user.diaChi,
-      sdt: this.user.sdt,
-      kieuGiaoHang: Number(this.loaiShip),
-      ghiChu: this.GhiChu,
-      trangThai: 0,
-      idPhuongThuc: this.loaiThanhToan,
-      idNguoiDung: this.user.id,
-    }
-    this.donHangService.createDonHang(donhang).subscribe(res => {
-      this.donHangService.getnew().subscribe(res => {
-        const id = res.data.id
-        for(let i = 0; i < this.ListGioHang.length; i++)
-        {
-          const ctdonhang: any = {
-            soLuong: this.ListGioHang[i].soluong,
-            gia: this.ListGioHang[i].gia,
-            idSanPham: this.ListGioHang[i].id,
-            idDonHang: id,
+    this.ListGioHang.filter((item: any) => {
+      this.sanPhamService.getbyid(item.id).subscribe(res => { 
+        if(item.soluong > res.data.soLuong){
+          swal.fire({
+            icon: 'error',
+            title: 'Cảnh báo',
+            text: 'Một số sản phẩm trong giỏ hàng không có đủ số lượng. Vui lòng kiểm tra lại giỏ hàng của bạn.'
+          });
+        }
+        else {
+          const donhang: any = {
+            ten: this.user.ten,
+            diaChi: this.user.diaChi,
+            sdt: this.user.sdt,
+            kieuGiaoHang: Number(this.loaiShip),
+            ghiChu: this.GhiChu,
+            trangThai: 0,
+            idPhuongThuc: this.loaiThanhToan,
+            idNguoiDung: this.user.id,
           }
-          this.donHangService.createCTDonHang(ctdonhang).subscribe(res => {});
+          
+          if (this.loaiThanhToan === 2) { donhang.trangThai = 3}
+      
+          this.donHangService.createDonHang(donhang).subscribe(res => {
+            this.donHangService.getnew().subscribe(res => {
+              const id = res.data.id
+              for(let i = 0; i < this.ListGioHang.length; i++)
+              {
+                const ctdonhang: any = {
+                  soLuong: this.ListGioHang[i].soluong,
+                  gia: this.ListGioHang[i].gia,
+                  idSanPham: this.ListGioHang[i].id,
+                  idDonHang: id,
+                }
+                this.giamSoLuong(this.ListGioHang[i].id, this.ListGioHang[i].soluong);
+                this.donHangService.createCTDonHang(ctdonhang).subscribe(res => {});
+              }
+              if (this.loaiThanhToan === 2) {
+                this.vnPay(id);
+              }
+            });
+          });
+          localStorage.removeItem('cart');
+          swal.fire({
+            icon: 'success',
+            title: 'Thành công!',
+            text: 'Thanh toán thành công! Cảm ơn bạn đã sử dụng dịch vụ.'
+          }).then(() => {
+              location.assign('/');
+          });
         }
-        if (this.loaiThanhToan === 2) {
-          this.vnPay(id);
-        }
-      });
+      })
     });
-    localStorage.removeItem('cart');
   }
 
   //Thanh toán online
@@ -137,6 +153,16 @@ export class ThanhtoanComponent {
       });
       }
     });
+  }
+
+  giamSoLuong(id: number, soluong: number){
+    this.sanPhamService.getbyid(id).subscribe(res => { 
+      const formData = new FormData();
+      formData.append('id', id.toString());
+      formData.append('soLuong', (res.data.soLuong - soluong).toString());
+      
+      this.sanPhamService.update(formData).subscribe(res => {})
+    })
   }
 
   //Đồng ý với các điều khoản

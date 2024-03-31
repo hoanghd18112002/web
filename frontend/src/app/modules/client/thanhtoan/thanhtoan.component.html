@@ -88,7 +88,7 @@
                                     </thead>
                                     <tbody *ngFor="let gh of ListGioHang">
                                         <tr>
-                                            <td><a routerLink="#">{{ gh.ten }} <strong> × {{ gh.soluong }}</strong></a></td>
+                                            <td><a routerLink="/chitietsanpham/{{ gh.id }}">{{ gh.ten }} <strong> × {{ gh.soluong }}</strong></a></td>
                                             <td>{{ gh.gia * gh.soluong | number:'1.0-0' }} đ</td>
                                         </tr>
                                     </tbody>

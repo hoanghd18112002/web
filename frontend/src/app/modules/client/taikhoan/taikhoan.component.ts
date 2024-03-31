@@ -5,6 +5,7 @@ import { PaymentInformation } from 'src/app/models/vnpayment.model';
 import { AuthService } from 'src/app/service/auth.service';
 import { DonHangService } from 'src/app/service/donhang.service';
 import { NguoiDungService } from 'src/app/service/nguoidung.service';
+import { SanPhamService } from 'src/app/service/sanpham.service';
 import { VnPayService } from 'src/app/service/vnpay.service';
 import swal from 'sweetalert2';
 
@@ -58,7 +59,8 @@ export class TaikhoanComponent {
     private donHangService: DonHangService, 
     private authService: AuthService, 
     private nguoiDungService: NguoiDungService,
-    private vnPayService: VnPayService
+    private vnPayService: VnPayService,
+    private sanPhamService: SanPhamService
   ) {}
 
   ngOnInit(){
@@ -180,25 +182,38 @@ export class TaikhoanComponent {
     };
 
     this.donHangService.update(donhang).subscribe(res => {
-        this.loadUser();
-        
-        // Hiển thị thông báo thành công bằng SweetAlert2
-        swal.fire({
-            icon: 'success',
-            title: 'Huỷ thành công',
-            text: res.message
-        });
-  
-        // Đóng modal khi tạo thành công
-        const updateModal = this.updateModal.nativeElement;
-        updateModal.classList.remove('show');
-        updateModal.style.display = 'none';
-        document.body.classList.remove('modal-open');
-        const modalBackdrop = document.getElementsByClassName('modal-backdrop');
-        for (let i = 0; i < modalBackdrop.length; i++) {
-            modalBackdrop[i].remove();
-        }
+      for(var i = 0; i < this.ListCTDonHang.length; i++){
+        this.giamSoLuong(this.ListCTDonHang[i].id, this.ListCTDonHang[i].soLuong) ;
+      }
+      this.loadUser();
+      
+      // Hiển thị thông báo thành công bằng SweetAlert2
+      swal.fire({
+          icon: 'success',
+          title: 'Huỷ thành công',
+          text: res.message
+      });
+
+      // Đóng modal khi tạo thành công
+      const updateModal = this.updateModal.nativeElement;
+      updateModal.classList.remove('show');
+      updateModal.style.display = 'none';
+      document.body.classList.remove('modal-open');
+      const modalBackdrop = document.getElementsByClassName('modal-backdrop');
+      for (let i = 0; i < modalBackdrop.length; i++) {
+          modalBackdrop[i].remove();
+      }
     });
+  }
+
+  giamSoLuong(id: number, soluong: number){
+    this.sanPhamService.getbyid(id).subscribe(res => { 
+      const formData = new FormData();
+      formData.append('id', id.toString());
+      formData.append('soLuong', (res.data.soLuong + soluong).toString());
+      
+      this.sanPhamService.update(formData).subscribe(res => {})
+    })
   }
 
   //Thanh toán online

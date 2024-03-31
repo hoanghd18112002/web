@@ -2,6 +2,7 @@ import { Component, ElementRef, ViewChild  } from '@angular/core';
 import { CTDonHang } from 'src/app/models/ctdonhang.model';
 import { DonHang } from 'src/app/models/donhang.model';
 import { DonHangService } from 'src/app/service/donhang.service';
+import { SanPhamService } from 'src/app/service/sanpham.service';
 import swal from 'sweetalert2';
 
 @Component({
@@ -38,7 +39,10 @@ export class QldonhangComponent {
   @ViewChild('updateModal') updateModal!: ElementRef;
   @ViewChild('deleteModal') deleteModal!: ElementRef;
 
-  constructor(private donHangService: DonHangService){}
+  constructor(
+    private donHangService: DonHangService,
+    private sanPhamService: SanPhamService,
+  ){}
 
   ngOnInit(){
     this.getall();
@@ -98,7 +102,13 @@ export class QldonhangComponent {
           showConfirmButton: true,
           timer: 1500
         });(res.message);
-    
+        
+        if(trangThai === 2){
+          for(var i = 0; i < this.ListCTDonHang.length; i++){
+            this.giamSoLuong(this.ListCTDonHang[i].id, this.ListCTDonHang[i].soLuong) ;
+          }
+        }
+
         // Đóng modal khi tạo thành công
         const updateModal = this.updateModal.nativeElement;
         updateModal.classList.remove('show');
@@ -110,6 +120,16 @@ export class QldonhangComponent {
         }
       });
     }
+  }
+
+  giamSoLuong(id: number, soluong: number){
+    this.sanPhamService.getbyid(id).subscribe(res => { 
+      const formData = new FormData();
+      formData.append('id', id.toString());
+      formData.append('soLuong', (res.data.soLuong + soluong).toString());
+      
+      this.sanPhamService.update(formData).subscribe(res => {})
+    })
   }
 
   exportToExcel() {

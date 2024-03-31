@@ -38,8 +38,8 @@
                                 <h3><a routerLink="/chitietsanpham/{{ sanpham.id }}">{{ sanpham.ten }}</a></h3>
                                 <div class="availability mt-10">
                                     <h5>Số lượng trong kho:</h5>
-                                    <span *ngIf="sanpham.soLuong !== null">{{ sanpham.soLuong }} sản phẩm</span>
-                                    <span *ngIf="sanpham.soLuong === null">0 sản phẩm</span>
+                                    <span *ngIf="sanpham.soLuong !== 0">{{ sanpham.soLuong }} sản phẩm</span>
+                                    <span *ngIf="sanpham.soLuong === 0" class="text-danger">Hết hàng</span>
                                 </div>
                                 <div class="pricebox">
                                     <ng-container *ngIf="sanpham.phanTram === null || sanpham.phanTram === undefined">

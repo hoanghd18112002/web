@@ -186,6 +186,7 @@ namespace DAL
                     "@p_id", model.ID,
                     "@p_ten", model.Ten,
                     "@p_mota", model.MoTa,
+                    "@p_soluong", model.SoLuong,
                     "@p_anh", model.Anh,
                     "@p_trangthai", model.TrangThai,
                     "@p_idnhasanxuat", model.IDNhaSanXuat,
