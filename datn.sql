@@ -11,7 +11,7 @@
  Target Server Version : 100427
  File Encoding         : 65001
 
- Date: 27/03/2024 16:41:23
+ Date: 02/04/2024 23:28:06
 */
 
 SET NAMES utf8mb4;
@@ -32,7 +32,7 @@ CREATE TABLE `ctdonhang`  (
   INDEX `CTDonHang_DonHang_IDDonHang`(`IDDonHang`) USING BTREE,
   CONSTRAINT `CTDonHang_DonHang_IDDonHang` FOREIGN KEY (`IDDonHang`) REFERENCES `donhang` (`ID`) ON DELETE CASCADE ON UPDATE CASCADE,
   CONSTRAINT `CTDonHang_SanPham_IDSanPham` FOREIGN KEY (`IDSanPham`) REFERENCES `sanpham` (`ID`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE = InnoDB AUTO_INCREMENT = 162 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = DYNAMIC;
+) ENGINE = InnoDB AUTO_INCREMENT = 212 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of ctdonhang
@@ -104,7 +104,7 @@ CREATE TABLE `cthoadonnhap`  (
   INDEX `CTHoaDonNhap_HoaDonNhap_IDHoaDonNhap`(`IDHoaDonNhap`) USING BTREE,
   CONSTRAINT `CTHoaDonNhap_HoaDonNhap_IDHoaDonNhap` FOREIGN KEY (`IDHoaDonNhap`) REFERENCES `hoadonnhap` (`ID`) ON DELETE CASCADE ON UPDATE CASCADE,
   CONSTRAINT `CTHoaDonNhap_SanPham_IDSanPham` FOREIGN KEY (`IDSanPham`) REFERENCES `sanpham` (`ID`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE = InnoDB AUTO_INCREMENT = 22 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = DYNAMIC;
+) ENGINE = InnoDB AUTO_INCREMENT = 30 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of cthoadonnhap
@@ -124,86 +124,6 @@ INSERT INTO `cthoadonnhap` VALUES (15, 50, 90000000, 50, 18);
 INSERT INTO `cthoadonnhap` VALUES (16, 71, 78000000, 46, 18);
 
 -- ----------------------------
--- Table structure for ctkho
--- ----------------------------
-DROP TABLE IF EXISTS `ctkho`;
-CREATE TABLE `ctkho`  (
-  `ID` int NOT NULL AUTO_INCREMENT,
-  `SoLuong` int NULL DEFAULT NULL,
-  `IDSanPham` int NULL DEFAULT NULL,
-  `IDKho` int NULL DEFAULT NULL,
-  PRIMARY KEY (`ID`) USING BTREE,
-  INDEX `CTKho_SanPham_IDSanPham`(`IDSanPham`) USING BTREE,
-  INDEX `CTKho_Kho_IDKho`(`IDKho`) USING BTREE,
-  CONSTRAINT `CTKho_Kho_IDKho` FOREIGN KEY (`IDKho`) REFERENCES `kho` (`ID`) ON DELETE CASCADE ON UPDATE CASCADE,
-  CONSTRAINT `CTKho_SanPham_IDSanPham` FOREIGN KEY (`IDSanPham`) REFERENCES `sanpham` (`ID`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE = InnoDB AUTO_INCREMENT = 66 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = DYNAMIC;
-
--- ----------------------------
--- Records of ctkho
--- ----------------------------
-INSERT INTO `ctkho` VALUES (1, 50, 1, 1);
-INSERT INTO `ctkho` VALUES (2, 67, 2, 1);
-INSERT INTO `ctkho` VALUES (3, 55, 3, 1);
-INSERT INTO `ctkho` VALUES (4, 100, 4, 1);
-INSERT INTO `ctkho` VALUES (5, 120, 5, 2);
-INSERT INTO `ctkho` VALUES (6, 78, 6, 2);
-INSERT INTO `ctkho` VALUES (7, 95, 7, 2);
-INSERT INTO `ctkho` VALUES (8, 70, 8, 3);
-INSERT INTO `ctkho` VALUES (9, 50, 9, 3);
-INSERT INTO `ctkho` VALUES (10, 40, 10, 3);
-INSERT INTO `ctkho` VALUES (11, 40, 1, 2);
-INSERT INTO `ctkho` VALUES (12, 40, 11, 2);
-INSERT INTO `ctkho` VALUES (13, 40, 12, 2);
-INSERT INTO `ctkho` VALUES (14, 50, 13, 1);
-INSERT INTO `ctkho` VALUES (16, 45, 14, 2);
-INSERT INTO `ctkho` VALUES (17, 64, 15, 3);
-INSERT INTO `ctkho` VALUES (18, 75, 16, 4);
-INSERT INTO `ctkho` VALUES (19, 46, 17, 5);
-INSERT INTO `ctkho` VALUES (20, 35, 18, 1);
-INSERT INTO `ctkho` VALUES (21, 47, 19, 2);
-INSERT INTO `ctkho` VALUES (22, 28, 20, 3);
-INSERT INTO `ctkho` VALUES (23, 46, 21, 5);
-INSERT INTO `ctkho` VALUES (24, 28, 22, 5);
-INSERT INTO `ctkho` VALUES (25, 57, 24, 3);
-INSERT INTO `ctkho` VALUES (26, 50, 25, 4);
-INSERT INTO `ctkho` VALUES (27, 57, 25, 1);
-INSERT INTO `ctkho` VALUES (28, 29, 26, 2);
-INSERT INTO `ctkho` VALUES (29, 57, 27, 3);
-INSERT INTO `ctkho` VALUES (30, 39, 28, 4);
-INSERT INTO `ctkho` VALUES (31, 55, 30, 4);
-INSERT INTO `ctkho` VALUES (32, 29, 32, 3);
-INSERT INTO `ctkho` VALUES (33, 48, 33, 5);
-INSERT INTO `ctkho` VALUES (34, 49, 34, 5);
-INSERT INTO `ctkho` VALUES (35, 38, 35, 5);
-INSERT INTO `ctkho` VALUES (36, 37, 35, 1);
-INSERT INTO `ctkho` VALUES (37, 54, 36, 2);
-INSERT INTO `ctkho` VALUES (38, 35, 37, 3);
-INSERT INTO `ctkho` VALUES (39, 36, 38, 4);
-INSERT INTO `ctkho` VALUES (40, 46, 40, 5);
-INSERT INTO `ctkho` VALUES (41, 27, 41, 3);
-INSERT INTO `ctkho` VALUES (42, 47, 42, 4);
-INSERT INTO `ctkho` VALUES (43, 53, 43, 4);
-INSERT INTO `ctkho` VALUES (44, 64, 44, 5);
-INSERT INTO `ctkho` VALUES (45, 35, 45, 1);
-INSERT INTO `ctkho` VALUES (46, 46, 46, 5);
-INSERT INTO `ctkho` VALUES (47, 42, 47, 4);
-INSERT INTO `ctkho` VALUES (48, 47, 48, 3);
-INSERT INTO `ctkho` VALUES (49, 37, 49, 4);
-INSERT INTO `ctkho` VALUES (50, 74, 50, 2);
-INSERT INTO `ctkho` VALUES (51, 46, 51, 4);
-INSERT INTO `ctkho` VALUES (52, 66, 29, 1);
-INSERT INTO `ctkho` VALUES (53, 35, 31, 2);
-INSERT INTO `ctkho` VALUES (54, 47, 39, 3);
-INSERT INTO `ctkho` VALUES (55, 50, 50, 5);
-INSERT INTO `ctkho` VALUES (56, 71, 46, 5);
-INSERT INTO `ctkho` VALUES (61, 111, 50, 5);
-INSERT INTO `ctkho` VALUES (62, 111, 44, 5);
-INSERT INTO `ctkho` VALUES (63, 123, 50, 5);
-INSERT INTO `ctkho` VALUES (64, 123, 51, 5);
-INSERT INTO `ctkho` VALUES (65, 444, 50, 5);
-
--- ----------------------------
 -- Table structure for dieukhoan
 -- ----------------------------
 DROP TABLE IF EXISTS `dieukhoan`;
@@ -213,7 +133,7 @@ CREATE TABLE `dieukhoan`  (
   `Kieu` int NULL DEFAULT NULL,
   `TrangThai` int NULL DEFAULT NULL,
   PRIMARY KEY (`ID`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 53 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = DYNAMIC;
+) ENGINE = InnoDB AUTO_INCREMENT = 54 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of dieukhoan
@@ -286,35 +206,35 @@ CREATE TABLE `donhang`  (
   PRIMARY KEY (`ID`) USING BTREE,
   INDEX `DonHang_NguoiDung_IDNguoiDung`(`IDNguoiDung`) USING BTREE,
   INDEX `DonHang_PhuongThucThanhToan_IDPhuongThuc`(`IDPhuongThuc`) USING BTREE,
-  CONSTRAINT `DonHang_NguoiDung_IDNguoiDung` FOREIGN KEY (`IDNguoiDung`) REFERENCES `nguoidung` (`ID`) ON DELETE CASCADE ON UPDATE CASCADE,
-  CONSTRAINT `DonHang_PhuongThucThanhToan_IDPhuongThuc` FOREIGN KEY (`IDPhuongThuc`) REFERENCES `phuongthucthanhtoan` (`ID`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE = InnoDB AUTO_INCREMENT = 69 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = DYNAMIC;
+  CONSTRAINT `DonHang_NguoiDung_IDNguoiDung` FOREIGN KEY (`IDNguoiDung`) REFERENCES `nguoidung` (`ID`) ON DELETE RESTRICT ON UPDATE RESTRICT,
+  CONSTRAINT `DonHang_PhuongThucThanhToan_IDPhuongThuc` FOREIGN KEY (`IDPhuongThuc`) REFERENCES `phuongthucthanhtoan` (`ID`) ON DELETE RESTRICT ON UPDATE RESTRICT
+) ENGINE = InnoDB AUTO_INCREMENT = 115 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of donhang
 -- ----------------------------
-INSERT INTO `donhang` VALUES (1, 'Phạm Đức Hoàng', 'Hải Dương', '0906090112', '2023-02-25 15:41:20', 1, 'Gửi hàng nhanh nhá', 6, 1, 1);
-INSERT INTO `donhang` VALUES (2, 'Lê Ngọc Mai', 'Hưng Yên', '0987654321', '2023-01-25 15:41:20', 1, 'Cẩn thận hàng dễ vỡ', 6, 1, 2);
-INSERT INTO `donhang` VALUES (3, 'Phạm Hải Huấn', 'Hưng Yên', '098234567', '2022-12-25 15:41:20', 2, 'Gửi hàng nhanh nhá', 6, 1, 3);
-INSERT INTO `donhang` VALUES (4, 'Trần Mỹ Linh', 'Hà Nội', '093567567', '2022-11-25 15:41:20', 2, 'Cẩn thận hàng dễ vỡ', 6, 2, 4);
-INSERT INTO `donhang` VALUES (5, 'Phạm Đức Duy', 'Bắc Giang', '098765567', '2022-10-25 15:41:20', 1, 'Gửi hàng nhanh nhá', 6, 2, 5);
-INSERT INTO `donhang` VALUES (9, 'Phạm Văn Hoàn', '123 Điện Biên Phủ tp Hải Dương', '0987654321', '2022-09-03 09:51:12', 3, 'Cẩn thận hàng dễ vỡ', 6, 2, 6);
-INSERT INTO `donhang` VALUES (10, 'Lê Ngọc Mai', 'Hưng Yên', '0987654321', '2023-01-03 09:52:40', 1, 'Gửi hàng nhanh nhá', 6, 2, 1);
-INSERT INTO `donhang` VALUES (11, 'Phạm Hải Huấn', 'Hưng Yên', '098234567', '2023-02-05 14:46:10', 2, 'Cẩn thận hàng dễ vỡ', 6, 2, 1);
-INSERT INTO `donhang` VALUES (12, 'Trần Mỹ Linh', 'Hà Nội', '093567567', '2023-03-07 17:59:41', 1, 'Cẩn thận hàng dễ vỡ', 6, 2, 1);
-INSERT INTO `donhang` VALUES (13, 'Phạm Đức Hoàng', 'Hải Dương', '0906090112', '2023-09-20 10:13:56', 3, 'Hàng dễ vỡ', 6, 1, 1);
-INSERT INTO `donhang` VALUES (14, 'Phạm Đức Hoàng', 'Hải Dương', '0906090112', '2023-05-20 10:17:07', 1, 'Gửi hàng nhanh nhá', 5, 1, 1);
-INSERT INTO `donhang` VALUES (15, 'Phạm Đức Hoàng', 'Hải Dương', '0906090112', '2023-06-20 10:19:14', 1, 'Cẩn thận hàng dễ vỡ', 3, 1, 1);
-INSERT INTO `donhang` VALUES (18, 'Phạm Đức Hoàng', 'Hải Dương', '0906090112', '2023-11-20 20:52:47', 1, 'Gửi hàng nhanh nhá', 6, 1, 1);
-INSERT INTO `donhang` VALUES (19, 'Phạm Đức Hoàng', 'Hải Dương', '0906090112', '2023-10-20 20:54:38', 1, 'Cẩn thận hàng dễ vỡ', 2, 1, 1);
-INSERT INTO `donhang` VALUES (20, 'Phạm Đức Hoàng', 'Hải Dương', '0906090112', '2023-12-20 20:56:43', 1, 'Gửi hàng nhanh nhá', 6, 1, 1);
-INSERT INTO `donhang` VALUES (21, 'Phạm Đức Hoàng', 'Hải Dương', '0906090112', '2023-12-20 21:14:10', 1, 'Cẩn thận hàng dễ vỡ', 0, 1, 1);
-INSERT INTO `donhang` VALUES (22, 'Phạm Đức Hoàng', 'Hải Dương', '0906090112', '2023-12-21 08:45:10', 1, 'Gửi hàng nhanh nhá', 4, 1, 1);
-INSERT INTO `donhang` VALUES (23, 'Phạm Đức Hoàng', 'Hải Dương', '0906090112', '2023-12-21 09:41:54', 1, 'Cẩn thận hàng dễ vỡ', 3, 1, 1);
-INSERT INTO `donhang` VALUES (49, 'Lê Ngọc Mai', 'Hưng Yên', '0987654321', '2023-12-22 21:08:11', 1, 'Gửi hàng nhanh nhá', 2, 1, 2);
-INSERT INTO `donhang` VALUES (50, 'Lê Ngọc Mai', 'Hưng Yên', '0987654321', '2023-12-22 21:13:08', 1, 'Cẩn thận hàng dễ vỡ', 4, 1, 2);
-INSERT INTO `donhang` VALUES (67, 'Phạm Đức Hoàng', 'Hải Dương', '0906090112', '2024-03-25 21:25:34', 1, '', 5, 2, 1);
-INSERT INTO `donhang` VALUES (68, 'Phạm Đức Hoàng', 'Hải Dương', '0906090112', '2024-03-25 22:08:02', 3, '', 6, 2, 1);
+INSERT INTO `donhang` VALUES (1, 'Phạm Đức Hoàng', 'Hà nội', '0906090112', '2023-02-25 15:41:20', 1, 'Gửi hàng nhanh nhá', 6, 1, 1);
+INSERT INTO `donhang` VALUES (2, 'Lê Ngọc Mai', 'Hà nội', '0987654321', '2023-01-25 15:41:20', 1, 'Cẩn thận hàng dễ vỡ', 6, 1, 2);
+INSERT INTO `donhang` VALUES (3, 'Phạm Hải Huấn', 'Hà nội', '098234567', '2022-12-25 15:41:20', 2, 'Gửi hàng nhanh nhá', 6, 1, 3);
+INSERT INTO `donhang` VALUES (4, 'Trần Mỹ Linh', 'Hà nội', '093567567', '2022-11-25 15:41:20', 2, 'Cẩn thận hàng dễ vỡ', 6, 2, 4);
+INSERT INTO `donhang` VALUES (5, 'Phạm Đức Duy', 'Hà nội', '098765567', '2022-10-25 15:41:20', 1, 'Gửi hàng nhanh nhá', 6, 2, 5);
+INSERT INTO `donhang` VALUES (9, 'Phạm Văn Hoàn', 'Hà nội', '0987654321', '2022-09-03 09:51:12', 3, 'Cẩn thận hàng dễ vỡ', 6, 2, 6);
+INSERT INTO `donhang` VALUES (10, 'Lê Ngọc Mai', 'Hà nội', '0987654321', '2023-01-03 09:52:40', 1, 'Gửi hàng nhanh nhá', 6, 2, 1);
+INSERT INTO `donhang` VALUES (11, 'Phạm Hải Huấn', 'Hà nội', '098234567', '2023-02-05 14:46:10', 2, 'Cẩn thận hàng dễ vỡ', 6, 2, 1);
+INSERT INTO `donhang` VALUES (12, 'Trần Mỹ Linh', 'Hà nội', '093567567', '2023-03-07 17:59:41', 1, 'Cẩn thận hàng dễ vỡ', 6, 2, 1);
+INSERT INTO `donhang` VALUES (13, 'Phạm Đức Hoàng', 'Hà nội', '0906090112', '2023-09-20 10:13:56', 3, 'Hàng dễ vỡ', 6, 1, 1);
+INSERT INTO `donhang` VALUES (14, 'Phạm Đức Hoàng', 'Hà nội', '0906090112', '2023-05-20 10:17:07', 1, 'Gửi hàng nhanh nhá', 5, 1, 1);
+INSERT INTO `donhang` VALUES (15, 'Phạm Đức Hoàng', 'Hà nội', '0906090112', '2023-06-20 10:19:14', 1, 'Cẩn thận hàng dễ vỡ', 3, 1, 1);
+INSERT INTO `donhang` VALUES (18, 'Phạm Đức Hoàng', 'Hà nội', '0906090112', '2023-11-20 20:52:47', 1, 'Gửi hàng nhanh nhá', 6, 1, 1);
+INSERT INTO `donhang` VALUES (19, 'Phạm Đức Hoàng', 'Hà nội', '0906090112', '2023-10-20 20:54:38', 1, 'Cẩn thận hàng dễ vỡ', 2, 1, 1);
+INSERT INTO `donhang` VALUES (20, 'Phạm Đức Hoàng', 'Hà nội', '0906090112', '2023-12-20 20:56:43', 1, 'Gửi hàng nhanh nhá', 6, 1, 1);
+INSERT INTO `donhang` VALUES (21, 'Phạm Đức Hoàng', 'Hà nội', '0906090112', '2023-12-20 21:14:10', 1, 'Cẩn thận hàng dễ vỡ', 0, 1, 1);
+INSERT INTO `donhang` VALUES (22, 'Phạm Đức Hoàng', 'Hà nội', '0906090112', '2023-12-21 08:45:10', 1, 'Gửi hàng nhanh nhá', 4, 1, 1);
+INSERT INTO `donhang` VALUES (23, 'Phạm Đức Hoàng', 'Hà nội', '0906090112', '2023-12-21 09:41:54', 1, 'Cẩn thận hàng dễ vỡ', 3, 1, 1);
+INSERT INTO `donhang` VALUES (49, 'Lê Ngọc Mai', 'Hà nội', '0987654321', '2023-12-22 21:08:11', 1, 'Gửi hàng nhanh nhá', 2, 1, 2);
+INSERT INTO `donhang` VALUES (50, 'Lê Ngọc Mai', 'Hà nội', '0987654321', '2023-12-22 21:13:08', 1, 'Cẩn thận hàng dễ vỡ', 6, 1, 2);
+INSERT INTO `donhang` VALUES (67, 'Phạm Đức Hoàng', 'Hà nội', '0906090112', '2024-03-25 21:25:34', 1, 'Cẩn thận hàng dễ vỡ', 6, 2, 1);
+INSERT INTO `donhang` VALUES (68, 'Phạm Đức Hoàng', 'Hà nội', '0906090112', '2024-03-25 22:08:02', 3, 'Cẩn thận hàng dễ vỡ', 6, 2, 1);
 
 -- ----------------------------
 -- Table structure for giamgia
@@ -328,7 +248,7 @@ CREATE TABLE `giamgia`  (
   `IDSanPham` int NULL DEFAULT NULL,
   PRIMARY KEY (`ID`) USING BTREE,
   CONSTRAINT `GiamGia_SanPham_IDSanPham` FOREIGN KEY (`ID`) REFERENCES `sanpham` (`ID`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE = InnoDB AUTO_INCREMENT = 27 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = DYNAMIC;
+) ENGINE = InnoDB AUTO_INCREMENT = 29 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of giamgia
@@ -344,6 +264,8 @@ INSERT INTO `giamgia` VALUES (8, 35, '2023-01-01 00:00:00', '2025-01-01 00:00:00
 INSERT INTO `giamgia` VALUES (9, 10, '2023-01-01 00:00:00', '2025-01-01 00:00:00', 22);
 INSERT INTO `giamgia` VALUES (10, 30, '2023-01-01 00:00:00', '2025-01-01 00:00:00', 39);
 INSERT INTO `giamgia` VALUES (11, 70, '2023-01-01 00:00:00', '2025-01-01 00:00:00', 49);
+INSERT INTO `giamgia` VALUES (27, 50, '2024-03-27 00:00:00', '2024-05-02 00:00:00', 97);
+INSERT INTO `giamgia` VALUES (28, 50, '2024-03-20 00:00:00', '2024-04-25 00:00:00', 98);
 
 -- ----------------------------
 -- Table structure for giasanpham
@@ -358,7 +280,7 @@ CREATE TABLE `giasanpham`  (
   PRIMARY KEY (`ID`) USING BTREE,
   INDEX `GiaSanPham_SanPham_IDSanPham`(`IDSanPham`) USING BTREE,
   CONSTRAINT `GiaSanPham_SanPham_IDSanPham` FOREIGN KEY (`IDSanPham`) REFERENCES `sanpham` (`ID`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE = InnoDB AUTO_INCREMENT = 92 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = DYNAMIC;
+) ENGINE = InnoDB AUTO_INCREMENT = 97 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of giasanpham
@@ -412,7 +334,7 @@ INSERT INTO `giasanpham` VALUES (47, 43590000, '2023-01-01 00:00:00', '2025-01-0
 INSERT INTO `giasanpham` VALUES (48, 10390000, '2023-01-01 00:00:00', '2025-01-01 00:00:00', 48);
 INSERT INTO `giasanpham` VALUES (49, 15490000, '2023-01-01 00:00:00', '2025-01-01 00:00:00', 49);
 INSERT INTO `giasanpham` VALUES (50, 22690000, '2023-01-01 00:00:00', '2025-01-01 00:00:00', 50);
-INSERT INTO `giasanpham` VALUES (51, 32340000, '2022-12-30 06:00:00', '2024-12-30 06:00:00', 51);
+INSERT INTO `giasanpham` VALUES (51, 32340000, '2022-12-30 00:00:00', '2024-12-30 00:00:00', 51);
 
 -- ----------------------------
 -- Table structure for gioithieu
@@ -424,16 +346,16 @@ CREATE TABLE `gioithieu`  (
   `NoiDung` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL,
   `TrangThai` int NULL DEFAULT NULL,
   PRIMARY KEY (`ID`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 14 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = DYNAMIC;
+) ENGINE = InnoDB AUTO_INCREMENT = 15 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of gioithieu
 -- ----------------------------
-INSERT INTO `gioithieu` VALUES (0, NULL, NULL, NULL);
 INSERT INTO `gioithieu` VALUES (1, 'gioithieu1.png', 'Điện máy Mona là một trong những chuỗi bán lẻ điện máy điện tử, điện lạnh và gia dụng. Điện máy Mona thuộc sở hữu của Công tu Cổ phần Đầu tư Phạm Đức Hoàng. So với hệ thống chuỗi cửa hàng thế giới di động thì điện máy Galio sinh sau đẻ muộn hơn. Điện máy Galio ra đời cuối năm 2021, tiền thân là dienmay.com.', 1);
 INSERT INTO `gioithieu` VALUES (2, '', 'Ngay sau khi ra đời với chiến lược độc dáo và tầm nhìn xa trông rộng của đội ngũ lãnh đạo. Hệ thống nhanh chóng mở rộng hệ thống siêu thị của mình trên khắp mọi miền đất nước. Dấu mốc đáng nhớ có thể nhắc đến năm 2015 khi Điện máy Galio được đánh gia là \"Phát triển thần tốc\" với 66 siêu thị được khai trương mới. Nâng số lượng siêu thị 20 ở đầu năm 2015 lên con số 86.', 1);
 INSERT INTO `gioithieu` VALUES (3, '', 'Điện máy Galio vừa đánh dấu một chặng đường đáng chú ý khi công bố chính thức vượt mốc 1.000 siêu thị . Trong hành trình 10 năm của mình vào năm 2019. Không dừng lại ở đó. Bằng sự nỗ lực và mục tiêu rõ ràng, điện máy Mona tiếp tục triển khai việc. Thay đổi trưng bày cho gần 300 cửa hàng Điện máy Mona mini còn lại trong 6 tháng cuối năm. Nhờ có những chiến lược mạnh mẽ mà Điện máy Mona. Đã trở thành hệ thống bán lẻ điện máy đầu tiên của Việt Nam. Phủ sóng 63/63 tỉnh thành, và luôn  tiên phong dẫn đầu trong việc phục vụ khách hàng tốt nhất.', 1);
 INSERT INTO `gioithieu` VALUES (4, '', 'Bên cạnh đó, mô hình Điện máy Galio mini với diện tích từ 350 – 500 m2. Với cách bố trí linh hoạt giúp không gian siêu thị tăng gấp 2 -3 lần. Từ đó trưng bày được nhiều mặt hàng hơn để khách hàng thoải mái lựa chọn. Chính vì những đặc điểm này mà hệ thống siêu thị điện máy xanh. Được đánh giá là hệ thống siêu thị có dịch vụ tốt nhất trong các siêu thị điện máy hiện nay.', 1);
+INSERT INTO `gioithieu` VALUES (14, NULL, NULL, NULL);
 
 -- ----------------------------
 -- Table structure for hoadonnhap
@@ -449,7 +371,7 @@ CREATE TABLE `hoadonnhap`  (
   INDEX `HoaDonNhap_NguoiDung_IDNguoiDung`(`IDNguoiDung`) USING BTREE,
   CONSTRAINT `HoaDonNhap_NguoiDung_IDNguoiDung` FOREIGN KEY (`IDNguoiDung`) REFERENCES `nguoidung` (`ID`) ON DELETE RESTRICT ON UPDATE RESTRICT,
   CONSTRAINT `HoaDonNhap_NhaCungCap_IDNhaCungCap` FOREIGN KEY (`IDNhaCungCap`) REFERENCES `nhacungcap` (`ID`) ON DELETE RESTRICT ON UPDATE RESTRICT
-) ENGINE = InnoDB AUTO_INCREMENT = 34 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = DYNAMIC;
+) ENGINE = InnoDB AUTO_INCREMENT = 42 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of hoadonnhap
@@ -462,27 +384,13 @@ INSERT INTO `hoadonnhap` VALUES (5, '2023-03-29 17:40:34', 5, 3);
 INSERT INTO `hoadonnhap` VALUES (6, '2023-03-29 17:40:34', 6, 1);
 INSERT INTO `hoadonnhap` VALUES (7, '2023-03-29 17:40:34', 7, 3);
 INSERT INTO `hoadonnhap` VALUES (18, '2023-12-30 14:04:46', 2, 1);
-
--- ----------------------------
--- Table structure for kho
--- ----------------------------
-DROP TABLE IF EXISTS `kho`;
-CREATE TABLE `kho`  (
-  `ID` int NOT NULL AUTO_INCREMENT,
-  `Ten` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL,
-  `DiaChi` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL,
-  `TrangThai` int NULL DEFAULT NULL,
-  PRIMARY KEY (`ID`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 9 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = DYNAMIC;
-
--- ----------------------------
--- Records of kho
--- ----------------------------
-INSERT INTO `kho` VALUES (1, 'Kho Hải Dương', '56 Nguyễn Lương Bằng', 1);
-INSERT INTO `kho` VALUES (2, 'Kho Hà Nội', '12 Thống Nhất, Hai Bà Trưng, tp Hà Nội', 1);
-INSERT INTO `kho` VALUES (3, 'Kho Hải Phòng', '67 Võ Nguyên Giám, Đồ Sơn, tp Hải Phòng', 1);
-INSERT INTO `kho` VALUES (4, 'Kho Bắc Ninh', '55 Lý Nhân Tông, tp Bắc Ninh, Bắc Ninh', 1);
-INSERT INTO `kho` VALUES (5, 'Kho Hưng Yên', '69 Nguyễn Văn Cường, tp Hưng Yên, Hưng Yên', 1);
+INSERT INTO `hoadonnhap` VALUES (35, '2024-04-01 19:56:26', 2, 1);
+INSERT INTO `hoadonnhap` VALUES (36, '2024-04-01 20:01:55', 2, 1);
+INSERT INTO `hoadonnhap` VALUES (37, '2024-04-01 20:02:35', 2, 1);
+INSERT INTO `hoadonnhap` VALUES (38, '2024-04-01 20:05:32', 1, 1);
+INSERT INTO `hoadonnhap` VALUES (39, '2024-04-01 20:05:56', 2, 1);
+INSERT INTO `hoadonnhap` VALUES (40, '2024-04-01 20:09:06', 1, 1);
+INSERT INTO `hoadonnhap` VALUES (41, '2024-04-01 20:17:37', 2, 1);
 
 -- ----------------------------
 -- Table structure for lienhe
@@ -581,8 +489,8 @@ CREATE TABLE `nguoidung`  (
   `Token` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL,
   PRIMARY KEY (`ID`) USING BTREE,
   INDEX `NguoiDung_Quyen_IDQuyen`(`IDQuyen`) USING BTREE,
-  CONSTRAINT `NguoiDung_Quyen_IDQuyen` FOREIGN KEY (`IDQuyen`) REFERENCES `quyen` (`ID`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE = InnoDB AUTO_INCREMENT = 10 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = DYNAMIC;
+  CONSTRAINT `NguoiDung_Quyen_IDQuyen` FOREIGN KEY (`IDQuyen`) REFERENCES `quyen` (`ID`) ON DELETE RESTRICT ON UPDATE RESTRICT
+) ENGINE = InnoDB AUTO_INCREMENT = 12 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of nguoidung
@@ -593,7 +501,7 @@ INSERT INTO `nguoidung` VALUES (3, 'phamhaihuan', 'e10adc3949ba59abbe56e057f20f8
 INSERT INTO `nguoidung` VALUES (4, 'tranmylinh', 'e10adc3949ba59abbe56e057f20f883e', 'tranMyLinh@gmail.com', 'Trần Mỹ Linh', '2002-09-17 00:00:00', 'Hà Nội', '093567567', 0, 'tranmylinh.png', 1, 4, b'1', '1f326bbd-b676-4645-af02-1263138513f8');
 INSERT INTO `nguoidung` VALUES (5, 'phamducduy', 'e10adc3949ba59abbe56e057f20f883e', 'phamducduy@gmail.com', 'Phạm Đức Duy', '2002-12-08 00:00:00', 'Bắc Giang', '098765567', 1, 'phamducduy.png', 1, 2, b'1', '1f326bbd-b676-4645-af02-1263138513f8');
 INSERT INTO `nguoidung` VALUES (6, 'phamvanhoan', 'e10adc3949ba59abbe56e057f20f883e', 'phamvanhoan@gmail.com', 'Phạm Văn Hoàn', '2002-10-19 00:00:00', '123 Điện Biên Phủ tp Hải Dương', '0987654321', 1, 'phamvanhoan.png', 1, 3, b'1', '1f326bbd-b676-4645-af02-1263138513f8');
-INSERT INTO `nguoidung` VALUES (9, 'phamthanhduong', 'e10adc3949ba59abbe56e057f20f883e', 'concao10duoi@gmail.com', 'Phạm Thanh Dương', '2024-03-20 17:03:43', 'hải dương', '0987654321', 1, 'avatar.png', 1, 2, b'1', 'pN2xq4AbYvvXOhDdYSmpnylBu/0mtSBpCkNQSeNjoAY=');
+INSERT INTO `nguoidung` VALUES (11, 'phamthanhduong', 'e10adc3949ba59abbe56e057f20f883e', 'genshinsdt3@gmail.com', 'Phạm Thanh Dương', '2024-04-01 20:40:53', 'hải dương', '1234567890', 1, 'avatar.png', 1, 2, b'1', '76zTxbtPU2pDtcI4qdCLcjbYUj8JYs9jgLaZTwyW7ck=');
 
 -- ----------------------------
 -- Table structure for nhacungcap
@@ -696,6 +604,7 @@ CREATE TABLE `sanpham`  (
   `ID` int NOT NULL AUTO_INCREMENT,
   `Ten` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL,
   `MoTa` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL,
+  `SoLuong` int NULL DEFAULT NULL,
   `Anh` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL,
   `NgayTao` datetime(0) NULL DEFAULT NULL,
   `TrangThai` int NULL DEFAULT NULL,
@@ -704,63 +613,63 @@ CREATE TABLE `sanpham`  (
   PRIMARY KEY (`ID`) USING BTREE,
   INDEX `SanPham_LoaiSanPham_IDLoai`(`IDLoai`) USING BTREE,
   INDEX `SanPham_NhaSanXuat_IDNhaSanXuat`(`IDNhaSanXuat`) USING BTREE,
-  CONSTRAINT `SanPham_LoaiSanPham_IDLoai` FOREIGN KEY (`IDLoai`) REFERENCES `loaisanpham` (`ID`) ON DELETE CASCADE ON UPDATE CASCADE,
-  CONSTRAINT `SanPham_NhaSanXuat_IDNhaSanXuat` FOREIGN KEY (`IDNhaSanXuat`) REFERENCES `nhasanxuat` (`ID`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE = InnoDB AUTO_INCREMENT = 96 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = DYNAMIC;
+  CONSTRAINT `SanPham_LoaiSanPham_IDLoai` FOREIGN KEY (`IDLoai`) REFERENCES `loaisanpham` (`ID`) ON DELETE RESTRICT ON UPDATE RESTRICT,
+  CONSTRAINT `SanPham_NhaSanXuat_IDNhaSanXuat` FOREIGN KEY (`IDNhaSanXuat`) REFERENCES `nhasanxuat` (`ID`) ON DELETE RESTRICT ON UPDATE RESTRICT
+) ENGINE = InnoDB AUTO_INCREMENT = 101 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of sanpham
 -- ----------------------------
-INSERT INTO `sanpham` VALUES (1, 'Smart Tivi Samsung UA50AU9000', 'Smart Tivi SamsungUA50AU9000 có thiết kế gọn gàng, tinh tế, tông màu bạc nổi bật, tạo cảm giác sang trọng, hiện đại hơn cho căn phòng sử dụng. Kích thước màn hình lớn 55 inch giúp Smart Tivi SamsungUA50AU9000 rất thích hợp bố trí vào nhiều không gian nội thất khác nhau như phòng khách, phòng họp,... N ài ra, chân đế chữ V bằng kim loại chắc chắn, giúp giữ vững tivi trên nhiều dạng bề mặt phẳng khác nhau', 'smarttivisamsungUA50AU9000.png', '2023-03-30 03:30:04', 1, 1, 1);
-INSERT INTO `sanpham` VALUES (2, 'Smart Tivi Samsung UA50AU8000', 'Smart Tivi SamsungUA50AU9000 có thiết kế gọn gàng, tinh tế, tông màu bạc nổi bật, tạo cảm giác sang trọng, hiện đại hơn cho căn phòng sử dụng. Kích thước màn hình lớn 55 inch giúp Smart Tivi SamsungUA50AU9000 rất thích hợp bố trí vào nhiều không gian nội thất khác nhau như phòng khách, phòng họp,... N ài ra, chân đế chữ V bằng kim loại chắc chắn, giúp giữ vững tivi trên nhiều dạng bề mặt phẳng khác nhau', 'smarttivisamsungUA50AU8000.png', '2023-03-30 03:30:04', 1, 1, 1);
-INSERT INTO `sanpham` VALUES (3, 'Smart tivi NEO Samsung65', 'Smart Tivi SamsungUA50AU9000 có thiết kế gọn gàng, tinh tế, tông màu bạc nổi bật, tạo cảm giác sang trọng, hiện đại hơn cho căn phòng sử dụng.  Kích thước màn hình lớn 55 inch giúp Smart Tivi SamsungUA50AU9000 rất thích hợp bố trí vào nhiều không gian nội thất khác nhau như phòng khách, phòng họp,... N ài ra, chân đế chữ V bằng kim loại chắc chắn, giúp giữ vững tivi trên nhiều dạng bề mặt phẳng khác nhau', 'smarttivineosamsungqa65.png', '2023-03-30 03:30:04', 1, 1, 1);
-INSERT INTO `sanpham` VALUES (4, 'Smart Tivi NEO Samsung75', 'Smart Tivi Neo Samsung75 có thiết kế gọn gàng, tinh tế, tông màu bạc nổi bật, tạo cảm giác sang trọng, hiện đại hơn cho căn phòng sử dụng.Kích thước màn hình lớn 55 inch giúp Smart Tivi SamsungUA50AU9000 rất thích hợp bố trí vào nhiều không gian nội thất khác nhau như phòng khách, phòng họp,... N ài ra, chân đế chữ V bằng kim loại chắc chắn, giúp giữ vững tivi trên nhiều dạng bề mặt phẳng khác nhau', 'smarttivineosamsungqa75.png', '2023-03-30 03:30:04', 1, 1, 1);
-INSERT INTO `sanpham` VALUES (5, 'Smart Tivi Samsung UA50AU7000', 'Smart Tivi SamsungUA50AU7000 có thiết kế gọn gàng, tinh tế, tông màu bạc nổi bật, tạo cảm giác sang trọng, hiện đại hơn cho căn phòng sử dụng.Kích thước màn hình lớn 55 inch giúp Smart Tivi SamsungUA50AU9000 rất thích hợp bố trí vào nhiều không gian nội thất khác nhau như phòng khách, phòng họp,... N ài ra, chân đế chữ V bằng kim loại chắc chắn, giúp giữ vững tivi trên nhiều dạng bề mặt phẳng khác nhau', 'smarttivisamsungUA50AU7000.png', '2023-03-30 03:30:04', 1, 1, 1);
-INSERT INTO `sanpham` VALUES (6, 'Android Tivi Philips65', 'Android Tivi Philips65 có thiết kế gọn gàng, tinh tế, tông màu bạc nổi bật, tạo cảm giác sang trọng, hiện đại hơn cho căn phòng sử dụng.  Kích thước màn hình lớn 55 inch giúp Smart Tivi SamsungUA50AU9000 rất thích hợp bố trí vào nhiều không gian nội thất khác nhau như phòng khách, phòng họp,... N ài ra, chân đế chữ V bằng kim loại chắc chắn, giúp giữ vững tivi trên nhiều dạng bề mặt phẳng khác nhau', 'androidtiviphilips65.png', '2023-03-30 03:30:04', 1, 2, 1);
-INSERT INTO `sanpham` VALUES (7, 'Smart Tivi LG65UP', 'Chiếc tivi có hiệu LG, có thiết kế rất hiện đại. Thuộc thế hệ màn hình phẳng, chỉ dày khoảng 2cm nên nó mỏng và gọn hơn chiếc tivi lồi cũ của nhà em. Toàn thân chiếc tivi được sơn một màu đen bóng loáng, sạch và không hề bị bám bụi, trông rõ nét như một chiếc gương.', 'smarttivilg65up.png', '2023-03-30 03:30:04', 1, 5, 1);
-INSERT INTO `sanpham` VALUES (8, 'Smart Tivi QNED LG65', 'Chiếc tivi có hiệu LG, có thiết kế rất hiện đại. Thuộc thế hệ màn hình phẳng, chỉ dày khoảng 2cm nên nó mỏng và gọn hơn chiếc tivi lồi cũ của nhà em. Toàn thân chiếc tivi được sơn một màu đen bóng loáng, sạch và không hề bị bám bụi, trông rõ nét như một chiếc gương.', 'smarttiviqnedlg65.png', '2023-03-30 03:30:04', 1, 5, 1);
-INSERT INTO `sanpham` VALUES (9, 'Google Tivi TCL 43P', 'google Tivi TCL 43P Công nghệ xử lý hình ảnh: Dolby Vision, Dải màu rộng Wide Color Gamut, HDR10, Kiểm soát đèn nền Micro Dimming, Tăng cường chuyển động MEMC 60Hz. Tivi TCL được sản xuất tại Việt Nam nên đã bỏ đi các chi phí vận chuyển không cần thiết. Do vậy, mức giá rất cạnh tranh, chỉ từ 5 triệu. Tùy vào ngân sách, bạn có thể lựa chọn một chiếc tivi phù hợp nhất cho gia đình mình.', 'googletivitcl43p.png', '2023-03-30 03:30:04', 1, 7, 1);
-INSERT INTO `sanpham` VALUES (10, 'Android Tivi TCL 65P', 'Tivi TCL là sản phẩm của Trung Quốc ra đời vào năm 1981. Sau hơn 30 năm đây đã trở thành thương hiệu tivi gần gũi với mọi nhà. Dòng tivi này còn lọt top 3 thương hiệu tivi bán chạy hàng đầu theo trang TrendForce.  Đây là loại tivi nổi tiếng toàn cầu và đã có mặt hơn 160 quốc gia. Sản phẩm có đặt trụ sở sản xuất tại Việt Nam ở tỉnh Bình Dương. Vì vậy loại tivi này ngày càng phổ biến ở Việt Nam hơn.', 'androidtivitcl 65p.png', '2023-03-30 03:30:04', 1, 4, 1);
-INSERT INTO `sanpham` VALUES (11, 'Tủ lạnh Panasonic Inverter', 'Với tủ lạnh Panasonic Inverter NR-TL381GPKV được trang bị ngăn lấy nước n ài kháng khuẩn & khử mùi, với bình chứa dung tích 3 lít, bạn dễ dàng thưởng thức ly nước mát lạnh từ tủ lạnh mà không cần mở cửa. N ài ra, nước được duy trì độ tinh khiết, sạch khuẩn, nhờ bình chứa nước được đúc bằng nhựa kháng khuẩn không chứa BPA, đồng thời giúp khử mùi với bộ lọc carbon ở bên trong.', 'tulanhpanasonic.png', '2023-03-30 03:30:04', 1, 4, 2);
-INSERT INTO `sanpham` VALUES (12, 'Tủ lạnh Sharp Inverter', 'Với tủ lạnh Panasonic Inverter NR-TL381GPKV được trang bị ngăn lấy nước n ài kháng khuẩn & khử mùi, với bình chứa dung tích 3 lít, bạn dễ dàng thưởng thức ly nước mát lạnh từ tủ lạnh mà không cần mở cửa.N ài ra, nước được duy trì độ tinh khiết, sạch khuẩn, nhờ bình chứa nước được đúc bằng nhựa kháng khuẩn không chứa BPA, đồng thời giúp khử mùi với bộ lọc carbon ở bên trong.', 'tulanhsharp.png', '2023-03-30 03:30:04', 1, 8, 2);
-INSERT INTO `sanpham` VALUES (13, 'Tủ Lạnh Panasonic NRBW530', 'Công nghệ làm lạnh: Làm lạnh vòng cung Panorama Công nghệ kháng khuẩn, khử mùi: Khử mùi, diệt khuẩn 99.99% Nanoe-X giảm lưu lượng thuốc trừ sâu, Loại bỏ vi khuẩn nhờ công nghệ Ag Clean với tinh thể bạc Ag+ Công nghệ bảo quản thực phẩm: Ngăn cấp đông mềm Prime Fresh, Ngăn cấp đông nhanh gấp 5 lần Prime Freeze, Ngăn rau củ Fresh Safe Tiện ích: Bảng điều khiển bên ngoài, Làm đá tự động, Lấy nước bên ngoài Kiểu tủ: Ngăn đá dưới', 'tulanhpanasonicnrbw530.png', '2023-03-30 03:24:00', 1, 4, 2);
-INSERT INTO `sanpham` VALUES (14, 'Tủ lạnh Sharp SJ FX420', 'Dung tích tổng:  Dung tích sử dung: 362 lít Số người sử dụng: Dung tích ngăn đá: 125 lít Dung tích ngăn lạnh: 237 lít Công nghệ inverter: J- Tech Inverter Điện năng tiêu thụ: Chế độ tiết kiệm khác: Công nghệ làm lạnh: Công nghệ kháng khuẩn, khử mùi: Bộ khử mùi chống khuẩn Anti-bacterial deodorizer Công nghệ bảo quản thực phẩm: Thực phẩm luôn tươi sống được bảo vệ an toàn với nhiệt độ ngăn đông điều chỉnh - 22 độ Tiện ích: Kiểu tủ: Ngăn đá dưới Số cửa: 4 cửa Chất liệu cửa tủ lạnh: Thép không gỉ Chất liệu khay ngăn: Kính chịu lực Đèn chiếu sáng: Đèn LED Kích thước - Khối lượng: Cao 180 cm - Rộng 79.5 cm - Sâu 61 cm - Nặng 79 kg Nơi sản xuất: Trung Quốc Năm ra mắt: 2020 Bảo hành: 24 tháng', 'tulanhsharpSJ-FX420.png', '2023-03-30 03:30:04', 1, 8, 2);
-INSERT INTO `sanpham` VALUES (15, 'Tủ lạnh LG GRX 257', 'Dung tích tổng: 674 lít Dung tích sử dung: 635 lít Số người sử dụng:Trên 5 người Dung tích ngăn đá: 219 lít Dung tích ngăn lạnh: 416 lít Công nghệ inverter: Tủ lạnh inverter Điện năng tiêu thụ: ~1.93 kW/ngày Công nghệ tiết kiệm điện: Linear Inverter Công nghệ làm lạnh: DoorCooling+ làm lạnh từ cánh cửa tủ, Làm lạnh đa chiều Công nghệ kháng khuẩn, khử mùi: Bộ lọc 5 lớp Hygiene Fresh+™ Công nghệ bảo quản thực phẩm: Ngăn cân bằng ẩm Moist Balance Crisper, Ngăn rau củ cân bằng ẩm lưới mắt cáo 2 chế độ Fresh Balancer Tiện ích: Cửa phụ Door-in-Door, Lấy nước ngoài diệt khuẩn UV nano, Tích hợp WIFI - Smart ThinQ™ Kiểu tủ: Side by side Số cửa: 2 cửa Chất liệu cửa tủ lạnh: Thép không gỉ Chất liệu khay ngăn: Kính chịu lực Đèn chiếu sáng: Đèn LED Kích thước - Khối lượng: Cao 179 cm - Rộng 91.3 cm - Sâu 73.5 cm - Nặng 130 kg Nơi sản xuất: Trung Quốc Năm ra mắt: 2022 Bảo hành: 24 tháng', 'tulanhlggrx257.png', '2023-03-30 03:30:40', 1, 5, 2);
-INSERT INTO `sanpham` VALUES (16, 'Tủ lạnh Samsung RF50A', 'Dung tích tổng: 645 lít Dung tích sử dung: 599 lít Số người sử dụng: Trên 5 người Dung tích ngăn đá: 215 lít Dung tích ngăn lạnh: 384 lít Công nghệ inverter: Digital Inverter Công suất tiêu thụ công bố theo TCVN: ~ 1.45 kW/ngày Chế độ tiết kiệm khác: Tùy chỉnh nhiệt độ phù hợp với bảng điều khiển điện tử tiện dụng Công nghệ làm lạnh: 3 Dàn lạnh độc lập Triple Cooling giúp hơi lạnh lan tỏa đều, Công nghệ Metal Cooling Công nghệ kháng khuẩn, khử mùi: Bộ lọc khử mùi từ không khí ở bên trong, kết hợp thêm công nghệ đèn UV liên tục làm sạch bề mặt giúp giữ được không khí trong lành Công nghệ bảo quản thực phẩm: Hộp rau củ, trái cây kín khí Crisper+ và Hộp thịt cá Flex Crisper Tiện ích: Làm đá tự động, Ngăn chuyển đổi linh hoạt, Ngăn đông mềm trữ thịt cá không cần rã đông Kiểu tủ: Multi Door Số cửa: 4 cánh Chất liệu cửa tủ lạnh: Kính Bespoke Chất liệu khay ngăn: Kính chịu lực Đèn chiếu sáng: Đèn LED Kích thước - Khối lượng: Cao 185.3 cm - Rộng 91.2 cm - Sâu 67.3 cm - Nặng 149 kg Nơi sản xuất', 'tulanhsamsungrf50a.png', '2023-03-30 11:17:55', 1, 1, 2);
-INSERT INTO `sanpham` VALUES (17, 'Tủ lạnh Sharp SJF XP64', 'Dung tích tổng: 639 lít Dung tích sử dung: 572 lít Số người sử dụng: Trên 5 người Dung tích ngăn đá: 206 lít Dung tích ngăn lạnh: 366 lít Công nghệ inverter: J-tech Inverter Điện năng tiêu thụ: ~ 1.23 kW/ngày Chế độ tiết kiệm khác: Công nghệ làm lạnh: Hệ thống làm lạnh kép Hybrid Cooling Công nghệ kháng khuẩn, khử mùi: Bộ lọc kháng khuẩn, Công nghệ diệt khuẩn Plasmacluster Ion Công nghệ bảo quản thực phẩm: Chế độ làm đông nhanh đưa nhiệt độ ngăn đông xuống -24 ⁰C, Ngăn rau quả giữ ẩm, Ngăn đông mềm -1.5 độ C (Extra cool plus) Tiện ích: Bảng điều khiển bên ngoài, Chuông báo khi quên đóng cửa Kiểu tủ: Tủ lạnh ngăn đá dưới Số cửa: 4 cửa Chất liệu cửa tủ lạnh: Kính cường lực Chất liệu khay ngăn: Kính chịu lực Đèn chiếu sáng: Đèn LED Kích thước - Khối lượng: Cao 183 cm - Rộng 89 cm - Sâu 78 cm - Nặng 110 kg Nơi sản xuất: Thái Lan Năm ra mắt: 2021 Bảo hành: 24 tháng', 'tulanhsharpsjfxp64.png', '2023-03-30 11:18:43', 1, 8, 2);
-INSERT INTO `sanpham` VALUES (18, 'Tủ lạnh Hitachi RWB640', 'Dung tích tổng: 638 lít Dung tích sử dung:  569 lít Số người sử dụng: Trên 5 người Dung tích ngăn đá: 100 lít Dung tích ngăn chuyển đổi: 97 lít Dung tích ngăn lạnh: 372 lít Công nghệ inverter: Tủ lạnh Inverter Điện năng tiêu thụ: ~ 1.63 kW/ngày Chế độ tiết kiệm khác: Cảm biến nhiệt ECO, Hệ thống quạt kép, Inverter Công nghệ làm lạnh: Hệ thống làm lạnh quạt kép, Làm lạnh nhanh Công nghệ kháng khuẩn, khử mùi: Bộ lọc khử mùi 3 lớp Triple Power Công nghệ bảo quản thực phẩm: Ngăn chuyển đổi đa năng Selectable Zone (có Đông mềm -3°C), Ngăn rau quả giữ rau củ quả tươi ngon với độ ẩm và nhiệt độ tối ưu Tiện ích:Bình chứa nước với bộ lọc, Bảng điều khiển màn hình LED, Chuông báo khi quên đóng cửa, Chế độ cấp đông nhanh, Làm đá tự động, Đệm cửa chống mốc Kiểu tủ: Multi Door Số cửa: 4 cửa Chất liệu cửa tủ lạnh: Mặt kính Chất liệu khay ngăn: Kính chịu lực Đèn chiếu sáng: Đèn LED Kích thước - Khối lượng: Cao 184 cm - Rộng 90 cm - Sâu 72 cm - Nặng 106 kg Nơi sản xuất: Thái Lan Năm sản xuất: 2021 Bảo', 'tulanhhitachirwb640.png', '2023-03-30 11:19:18', 1, 9, 2);
-INSERT INTO `sanpham` VALUES (19, 'Tủ lạnh Hitachi Inverter 540', 'Dung tích tổng: 540 lít Dung tích sử dung:   Số người sử dụng: Trên 7 người Dung tích ngăn đá: 144 lít Dung tích ngăn lạnh: 396 lít Công nghệ inverter: Tủ lạnh Inverter Điện năng tiêu thụ: KW/ngày Chế độ tiết kiệm khác: Cảm biến nhiệt ECO Công nghệ làm lạnh: Hệ thống làm lạnh kép Công nghệ kháng khuẩn, khử mùi: Màng lọc Nano Titanium, Đệm cửa chống nấm mốc Công nghệ bảo quản thực phẩm: Ngăn rau quả thông minh Aero-care Tiện ích: Còn có chuông cửa, bảng điều khiển LED, Inverter tiết kiệm điện, Mặt gương sang trọng, dễ vệ sinh, làm đá tự động Kiểu tủ: Multi Door Số cửa: 4 cửa Chất liệu cửa tủ lạnh: Mặt gương Chất liệu khay ngăn: Kính chịu lực Đèn chiếu sáng: Đèn LED Kích thước - Khối lượng: Cao 183.5 cm - Rộng 85.5 cm - Sâu 72.7 cm - Nặng 99 kg Nơi sản xuất: Thái Lan Năm ra mắt: 2018 Bảo hành: 12 Tháng', 'tulanhhitachiinverter540.png', '2023-03-30 11:19:43', 1, 9, 2);
-INSERT INTO `sanpham` VALUES (20, 'Iphone12', 'Cấu hình iPhone 12 · Chip A20 Bionic · RAM: 4GB · Bộ nhớ 64GB/128GB/256GB · Màn hình 6.1 inch Super Retina XDR OLED (2532 x 1170 ở mật độ điểm ảnh 476ppi)', 'iphone12.png', '2023-03-30 11:20:07', 1, 3, 5);
-INSERT INTO `sanpham` VALUES (21, 'Iphone14', 'Thiết kế của iPhone 14 cũng trông khá tương đồng với người tiền nhiệm của mình khi có hai mặt trước sau bằng kính và khung viền kim loại vuông vức cùng các góc được bo cong mềm mại, tạo sự hài hòa và mang lại cảm giác cầm nắm dễ chịu. \r\n\r\nMặt sau của iPhone 14 ta sẽ bắt gặp logo \'táo khuyết\' quen thuộc cùng cụm hai camera với ống kính lồi lên khá cao được đặt ở góc trái. ', 'iphone14.png', '2023-03-30 11:20:35', 1, 3, 5);
-INSERT INTO `sanpham` VALUES (22, 'Iphone 8 plus', 'Cấu hình iPhone 8 plus · Chip A7 Bionic · RAM: 4GB · Bộ nhớ 64GB/128GB/256GB · Màn hình 6.1 inch Super Retina XDR OLED (2532 x 1170 ở mật độ điểm ảnh 476ppi)', 'iphone8plus.png', '2023-04-03 12:45:38', 1, 3, 5);
-INSERT INTO `sanpham` VALUES (24, 'Iphone 11', 'Vi xử lý & đồ họa  Loại CPU  Hexa-core Chipset  A13 Bionic GPU  Apple GPU Màn hình  Kích thước màn hình  6.1 inches Độ phân giải màn hình  1792 x 828 pixel Công nghệ màn hình  IPS LCD Công nghệ màn hình  IPS LCD Tính năng màn hình  True-tone Tần số quét  60Hz Giao tiếp & kết nối  Hệ điều hành  iOS 13 hoặc cao hơn (Tùy vào phiên bản phát hành) Wi-Fi  802.11ax Wi‑Fi 6 with 2x2 MIMO Bluetooth  5.0 Thẻ SIM  Nano-SIM + eSIM Hồng ngoại  Không Jack tai nghe 3.5  Không Công nghệ NFC  Có Hỗ trợ mạng  4G GPS  GPS/GNSS Pin & công nghệ sạc  Pin  3110 mAh Công nghệ sạc  Sạc nhanh 18W Power Delivery 2.0 Cổng sạc  Lightning Thiết kế & Trọng lượng  Kích thước  150.9mm - 75.7mm - 8.3mm Trọng lượng  194 g Chất liệu mặt lưng  Kính Chất liệu khung viền  Kim loại Camera sau  Camera sau  Camera kép 12MP: - Camera góc rộng: ƒ/1.8 aperture - Camera siêu rộng: ƒ/2.4 aperture Quay video  Quay video 4K ở tốc độ 24 fps, 30 fps hoặc 60 fps Tính năng camera  Retina Flash Nhãn dán (AR Stickers) Ban đêm (Night Mode) ', 'ip11.png', '2023-04-03 12:46:39', 1, 3, 5);
-INSERT INTO `sanpham` VALUES (25, 'Iphone 13 128GB', 'Màn hình  Kích thước màn hình  6.1 inches Độ phân giải màn hình  2532 x 1170 pixels Công nghệ màn hình  OLED Tính năng màn hình  Màn hình super Retina XDR, OLED, 460 ppi, HDR display, công nghệ True Tone Wide color (P3), Haptic Touch, Lớp phủ oleophobic chống bám vân tay Tần số quét  60Hz Giao tiếp & kết nối  Hệ điều hành  iOS 15 Wi-Fi  Wi‑Fi 6 (802.11ax) Bluetooth  v5.0 Jack tai nghe 3.5  Không Công nghệ NFC  Có Hỗ trợ mạng  5G GPS  GPS, GLONASS, Galileo, QZSS, and BeiDou Pin & công nghệ sạc  Pin  3.240mAh Công nghệ sạc  Sạc nhanh 20W, Sạc không dây, Sạc ngược không dây 15W, Sạc pin nhanh, Tiết kiệm pin Cổng sạc  Lightning Thiết kế & Trọng lượng  Kích thước  146,7 x 71,5 x 7,65mm Trọng lượng  174g Chất liệu mặt lưng  Kính Chất liệu khung viền  Kim loại Camera sau  Camera sau  Camera góc rộng: 12MP, f/1.6 Camera góc siêu rộng: 12MP, ƒ/2.4 Quay video  4K 2160p@30fps FullHD 1080p@30fps FullHD 1080p@60fps HD 720p@30fps Tính năng camera  Chạm lấy nét HDR Nhận diện khuôn mặt Quay chậm (Slow', 'iphong.png', '2023-04-03 12:47:09', 1, 3, 5);
-INSERT INTO `sanpham` VALUES (26, 'Điều hòa Panasonic CU/CS-XPU', 'Tổng quan Công suất làm lạnh: 1.5 HP - 12000 BTU Công suất sưởi ấm: Không có sưởi ấm  Phạm vi làm lạnh hiệu quả: Từ 15 - 20 m2 (từ 40 đến 60 m3) Công nghệ Inverter: Điều hòa inverter Loại máy: Điều hoà 1 chiều (chỉ làm lạnh) Công suất tiêu thụ điện tối đa: Tính Năng Tiện ích:Chế độ vận hành khi ngủ, Chức năng hút ẩm, Hẹn giờ bật tắt máy, Hoạt động siêu êm Chế độ tiết kiệm điện:  Kháng khuẩn khử mùi: Kháng khuẩn khử mùi Nanoe-X Chế độ làm lạnh nhanh: Chế độ gió:Tuỳ chỉnh điều khiển lên xuống  Thông tin chung Thông tin cục lạnh: Thông tin cục nóng: Loại Gas sử dụng: R32 Nơi sản xuất:Malaysia Năm ra mắt: 2021 Bảo hành: 12 tháng', 'dh10.png', '2023-04-03 12:47:35', 1, 4, 4);
-INSERT INTO `sanpham` VALUES (27, 'Điều hòa Panasonic CU/CS-N9', 'Tổng quan Công suất làm lạnh: 1 HP - 9.000 BTU Công suất sưởi ấm: Không có sưởi ấm  Phạm vi làm lạnh hiệu quả: Dưới 15 m2 (từ 30 đến 45 m3) Công nghệ Inverter: Không Loại máy: Điều hoà 1 chiều (chỉ làm lạnh) Công suất tiêu thụ điện tối đa: Tính Năng Tiện ích:Chế độ vận hành khi ngủ, Chức năng hút ẩm, Hẹn giờ bật tắt máy, Hoạt động siêu êm Chế độ tiết kiệm điện:  Kháng khuẩn khử mùi: Kháng khuẩn khử mùi Nanoe-G Chế độ làm lạnh nhanh: Chế độ gió:Tuỳ chỉnh điều khiển lên xuống  Thông tin chung Thông tin cục lạnh: Thông tin cục nóng: Loại Gas sử dụng: Nơi sản xuất:Malaysia Năm ra mắt: 2020 Bảo hành: 12 tháng', 'dh9.png', '2023-04-03 12:47:58', 1, 4, 4);
-INSERT INTO `sanpham` VALUES (28, 'Điều hòa Panasonic CU/CS-XZ1', 'Tổng quan Công suất làm lạnh: 18000 BTU Công suất sưởi ấm: 20500 BTU Phạm vi làm lạnh hiệu quả: Từ 20 - 30m² (từ 60 đến 80m³) Công nghệ Inverter: Điều hòa inverter Loại máy: Điều hoà 2 chiều Tiêu thụ điện: 1.13 kW/h Tính Năng Tiện ích: Chế độ iAuto X làm lạnh nhanh, Chức năng khử ẩm, Chức năng lọc không khí Nanoe-G, ECO tích hợp A.I tiết kiệm điện, Hẹn giờ bật tắt máy, Điều khiển bằng điện thoại, có wifi Chế độ tiết kiệm điện: ECO tích hợp A.I, Inverter Lọc bụi, kháng khuẩn, khử mùi: Nanoe-G lọc bụi mịn PM 2.5, Nanoe-X diệt khuẩn, khử mùi, duy trì độ ẩm Chế độ làm lạnh nhanh: iAuto-X Chế độ gió: Điều khiển lên xuống tự động, trái phải tùy chỉnh tay  Thông tin chung Thông tin cục lạnh: Dài 104 cm - Cao 29.5 cm - Dày 24.4 cm - Nặng 12 kg Thông tin cục nóng: Dài 87.5 cm - Cao 61.5 cm - Dày 32 cm - Nặng 41 kg Loại Gas sử dụng: R-32 Nơi sản xuất: Malaysia Năm ra mắt: 2021 Bảo hành: 12 tháng', 'dh8.png', '2023-04-03 12:48:19', 1, 4, 4);
-INSERT INTO `sanpham` VALUES (29, 'Điều hòa Samsung AR18TYHYC', 'Tổng quan Công suất làm lạnh: 2 HP - 18.000 BTU Công suất sưởi ấm: Không có sưởi ấm Phạm vi làm lạnh hiệu quả: Từ 20 - 30m² (từ 60 đến 80m³) Công nghệ Inverter: Điều hòa inverter Loại máy: Điều hoà 1 chiều (chỉ làm lạnh) Tiêu thụ điện: 1.72 kW/h Tính Năng Tiện ích: Chế độ chỉ sử dụng quạt Fan Only - chỉ làm mát, không làm lạnh, Chức năng hút ẩm, Chức năng tự làm sạch, Có tự điều chỉnh nhiệt độ (chế độ ngủ đêm), Hẹn giờ bật tắt máy, Làm lạnh nhanh tức thì, Tự khởi động lại khi có điện Công nghệ tiết kiệm điện:, Digital Inverter, Eco Kháng khuẩn khử mùi: Bộ lọc thô Easy Filter, Màng lọc kháng khuẩn Ag+ Chế độ làm lạnh nhanh: Có Chế độ gió: Tuỳ chỉnh điều khiển lên xuống trái phải tự động  Thông tin chung Thông tin cục lạnh: Dài 89 cm - Cao 30 cm - Dày 21.8 cm - Nặng 10 kg Thông tin cục nóng: Dài 88 cm - Cao 54.5 cm - Dày 30 cm - Nặng 30.2 kg Loại Gas sử dụng: R-32 Nơi sản xuất: Thái Lan Năm ra mắt: 2020 Bảo hành: 24 tháng', 'dh7.png', '2023-04-03 12:48:39', 1, 1, 4);
-INSERT INTO `sanpham` VALUES (30, 'Điều hòa Samsung AR09TYHQA', 'Tổng quan Công suất làm lạnh: 1 HP - 9.000 BTU Công suất sưởi ấm: Không có sưởi ấm  Phạm vi làm lạnh hiệu quả: Dưới 15 m2 (từ 30 đến 45 m3) Công nghệ Inverter: Điều hòa inverter Loại máy: Điều hoà 1 chiều (chỉ làm lạnh) Công suất tiêu thụ điện tối đa: Tính Năng Tiện ích:Chế độ vận hành khi ngủ, Chức năng hút ẩm, Hẹn giờ bật tắt máy Chế độ tiết kiệm điện:  Kháng khuẩn khử mùi: Bộ Lọc HD Chế độ làm lạnh nhanh: Chế độ gió:Tuỳ chỉnh điều khiển lên xuống  Thông tin chung Thông tin cục lạnh: Dài 80.5 cm - Cao 28.5 cm - Dày 19.4 cm - Nặng 8.8 kg Thông tin cục nóng: Dài 72 cm - Cao 49.5 cm - Dày 27.04 cm - Nặng 21.3 kg Loại Gas sử dụng: Nơi sản xuất: Trung Quốc Năm ra mắt: 2020 Bảo hành: 24 tháng', 'dh6.png', '2023-04-03 12:49:00', 1, 1, 4);
-INSERT INTO `sanpham` VALUES (31, 'Ipad 10.5 ', 'iPad là máy tính bảng do Apple Inc phát triển. Được công bố vào ngày 27 tháng 1 năm 2010, thiết bị này tạo ra một phân loại mới giữa điện thoại thông minh và máy tính xách tay.[8]\r\n\r\nTương tự về tính năng so với thiết bị nhỏ và yếu hơn là iPhone hoặc iPod touch, iPad cũng hoạt động trên cùng hệ điều hành iPhone OS đã được sửa đổi[9][10] với giao diện được thiết kế lại để phù hợp với màn hình lớn.[11] iPad có màn hình chạm đa điểm sử dụng đèn led chiếu sáng 9.7 inch, bộ nhớ từ 16 tới 64', 'ipad10.5.png', '2023-04-03 12:49:21', 1, 3, 6);
-INSERT INTO `sanpham` VALUES (32, 'Ipad 11', 'iPad là máy tính bảng do Apple Inc phát triển. Được công bố vào ngày 27 tháng 1 năm 2010, thiết bị này tạo ra một phân loại mới giữa điện thoại thông minh và máy tính xách tay.[8]\r\n\r\nTương tự về tính năng so với thiết bị nhỏ và yếu hơn là iPhone hoặc iPod touch, iPad cũng hoạt động trên cùng hệ điều hành iPhone OS đã được sửa đổi[9][10] với giao diện được thiết kế lại để phù hợp với màn hình lớn.[11] iPad có màn hình chạm đa điểm sử dụng đèn led chiếu sáng 9.7 inch, bộ nhớ từ 16 tới 64', 'ipad11.png', '2023-04-03 12:49:42', 1, 3, 6);
-INSERT INTO `sanpham` VALUES (33, 'Điều hòa Samsung AR13TYGCD', 'Tổng quan Công suất làm lạnh: 12000BTU Phạm vi làm lạnh hiệu quả: Từ 15 - 20m² (từ 40 đến 60 m³) Công nghệ Inverter: Điều hòa inverter Loại máy: Điều hoà 1 chiều Tiêu thụ điện:  Tính Năng Tiện ích: Bộ ba Triple Protector Plus bảo vệ tối ưu cho hiệu suất bền bỉ, Chế độ chỉ sử dụng quạt Fan Only - chỉ làm mát, không làm lạnh, Chế độ Wind-Free cho hơi lạnh thoải mái, Chức năng hút ẩm, Chức năng tự làm sạch, Có tự điều chỉnh nhiệt độ (chế độ ngủ đêm), Dàn tản nhiệt phủ lớp chống ăn mòn Durafin, Hẹn giờ bật tắt máy, Làm lạnh nhanh tức thì ,Màn hình hiển thị nhiệt độ trên dàn lạnh, Tự khởi động lại khi có điện, Đảo gió 4 chiều giúp hơi lạnh lan toả đồng đều Chế độ tiết kiệm điện: Digital Inverter Boost, Eco Hệ thống lọc không khí: Bộ lọc thô Easy Filter, Bộ lọc Tri Care Filter lọc bụi, chống nấm mốc, kháng khuẩn Chế độ làm lạnh nhanh: Có Chế độ gió: Tuỳ chỉnh điều khiển lên xuống trái phải tự động  Thông tin chung Thông tin cục lạnh: Dài 82 cm - Cao 30.5 cm - Dày 21.5 cm - Nặng 9.2 kg Thông ', 'dh5.png', '2023-04-03 12:50:10', 1, 1, 4);
-INSERT INTO `sanpham` VALUES (34, 'Điều hòa Sharp AH-X9XEW', 'Tổng quan Công suất làm lạnh: 9.000 BTU Công suất sưởi ấm: Không có sưởi ấm  Phạm vi làm lạnh hiệu quả: Dưới 15 m2 (từ 30 đến 45 m3) Công nghệ Inverter: Điều hòa inverter Loại máy: Điều hoà 1 chiều (chỉ làm lạnh) Công suất tiêu thụ trung bình:0.8 kW/h Tính Năng Tiện ích: Thổi gió dễ chịu (cho trẻ em, người già), Hẹn giờ bật tắt máy, Làm lạnh nhanh tức thì, Tự khởi động lại khi có điện Chế độ tiết kiệm điện: J-Tech Inverter, Eco Hệ thống lọc không khí: Lưới bụi polypropylene Chế độ làm lạnh nhanh: Powerful Jet Chế độ gió: Điều khiển trái phải tự động  Thông tin chung Thông tin cục lạnh: Dài 87.7 cm - Cao 29.2 cm - Dày 22.2 cm - Nặng 8 kg Thông tin cục nóng: Dài 66.5 cm - Cao 49.5 cm - Dày 29.5 cm - Nặng 18 kg Loại Gas sử dụng: R-32 Nơi sản xuất: Thái Lan Năm ra mắt: 2020 Bảo hành: 12 tháng', 'dh4.png', '2023-04-03 12:50:33', 1, 8, 4);
-INSERT INTO `sanpham` VALUES (35, 'Máy giặt Samsung WD21', 'Công nghệ giặt: Chế độ ngâm Bubble Soak, AI Wash tối ưu lượng nước giặt xả, lượng nước và thời gian giặt, VRT Plus ™ giảm rung ồn đến 30%, Giặt hơi nước Hygiene Steam diệt 99.9% vi khuẩn, QuickDrive giặt xả hiệu quả chỉ trong 39 phút, AI Dispenser tự động cân chỉnh lượng nước giặt, nước xả, Kết nối với điện thoại thông qua ứng dụng SmartThings, Bảng điều khiển AI control tự động ghi nhớ chế độ giặt, Airwash khử mùi & kháng khuẩn, Công nghệ giặt bong bóng Eco Bubble', 'maygiatsamsungWD21.png', '2023-04-03 12:50:55', 1, 1, 3);
-INSERT INTO `sanpham` VALUES (36, 'Máy Giặt Panasonic CN-AF1', 'Công nghệ giặt: Chế độ ngâm Bubble Soak, AI Wash tối ưu lượng nước giặt xả, lượng nước và thời gian giặt, VRT Plus ™ giảm rung ồn đến 30%, Giặt hơi nước Hygiene Steam diệt 99.9% vi khuẩn, QuickDrive giặt xả hiệu quả chỉ trong 39 phút, AI Dispenser tự động cân chỉnh lượng nước giặt, nước xả, Kết nối với điện thoại thông qua ứng dụng SmartThings, Bảng điều khiển AI control tự động ghi nhớ chế độ giặt, Airwash khử mùi & kháng khuẩn, Công nghệ giặt bong bóng Eco Bubble', 'maygiatpanasonicnaf1.png', '2023-04-03 12:51:22', 1, 4, 3);
-INSERT INTO `sanpham` VALUES (37, 'Máy giặt LG T23', 'Công nghệ giặt: Chế độ ngâm Bubble Soak, AI Wash tối ưu lượng nước giặt xả, lượng nước và thời gian giặt, VRT Plus ™ giảm rung ồn đến 30%, Giặt hơi nước Hygiene Steam diệt 99.9% vi khuẩn, QuickDrive giặt xả hiệu quả chỉ trong 39 phút, AI Dispenser tự động cân chỉnh lượng nước giặt, nước xả, Kết nối với điện thoại thông qua ứng dụng SmartThings, Bảng điều khiển AI control tự động ghi nhớ chế độ giặt, Airwash khử mùi & kháng khuẩn, Công nghệ giặt bong bóng Eco Bubble', 'maygiatlgt23.png', '2023-04-03 12:51:41', 1, 5, 3);
-INSERT INTO `sanpham` VALUES (38, 'Máy giặt Panasonic NAV90', 'Loại máy giặt: Cửa trước Lồng giặt: Lồng ngang Khối lượng giặt: 9 kg Khối lượng sấy: 2 kg Tốc độ quay vắt: 1400 vòng/phút Hiệu suất sử dụng điện: 13.7 Wh/kg Kiểu động cơ: Truyền động gián tiếp (dây Curoa) Inverter: Công nghệ 3Di Inverter Công nghệ giặt Chương trình hoạt động: 16 chương trình Công nghệ giặt: Cảm biến Econavi, Giặt diệt khuẩn bằng nước lạnh UV Blue Ag+, Giặt nước nóng StainMaster+, Hệ thống ActiveFoam Tiện ích: Có sấy, Khóa trẻ em, vệ sinh lồng giặt Tổng quan Chất liệu lồng giặt: Thép không gỉ Chất liệu vỏ máy: Kim loại sơn tĩnh điện Chất liệu nắp máy: Kính chịu lực Bảng điều khiển: Song ngữ Anh-Việt Số người sử dụng: Trên 7 người (Trên 10 kg) Kích thước - Khối lượng: Cao 84.5 cm - Ngang 59 cm - Sâu 58.5 cm - Nặng 69 kg Nơi sản xuất: Việt nam Năm ra mắt: 2022 Bảo hành: 24 tháng', 'maygiatpanasonicnav90.png', '2023-04-03 12:52:05', 1, 4, 3);
-INSERT INTO `sanpham` VALUES (39, 'Máy giặt Panasonic NA-V10', 'Công nghệ giặt: Chế độ ngâm Bubble Soak, AI Wash tối ưu lượng nước giặt xả, lượng nước và thời gian giặt, VRT Plus ™ giảm rung ồn đến 30%, Giặt hơi nước Hygiene Steam diệt 99.9% vi khuẩn, QuickDrive giặt xả hiệu quả chỉ trong 39 phút, AI Dispenser tự động cân chỉnh lượng nước giặt, nước xả, Kết nối với điện thoại thông qua ứng dụng SmartThings, Bảng điều khiển AI control tự động ghi nhớ chế độ giặt, Airwash khử mùi & kháng khuẩn, Công nghệ giặt bong bóng Eco Bubble', 'maygiatpanasonicna-v10.png', '2023-04-03 12:52:26', 1, 4, 3);
-INSERT INTO `sanpham` VALUES (40, 'Máy giặt Sharpe SFK1054', 'Loại máy giặt: Cửa ngang Lồng giặt: Lồng ngang Khối lượng giặt: Giặt 10.5 kg Tốc độ quay vắt: 1400 vòng/phút Hiệu suất sử dụng điện: 7.76 Wh/kg Kiểu động cơ: Truyền động gián tiếp (dây Curoa) Inverter: Có Công nghệ giặt Chương trình hoạt động:  Công nghệ giặt: Công nghệ giặt hơi nước Steam Tiện ích: Giặt nhanh 15 phút, Giặt nước nóng tới 90 độ C, Khóa trẻ em, Thêm đồ trong khi giặt, Tự khởi động lại khi có điện, Vệ sinh lồng giặt, Đèn chiếu sáng lồng giặt Tổng quan Chất liệu lồng giặt: Thép không gỉ Chất liệu vỏ máy: Thép cao cấp Chất liệu nắp máy: Kim loại sơn tĩnh điện Bảng điều khiển: Song ngữ Anh - Việt nút nhấn có màn hình hiển thị Số người sử dụng: Trên 7 người (Trên 10 kg) Kích thước - Khối lượng: Cao 85 cm - Ngang 59.8 cm - Sâu 68 cm - Nặng Nặng 80 kg Nơi sản xuất: Trung Quốc Năm ra mắt: 2021 Bảo hành: 12 tháng', 'maygiatsharpesfk1054.png', '2023-04-03 12:52:46', 1, 8, 3);
-INSERT INTO `sanpham` VALUES (41, 'Máy giặt Panasonic NAS96', 'Loại máy giặt: Cửa trước Lồng giặt: Lồng ngang Khối lượng giặt: 9 kg Khối lượng sấy: 6 kg Tốc độ quay vắt: 1400 vòng/phút Hiệu suất sử dụng điện:  Kiểu động cơ: Truyền động gián tiếp (dây Curoa) Inverter: Có Công nghệ giặt Chương trình hoạt động: 16 chương trình Công nghệ giặt: Cảm biến Econavi, Giặt diệt khuẩn bằng nước lạnh UV Blue Ag+, Hệ thống ActiveFoam Tiện ích: Có sấy, Khóa trẻ em, Tự động vệ sinh lồng giặt Tổng quan Chất liệu lồng giặt: Thép không gỉ Chất liệu vỏ máy: Kim loại sơn tĩnh điện Chất liệu nắp máy: Kính chịu lực Bảng điều khiển: Song ngữ Anh-Việt Số người sử dụng: Từ 9 - 10 Kg (5-7 Người) Kích thước - Khối lượng: Cao 84.5 cm - Ngang 59.6 cm - Sâu 62 cm - Nặng 70 kg Nơi sản xuất: Việt nam Năm ra mắt: 2022 Bảo hành: 24 tháng', 'matgiatpanasonicnas96.png', '2023-04-03 12:53:06', 1, 4, 3);
-INSERT INTO `sanpham` VALUES (42, 'Máy giặt Panasonic NAV10', 'Loại máy giặt: Cửa trước Lồng giặt: Lồng ngang Khối lượng giặt: 10 kg Tốc độ quay vắt: 1400 vòng/phút Hiệu suất sử dụng điện: 14.1 Wh/kg Kiểu động cơ: Truyền động dây Curoa Inverter: Có Công nghệ giặt Chương trình hoạt động: 10 Chương trình Công nghệ giặt: Giặt diệt khuẩn bằng nước lạnh UV Blue Ag+, Giặt ngăn ngừa dị ứng Allergy, Hệ thống ActiveFoam, Cảm biến Econavi, Giặt nước nóng StainMaster+ Tiện ích: Giặt nước nóng, Khóa trẻ em, Công nghệ Inverter - Tiết kiệm điện, Vệ sinh lồng giặt, Hẹn giờ giặt xong, Vắt cực khô Tổng quan Chất liệu lồng giặt: Thép không gỉ Chất liệu vỏ máy: Kim loại sơn tĩnh điện Chất liệu nắp máy: Nhựa Bảng điều khiển: Song ngữ Anh - Việt có nút xoay, nút nhấn và màn hình hiển thị Số người sử dụng: Từ trên 6 người (Trên 8.5 kg) Kích thước - Khối lượng: Cao 84.5 cm - Ngang 59.6 cm - Sâu 60 cm - Nặng 75 kg Nơi sản xuất: Việt Nam Năm sản xuất: 2019 Bảo hành: 24 tháng', 'maygiatpanasonicnav10.png', '2023-04-03 12:53:25', 1, 4, 3);
-INSERT INTO `sanpham` VALUES (43, 'Máy giặt Samsung WA22R88', 'Loại máy giặt: Máy giặt cửa trên Lồng giặt: Lồng đứng Khối lượng giặt: 22 Kg Tốc độ quay vắt: 700 vòng/phút Lượng nước tiêu thụ chuẩn: Hiệu suất sử dụng điện: Kiểu động cơ: Truyền động dây Curoa Inverter: Có Công nghệ giặt Chương trình hoạt động: 6 chương trình Công nghệ giặt: Công nghệ Magic Clean giặt nước nóng diệt khuẩn mức 40 và 60 độ C, Công nghệ Intensive Wash đánh tan xà phòng giúp tăng khả năng thẩm thấu vào sợi vải, Bộ lọc xơ vải Magic Filter, Hộp đánh tan bột giặt Magic Dispenser, Mâm giặt Wobble tạo luồng nước đa chiều, Công nghệ giặt Activ Dualwash Tiện ích: Điều khiển bằng smartphone qua ứng dụng SmartThings, Giặt nước nóng, Khóa trẻ em, Công nghệ Inverter tiết kiệm điện, Tự khởi động lại khi có điện, Vệ sinh lồng giặt, Hẹn giờ giặt xong Tổng quan Chất liệu lồng giặt: Thép không gỉ Chất liệu vỏ máy: Kim loại sơn tĩnh điện Chất liệu nắp máy: Kính chịu lực Bảng điều khiển: Song ngữ Anh-Việt cảm ứng có màn hình hiển thị Số người sử dụng: Từ trên 6 người (Trên 8.5 kg) Kích th', 'maygiat1.png', '2023-04-03 12:53:46', 1, 8, 3);
-INSERT INTO `sanpham` VALUES (44, 'Máy giặt Samsung WW10TP5', 'Loại máy giặt: Cửa trước Lồng giặt: Lồng ngang Khối lượng giặt: Giặt 10Kg Tốc độ quay vắt: 1400 vòng/phút Hiệu suất sử dụng điện:  Kiểu động cơ: Truyền động dây coroa Inverter: Có Công nghệ giặt Chương trình hoạt động:  Công nghệ giặt: Cửa phụ Add door, QuickDrive giặt xả hiệu quả chỉ trong 39 phút, Công nghệ giặt bong bóng Eco Bubble Tiện ích: Tổng quan Chất liệu lồng giặt: Thép không gỉ Chất liệu vỏ máy: Thép chống gỉ Chất liệu nắp máy: Kính chịu lực Bảng điều khiển: Tiếng Việt Số người sử dụng: Từ 5-7 người Kích thước - Khối lượng: Ngang 60 cm - Cao 85 cm - Sâu 55 cm - Nặng 67 kg Nơi sản xuất: Việt Nam Năm sản xuất: 2021 Bảo hành: 24 tháng', 'maygiat2.png', '2023-04-03 12:54:05', 1, 1, 3);
-INSERT INTO `sanpham` VALUES (45, 'Điều hòa LG B24END1', 'Công suất làm lạnh: 24.000 BTU Công suất sưởi ấm: 26.000BTU Phạm vi làm lạnh hiệu quả: Từ 30-40m² Công nghệ Inverter: Điều hòa inverter Loại máy: Điều hoà 1 chiều (chỉ làm lạnh) Tính Năng Tiện ích:Chức năng tự chẩn đoán lỗi, Chức năng tự làm sạch, Có tự điều chỉnh nhiệt độ (chế độ ngủ đêm), Công nghệ Gold-Fin chống ăn mòn, Làm lạnh nhanh tức thì, Màn hình hiển thị nhiệt độ trên dàn lạnh, Thổi gió dễ chịu Comfort Air (cho trẻ em, người già), Tự khởi động lại khi có điện, Đảo gió 4 chiều giúp hơi lạnh lan toả đồng đều Công nghệ tiết kiệm điện: Dual inverter Kháng khuẩn khử mùi: Màng lọc sơ cấp Chế độ làm lạnh nhanh: Jet Cool Chế độ gió:Tuỳ chỉnh điều khiển lên xuống trái phải tự động  Thông tin chung Thông tin cục lạnh: Dài 99.8 cm - Cao 34.5 cm - Dày 21 cm - Nặng 11 kg Thông tin cục nóng: Dài 87 cm - Cao 65 cm - Dày 33 cm - Nặng 43 kg Loại Gas sử dụng: R32 Nơi sản xuất: Thái Lan Năm ra mắt: 2022 Bảo hành: 24 tháng', 'dh1.png', '2023-04-03 12:54:27', 1, 5, 4);
-INSERT INTO `sanpham` VALUES (46, 'Điều hòa LG B18END1', 'Tổng quan Công suất làm lạnh: 18.000 BTU Công suất sưởi ấm: 19000BTU Phạm vi làm lạnh hiệu quả: Từ 20-30m² Công nghệ Inverter: Điều hòa inverter Loại máy: Điều hoà 1 chiều (chỉ làm lạnh) Tính Năng Tiện ích:Chức năng tự chẩn đoán lỗi, Chức năng tự làm sạch, Có tự điều chỉnh nhiệt độ (chế độ ngủ đêm), Công nghệ Gold-Fin chống ăn mòn, Làm lạnh nhanh tức thì, Màn hình hiển thị nhiệt độ trên dàn lạnh, Thổi gió dễ chịu Comfort Air (cho trẻ em, người già), Tự khởi động lại khi có điện, Đảo gió 4 chiều giúp hơi lạnh lan toả đồng đều Công nghệ tiết kiệm điện: Dual inverter Kháng khuẩn khử mùi: Màng lọc sơ cấp Chế độ làm lạnh nhanh: Jet Cool Chế độ gió:Tuỳ chỉnh điều khiển lên xuống trái phải tự động  Thông tin chung Thông tin cục lạnh: Dài 99.8cm - Cao 34.5 cm - Dày 21 cm - Nặng 11 kg Thông tin cục nóng: Dài 87 cm - Cao 65 cm - Dày 33 cm - Nặng 43 kg Loại Gas sử dụng: R32 Nơi sản xuất: Thái Lan Năm ra mắt: 2022 Bảo hành: 24 tháng', 'dh2.png', '2023-04-03 12:54:48', 1, 5, 4);
-INSERT INTO `sanpham` VALUES (47, 'Google Tivi Sony XR65A', 'Hệ điều hành, giao diện: Google TV Remote thông minh: Remote tích hợp tích micro tìm kiếm giọng nói (RMF-TX800P) Chiếu hình từ điện thoại lên TV: AirPlay 2, Chromecast Điều khiển tivi bằng điện thoại: Ứng dụng Android TV Kết nối ứng dụng các thiết bị trong nhà: Đang cập nhật Điều khiển bằng giọng nói: Tìm kiếm giọng nói trên YouTube bằng tiếng Việt, Google Assistant có tiếng Việt Tiện ích thông minh khác: Micro tích hợp trên TV điều khiển giọng nói rảnh tay, Bravia CAM (mua thêm camera)', 'googletivisonyxr65a.png', '2023-04-03 12:55:07', 1, 6, 1);
-INSERT INTO `sanpham` VALUES (48, 'Điều hòa LG B13END1', 'Tổng quan Công suất làm lạnh: 1 HP - 12.000 BTU Công suất sưởi ấm: 12800BTU Phạm vi làm lạnh hiệu quả: Từ 15 - 20m² (từ 40 đến 60 m³) Công nghệ Inverter: Điều hòa inverter Loại máy: Điều hoà 1 chiều (chỉ làm lạnh) Tính Năng Tiện ích:Chức năng tự chẩn đoán lỗi, Chức năng tự làm sạch, Có tự điều chỉnh nhiệt độ (chế độ ngủ đêm), Công nghệ Gold-Fin chống ăn mòn, Làm lạnh nhanh tức thì, Màn hình hiển thị nhiệt độ trên dàn lạnh, Thổi gió dễ chịu Comfort Air (cho trẻ em, người già), Tự khởi động lại khi có điện, Đảo gió 4 chiều giúp hơi lạnh lan toả đồng đều Công nghệ tiết kiệm điện: Dual inverter Kháng khuẩn khử mùi: Màng lọc sơ cấp Chế độ làm lạnh nhanh: Jet Cool Chế độ gió:Tuỳ chỉnh điều khiển lên xuống trái phải tự động  Thông tin chung Thông tin cục lạnh: Dài 82 cm - Cao 29 cm - Dày 19 cm - Nặng 8.5 kg Thông tin cục nóng: Dài 72 cm - Cao 50 cm - Dày 23 cm - Nặng 24.7 kg Loại Gas sử dụng: R32 Nơi sản xuất: Thái Lan Năm ra mắt: 2022 Bảo hành: 24 tháng', 'dh3.png', '2023-04-03 12:55:36', 1, 5, 4);
-INSERT INTO `sanpham` VALUES (49, 'Google Tivi Sony KD55X', 'Hệ điều hành, giao diện: Google TV Remote thông minh: Remote tích hợp tích micro tìm kiếm giọng nói (RMF-TX800P) Chiếu hình từ điện thoại lên TV: AirPlay 2, Chromecast Điều khiển tivi bằng điện thoại: Ứng dụng Android TV Điều khiển bằng giọng nói: Google Assistant có tiếng Việt, Tìm kiếm giọng nói trên YouTube bằng tiếng Việt Tiện ích thông minh khác: Bravia CAM (mua thêm camera), Micro tích hợp trên TV điều khiển giọng nói rảnh tay', 'googletivisonykd55x.png', '2023-04-03 12:56:00', 1, 6, 1);
-INSERT INTO `sanpham` VALUES (50, 'Android Tivi Mini TCL 65X', 'Lỗi máy giặt bị lệch tâm sẽ dẫn đến hiện tượng quần áo bị xoắn rối, quấn hoặc dẫn đấn rách quần áo. Hơn thế đối với lỗi máy giặt bị lệch tâm như vậy dẫn đến tiếng ồn lớn mang đến cảm giác khó chịu và ảnh hưởng xấu tới các linh kiện bên trong máy. Vậy Nguyên nhân, tác hại và cách khắc phục lỗi máy giặt bị lệch tâm? Hệ điều hành, giao diện: Android 9.0 Remote thông minh: Remote tích hợp micro tìm kiếm bằng giọng nói Chiếu hình từ điện thoại lên TV: Chromecast, Screen Mirroring, T-Cast Điều khiển tivi bằng điện thoại: Ứng dụng Google Cast, Ứng dụng MagiConnect Kết nối ứng dụng các thiết bị trong nhà: Không Điều khiển bằng giọng nói: Tìm kiếm giọng nói trên YouTube bằng tiếng Việt, Google Assistant có tiếng Việt Tiện ích thông minh khác: Micro tích hợp trên TV điều khiển giọng nói rảnh tay', 'Androidtiviminitcl65x.png', '2023-04-03 12:56:35', 1, 7, 1);
-INSERT INTO `sanpham` VALUES (51, 'Smart Tivi Samsung NEO QLE', 'Smart Tivi Neo QLED Samsung 4K 55 inch QA55QN90C là phiên bản tivi 55 inch mới được nhà sản xuất Hàn Quốc đưa tới thị trường Việt Nam năm 2023. Sản phẩm không chỉ được trang bị màn hình NEO QLED cao cấp mà các tính năng khác cũng thuộc hàng hiện đại hàng đầu.', 'smarttivisamsungneoQLED4k.png', '2023-05-03 17:12:11', 1, 1, 1);
+INSERT INTO `sanpham` VALUES (1, 'Smart Tivi Samsung UA50AU9000', 'Smart Tivi SamsungUA50AU9000 có thiết kế gọn gàng, tinh tế, tông màu bạc nổi bật, tạo cảm giác sang trọng, hiện đại hơn cho căn phòng sử dụng. Kích thước màn hình lớn 55 inch giúp Smart Tivi SamsungUA50AU9000 rất thích hợp bố trí vào nhiều không gian nội thất khác nhau như phòng khách, phòng họp,... N ài ra, chân đế chữ V bằng kim loại chắc chắn, giúp giữ vững tivi trên nhiều dạng bề mặt phẳng khác nhau', 50, 'smarttivisamsungUA50AU9000.png', '2023-03-30 03:30:04', 1, 1, 1);
+INSERT INTO `sanpham` VALUES (2, 'Smart Tivi Samsung UA50AU8000', 'Smart Tivi SamsungUA50AU9000 có thiết kế gọn gàng, tinh tế, tông màu bạc nổi bật, tạo cảm giác sang trọng, hiện đại hơn cho căn phòng sử dụng. Kích thước màn hình lớn 55 inch giúp Smart Tivi SamsungUA50AU9000 rất thích hợp bố trí vào nhiều không gian nội thất khác nhau như phòng khách, phòng họp,... N ài ra, chân đế chữ V bằng kim loại chắc chắn, giúp giữ vững tivi trên nhiều dạng bề mặt phẳng khác nhau', 50, 'smarttivisamsungUA50AU8000.png', '2023-03-30 03:30:04', 1, 1, 1);
+INSERT INTO `sanpham` VALUES (3, 'Smart tivi NEO Samsung65', 'Smart Tivi SamsungUA50AU9000 có thiết kế gọn gàng, tinh tế, tông màu bạc nổi bật, tạo cảm giác sang trọng, hiện đại hơn cho căn phòng sử dụng.  Kích thước màn hình lớn 55 inch giúp Smart Tivi SamsungUA50AU9000 rất thích hợp bố trí vào nhiều không gian nội thất khác nhau như phòng khách, phòng họp,... N ài ra, chân đế chữ V bằng kim loại chắc chắn, giúp giữ vững tivi trên nhiều dạng bề mặt phẳng khác nhau', 50, 'smarttivineosamsungqa65.png', '2023-03-30 03:30:04', 1, 1, 1);
+INSERT INTO `sanpham` VALUES (4, 'Smart Tivi NEO Samsung75', 'Smart Tivi Neo Samsung75 có thiết kế gọn gàng, tinh tế, tông màu bạc nổi bật, tạo cảm giác sang trọng, hiện đại hơn cho căn phòng sử dụng.Kích thước màn hình lớn 55 inch giúp Smart Tivi SamsungUA50AU9000 rất thích hợp bố trí vào nhiều không gian nội thất khác nhau như phòng khách, phòng họp,... N ài ra, chân đế chữ V bằng kim loại chắc chắn, giúp giữ vững tivi trên nhiều dạng bề mặt phẳng khác nhau', 49, 'smarttivineosamsungqa75.png', '2023-03-30 03:30:04', 1, 1, 1);
+INSERT INTO `sanpham` VALUES (5, 'Smart Tivi Samsung UA50AU7000', 'Smart Tivi SamsungUA50AU7000 có thiết kế gọn gàng, tinh tế, tông màu bạc nổi bật, tạo cảm giác sang trọng, hiện đại hơn cho căn phòng sử dụng.Kích thước màn hình lớn 55 inch giúp Smart Tivi SamsungUA50AU9000 rất thích hợp bố trí vào nhiều không gian nội thất khác nhau như phòng khách, phòng họp,... N ài ra, chân đế chữ V bằng kim loại chắc chắn, giúp giữ vững tivi trên nhiều dạng bề mặt phẳng khác nhau', 50, 'smarttivisamsungUA50AU7000.png', '2023-03-30 03:30:04', 1, 1, 1);
+INSERT INTO `sanpham` VALUES (6, 'Android Tivi Philips65', 'Android Tivi Philips65 có thiết kế gọn gàng, tinh tế, tông màu bạc nổi bật, tạo cảm giác sang trọng, hiện đại hơn cho căn phòng sử dụng.  Kích thước màn hình lớn 55 inch giúp Smart Tivi SamsungUA50AU9000 rất thích hợp bố trí vào nhiều không gian nội thất khác nhau như phòng khách, phòng họp,... N ài ra, chân đế chữ V bằng kim loại chắc chắn, giúp giữ vững tivi trên nhiều dạng bề mặt phẳng khác nhau', 50, 'androidtiviphilips65.png', '2023-03-30 03:30:04', 1, 2, 1);
+INSERT INTO `sanpham` VALUES (7, 'Smart Tivi LG65UP', 'Chiếc tivi có hiệu LG, có thiết kế rất hiện đại. Thuộc thế hệ màn hình phẳng, chỉ dày khoảng 2cm nên nó mỏng và gọn hơn chiếc tivi lồi cũ của nhà em. Toàn thân chiếc tivi được sơn một màu đen bóng loáng, sạch và không hề bị bám bụi, trông rõ nét như một chiếc gương.', 50, 'smarttivilg65up.png', '2023-03-30 03:30:04', 1, 5, 1);
+INSERT INTO `sanpham` VALUES (8, 'Smart Tivi QNED LG65', 'Chiếc tivi có hiệu LG, có thiết kế rất hiện đại. Thuộc thế hệ màn hình phẳng, chỉ dày khoảng 2cm nên nó mỏng và gọn hơn chiếc tivi lồi cũ của nhà em. Toàn thân chiếc tivi được sơn một màu đen bóng loáng, sạch và không hề bị bám bụi, trông rõ nét như một chiếc gương.', 50, 'smarttiviqnedlg65.png', '2023-03-30 03:30:04', 1, 5, 1);
+INSERT INTO `sanpham` VALUES (9, 'Google Tivi TCL 43P', 'google Tivi TCL 43P Công nghệ xử lý hình ảnh: Dolby Vision, Dải màu rộng Wide Color Gamut, HDR10, Kiểm soát đèn nền Micro Dimming, Tăng cường chuyển động MEMC 60Hz. Tivi TCL được sản xuất tại Việt Nam nên đã bỏ đi các chi phí vận chuyển không cần thiết. Do vậy, mức giá rất cạnh tranh, chỉ từ 5 triệu. Tùy vào ngân sách, bạn có thể lựa chọn một chiếc tivi phù hợp nhất cho gia đình mình.', 50, 'googletivitcl43p.png', '2023-03-30 03:30:04', 1, 7, 1);
+INSERT INTO `sanpham` VALUES (10, 'Android Tivi TCL 65P', 'Tivi TCL là sản phẩm của Trung Quốc ra đời vào năm 1981. Sau hơn 30 năm đây đã trở thành thương hiệu tivi gần gũi với mọi nhà. Dòng tivi này còn lọt top 3 thương hiệu tivi bán chạy hàng đầu theo trang TrendForce.  Đây là loại tivi nổi tiếng toàn cầu và đã có mặt hơn 160 quốc gia. Sản phẩm có đặt trụ sở sản xuất tại Việt Nam ở tỉnh Bình Dương. Vì vậy loại tivi này ngày càng phổ biến ở Việt Nam hơn.', 50, 'androidtivitcl 65p.png', '2023-03-30 03:30:04', 1, 4, 1);
+INSERT INTO `sanpham` VALUES (11, 'Tủ lạnh Panasonic Inverter', 'Với tủ lạnh Panasonic Inverter NR-TL381GPKV được trang bị ngăn lấy nước n ài kháng khuẩn & khử mùi, với bình chứa dung tích 3 lít, bạn dễ dàng thưởng thức ly nước mát lạnh từ tủ lạnh mà không cần mở cửa. N ài ra, nước được duy trì độ tinh khiết, sạch khuẩn, nhờ bình chứa nước được đúc bằng nhựa kháng khuẩn không chứa BPA, đồng thời giúp khử mùi với bộ lọc carbon ở bên trong.', 50, 'tulanhpanasonic.png', '2023-03-30 03:30:04', 1, 4, 2);
+INSERT INTO `sanpham` VALUES (12, 'Tủ lạnh Sharp Inverter', 'Với tủ lạnh Panasonic Inverter NR-TL381GPKV được trang bị ngăn lấy nước n ài kháng khuẩn & khử mùi, với bình chứa dung tích 3 lít, bạn dễ dàng thưởng thức ly nước mát lạnh từ tủ lạnh mà không cần mở cửa.N ài ra, nước được duy trì độ tinh khiết, sạch khuẩn, nhờ bình chứa nước được đúc bằng nhựa kháng khuẩn không chứa BPA, đồng thời giúp khử mùi với bộ lọc carbon ở bên trong.', 50, 'tulanhsharp.png', '2023-03-30 03:30:04', 1, 8, 2);
+INSERT INTO `sanpham` VALUES (13, 'Tủ Lạnh Panasonic NRBW530', 'Công nghệ làm lạnh: Làm lạnh vòng cung Panorama Công nghệ kháng khuẩn, khử mùi: Khử mùi, diệt khuẩn 99.99% Nanoe-X giảm lưu lượng thuốc trừ sâu, Loại bỏ vi khuẩn nhờ công nghệ Ag Clean với tinh thể bạc Ag+ Công nghệ bảo quản thực phẩm: Ngăn cấp đông mềm Prime Fresh, Ngăn cấp đông nhanh gấp 5 lần Prime Freeze, Ngăn rau củ Fresh Safe Tiện ích: Bảng điều khiển bên ngoài, Làm đá tự động, Lấy nước bên ngoài Kiểu tủ: Ngăn đá dưới', 50, 'tulanhpanasonicnrbw530.png', '2023-03-30 03:24:00', 1, 4, 2);
+INSERT INTO `sanpham` VALUES (14, 'Tủ lạnh Sharp SJ FX420', 'Dung tích tổng:  Dung tích sử dung: 362 lít Số người sử dụng: Dung tích ngăn đá: 125 lít Dung tích ngăn lạnh: 237 lít Công nghệ inverter: J- Tech Inverter Điện năng tiêu thụ: Chế độ tiết kiệm khác: Công nghệ làm lạnh: Công nghệ kháng khuẩn, khử mùi: Bộ khử mùi chống khuẩn Anti-bacterial deodorizer Công nghệ bảo quản thực phẩm: Thực phẩm luôn tươi sống được bảo vệ an toàn với nhiệt độ ngăn đông điều chỉnh - 22 độ Tiện ích: Kiểu tủ: Ngăn đá dưới Số cửa: 4 cửa Chất liệu cửa tủ lạnh: Thép không gỉ Chất liệu khay ngăn: Kính chịu lực Đèn chiếu sáng: Đèn LED Kích thước - Khối lượng: Cao 180 cm - Rộng 79.5 cm - Sâu 61 cm - Nặng 79 kg Nơi sản xuất: Trung Quốc Năm ra mắt: 2020 Bảo hành: 24 tháng', 50, 'tulanhsharpSJ-FX420.png', '2023-03-30 03:30:04', 1, 8, 2);
+INSERT INTO `sanpham` VALUES (15, 'Tủ lạnh LG GRX 257', 'Dung tích tổng: 674 lít Dung tích sử dung: 635 lít Số người sử dụng:Trên 5 người Dung tích ngăn đá: 219 lít Dung tích ngăn lạnh: 416 lít Công nghệ inverter: Tủ lạnh inverter Điện năng tiêu thụ: ~1.93 kW/ngày Công nghệ tiết kiệm điện: Linear Inverter Công nghệ làm lạnh: DoorCooling+ làm lạnh từ cánh cửa tủ, Làm lạnh đa chiều Công nghệ kháng khuẩn, khử mùi: Bộ lọc 5 lớp Hygiene Fresh+™ Công nghệ bảo quản thực phẩm: Ngăn cân bằng ẩm Moist Balance Crisper, Ngăn rau củ cân bằng ẩm lưới mắt cáo 2 chế độ Fresh Balancer Tiện ích: Cửa phụ Door-in-Door, Lấy nước ngoài diệt khuẩn UV nano, Tích hợp WIFI - Smart ThinQ™ Kiểu tủ: Side by side Số cửa: 2 cửa Chất liệu cửa tủ lạnh: Thép không gỉ Chất liệu khay ngăn: Kính chịu lực Đèn chiếu sáng: Đèn LED Kích thước - Khối lượng: Cao 179 cm - Rộng 91.3 cm - Sâu 73.5 cm - Nặng 130 kg Nơi sản xuất: Trung Quốc Năm ra mắt: 2022 Bảo hành: 24 tháng', 50, 'tulanhlggrx257.png', '2023-03-30 03:30:40', 1, 5, 2);
+INSERT INTO `sanpham` VALUES (16, 'Tủ lạnh Samsung RF50A', 'Dung tích tổng: 645 lít Dung tích sử dung: 599 lít Số người sử dụng: Trên 5 người Dung tích ngăn đá: 215 lít Dung tích ngăn lạnh: 384 lít Công nghệ inverter: Digital Inverter Công suất tiêu thụ công bố theo TCVN: ~ 1.45 kW/ngày Chế độ tiết kiệm khác: Tùy chỉnh nhiệt độ phù hợp với bảng điều khiển điện tử tiện dụng Công nghệ làm lạnh: 3 Dàn lạnh độc lập Triple Cooling giúp hơi lạnh lan tỏa đều, Công nghệ Metal Cooling Công nghệ kháng khuẩn, khử mùi: Bộ lọc khử mùi từ không khí ở bên trong, kết hợp thêm công nghệ đèn UV liên tục làm sạch bề mặt giúp giữ được không khí trong lành Công nghệ bảo quản thực phẩm: Hộp rau củ, trái cây kín khí Crisper+ và Hộp thịt cá Flex Crisper Tiện ích: Làm đá tự động, Ngăn chuyển đổi linh hoạt, Ngăn đông mềm trữ thịt cá không cần rã đông Kiểu tủ: Multi Door Số cửa: 4 cánh Chất liệu cửa tủ lạnh: Kính Bespoke Chất liệu khay ngăn: Kính chịu lực Đèn chiếu sáng: Đèn LED Kích thước - Khối lượng: Cao 185.3 cm - Rộng 91.2 cm - Sâu 67.3 cm - Nặng 149 kg Nơi sản xuất', 50, 'tulanhsamsungrf50a.png', '2023-03-30 11:17:55', 1, 1, 2);
+INSERT INTO `sanpham` VALUES (17, 'Tủ lạnh Sharp SJF XP64', 'Dung tích tổng: 639 lít Dung tích sử dung: 572 lít Số người sử dụng: Trên 5 người Dung tích ngăn đá: 206 lít Dung tích ngăn lạnh: 366 lít Công nghệ inverter: J-tech Inverter Điện năng tiêu thụ: ~ 1.23 kW/ngày Chế độ tiết kiệm khác: Công nghệ làm lạnh: Hệ thống làm lạnh kép Hybrid Cooling Công nghệ kháng khuẩn, khử mùi: Bộ lọc kháng khuẩn, Công nghệ diệt khuẩn Plasmacluster Ion Công nghệ bảo quản thực phẩm: Chế độ làm đông nhanh đưa nhiệt độ ngăn đông xuống -24 ⁰C, Ngăn rau quả giữ ẩm, Ngăn đông mềm -1.5 độ C (Extra cool plus) Tiện ích: Bảng điều khiển bên ngoài, Chuông báo khi quên đóng cửa Kiểu tủ: Tủ lạnh ngăn đá dưới Số cửa: 4 cửa Chất liệu cửa tủ lạnh: Kính cường lực Chất liệu khay ngăn: Kính chịu lực Đèn chiếu sáng: Đèn LED Kích thước - Khối lượng: Cao 183 cm - Rộng 89 cm - Sâu 78 cm - Nặng 110 kg Nơi sản xuất: Thái Lan Năm ra mắt: 2021 Bảo hành: 24 tháng', 50, 'tulanhsharpsjfxp64.png', '2023-03-30 11:18:43', 1, 8, 2);
+INSERT INTO `sanpham` VALUES (18, 'Tủ lạnh Hitachi RWB640', 'Dung tích tổng: 638 lít Dung tích sử dung:  569 lít Số người sử dụng: Trên 5 người Dung tích ngăn đá: 100 lít Dung tích ngăn chuyển đổi: 97 lít Dung tích ngăn lạnh: 372 lít Công nghệ inverter: Tủ lạnh Inverter Điện năng tiêu thụ: ~ 1.63 kW/ngày Chế độ tiết kiệm khác: Cảm biến nhiệt ECO, Hệ thống quạt kép, Inverter Công nghệ làm lạnh: Hệ thống làm lạnh quạt kép, Làm lạnh nhanh Công nghệ kháng khuẩn, khử mùi: Bộ lọc khử mùi 3 lớp Triple Power Công nghệ bảo quản thực phẩm: Ngăn chuyển đổi đa năng Selectable Zone (có Đông mềm -3°C), Ngăn rau quả giữ rau củ quả tươi ngon với độ ẩm và nhiệt độ tối ưu Tiện ích:Bình chứa nước với bộ lọc, Bảng điều khiển màn hình LED, Chuông báo khi quên đóng cửa, Chế độ cấp đông nhanh, Làm đá tự động, Đệm cửa chống mốc Kiểu tủ: Multi Door Số cửa: 4 cửa Chất liệu cửa tủ lạnh: Mặt kính Chất liệu khay ngăn: Kính chịu lực Đèn chiếu sáng: Đèn LED Kích thước - Khối lượng: Cao 184 cm - Rộng 90 cm - Sâu 72 cm - Nặng 106 kg Nơi sản xuất: Thái Lan Năm sản xuất: 2021 Bảo', 50, 'tulanhhitachirwb640.png', '2023-03-30 11:19:18', 1, 9, 2);
+INSERT INTO `sanpham` VALUES (19, 'Tủ lạnh Hitachi Inverter 540', 'Dung tích tổng: 540 lít Dung tích sử dung:   Số người sử dụng: Trên 7 người Dung tích ngăn đá: 144 lít Dung tích ngăn lạnh: 396 lít Công nghệ inverter: Tủ lạnh Inverter Điện năng tiêu thụ: KW/ngày Chế độ tiết kiệm khác: Cảm biến nhiệt ECO Công nghệ làm lạnh: Hệ thống làm lạnh kép Công nghệ kháng khuẩn, khử mùi: Màng lọc Nano Titanium, Đệm cửa chống nấm mốc Công nghệ bảo quản thực phẩm: Ngăn rau quả thông minh Aero-care Tiện ích: Còn có chuông cửa, bảng điều khiển LED, Inverter tiết kiệm điện, Mặt gương sang trọng, dễ vệ sinh, làm đá tự động Kiểu tủ: Multi Door Số cửa: 4 cửa Chất liệu cửa tủ lạnh: Mặt gương Chất liệu khay ngăn: Kính chịu lực Đèn chiếu sáng: Đèn LED Kích thước - Khối lượng: Cao 183.5 cm - Rộng 85.5 cm - Sâu 72.7 cm - Nặng 99 kg Nơi sản xuất: Thái Lan Năm ra mắt: 2018 Bảo hành: 12 Tháng', 50, 'tulanhhitachiinverter540.png', '2023-03-30 11:19:43', 1, 9, 2);
+INSERT INTO `sanpham` VALUES (20, 'Iphone12', 'Cấu hình iPhone 12 · Chip A20 Bionic · RAM: 4GB · Bộ nhớ 64GB/128GB/256GB · Màn hình 6.1 inch Super Retina XDR OLED (2532 x 1170 ở mật độ điểm ảnh 476ppi)', 50, 'iphone12.png', '2023-03-30 11:20:07', 1, 3, 5);
+INSERT INTO `sanpham` VALUES (21, 'Iphone14', 'Thiết kế của iPhone 14 cũng trông khá tương đồng với người tiền nhiệm của mình khi có hai mặt trước sau bằng kính và khung viền kim loại vuông vức cùng các góc được bo cong mềm mại, tạo sự hài hòa và mang lại cảm giác cầm nắm dễ chịu. \r\n\r\nMặt sau của iPhone 14 ta sẽ bắt gặp logo \'táo khuyết\' quen thuộc cùng cụm hai camera với ống kính lồi lên khá cao được đặt ở góc trái. ', 50, 'iphone14.png', '2023-03-30 11:20:35', 1, 3, 5);
+INSERT INTO `sanpham` VALUES (22, 'Iphone 8 plus', 'Cấu hình iPhone 8 plus · Chip A7 Bionic · RAM: 4GB · Bộ nhớ 64GB/128GB/256GB · Màn hình 6.1 inch Super Retina XDR OLED (2532 x 1170 ở mật độ điểm ảnh 476ppi)', 50, 'iphone8plus.png', '2023-04-03 12:45:38', 1, 3, 5);
+INSERT INTO `sanpham` VALUES (24, 'Iphone 11', 'Vi xử lý & đồ họa  Loại CPU  Hexa-core Chipset  A13 Bionic GPU  Apple GPU Màn hình  Kích thước màn hình  6.1 inches Độ phân giải màn hình  1792 x 828 pixel Công nghệ màn hình  IPS LCD Công nghệ màn hình  IPS LCD Tính năng màn hình  True-tone Tần số quét  60Hz Giao tiếp & kết nối  Hệ điều hành  iOS 13 hoặc cao hơn (Tùy vào phiên bản phát hành) Wi-Fi  802.11ax Wi‑Fi 6 with 2x2 MIMO Bluetooth  5.0 Thẻ SIM  Nano-SIM + eSIM Hồng ngoại  Không Jack tai nghe 3.5  Không Công nghệ NFC  Có Hỗ trợ mạng  4G GPS  GPS/GNSS Pin & công nghệ sạc  Pin  3110 mAh Công nghệ sạc  Sạc nhanh 18W Power Delivery 2.0 Cổng sạc  Lightning Thiết kế & Trọng lượng  Kích thước  150.9mm - 75.7mm - 8.3mm Trọng lượng  194 g Chất liệu mặt lưng  Kính Chất liệu khung viền  Kim loại Camera sau  Camera sau  Camera kép 12MP: - Camera góc rộng: ƒ/1.8 aperture - Camera siêu rộng: ƒ/2.4 aperture Quay video  Quay video 4K ở tốc độ 24 fps, 30 fps hoặc 60 fps Tính năng camera  Retina Flash Nhãn dán (AR Stickers) Ban đêm (Night Mode) ', 50, 'ip11.png', '2023-04-03 12:46:39', 1, 3, 5);
+INSERT INTO `sanpham` VALUES (25, 'Iphone 13 128GB', 'Màn hình  Kích thước màn hình  6.1 inches Độ phân giải màn hình  2532 x 1170 pixels Công nghệ màn hình  OLED Tính năng màn hình  Màn hình super Retina XDR, OLED, 460 ppi, HDR display, công nghệ True Tone Wide color (P3), Haptic Touch, Lớp phủ oleophobic chống bám vân tay Tần số quét  60Hz Giao tiếp & kết nối  Hệ điều hành  iOS 15 Wi-Fi  Wi‑Fi 6 (802.11ax) Bluetooth  v5.0 Jack tai nghe 3.5  Không Công nghệ NFC  Có Hỗ trợ mạng  5G GPS  GPS, GLONASS, Galileo, QZSS, and BeiDou Pin & công nghệ sạc  Pin  3.240mAh Công nghệ sạc  Sạc nhanh 20W, Sạc không dây, Sạc ngược không dây 15W, Sạc pin nhanh, Tiết kiệm pin Cổng sạc  Lightning Thiết kế & Trọng lượng  Kích thước  146,7 x 71,5 x 7,65mm Trọng lượng  174g Chất liệu mặt lưng  Kính Chất liệu khung viền  Kim loại Camera sau  Camera sau  Camera góc rộng: 12MP, f/1.6 Camera góc siêu rộng: 12MP, ƒ/2.4 Quay video  4K 2160p@30fps FullHD 1080p@30fps FullHD 1080p@60fps HD 720p@30fps Tính năng camera  Chạm lấy nét HDR Nhận diện khuôn mặt Quay chậm (Slow', 50, 'iphong.png', '2023-04-03 12:47:09', 1, 3, 5);
+INSERT INTO `sanpham` VALUES (26, 'Điều hòa Panasonic CU/CS-XPU', 'Tổng quan Công suất làm lạnh: 1.5 HP - 12000 BTU Công suất sưởi ấm: Không có sưởi ấm  Phạm vi làm lạnh hiệu quả: Từ 15 - 20 m2 (từ 40 đến 60 m3) Công nghệ Inverter: Điều hòa inverter Loại máy: Điều hoà 1 chiều (chỉ làm lạnh) Công suất tiêu thụ điện tối đa: Tính Năng Tiện ích:Chế độ vận hành khi ngủ, Chức năng hút ẩm, Hẹn giờ bật tắt máy, Hoạt động siêu êm Chế độ tiết kiệm điện:  Kháng khuẩn khử mùi: Kháng khuẩn khử mùi Nanoe-X Chế độ làm lạnh nhanh: Chế độ gió:Tuỳ chỉnh điều khiển lên xuống  Thông tin chung Thông tin cục lạnh: Thông tin cục nóng: Loại Gas sử dụng: R32 Nơi sản xuất:Malaysia Năm ra mắt: 2021 Bảo hành: 12 tháng', 50, 'dh10.png', '2023-04-03 12:47:35', 1, 4, 4);
+INSERT INTO `sanpham` VALUES (27, 'Điều hòa Panasonic CU/CS-N9', 'Tổng quan Công suất làm lạnh: 1 HP - 9.000 BTU Công suất sưởi ấm: Không có sưởi ấm  Phạm vi làm lạnh hiệu quả: Dưới 15 m2 (từ 30 đến 45 m3) Công nghệ Inverter: Không Loại máy: Điều hoà 1 chiều (chỉ làm lạnh) Công suất tiêu thụ điện tối đa: Tính Năng Tiện ích:Chế độ vận hành khi ngủ, Chức năng hút ẩm, Hẹn giờ bật tắt máy, Hoạt động siêu êm Chế độ tiết kiệm điện:  Kháng khuẩn khử mùi: Kháng khuẩn khử mùi Nanoe-G Chế độ làm lạnh nhanh: Chế độ gió:Tuỳ chỉnh điều khiển lên xuống  Thông tin chung Thông tin cục lạnh: Thông tin cục nóng: Loại Gas sử dụng: Nơi sản xuất:Malaysia Năm ra mắt: 2020 Bảo hành: 12 tháng', 50, 'dh9.png', '2023-04-03 12:47:58', 1, 4, 4);
+INSERT INTO `sanpham` VALUES (28, 'Điều hòa Panasonic CU/CS-XZ1', 'Tổng quan Công suất làm lạnh: 18000 BTU Công suất sưởi ấm: 20500 BTU Phạm vi làm lạnh hiệu quả: Từ 20 - 30m² (từ 60 đến 80m³) Công nghệ Inverter: Điều hòa inverter Loại máy: Điều hoà 2 chiều Tiêu thụ điện: 1.13 kW/h Tính Năng Tiện ích: Chế độ iAuto X làm lạnh nhanh, Chức năng khử ẩm, Chức năng lọc không khí Nanoe-G, ECO tích hợp A.I tiết kiệm điện, Hẹn giờ bật tắt máy, Điều khiển bằng điện thoại, có wifi Chế độ tiết kiệm điện: ECO tích hợp A.I, Inverter Lọc bụi, kháng khuẩn, khử mùi: Nanoe-G lọc bụi mịn PM 2.5, Nanoe-X diệt khuẩn, khử mùi, duy trì độ ẩm Chế độ làm lạnh nhanh: iAuto-X Chế độ gió: Điều khiển lên xuống tự động, trái phải tùy chỉnh tay  Thông tin chung Thông tin cục lạnh: Dài 104 cm - Cao 29.5 cm - Dày 24.4 cm - Nặng 12 kg Thông tin cục nóng: Dài 87.5 cm - Cao 61.5 cm - Dày 32 cm - Nặng 41 kg Loại Gas sử dụng: R-32 Nơi sản xuất: Malaysia Năm ra mắt: 2021 Bảo hành: 12 tháng', 50, 'dh8.png', '2023-04-03 12:48:19', 1, 4, 4);
+INSERT INTO `sanpham` VALUES (29, 'Điều hòa Samsung AR18TYHYC', 'Tổng quan Công suất làm lạnh: 2 HP - 18.000 BTU Công suất sưởi ấm: Không có sưởi ấm Phạm vi làm lạnh hiệu quả: Từ 20 - 30m² (từ 60 đến 80m³) Công nghệ Inverter: Điều hòa inverter Loại máy: Điều hoà 1 chiều (chỉ làm lạnh) Tiêu thụ điện: 1.72 kW/h Tính Năng Tiện ích: Chế độ chỉ sử dụng quạt Fan Only - chỉ làm mát, không làm lạnh, Chức năng hút ẩm, Chức năng tự làm sạch, Có tự điều chỉnh nhiệt độ (chế độ ngủ đêm), Hẹn giờ bật tắt máy, Làm lạnh nhanh tức thì, Tự khởi động lại khi có điện Công nghệ tiết kiệm điện:, Digital Inverter, Eco Kháng khuẩn khử mùi: Bộ lọc thô Easy Filter, Màng lọc kháng khuẩn Ag+ Chế độ làm lạnh nhanh: Có Chế độ gió: Tuỳ chỉnh điều khiển lên xuống trái phải tự động  Thông tin chung Thông tin cục lạnh: Dài 89 cm - Cao 30 cm - Dày 21.8 cm - Nặng 10 kg Thông tin cục nóng: Dài 88 cm - Cao 54.5 cm - Dày 30 cm - Nặng 30.2 kg Loại Gas sử dụng: R-32 Nơi sản xuất: Thái Lan Năm ra mắt: 2020 Bảo hành: 24 tháng', 50, 'dh7.png', '2023-04-03 12:48:39', 1, 1, 4);
+INSERT INTO `sanpham` VALUES (30, 'Điều hòa Samsung AR09TYHQA', 'Tổng quan Công suất làm lạnh: 1 HP - 9.000 BTU Công suất sưởi ấm: Không có sưởi ấm  Phạm vi làm lạnh hiệu quả: Dưới 15 m2 (từ 30 đến 45 m3) Công nghệ Inverter: Điều hòa inverter Loại máy: Điều hoà 1 chiều (chỉ làm lạnh) Công suất tiêu thụ điện tối đa: Tính Năng Tiện ích:Chế độ vận hành khi ngủ, Chức năng hút ẩm, Hẹn giờ bật tắt máy Chế độ tiết kiệm điện:  Kháng khuẩn khử mùi: Bộ Lọc HD Chế độ làm lạnh nhanh: Chế độ gió:Tuỳ chỉnh điều khiển lên xuống  Thông tin chung Thông tin cục lạnh: Dài 80.5 cm - Cao 28.5 cm - Dày 19.4 cm - Nặng 8.8 kg Thông tin cục nóng: Dài 72 cm - Cao 49.5 cm - Dày 27.04 cm - Nặng 21.3 kg Loại Gas sử dụng: Nơi sản xuất: Trung Quốc Năm ra mắt: 2020 Bảo hành: 24 tháng', 50, 'dh6.png', '2023-04-03 12:49:00', 1, 1, 4);
+INSERT INTO `sanpham` VALUES (31, 'Ipad 10.5 ', 'iPad là máy tính bảng do Apple Inc phát triển. Được công bố vào ngày 27 tháng 1 năm 2010, thiết bị này tạo ra một phân loại mới giữa điện thoại thông minh và máy tính xách tay.[8]\r\n\r\nTương tự về tính năng so với thiết bị nhỏ và yếu hơn là iPhone hoặc iPod touch, iPad cũng hoạt động trên cùng hệ điều hành iPhone OS đã được sửa đổi[9][10] với giao diện được thiết kế lại để phù hợp với màn hình lớn.[11] iPad có màn hình chạm đa điểm sử dụng đèn led chiếu sáng 9.7 inch, bộ nhớ từ 16 tới 64', 50, 'ipad10.5.png', '2023-04-03 12:49:21', 1, 3, 6);
+INSERT INTO `sanpham` VALUES (32, 'Ipad 11', 'iPad là máy tính bảng do Apple Inc phát triển. Được công bố vào ngày 27 tháng 1 năm 2010, thiết bị này tạo ra một phân loại mới giữa điện thoại thông minh và máy tính xách tay.[8]\r\n\r\nTương tự về tính năng so với thiết bị nhỏ và yếu hơn là iPhone hoặc iPod touch, iPad cũng hoạt động trên cùng hệ điều hành iPhone OS đã được sửa đổi[9][10] với giao diện được thiết kế lại để phù hợp với màn hình lớn.[11] iPad có màn hình chạm đa điểm sử dụng đèn led chiếu sáng 9.7 inch, bộ nhớ từ 16 tới 64', 50, 'ipad11.png', '2023-04-03 12:49:42', 1, 3, 6);
+INSERT INTO `sanpham` VALUES (33, 'Điều hòa Samsung AR13TYGCD', 'Tổng quan Công suất làm lạnh: 12000BTU Phạm vi làm lạnh hiệu quả: Từ 15 - 20m² (từ 40 đến 60 m³) Công nghệ Inverter: Điều hòa inverter Loại máy: Điều hoà 1 chiều Tiêu thụ điện:  Tính Năng Tiện ích: Bộ ba Triple Protector Plus bảo vệ tối ưu cho hiệu suất bền bỉ, Chế độ chỉ sử dụng quạt Fan Only - chỉ làm mát, không làm lạnh, Chế độ Wind-Free cho hơi lạnh thoải mái, Chức năng hút ẩm, Chức năng tự làm sạch, Có tự điều chỉnh nhiệt độ (chế độ ngủ đêm), Dàn tản nhiệt phủ lớp chống ăn mòn Durafin, Hẹn giờ bật tắt máy, Làm lạnh nhanh tức thì ,Màn hình hiển thị nhiệt độ trên dàn lạnh, Tự khởi động lại khi có điện, Đảo gió 4 chiều giúp hơi lạnh lan toả đồng đều Chế độ tiết kiệm điện: Digital Inverter Boost, Eco Hệ thống lọc không khí: Bộ lọc thô Easy Filter, Bộ lọc Tri Care Filter lọc bụi, chống nấm mốc, kháng khuẩn Chế độ làm lạnh nhanh: Có Chế độ gió: Tuỳ chỉnh điều khiển lên xuống trái phải tự động  Thông tin chung Thông tin cục lạnh: Dài 82 cm - Cao 30.5 cm - Dày 21.5 cm - Nặng 9.2 kg Thông ', 50, 'dh5.png', '2023-04-03 12:50:10', 1, 1, 4);
+INSERT INTO `sanpham` VALUES (34, 'Điều hòa Sharp AH-X9XEW', 'Tổng quan Công suất làm lạnh: 9.000 BTU Công suất sưởi ấm: Không có sưởi ấm  Phạm vi làm lạnh hiệu quả: Dưới 15 m2 (từ 30 đến 45 m3) Công nghệ Inverter: Điều hòa inverter Loại máy: Điều hoà 1 chiều (chỉ làm lạnh) Công suất tiêu thụ trung bình:0.8 kW/h Tính Năng Tiện ích: Thổi gió dễ chịu (cho trẻ em, người già), Hẹn giờ bật tắt máy, Làm lạnh nhanh tức thì, Tự khởi động lại khi có điện Chế độ tiết kiệm điện: J-Tech Inverter, Eco Hệ thống lọc không khí: Lưới bụi polypropylene Chế độ làm lạnh nhanh: Powerful Jet Chế độ gió: Điều khiển trái phải tự động  Thông tin chung Thông tin cục lạnh: Dài 87.7 cm - Cao 29.2 cm - Dày 22.2 cm - Nặng 8 kg Thông tin cục nóng: Dài 66.5 cm - Cao 49.5 cm - Dày 29.5 cm - Nặng 18 kg Loại Gas sử dụng: R-32 Nơi sản xuất: Thái Lan Năm ra mắt: 2020 Bảo hành: 12 tháng', 50, 'dh4.png', '2023-04-03 12:50:33', 1, 8, 4);
+INSERT INTO `sanpham` VALUES (35, 'Máy giặt Samsung WD21', 'Công nghệ giặt: Chế độ ngâm Bubble Soak, AI Wash tối ưu lượng nước giặt xả, lượng nước và thời gian giặt, VRT Plus ™ giảm rung ồn đến 30%, Giặt hơi nước Hygiene Steam diệt 99.9% vi khuẩn, QuickDrive giặt xả hiệu quả chỉ trong 39 phút, AI Dispenser tự động cân chỉnh lượng nước giặt, nước xả, Kết nối với điện thoại thông qua ứng dụng SmartThings, Bảng điều khiển AI control tự động ghi nhớ chế độ giặt, Airwash khử mùi & kháng khuẩn, Công nghệ giặt bong bóng Eco Bubble', 50, 'maygiatsamsungWD21.png', '2023-04-03 12:50:55', 1, 1, 3);
+INSERT INTO `sanpham` VALUES (36, 'Máy Giặt Panasonic CN-AF1', 'Công nghệ giặt: Chế độ ngâm Bubble Soak, AI Wash tối ưu lượng nước giặt xả, lượng nước và thời gian giặt, VRT Plus ™ giảm rung ồn đến 30%, Giặt hơi nước Hygiene Steam diệt 99.9% vi khuẩn, QuickDrive giặt xả hiệu quả chỉ trong 39 phút, AI Dispenser tự động cân chỉnh lượng nước giặt, nước xả, Kết nối với điện thoại thông qua ứng dụng SmartThings, Bảng điều khiển AI control tự động ghi nhớ chế độ giặt, Airwash khử mùi & kháng khuẩn, Công nghệ giặt bong bóng Eco Bubble', 50, 'maygiatpanasonicnaf1.png', '2023-04-03 12:51:22', 1, 4, 3);
+INSERT INTO `sanpham` VALUES (37, 'Máy giặt LG T23', 'Công nghệ giặt: Chế độ ngâm Bubble Soak, AI Wash tối ưu lượng nước giặt xả, lượng nước và thời gian giặt, VRT Plus ™ giảm rung ồn đến 30%, Giặt hơi nước Hygiene Steam diệt 99.9% vi khuẩn, QuickDrive giặt xả hiệu quả chỉ trong 39 phút, AI Dispenser tự động cân chỉnh lượng nước giặt, nước xả, Kết nối với điện thoại thông qua ứng dụng SmartThings, Bảng điều khiển AI control tự động ghi nhớ chế độ giặt, Airwash khử mùi & kháng khuẩn, Công nghệ giặt bong bóng Eco Bubble', 50, 'maygiatlgt23.png', '2023-04-03 12:51:41', 1, 5, 3);
+INSERT INTO `sanpham` VALUES (38, 'Máy giặt Panasonic NAV90', 'Loại máy giặt: Cửa trước Lồng giặt: Lồng ngang Khối lượng giặt: 9 kg Khối lượng sấy: 2 kg Tốc độ quay vắt: 1400 vòng/phút Hiệu suất sử dụng điện: 13.7 Wh/kg Kiểu động cơ: Truyền động gián tiếp (dây Curoa) Inverter: Công nghệ 3Di Inverter Công nghệ giặt Chương trình hoạt động: 16 chương trình Công nghệ giặt: Cảm biến Econavi, Giặt diệt khuẩn bằng nước lạnh UV Blue Ag+, Giặt nước nóng StainMaster+, Hệ thống ActiveFoam Tiện ích: Có sấy, Khóa trẻ em, vệ sinh lồng giặt Tổng quan Chất liệu lồng giặt: Thép không gỉ Chất liệu vỏ máy: Kim loại sơn tĩnh điện Chất liệu nắp máy: Kính chịu lực Bảng điều khiển: Song ngữ Anh-Việt Số người sử dụng: Trên 7 người (Trên 10 kg) Kích thước - Khối lượng: Cao 84.5 cm - Ngang 59 cm - Sâu 58.5 cm - Nặng 69 kg Nơi sản xuất: Việt nam Năm ra mắt: 2022 Bảo hành: 24 tháng', 50, 'maygiatpanasonicnav90.png', '2023-04-03 12:52:05', 1, 4, 3);
+INSERT INTO `sanpham` VALUES (39, 'Máy giặt Panasonic NA-V10', 'Công nghệ giặt: Chế độ ngâm Bubble Soak, AI Wash tối ưu lượng nước giặt xả, lượng nước và thời gian giặt, VRT Plus ™ giảm rung ồn đến 30%, Giặt hơi nước Hygiene Steam diệt 99.9% vi khuẩn, QuickDrive giặt xả hiệu quả chỉ trong 39 phút, AI Dispenser tự động cân chỉnh lượng nước giặt, nước xả, Kết nối với điện thoại thông qua ứng dụng SmartThings, Bảng điều khiển AI control tự động ghi nhớ chế độ giặt, Airwash khử mùi & kháng khuẩn, Công nghệ giặt bong bóng Eco Bubble', 50, 'maygiatpanasonicna-v10.png', '2023-04-03 12:52:26', 1, 4, 3);
+INSERT INTO `sanpham` VALUES (40, 'Máy giặt Sharpe SFK1054', 'Loại máy giặt: Cửa ngang Lồng giặt: Lồng ngang Khối lượng giặt: Giặt 10.5 kg Tốc độ quay vắt: 1400 vòng/phút Hiệu suất sử dụng điện: 7.76 Wh/kg Kiểu động cơ: Truyền động gián tiếp (dây Curoa) Inverter: Có Công nghệ giặt Chương trình hoạt động:  Công nghệ giặt: Công nghệ giặt hơi nước Steam Tiện ích: Giặt nhanh 15 phút, Giặt nước nóng tới 90 độ C, Khóa trẻ em, Thêm đồ trong khi giặt, Tự khởi động lại khi có điện, Vệ sinh lồng giặt, Đèn chiếu sáng lồng giặt Tổng quan Chất liệu lồng giặt: Thép không gỉ Chất liệu vỏ máy: Thép cao cấp Chất liệu nắp máy: Kim loại sơn tĩnh điện Bảng điều khiển: Song ngữ Anh - Việt nút nhấn có màn hình hiển thị Số người sử dụng: Trên 7 người (Trên 10 kg) Kích thước - Khối lượng: Cao 85 cm - Ngang 59.8 cm - Sâu 68 cm - Nặng Nặng 80 kg Nơi sản xuất: Trung Quốc Năm ra mắt: 2021 Bảo hành: 12 tháng', 50, 'maygiatsharpesfk1054.png', '2023-04-03 12:52:46', 1, 8, 3);
+INSERT INTO `sanpham` VALUES (41, 'Máy giặt Panasonic NAS96', 'Loại máy giặt: Cửa trước Lồng giặt: Lồng ngang Khối lượng giặt: 9 kg Khối lượng sấy: 6 kg Tốc độ quay vắt: 1400 vòng/phút Hiệu suất sử dụng điện:  Kiểu động cơ: Truyền động gián tiếp (dây Curoa) Inverter: Có Công nghệ giặt Chương trình hoạt động: 16 chương trình Công nghệ giặt: Cảm biến Econavi, Giặt diệt khuẩn bằng nước lạnh UV Blue Ag+, Hệ thống ActiveFoam Tiện ích: Có sấy, Khóa trẻ em, Tự động vệ sinh lồng giặt Tổng quan Chất liệu lồng giặt: Thép không gỉ Chất liệu vỏ máy: Kim loại sơn tĩnh điện Chất liệu nắp máy: Kính chịu lực Bảng điều khiển: Song ngữ Anh-Việt Số người sử dụng: Từ 9 - 10 Kg (5-7 Người) Kích thước - Khối lượng: Cao 84.5 cm - Ngang 59.6 cm - Sâu 62 cm - Nặng 70 kg Nơi sản xuất: Việt nam Năm ra mắt: 2022 Bảo hành: 24 tháng', 50, 'matgiatpanasonicnas96.png', '2023-04-03 12:53:06', 1, 4, 3);
+INSERT INTO `sanpham` VALUES (42, 'Máy giặt Panasonic NAV10', 'Loại máy giặt: Cửa trước Lồng giặt: Lồng ngang Khối lượng giặt: 10 kg Tốc độ quay vắt: 1400 vòng/phút Hiệu suất sử dụng điện: 14.1 Wh/kg Kiểu động cơ: Truyền động dây Curoa Inverter: Có Công nghệ giặt Chương trình hoạt động: 10 Chương trình Công nghệ giặt: Giặt diệt khuẩn bằng nước lạnh UV Blue Ag+, Giặt ngăn ngừa dị ứng Allergy, Hệ thống ActiveFoam, Cảm biến Econavi, Giặt nước nóng StainMaster+ Tiện ích: Giặt nước nóng, Khóa trẻ em, Công nghệ Inverter - Tiết kiệm điện, Vệ sinh lồng giặt, Hẹn giờ giặt xong, Vắt cực khô Tổng quan Chất liệu lồng giặt: Thép không gỉ Chất liệu vỏ máy: Kim loại sơn tĩnh điện Chất liệu nắp máy: Nhựa Bảng điều khiển: Song ngữ Anh - Việt có nút xoay, nút nhấn và màn hình hiển thị Số người sử dụng: Từ trên 6 người (Trên 8.5 kg) Kích thước - Khối lượng: Cao 84.5 cm - Ngang 59.6 cm - Sâu 60 cm - Nặng 75 kg Nơi sản xuất: Việt Nam Năm sản xuất: 2019 Bảo hành: 24 tháng', 50, 'maygiatpanasonicnav10.png', '2023-04-03 12:53:25', 1, 4, 3);
+INSERT INTO `sanpham` VALUES (43, 'Máy giặt Samsung WA22R88', 'Loại máy giặt: Máy giặt cửa trên Lồng giặt: Lồng đứng Khối lượng giặt: 22 Kg Tốc độ quay vắt: 700 vòng/phút Lượng nước tiêu thụ chuẩn: Hiệu suất sử dụng điện: Kiểu động cơ: Truyền động dây Curoa Inverter: Có Công nghệ giặt Chương trình hoạt động: 6 chương trình Công nghệ giặt: Công nghệ Magic Clean giặt nước nóng diệt khuẩn mức 40 và 60 độ C, Công nghệ Intensive Wash đánh tan xà phòng giúp tăng khả năng thẩm thấu vào sợi vải, Bộ lọc xơ vải Magic Filter, Hộp đánh tan bột giặt Magic Dispenser, Mâm giặt Wobble tạo luồng nước đa chiều, Công nghệ giặt Activ Dualwash Tiện ích: Điều khiển bằng smartphone qua ứng dụng SmartThings, Giặt nước nóng, Khóa trẻ em, Công nghệ Inverter tiết kiệm điện, Tự khởi động lại khi có điện, Vệ sinh lồng giặt, Hẹn giờ giặt xong Tổng quan Chất liệu lồng giặt: Thép không gỉ Chất liệu vỏ máy: Kim loại sơn tĩnh điện Chất liệu nắp máy: Kính chịu lực Bảng điều khiển: Song ngữ Anh-Việt cảm ứng có màn hình hiển thị Số người sử dụng: Từ trên 6 người (Trên 8.5 kg) Kích th', 50, 'maygiat1.png', '2023-04-03 12:53:46', 1, 8, 3);
+INSERT INTO `sanpham` VALUES (44, 'Máy giặt Samsung WW10TP5', 'Loại máy giặt: Cửa trước Lồng giặt: Lồng ngang Khối lượng giặt: Giặt 10Kg Tốc độ quay vắt: 1400 vòng/phút Hiệu suất sử dụng điện:  Kiểu động cơ: Truyền động dây coroa Inverter: Có Công nghệ giặt Chương trình hoạt động:  Công nghệ giặt: Cửa phụ Add door, QuickDrive giặt xả hiệu quả chỉ trong 39 phút, Công nghệ giặt bong bóng Eco Bubble Tiện ích: Tổng quan Chất liệu lồng giặt: Thép không gỉ Chất liệu vỏ máy: Thép chống gỉ Chất liệu nắp máy: Kính chịu lực Bảng điều khiển: Tiếng Việt Số người sử dụng: Từ 5-7 người Kích thước - Khối lượng: Ngang 60 cm - Cao 85 cm - Sâu 55 cm - Nặng 67 kg Nơi sản xuất: Việt Nam Năm sản xuất: 2021 Bảo hành: 24 tháng', 50, 'maygiat2.png', '2023-04-03 12:54:05', 1, 1, 3);
+INSERT INTO `sanpham` VALUES (45, 'Điều hòa LG B24END1', 'Công suất làm lạnh: 24.000 BTU Công suất sưởi ấm: 26.000BTU Phạm vi làm lạnh hiệu quả: Từ 30-40m² Công nghệ Inverter: Điều hòa inverter Loại máy: Điều hoà 1 chiều (chỉ làm lạnh) Tính Năng Tiện ích:Chức năng tự chẩn đoán lỗi, Chức năng tự làm sạch, Có tự điều chỉnh nhiệt độ (chế độ ngủ đêm), Công nghệ Gold-Fin chống ăn mòn, Làm lạnh nhanh tức thì, Màn hình hiển thị nhiệt độ trên dàn lạnh, Thổi gió dễ chịu Comfort Air (cho trẻ em, người già), Tự khởi động lại khi có điện, Đảo gió 4 chiều giúp hơi lạnh lan toả đồng đều Công nghệ tiết kiệm điện: Dual inverter Kháng khuẩn khử mùi: Màng lọc sơ cấp Chế độ làm lạnh nhanh: Jet Cool Chế độ gió:Tuỳ chỉnh điều khiển lên xuống trái phải tự động  Thông tin chung Thông tin cục lạnh: Dài 99.8 cm - Cao 34.5 cm - Dày 21 cm - Nặng 11 kg Thông tin cục nóng: Dài 87 cm - Cao 65 cm - Dày 33 cm - Nặng 43 kg Loại Gas sử dụng: R32 Nơi sản xuất: Thái Lan Năm ra mắt: 2022 Bảo hành: 24 tháng', 50, 'dh1.png', '2023-04-03 12:54:27', 1, 5, 4);
+INSERT INTO `sanpham` VALUES (46, 'Điều hòa LG B18END1', 'Tổng quan Công suất làm lạnh: 18.000 BTU Công suất sưởi ấm: 19000BTU Phạm vi làm lạnh hiệu quả: Từ 20-30m² Công nghệ Inverter: Điều hòa inverter Loại máy: Điều hoà 1 chiều (chỉ làm lạnh) Tính Năng Tiện ích:Chức năng tự chẩn đoán lỗi, Chức năng tự làm sạch, Có tự điều chỉnh nhiệt độ (chế độ ngủ đêm), Công nghệ Gold-Fin chống ăn mòn, Làm lạnh nhanh tức thì, Màn hình hiển thị nhiệt độ trên dàn lạnh, Thổi gió dễ chịu Comfort Air (cho trẻ em, người già), Tự khởi động lại khi có điện, Đảo gió 4 chiều giúp hơi lạnh lan toả đồng đều Công nghệ tiết kiệm điện: Dual inverter Kháng khuẩn khử mùi: Màng lọc sơ cấp Chế độ làm lạnh nhanh: Jet Cool Chế độ gió:Tuỳ chỉnh điều khiển lên xuống trái phải tự động  Thông tin chung Thông tin cục lạnh: Dài 99.8cm - Cao 34.5 cm - Dày 21 cm - Nặng 11 kg Thông tin cục nóng: Dài 87 cm - Cao 65 cm - Dày 33 cm - Nặng 43 kg Loại Gas sử dụng: R32 Nơi sản xuất: Thái Lan Năm ra mắt: 2022 Bảo hành: 24 tháng', 50, 'dh2.png', '2023-04-03 12:54:48', 1, 5, 4);
+INSERT INTO `sanpham` VALUES (47, 'Google Tivi Sony XR65A', 'Hệ điều hành, giao diện: Google TV Remote thông minh: Remote tích hợp tích micro tìm kiếm giọng nói (RMF-TX800P) Chiếu hình từ điện thoại lên TV: AirPlay 2, Chromecast Điều khiển tivi bằng điện thoại: Ứng dụng Android TV Kết nối ứng dụng các thiết bị trong nhà: Đang cập nhật Điều khiển bằng giọng nói: Tìm kiếm giọng nói trên YouTube bằng tiếng Việt, Google Assistant có tiếng Việt Tiện ích thông minh khác: Micro tích hợp trên TV điều khiển giọng nói rảnh tay, Bravia CAM (mua thêm camera)', 50, 'googletivisonyxr65a.png', '2023-04-03 12:55:07', 1, 6, 1);
+INSERT INTO `sanpham` VALUES (48, 'Điều hòa LG B13END1', 'Tổng quan Công suất làm lạnh: 1 HP - 12.000 BTU Công suất sưởi ấm: 12800BTU Phạm vi làm lạnh hiệu quả: Từ 15 - 20m² (từ 40 đến 60 m³) Công nghệ Inverter: Điều hòa inverter Loại máy: Điều hoà 1 chiều (chỉ làm lạnh) Tính Năng Tiện ích:Chức năng tự chẩn đoán lỗi, Chức năng tự làm sạch, Có tự điều chỉnh nhiệt độ (chế độ ngủ đêm), Công nghệ Gold-Fin chống ăn mòn, Làm lạnh nhanh tức thì, Màn hình hiển thị nhiệt độ trên dàn lạnh, Thổi gió dễ chịu Comfort Air (cho trẻ em, người già), Tự khởi động lại khi có điện, Đảo gió 4 chiều giúp hơi lạnh lan toả đồng đều Công nghệ tiết kiệm điện: Dual inverter Kháng khuẩn khử mùi: Màng lọc sơ cấp Chế độ làm lạnh nhanh: Jet Cool Chế độ gió:Tuỳ chỉnh điều khiển lên xuống trái phải tự động  Thông tin chung Thông tin cục lạnh: Dài 82 cm - Cao 29 cm - Dày 19 cm - Nặng 8.5 kg Thông tin cục nóng: Dài 72 cm - Cao 50 cm - Dày 23 cm - Nặng 24.7 kg Loại Gas sử dụng: R32 Nơi sản xuất: Thái Lan Năm ra mắt: 2022 Bảo hành: 24 tháng', 40, 'dh3.png', '2023-04-03 12:55:36', 1, 5, 4);
+INSERT INTO `sanpham` VALUES (49, 'Google Tivi Sony KD55X', 'Hệ điều hành, giao diện: Google TV Remote thông minh: Remote tích hợp tích micro tìm kiếm giọng nói (RMF-TX800P) Chiếu hình từ điện thoại lên TV: AirPlay 2, Chromecast Điều khiển tivi bằng điện thoại: Ứng dụng Android TV Điều khiển bằng giọng nói: Google Assistant có tiếng Việt, Tìm kiếm giọng nói trên YouTube bằng tiếng Việt Tiện ích thông minh khác: Bravia CAM (mua thêm camera), Micro tích hợp trên TV điều khiển giọng nói rảnh tay', 33, 'googletivisonykd55x.png', '2023-04-03 12:56:00', 1, 6, 1);
+INSERT INTO `sanpham` VALUES (50, 'Android Tivi Mini TCL 65X', 'Lỗi máy giặt bị lệch tâm sẽ dẫn đến hiện tượng quần áo bị xoắn rối, quấn hoặc dẫn đấn rách quần áo. Hơn thế đối với lỗi máy giặt bị lệch tâm như vậy dẫn đến tiếng ồn lớn mang đến cảm giác khó chịu và ảnh hưởng xấu tới các linh kiện bên trong máy. Vậy Nguyên nhân, tác hại và cách khắc phục lỗi máy giặt bị lệch tâm? Hệ điều hành, giao diện: Android 9.0 Remote thông minh: Remote tích hợp micro tìm kiếm bằng giọng nói Chiếu hình từ điện thoại lên TV: Chromecast, Screen Mirroring, T-Cast Điều khiển tivi bằng điện thoại: Ứng dụng Google Cast, Ứng dụng MagiConnect Kết nối ứng dụng các thiết bị trong nhà: Không Điều khiển bằng giọng nói: Tìm kiếm giọng nói trên YouTube bằng tiếng Việt, Google Assistant có tiếng Việt Tiện ích thông minh khác: Micro tích hợp trên TV điều khiển giọng nói rảnh tay', 50, 'Androidtiviminitcl65x.png', '2023-04-03 12:56:35', 1, 7, 1);
+INSERT INTO `sanpham` VALUES (51, 'Smart Tivi Samsung NEO QLE', 'Smart Tivi Neo QLED Samsung 4K 55 inch QA55QN90C là phiên bản tivi 55 inch mới được nhà sản xuất Hàn Quốc đưa tới thị trường Việt Nam năm 2023. Sản phẩm không chỉ được trang bị màn hình NEO QLED cao cấp mà các tính năng khác cũng thuộc hàng hiện đại hàng đầu.', 50, 'smarttivisamsungneoQLED4k.png', '2023-05-03 17:12:11', 1, 1, 1);
 
 -- ----------------------------
 -- Table structure for slide
@@ -768,16 +677,20 @@ INSERT INTO `sanpham` VALUES (51, 'Smart Tivi Samsung NEO QLE', 'Smart Tivi Neo 
 DROP TABLE IF EXISTS `slide`;
 CREATE TABLE `slide`  (
   `ID` int NOT NULL AUTO_INCREMENT,
+  `TieuDe` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL,
+  `NoiDung` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL,
   `Anh` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL,
+  `Kieu` int NULL DEFAULT NULL,
   `TrangThai` int NULL DEFAULT NULL,
+  `SlideCha` int NULL DEFAULT NULL,
   PRIMARY KEY (`ID`) USING BTREE
 ) ENGINE = InnoDB AUTO_INCREMENT = 4 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of slide
 -- ----------------------------
-INSERT INTO `slide` VALUES (1, 'slider11_bg.jpg', 1);
-INSERT INTO `slide` VALUES (2, 'slider12_bg.jpg', 1);
+INSERT INTO `slide` VALUES (1, NULL, NULL, 'slider11_bg.jpg', NULL, 1, NULL);
+INSERT INTO `slide` VALUES (2, NULL, NULL, 'slider12_bg.jpg', NULL, 1, NULL);
 
 -- ----------------------------
 -- Table structure for thongso
@@ -791,7 +704,7 @@ CREATE TABLE `thongso`  (
   PRIMARY KEY (`ID`) USING BTREE,
   INDEX `ThongSo_SanPham_IDSanPham`(`IDSanPham`) USING BTREE,
   CONSTRAINT `ThongSo_SanPham_IDSanPham` FOREIGN KEY (`IDSanPham`) REFERENCES `sanpham` (`ID`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE = InnoDB AUTO_INCREMENT = 401 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = DYNAMIC;
+) ENGINE = InnoDB AUTO_INCREMENT = 408 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of thongso
@@ -1278,83 +1191,6 @@ END
 delimiter ;
 
 -- ----------------------------
--- Procedure structure for sp_ctkho_create
--- ----------------------------
-DROP PROCEDURE IF EXISTS `sp_ctkho_create`;
-delimiter ;;
-CREATE PROCEDURE `sp_ctkho_create`(IN p_soluong INT,
-		IN p_idsanpham INT,
-    IN p_idkho INT)
-BEGIN
-    INSERT INTO ctkho (soluong, idsanpham, idkho)
-    VALUES (p_soluong, p_idsanpham, p_idkho);
-END
-;;
-delimiter ;
-
--- ----------------------------
--- Procedure structure for sp_ctkho_delete
--- ----------------------------
-DROP PROCEDURE IF EXISTS `sp_ctkho_delete`;
-delimiter ;;
-CREATE PROCEDURE `sp_ctkho_delete`(IN p_id INT)
-BEGIN
-    DELETE FROM ctkho WHERE id = p_id;
-END
-;;
-delimiter ;
-
--- ----------------------------
--- Procedure structure for sp_ctkho_getbyid
--- ----------------------------
-DROP PROCEDURE IF EXISTS `sp_ctkho_getbyid`;
-delimiter ;;
-CREATE PROCEDURE `sp_ctkho_getbyid`(IN p_id INT)
-BEGIN
-    SELECT c.*, s.ten AS TenSanPham, s.anh AS Anh
-		FROM ctkho c 
-		INNER JOIN sanpham s ON c.idsanpham = s.id
-		WHERE c.id = p_id;
-END
-;;
-delimiter ;
-
--- ----------------------------
--- Procedure structure for sp_ctkho_getbykho
--- ----------------------------
-DROP PROCEDURE IF EXISTS `sp_ctkho_getbykho`;
-delimiter ;;
-CREATE PROCEDURE `sp_ctkho_getbykho`(IN p_id INT)
-BEGIN
-    SELECT c.*, s.ten AS TenSanPham, s.anh AS Anh
-		FROM ctkho c 
-		INNER JOIN sanpham s ON c.idsanpham = s.id
-		WHERE c.idkho = p_id;
-END
-;;
-delimiter ;
-
--- ----------------------------
--- Procedure structure for sp_ctkho_update
--- ----------------------------
-DROP PROCEDURE IF EXISTS `sp_ctkho_update`;
-delimiter ;;
-CREATE PROCEDURE `sp_ctkho_update`(IN p_id INT,
-    IN p_soluong INT,
-		IN p_idsanpham INT,
-    IN p_idkho INT)
-BEGIN
-    UPDATE ctkho 
-    SET 
-        soluong = IFNULL(p_soluong, soluong),
-				idsanpham = IFNULL(p_idsanpham, idsanpham),
-				idkho = IFNULL(p_idkho, idkho)
-    WHERE id = p_id;
-END
-;;
-delimiter ;
-
--- ----------------------------
 -- Procedure structure for sp_dieukhoan_create
 -- ----------------------------
 DROP PROCEDURE IF EXISTS `sp_dieukhoan_create`;
@@ -1462,11 +1298,12 @@ CREATE PROCEDURE `sp_donhang_create`(IN p_ten VARCHAR(255),
 		IN p_sdt VARCHAR(255),
 		IN p_kieugiaohang INT,
 		IN p_ghichu VARCHAR(255),
+		IN p_trangthai INT,
 		IN p_idphuongthuc INT,
 		IN p_idnguoidung INT)
 BEGIN
     INSERT INTO donhang (ten, diachi, sdt, ngaydat, kieugiaohang, ghichu, trangthai, idphuongthuc, idnguoidung)
-    VALUES (p_ten, p_diachi, p_sdt, NOW(), p_kieugiaohang, p_ghichu, 0, p_idphuongthuc, p_idnguoidung);
+    VALUES (p_ten, p_diachi, p_sdt, NOW(), p_kieugiaohang, p_ghichu, p_trangthai, p_idphuongthuc, p_idnguoidung);
 END
 ;;
 delimiter ;
@@ -1981,105 +1818,6 @@ BEGIN
     UPDATE hoadonnhap 
     SET 
 				idnhacungcap = IFNULL(p_idnhacungcap, idnhacungcap)
-    WHERE id = p_id;
-END
-;;
-delimiter ;
-
--- ----------------------------
--- Procedure structure for sp_kho_create
--- ----------------------------
-DROP PROCEDURE IF EXISTS `sp_kho_create`;
-delimiter ;;
-CREATE PROCEDURE `sp_kho_create`(IN p_ten VARCHAR(255),
-		IN p_diachi VARCHAR(255),
-    IN p_trangthai INT)
-BEGIN
-    INSERT INTO kho (ten, diachi, trangthai)
-    VALUES (p_ten, p_diachi, p_trangthai);
-END
-;;
-delimiter ;
-
--- ----------------------------
--- Procedure structure for sp_kho_delete
--- ----------------------------
-DROP PROCEDURE IF EXISTS `sp_kho_delete`;
-delimiter ;;
-CREATE PROCEDURE `sp_kho_delete`(IN p_id INT)
-BEGIN
-    DELETE FROM kho WHERE id = p_id;
-END
-;;
-delimiter ;
-
--- ----------------------------
--- Procedure structure for sp_kho_getall_desc
--- ----------------------------
-DROP PROCEDURE IF EXISTS `sp_kho_getall_desc`;
-delimiter ;;
-CREATE PROCEDURE `sp_kho_getall_desc`(IN p_pageindex INT,
-    IN p_pagesize INT,
-    IN p_ten TEXT)
-BEGIN
-    DECLARE start_index INT;
-    DECLARE total_count INT;
-    
-    SET start_index = (p_pageindex - 1) * p_pagesize;
-    
-    SELECT COUNT(*) INTO total_count FROM kho WHERE ten LIKE CONCAT('%', p_ten, '%');
-    
-    SELECT *, total_count AS TotalCount
-    FROM kho 
-    WHERE ten LIKE CONCAT('%', p_ten, '%')
-    ORDER BY ID DESC 
-    LIMIT start_index, p_pagesize;
-END
-;;
-delimiter ;
-
--- ----------------------------
--- Procedure structure for sp_kho_getbyid
--- ----------------------------
-DROP PROCEDURE IF EXISTS `sp_kho_getbyid`;
-delimiter ;;
-CREATE PROCEDURE `sp_kho_getbyid`(IN p_id INT)
-BEGIN
-    SELECT * FROM kho WHERE ID = p_id;
-END
-;;
-delimiter ;
-
--- ----------------------------
--- Procedure structure for sp_kho_get_asc
--- ----------------------------
-DROP PROCEDURE IF EXISTS `sp_kho_get_asc`;
-delimiter ;;
-CREATE PROCEDURE `sp_kho_get_asc`()
-BEGIN
-    SELECT * 
-		FROM kho 
-		WHERE trangthai = 1
-		ORDER BY ID ASC;
-END
-;;
-delimiter ;
-
--- ----------------------------
--- Procedure structure for sp_kho_update
--- ----------------------------
-DROP PROCEDURE IF EXISTS `sp_kho_update`;
-delimiter ;;
-CREATE PROCEDURE `sp_kho_update`(IN p_id INT,
-    IN p_ten VARCHAR(255),
-		IN p_diachi VARCHAR(255),
-    IN p_trangthai INT)
-BEGIN
-    UPDATE kho 
-    SET 
-        ten = IFNULL(p_ten, ten),
-				diachi = IFNULL(p_diachi, diachi),
-        trangthai = IFNULL(p_trangthai, trangthai)
     WHERE id = p_id;
 END
 ;;
@@ -2951,13 +2689,12 @@ delimiter ;;
 CREATE PROCEDURE `sp_sanpham_banchay`(IN p_sl INT)
 BEGIN
 		SELECT s.id AS ID, s.ten AS Ten, s.anh AS Anh, s.trangthai AS TrangThai, g.gia AS Gia, k.phantram AS PhanTram, 
-					 ct.soluong AS SoLuong, CAST((g.gia - (g.gia / 100 * k.phantram)) AS SIGNED) AS GiaGiamGia
+					 s.soluong AS SoLuong, CAST((g.gia - (g.gia / 100 * k.phantram)) AS SIGNED) AS GiaGiamGia
     FROM sanpham s
 		INNER JOIN giasanpham g ON s.id = g.idsanpham
 		INNER JOIN ctdonhang c ON s.id = c.idsanpham 
 		INNER JOIN donhang dh ON c.iddonhang = dh.id 
 		LEFT JOIN giamgia k ON s.id = k.idsanpham
-		LEFT JOIN ctkho ct ON s.id = ct.idsanpham
 		WHERE (CURDATE() BETWEEN g.NgayBatDau AND g.NgayKetThuc) AND dh.trangthai = 6 AND dh.ngaydat >= CURDATE() - INTERVAL 30 DAY
 		GROUP BY s.id, s.ten, s.anh, s.trangthai, g.gia, k.phantram, GiaGiamGia
 		ORDER BY SUM(c.soluong) DESC, dh.ngaydat DESC
@@ -2978,8 +2715,8 @@ CREATE PROCEDURE `sp_sanpham_create`(IN p_ten VARCHAR(255),
 		IN p_idnhasanxuat INT,
 		IN p_idloai INT)
 BEGIN
-    INSERT INTO sanpham (ten, mota, anh, ngaytao, trangthai, idnhasanxuat, idloai)
-    VALUES (p_ten, p_mota, p_anh, NOW(), p_trangthai, p_idnhasanxuat, p_idloai);
+    INSERT INTO sanpham (ten, mota, soluong, anh, ngaytao, trangthai, idnhasanxuat, idloai)
+    VALUES (p_ten, p_mota, 0, p_anh, NOW(), p_trangthai, p_idnhasanxuat, p_idloai);
 END
 ;;
 delimiter ;
@@ -3014,14 +2751,12 @@ BEGIN
 		
     SELECT s.*, g.gia AS Gia, n.ten AS TenNhaSanXuat, l.ten AS TenLoai,
            IF(CURDATE() BETWEEN k.NgayBatDau AND k.NgayKetThuc, CAST((g.gia - (g.gia / 100 * k.phantram)) AS SIGNED), NULL) AS GiaGiamGia,
-           IF(CURDATE() BETWEEN k.NgayBatDau AND k.NgayKetThuc, k.phantram, NULL) AS PhanTram,
-           ct.soluong AS SoLuong, total_count AS TotalCount
+           IF(CURDATE() BETWEEN k.NgayBatDau AND k.NgayKetThuc, k.phantram, NULL) AS PhanTram, total_count AS TotalCount
     FROM sanpham s
     INNER JOIN giasanpham g ON s.id = g.idsanpham
     INNER JOIN nhasanxuat n ON s.idnhasanxuat = n.id
     INNER JOIN loaisanpham l ON s.idloai = l.id
     LEFT JOIN giamgia k ON s.id = k.idsanpham
-    LEFT JOIN ctkho ct ON s.id = ct.idsanpham
     WHERE p_ten IS NULL OR s.ten LIKE CONCAT('%', p_ten, '%')
     GROUP BY s.id, s.ten, s.anh, s.mota, s.trangthai, g.gia, k.phantram, GiaGiamGia
     ORDER BY s.ngaytao DESC
@@ -3037,14 +2772,13 @@ DROP PROCEDURE IF EXISTS `sp_sanpham_getbyid`;
 delimiter ;;
 CREATE PROCEDURE `sp_sanpham_getbyid`(IN p_id INT)
 BEGIN
-    SELECT s.*, l.ten AS TenLoai, n.ten AS TenNhaSanXuat, g.gia AS Gia, SUM(c.soluong) AS SoLuong,
+    SELECT s.*, l.ten AS TenLoai, n.ten AS TenNhaSanXuat, g.gia AS Gia,
            k.phantram AS PhanTram, CAST((g.gia - (g.gia / 100 * k.phantram)) AS SIGNED) AS GiaGiamGia
     FROM sanpham s
     LEFT JOIN giasanpham g ON s.id = g.idsanpham
     LEFT JOIN giamgia k ON s.id = k.idsanpham
     INNER JOIN loaisanpham l ON s.idloai = l.id
     INNER JOIN nhasanxuat n ON s.idnhasanxuat = n.id
-    LEFT JOIN ctkho c ON s.id = c.idsanpham
     WHERE s.id = p_id
     GROUP BY s.id, s.ten, s.anh, g.gia, l.ten, n.ten, g.gia, k.phantram;
 END
@@ -3074,11 +2808,10 @@ delimiter ;;
 CREATE PROCEDURE `sp_sanpham_giamgia`(IN p_sl INT)
 BEGIN	
 		SELECT s.id AS ID, s.ten AS Ten, s.anh AS Anh, s.trangthai AS TrangThai, g.gia AS Gia, k.phantram AS PhanTram,
-					 ct.soluong AS SoLuong, CAST((g.gia - (g.gia / 100 * k.phantram)) AS SIGNED) AS GiaGiamGia
+					 s.soluong AS SoLuong, CAST((g.gia - (g.gia / 100 * k.phantram)) AS SIGNED) AS GiaGiamGia
 		FROM sanpham s
 		INNER JOIN giasanpham g ON s.id = g.idsanpham
 		INNER JOIN giamgia k ON s.id = k.idsanpham
-		LEFT JOIN ctkho ct ON s.id = ct.idsanpham
 		WHERE (CURDATE() Between k.NgayBatDau And k.NgayKetThuc) AND (CURDATE() BETWEEN g.NgayBatDau AND g.NgayKetThuc) AND s.trangthai = 1
 		GROUP BY s.id, s.ten, s.anh, s.trangthai, g.gia, k.phantram, GiaGiamGia
 		ORDER BY k.PhanTram DESC
@@ -3097,13 +2830,12 @@ BEGIN
     SELECT s.id AS ID, s.ten AS Ten, s.anh AS Anh, s.trangthai AS TrangThai, g.gia AS Gia, 
            IF(CURDATE() BETWEEN k.NgayBatDau AND k.NgayKetThuc, CAST((g.gia - (g.gia / 100 * k.phantram)) AS SIGNED), NULL) AS GiaGiamGia,
            IF(CURDATE() BETWEEN k.NgayBatDau AND k.NgayKetThuc, k.phantram, NULL) AS PhanTram,
-           ct.soluong AS SoLuong
+           s.soluong AS SoLuong
     FROM sanpham s
     INNER JOIN giasanpham g ON s.id = g.idsanpham
     LEFT JOIN giamgia k ON s.id = k.idsanpham
-    LEFT JOIN ctkho ct ON s.id = ct.idsanpham
     WHERE (CURDATE() BETWEEN g.NgayBatDau AND g.NgayKetThuc) 
-      AND s.trangthai = 1 
+      AND s.trangthai = 1
     GROUP BY s.id, s.ten, s.anh, s.trangthai, g.gia, GiaGiamGia, PhanTram
     ORDER BY s.NgayTao DESC
     LIMIT p_sl;
@@ -3119,11 +2851,10 @@ delimiter ;;
 CREATE PROCEDURE `sp_sanpham_random`(IN p_sl INT)
 BEGIN	
 		SELECT s.id AS ID, s.ten AS Ten, s.anh AS Anh, s.trangthai AS TrangThai, g.gia AS Gia, k.phantram AS PhanTram,
-					 ct.soluong AS SoLuong, CAST((g.gia - (g.gia / 100 * k.phantram)) AS SIGNED) AS GiaGiamGia
+					 s.soluong AS SoLuong, CAST((g.gia - (g.gia / 100 * k.phantram)) AS SIGNED) AS GiaGiamGia
 		FROM sanpham s
 		INNER JOIN giasanpham g ON s.id = g.idsanpham
 		LEFT JOIN giamgia k ON s.id = k.idsanpham
-		LEFT JOIN ctkho ct ON s.id = ct.idsanpham 
 		WHERE (CURDATE() BETWEEN g.NgayBatDau AND g.NgayKetThuc) AND s.trangthai = 1
 		GROUP BY s.id, s.ten, s.anh, s.trangthai, g.gia, k.phantram, GiaGiamGia
 		ORDER BY RAND()
@@ -3189,13 +2920,12 @@ BEGIN
 
     -- Lấy dữ liệu của trang hiện tại
     SELECT s.id AS ID, s.ten AS Ten, s.anh AS Anh, s.mota AS MoTa, s.trangthai AS TrangThai, g.gia AS Gia, k.phantram AS PhanTram,
-        ct.soluong AS SoLuong, CAST((g.gia - (g.gia / 100 * k.phantram)) AS SIGNED) AS GiaGiamGia, total_count AS TotalCount
+        s.soluong AS SoLuong, CAST((g.gia - (g.gia / 100 * k.phantram)) AS SIGNED) AS GiaGiamGia, total_count AS TotalCount
     FROM sanpham s
     INNER JOIN giasanpham g ON s.id = g.idsanpham
     INNER JOIN nhasanxuat n ON s.idnhasanxuat = n.id
     INNER JOIN loaisanpham l ON s.idloai = l.id
     LEFT JOIN giamgia k ON s.id = k.idsanpham
-    LEFT JOIN ctkho ct ON s.id = ct.idsanpham
     WHERE (CURDATE() BETWEEN g.NgayBatDau AND g.NgayKetThuc)
         AND (p_id IS NULL OR s.id = p_id)
         AND (p_ten IS NULL OR s.ten LIKE CONCAT('%', p_ten, '%'))
@@ -3237,6 +2967,7 @@ delimiter ;;
 CREATE PROCEDURE `sp_sanpham_update`(IN p_id INT,
     IN p_ten VARCHAR(255),
 		IN p_mota TEXT,
+		IN p_soluong INT,
     IN p_anh VARCHAR(255),
 		IN p_trangthai INT,
 		IN p_idnhasanxuat INT,
@@ -3246,6 +2977,7 @@ BEGIN
     SET 
         ten = IFNULL(p_ten, ten),
 				mota = IFNULL(p_mota, mota),
+				soluong = IFNULL(p_soluong, soluong),
 				anh = IFNULL(p_anh, anh),
 				trangthai = IFNULL(p_trangthai, trangthai),
 				idnhasanxuat = IFNULL(p_idnhasanxuat, idnhasanxuat),
@@ -3424,7 +3156,7 @@ BEGIN
 		SELECT SUM(c.soluong * c.gia) INTO doanhSo
     FROM donhang d 
     INNER JOIN ctdonhang c ON d.id = c.iddonhang
-    WHERE d.trangthai = 1 AND YEAR(d.ngaydat) = YEAR(CURRENT_DATE) - 1;
+    WHERE d.trangthai = 6. AND YEAR(d.ngaydat) = YEAR(CURRENT_DATE) - 1;
 
     SELECT soLuongSanPham AS 'SoLuongSanPham', soLuongNguoiDung AS 'SoLuongNguoiDung', soLuongDonHang AS 'SoLuongDonHang', doanhSo AS 'DoanhSo';
 END
