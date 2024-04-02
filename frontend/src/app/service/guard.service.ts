@@ -27,7 +27,7 @@ export class AuthGuard {
           }
         } else if (user.idQuyen === 3) {
           // Quyền là 3, kiểm tra trang cụ thể
-          if (state.url === '/admin/qlnguoidung' || state.url === '/admin/qlquyen') {
+          if (state.url === '/admin/qlnguoidung' || state.url === '/admin/qlquyen' || state.url === '/admin/qltintuc') {
             this.showAccessDeniedAlert();
             this.router.navigate(['/login']);
             return false;

@@ -51,7 +51,7 @@
         <ul class="dropdown-menu">
           <li *ngIf="user.idQuyen === 1"><a class="nav-link" routerLink="/admin/qlnguoidung/"><i data-feather="user"></i><span>Quản lý người dùng</span></a></li>
           <li *ngIf="user.idQuyen === 1"><a class="nav-link" routerLink="/admin/qlquyen/"><i data-feather="lock"></i><span>Quản lý quyền</span></a></li>
-          <li><a class="nav-link" routerLink="/admin/qltintuc/"><i data-feather="square"></i><span>Quản lý tin tức</span></a></li>
+          <li *ngIf="user.idQuyen === 1 || user.idQuyen === 4"><a class="nav-link" routerLink="/admin/qltintuc/"><i data-feather="square"></i><span>Quản lý tin tức</span></a></li>
         </ul>
       </li>
 

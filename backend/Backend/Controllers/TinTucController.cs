@@ -6,7 +6,7 @@ using Model;
 
 namespace Backend.Controllers
 {
-    [Authorize(Roles = "1, 3, 4")]
+    [Authorize(Roles = "1, 4")]
     [Route("api/[controller]")]
     [ApiController]
     public class TinTucController : ControllerBase
