@@ -61,7 +61,6 @@ export class DanhmucsanphamComponent {
         this.ListSanPham = res.data;
         this.totalItems = res.totalItems;
         this.calculateTotalPages();
-        console.log(res);
       });
     });
   }

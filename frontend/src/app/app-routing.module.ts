@@ -29,7 +29,6 @@ import { MainComponent } from './modules/admin/main/main.component';
 import { QlsanphamComponent } from './modules/admin/qlsanpham/qlsanpham.component';
 import { QllienheComponent } from './modules/admin/qllienhe/qllienhe.component';
 import { QlquyenComponent } from './modules/admin/qlquyen/qlquyen.component';
-import { QlkhoComponent } from './modules/admin/qlkho/qlkho.component';
 import { QlphuongthucComponent } from './modules/admin/qlphuongthuc/qlphuongthuc.component';
 import { QldieukhoanComponent } from './modules/admin/qldieukhoan/qldieukhoan.component';
 import { QlmenuComponent } from './modules/admin/qlmenu/qlmenu.component';
@@ -45,10 +44,10 @@ import { QlnguoidungComponent } from './modules/admin/qlnguoidung/qlnguoidung.co
 import { ProfileComponent } from './modules/admin/profile/profile.component';
 import { QlgiamgiaComponent } from './modules/admin/qlgiamgia/qlgiamgia.component';
 // import { ErroradminComponent } from './modules/admin/erroradmin/erroradmin.component';
-import { NhapkhoComponent } from './modules/admin/nhapkho/nhapkho.component';
 import { DoithongtinComponent } from './modules/admin/doithongtin/doithongtin.component';
 import { ConfirmComponent } from './modules/client/confirm/confirm.component';
 import { CamonComponent } from './modules/client/camon/camon.component';
+import { NhapsoluongComponent } from './modules/admin/nhapsoluong/nhapsoluong.component';
 
 const routes: Routes = [
   {
@@ -74,11 +73,6 @@ const routes: Routes = [
         path: 'qlquyen',
         component: QlquyenComponent,
         title: 'Quản lý quyền - Cửa hàng điện máy'
-      },
-      {
-        path: 'qlkho',
-        component: QlkhoComponent,
-        title: 'Quản lý kho - Cửa hàng điện máy'
       },
       {
         path: 'qlphuongthuc',
@@ -151,9 +145,9 @@ const routes: Routes = [
         title: 'Quản lý giảm giá - Cửa hàng điện máy'
       },
       {
-        path: 'nhapkho',
-        component: NhapkhoComponent,
-        title: 'Nhập kho - Cửa hàng điện máy'
+        path: 'nhapsoluong',
+        component: NhapsoluongComponent,
+        title: 'Nhập số lượng - Cửa hàng điện máy'
       },
       {
         path: 'doithongtin',

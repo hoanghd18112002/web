@@ -2,7 +2,6 @@ import { Component, ElementRef, ViewChild  } from '@angular/core';
 import { LoaiSanPham } from 'src/app/models/loaisanpham.model';
 import { NhaSanXuat } from 'src/app/models/nhasanxuat.model';
 import { SanPham } from 'src/app/models/sanpham.model';
-import { ThongSo } from 'src/app/models/thongso.model';
 import { GiaSanPhamService } from 'src/app/service/giasanpham.service';
 import { LoaiSanPhamService } from 'src/app/service/loaisanpham.service';
 import { NhaSanXuatService } from 'src/app/service/nhasanxuat.service';

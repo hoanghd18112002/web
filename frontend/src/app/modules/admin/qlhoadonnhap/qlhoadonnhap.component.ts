@@ -48,7 +48,6 @@ export class QlhoadonnhapComponent {
     };
     this.hoaDonNhapService.getall(obj).subscribe(res => {
       this.ListHoaDonNhap = res.data;
-      console.log(res);
       this.totalItems = res.totalItems;
       this.calculateTotalPages();
     });

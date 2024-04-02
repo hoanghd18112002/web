@@ -26,9 +26,9 @@ export class LayoutClientComponent implements OnInit {
     // await this.load.loadScript('assets/client/js/vendor/jquery-3.3.1.min.js');
     // await this.load.loadScript('assets/client/js/vendor/popper.min.js');
     await this.load.loadScript('assets/client/js/vendor/bootstrap.min.js');
-    // await this.load.loadScript('assets/client/js/plugins.js');
+    await this.load.loadScript('assets/client/js/plugins.js');
     // await this.load.loadScript('assets/client/js/ajax-mail.js');
-    // await this.load.loadScript('assets/client/js/switcher.js');
+    await this.load.loadScript('assets/client/js/switcher.js');
     await this.load.loadScript('assets/client/js/main.js');
   }
 }

@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { SanPham } from 'src/app/models/sanpham.model';
 import { TinTuc } from 'src/app/models/tintuc.model';
 import { SanPhamService } from 'src/app/service/sanpham.service';
@@ -18,8 +18,9 @@ export class ChitiettintucComponent {
 
   constructor(
     private _route: ActivatedRoute,
+    private _router: Router,
     private sanPhamService: SanPhamService,
-    private tinTucService: TinTucService
+    private tinTucService: TinTucService,
   ) {}
 
   ngOnInit(){
@@ -49,6 +50,12 @@ export class ChitiettintucComponent {
   gettintucngaunhien() {
     this.tinTucService.gettintucngaunhien(6).subscribe(res => {
       this.ListTinTucNgauNhien = res.data;
+    });
+  }
+
+  reloadPage(id: number) {
+    this._router.navigateByUrl('/', { skipLocationChange: true }).then(() => {
+      this._router.navigate(['/chitiettintuc', id]);
     });
   }
 }

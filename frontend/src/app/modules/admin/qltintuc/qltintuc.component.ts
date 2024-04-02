@@ -92,7 +92,6 @@ export class QltintucComponent {
   //Load người dùng
   loadUser() {
     this.user = this.authService.loadUser();
-    console.log(this.user);
   }  
 
   //Tạo mới xoá nội dung form

@@ -1,14 +1,16 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { API_BASE_URL } from 'src/app/service/api';
 
 const _user = JSON.parse(localStorage.getItem('user') || '{}');
+const headers = new HttpHeaders().set('Authorization', 'Bearer ' + _user.token);
 
 @Injectable({
   providedIn: 'root',
 })
 export class SanPhamService {
-  private apiUrl = 'http://localhost:5226/api/sanpham';
+  private apiUrl = `${API_BASE_URL}/sanpham`;
 
   constructor(private http: HttpClient) {}
 
@@ -29,7 +31,6 @@ export class SanPhamService {
   }
 
   getall(sanpham: object): Observable<any> {
-    const headers = new HttpHeaders().set('Authorization', 'Bearer ' + _user.token);
     return this.http.post<any>(`${this.apiUrl}/get-all`, sanpham, { headers });
   }
 
@@ -38,7 +39,6 @@ export class SanPhamService {
   } 
 
   getnew(): Observable<any> {
-    const headers = new HttpHeaders().set('Authorization', 'Bearer ' + _user.token);
     return this.http.get<any>(`${this.apiUrl}/get-new`, { headers });
   }
 
@@ -47,17 +47,14 @@ export class SanPhamService {
   }
 
   create(object: object): Observable<any> {
-    const headers = new HttpHeaders().set('Authorization', 'Bearer ' + _user.token);
     return this.http.post<any>(`${this.apiUrl}/create`, object, { headers });
   }
 
   update(object: object): Observable<any> {
-    const headers = new HttpHeaders().set('Authorization', 'Bearer ' + _user.token);
     return this.http.put<any>(`${this.apiUrl}/update`, object, { headers });
   }
 
   detele(id: number): Observable<any> {
-    const headers = new HttpHeaders().set('Authorization', 'Bearer ' + _user.token);
     return this.http.delete<any>(`${this.apiUrl}/delete/${id}`, { headers });
   } 
 }

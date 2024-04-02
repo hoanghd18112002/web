@@ -115,4 +115,10 @@ export class ChitietsanphamComponent implements OnInit {
       this.ListNhaSanXuat = res.data;
     });
   }
+
+  reloadPage(id: number) {
+    this._router.navigateByUrl('/', { skipLocationChange: true }).then(() => {
+      this._router.navigate(['/chitietsanpham', id]);
+    });
+  }
 }

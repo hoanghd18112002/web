@@ -44,7 +44,6 @@ import { MainComponent } from './modules/admin/main/main.component';
 import { QlsanphamComponent } from './modules/admin/qlsanpham/qlsanpham.component';
 import { QllienheComponent } from './modules/admin/qllienhe/qllienhe.component';
 import { QlquyenComponent } from './modules/admin/qlquyen/qlquyen.component';
-import { QlkhoComponent } from './modules/admin/qlkho/qlkho.component';
 import { QlphuongthucComponent } from './modules/admin/qlphuongthuc/qlphuongthuc.component';
 import { QldieukhoanComponent } from './modules/admin/qldieukhoan/qldieukhoan.component';
 import { QlmenuComponent } from './modules/admin/qlmenu/qlmenu.component';
@@ -59,11 +58,11 @@ import { QlhoadonnhapComponent } from './modules/admin/qlhoadonnhap/qlhoadonnhap
 import { QlnguoidungComponent } from './modules/admin/qlnguoidung/qlnguoidung.component';
 import { ProfileComponent } from './modules/admin/profile/profile.component';
 import { QlgiamgiaComponent } from './modules/admin/qlgiamgia/qlgiamgia.component';
-import { NhapkhoComponent } from './modules/admin/nhapkho/nhapkho.component';
 import { DoithongtinComponent } from './modules/admin/doithongtin/doithongtin.component';
 import { ErroradminComponent } from './modules/admin/erroradmin/erroradmin.component';
 import { ConfirmComponent } from './modules/client/confirm/confirm.component';
 import { CamonComponent } from './modules/client/camon/camon.component';
+import { NhapsoluongComponent } from './modules/admin/nhapsoluong/nhapsoluong.component';
 
 @NgModule({
   declarations: [
@@ -101,7 +100,6 @@ import { CamonComponent } from './modules/client/camon/camon.component';
     QlsanphamComponent,
     QllienheComponent,
     QlquyenComponent,
-    QlkhoComponent,
     QlphuongthucComponent,
     QldieukhoanComponent,
     QlmenuComponent,
@@ -118,10 +116,10 @@ import { CamonComponent } from './modules/client/camon/camon.component';
     QlgiamgiaComponent,
     ErrorComponent,
     ErroradminComponent,
-    NhapkhoComponent,
     DoithongtinComponent,
     ConfirmComponent,
-    CamonComponent
+    CamonComponent,
+    NhapsoluongComponent
   ],
   imports: [
     BrowserModule,
@@ -131,7 +129,7 @@ import { CamonComponent } from './modules/client/camon/camon.component';
     NgxPaginationModule,
     ReactiveFormsModule,
     AngularEditorModule,
-    NgSelectModule
+    NgSelectModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -52,9 +52,6 @@ builder.Services.AddTransient<IChiTietDonHangBLL, ChiTietDonHangBLL>();
 builder.Services.AddTransient<IChiTietHoaDonNhapDAL, ChiTietHoaDonNhapDAL>();
 builder.Services.AddTransient<IChiTietHoaDonNhapBLL, ChiTietHoaDonNhapBLL>();
 
-builder.Services.AddTransient<IChiTietKhoDAL, ChiTietKhoDAL>();
-builder.Services.AddTransient<IChiTietKhoBLL, ChiTietKhoBLL>();
-
 builder.Services.AddTransient<IDieuKhoanDAL, DieuKhoanDAL>();
 builder.Services.AddTransient<IDieuKhoanBLL, DieuKhoanBLL>();
 
@@ -72,9 +69,6 @@ builder.Services.AddTransient<IGioiThieuBLL, GioiThieuBLL>();
 
 builder.Services.AddTransient<IHoaDonNhapDAL, HoaDonNhapDAL>();
 builder.Services.AddTransient<IHoaDonNhapBLL, HoaDonNhapBLL>();
-
-builder.Services.AddTransient<IKhoDAL, KhoDAL>();
-builder.Services.AddTransient<IKhoBLL, KhoBLL>();
 
 builder.Services.AddTransient<ILienHeDAL, LienHeDAL>();
 builder.Services.AddTransient<ILienHeBLL, LienHeBLL>();

@@ -13,7 +13,7 @@ import { Subscription } from 'rxjs';
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.css']
 })
-export class HeaderComponent implements OnInit, OnDestroy {
+export class HeaderComponent implements OnInit {
   ListMenu: Menu[] = [];
   ListDanhMuc: LoaiSanPham[] = [];
 
@@ -50,13 +50,6 @@ export class HeaderComponent implements OnInit, OnDestroy {
     this.cartService.cartUpdated.subscribe(() => {
       this.loadGioHang();
     });
-  }
-
-  ngOnDestroy() {
-    // Unsubscribe from router events
-    if (this.routerSubscription) {
-      this.routerSubscription.unsubscribe();
-    }
   }
 
   // Load người dùng

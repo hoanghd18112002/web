@@ -25,8 +25,8 @@ export class LayoutAdminComponent {
     await this.load.loadScript('assets/admin/bundles/datatables/export-tables/vfs_fonts.js');
     await this.load.loadScript('assets/admin/bundles/datatables/export-tables/buttons.print.min.js');
     await this.load.loadScript('assets/admin/js/page/datatables.js');
-    await this.load.loadScript('assets/admin/bundles/apexcharts/apexcharts.min.js');
-    await this.load.loadScript('assets/admin/js/page/index.js');
+    // await this.load.loadScript('assets/admin/bundles/apexcharts/apexcharts.min.js');
+    // await this.load.loadScript('assets/admin/js/page/index.js');
     await this.load.loadScript('assets/admin/js/custom.js');
   }
 }

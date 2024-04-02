@@ -99,6 +99,7 @@ namespace DAL
                      "@p_sdt", model.SDT,
                      "@p_kieugiaohang", model.KieuGiaoHang,
                      "@p_ghichu", model.GhiChu,
+                     "@p_trangthai", model.TrangThai,
                      "@p_idphuongthuc", model.IDPhuongThuc,
                      "@p_idnguoidung", model.IDNguoiDung);
                 if ((result != null && !string.IsNullOrEmpty(result.ToString())) || !string.IsNullOrEmpty(msgError))

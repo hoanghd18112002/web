@@ -28,12 +28,12 @@
                         <ng-container *ngFor="let tt of ListTinTucNgauNhien">
                             <div class="recent-post mb-20">
                                 <div class="recent-post-thumb">
-                                    <a routerLink="/chitiettintuc/{{ tt.id }}">
+                                    <a (click)="reloadPage(tt.id)">
                                         <img src="/assets/client/img/tintuc/{{ tt.anh }}" alt="">
                                     </a>
                                 </div>
                                 <div class="recent-post-des">
-                                    <span><a routerLink="/chitiettintuc/{{ tt.id }}">{{ tt.tieuDe | slice:0:20 }}...</a></span>
+                                    <span><a (click)="reloadPage(tt.id)">{{ tt.tieuDe | slice:0:20 }}...</a></span>
                                     <span class="post-date">{{ tt.ngayDang | date: 'dd/MM/yyyy' }}</span>
                                 </div>
                             </div> <!-- end single popular item -->

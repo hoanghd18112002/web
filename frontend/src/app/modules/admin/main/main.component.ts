@@ -28,8 +28,8 @@ export class MainComponent {
   ngOnInit(): void{
     this.LoadDoanhThuTheoThang();
     this.LoadDoanhThuLoaiSanPham()
-    this.LoadSoLuong();
     this.LoadDoanhThuSanPham();
+    this.LoadSoLuong();
   }
 
   //Lấy danh sách toàn bộ doanh thu theo tháng

@@ -2,12 +2,13 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable, of } from 'rxjs';
 import { catchError, tap } from 'rxjs/operators';
+import { API_BASE_URL } from 'src/app/service/api';
 
 @Injectable({
   providedIn: 'root',
 })
 export class AuthService {
-  private apiUrl = 'http://localhost:5226/api/nguoidung';
+  private apiUrl = `${API_BASE_URL}/nguoidung`;
   private currentUser: any;
 
   constructor(

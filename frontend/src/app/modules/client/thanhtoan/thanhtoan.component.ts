@@ -73,62 +73,78 @@ export class ThanhtoanComponent {
     }
   }
 
-  //Thêm đơn hàng
-  createDonHang(){
-    this.ListGioHang.filter((item: any) => {
-      this.sanPhamService.getbyid(item.id).subscribe(res => { 
-        if(item.soluong > res.data.soLuong){
-          swal.fire({
-            icon: 'error',
-            title: 'Cảnh báo',
-            text: 'Một số sản phẩm trong giỏ hàng không có đủ số lượng. Vui lòng kiểm tra lại giỏ hàng của bạn.'
-          });
+  createDonHang() {
+    let enoughStock = true;
+  
+    // Kiểm tra số lượng tồn kho của từng sản phẩm trong giỏ hàng
+    for (let item of this.ListGioHang) {
+      this.sanPhamService.getbyid(item.id).subscribe(res => {
+        if (item.soluong > res.data.soLuong) {
+          enoughStock = false;
+          return;
         }
-        else {
-          const donhang: any = {
-            ten: this.user.ten,
-            diaChi: this.user.diaChi,
-            sdt: this.user.sdt,
-            kieuGiaoHang: Number(this.loaiShip),
-            ghiChu: this.GhiChu,
-            trangThai: 0,
-            idPhuongThuc: this.loaiThanhToan,
-            idNguoiDung: this.user.id,
+      });
+  
+      if (!enoughStock) {
+        break;
+      }
+    }
+  
+    if (enoughStock) {
+      const donhang: any = {
+        ten: this.user.ten,
+        diaChi: this.user.diaChi,
+        sdt: this.user.sdt,
+        kieuGiaoHang: Number(this.loaiShip),
+        ghiChu: this.GhiChu,
+        trangThai: this.loaiThanhToan === 2 ? 3 : 0,
+        
+        idPhuongThuc: this.loaiThanhToan,
+        idNguoiDung: this.user.id,
+      };
+
+      console.log(donhang);
+
+      // Gọi phương thức tạo đơn hàng
+      this.donHangService.createDonHang(donhang).subscribe(res => {
+        // Xử lý sau khi tạo đơn hàng thành công
+        this.donHangService.getnew().subscribe(res => {
+          const id = res.data.id;
+          for (let i = 0; i < this.ListGioHang.length; i++) {
+            const ctdonhang: any = {
+              soLuong: this.ListGioHang[i].soluong,
+              gia: this.ListGioHang[i].gia,
+              idSanPham: this.ListGioHang[i].id,
+              idDonHang: id,
+            };
+            this.giamSoLuong(this.ListGioHang[i].id, this.ListGioHang[i].soluong);
+            this.donHangService.createCTDonHang(ctdonhang).subscribe(res => {});
           }
-          
-          if (this.loaiThanhToan === 2) { donhang.trangThai = 3}
-      
-          this.donHangService.createDonHang(donhang).subscribe(res => {
-            this.donHangService.getnew().subscribe(res => {
-              const id = res.data.id
-              for(let i = 0; i < this.ListGioHang.length; i++)
-              {
-                const ctdonhang: any = {
-                  soLuong: this.ListGioHang[i].soluong,
-                  gia: this.ListGioHang[i].gia,
-                  idSanPham: this.ListGioHang[i].id,
-                  idDonHang: id,
-                }
-                this.giamSoLuong(this.ListGioHang[i].id, this.ListGioHang[i].soluong);
-                this.donHangService.createCTDonHang(ctdonhang).subscribe(res => {});
-              }
-              if (this.loaiThanhToan === 2) {
-                this.vnPay(id);
-              }
-            });
-          });
-          localStorage.removeItem('cart');
-          swal.fire({
-            icon: 'success',
-            title: 'Thành công!',
-            text: 'Thanh toán thành công! Cảm ơn bạn đã sử dụng dịch vụ.'
-          }).then(() => {
-              location.assign('/');
-          });
+          if (this.loaiThanhToan === 2) {
+            this.vnPay(id);
+          }
+        });
+      });
+  
+      // Xóa giỏ hàng sau khi tạo đơn hàng thành công
+      localStorage.removeItem('cart');
+      swal.fire({
+        icon: 'success',
+        title: 'Thành công!',
+        text: 'Thanh toán thành công! Cảm ơn bạn đã sử dụng dịch vụ.'
+      }).then(() => {
+        if (this.loaiThanhToan === 1) {
+          location.assign('/');
         }
-      })
-    });
-  }
+      });
+    } else {
+      swal.fire({
+        icon: 'error',
+        title: 'Cảnh báo',
+        text: 'Một số sản phẩm trong giỏ hàng không có đủ số lượng. Vui lòng kiểm tra lại giỏ hàng của bạn.'
+      });
+    }
+  }  
 
   //Thanh toán online
   vnPay(id: number){

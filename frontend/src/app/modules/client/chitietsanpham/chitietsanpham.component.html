@@ -198,7 +198,7 @@
                             <!-- product single item start -->
                             <div class="product-item">
                                 <div class="product-thumb">
-                                    <a routerLink="/chitietsanpham/{{ sp.id }}">
+                                    <a (click)="reloadPage(sp.id)">
                                         <img src="/assets/client/img/sanpham/{{ sp.anh }}" class="img-pri" alt="">
                                     </a>
                                     <ng-container *ngIf="sp.phanTram !== null && sp.phanTram !== undefined">
@@ -211,7 +211,7 @@
                                     </div>
                                 </div>
                                 <div class="product-content text-center border-top">
-                                    <a routerLink="/chitietsanpham/{{ sp.id }}" class="product-title text-dark font-weight-bold">{{ sp.ten }}</a>
+                                    <a (click)="reloadPage(sp.id)" class="product-title text-dark font-weight-bold">{{ sp.ten }}</a>
                                     <div class="pricebox">
                                         <ng-container *ngIf="sp.phanTram === null || sp.phanTram === undefined">
                                             <span class="price text-danger">Giá: {{ sp.gia | number:'1.0-0' }} đ</span><br/>
@@ -247,12 +247,12 @@
                                 <div class="col">
                                     <div class="category-item">
                                         <div class="category-thumb">
-                                            <a routerLink="/chitietsanpham/{{ sp.id }}">
+                                            <a (click)="reloadPage(sp.id)">
                                                 <img src="/assets/client/img/sanpham/{{ sp.anh }}" alt="">
                                             </a>
                                         </div>
                                         <div class="category-content">
-                                            <h4><a routerLink="/chitietsanpham/{{ sp.id }}">{{ sp.ten }}</a></h4>
+                                            <h4><a (click)="reloadPage(sp.id)">{{ sp.ten }}</a></h4>
                                             <div class="price-box">
                                                 <div class="pricebox">
                                                     <ng-container *ngIf="sp.phanTram === null || sp.phanTram === undefined">
