@@ -25,9 +25,7 @@ namespace Backend.Controllers
             try
             {
                 var kq = _bll.Get();
-
                 var tree = BuildTree(kq);
-
                 return Ok(new { success = true, message = "Lấy dữ liệu thành công", data = tree });
             }
             catch (Exception ex)

@@ -17,11 +17,13 @@ namespace Backend.Controllers
     {
         private IChiTietDonHangBLL _chitietdonhangbll;
         private IDonHangBLL _donhangbll;
+        private IThamSoBLL _thamsobll;
 
-        public ChiTietDonHangController(IChiTietDonHangBLL chitietdonhangbll, IDonHangBLL donhangbll)
+        public ChiTietDonHangController(IChiTietDonHangBLL chitietdonhangbll, IDonHangBLL donhangbll, IThamSoBLL thamsobll)
         {
             _chitietdonhangbll = chitietdonhangbll;
             _donhangbll = donhangbll;
+            _thamsobll = thamsobll;
         }
 
         [Route("get-by-don-hang/{id}")]
@@ -78,6 +80,7 @@ namespace Backend.Controllers
                 // Lấy thông tin đơn hàng và chi tiết đơn hàng từ BLL
                 var donHang = _donhangbll.GetByID(id);
                 var chiTietDonHang = _chitietdonhangbll.GetByDonHang(id);
+                var thamso = _thamsobll.GetByMa("NAME");
 
                 using (var package = new ExcelPackage())
                 {
@@ -85,7 +88,7 @@ namespace Backend.Controllers
                     var worksheet = package.Workbook.Worksheets.Add("Hoá Đơn");
 
                     // Thêm thông tin cửa hàng và hoá đơn vào các ô
-                    worksheet.Cells["A1"].Value = "Cửa hàng điện máy GALIO";
+                    worksheet.Cells["A1"].Value = "Cửa hàng điện máy " + thamso.NoiDung;
                     worksheet.Cells["A2"].Value = "Tài khoản: " + donHang.TaiKhoan;
                     worksheet.Cells["A3"].Value = "Tên: " + donHang.Ten;
                     worksheet.Cells["A4"].Value = "Địa chỉ: " + donHang.DiaChi;

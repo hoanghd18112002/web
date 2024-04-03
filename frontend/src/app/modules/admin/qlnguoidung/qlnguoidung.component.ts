@@ -3,6 +3,7 @@ import { NguoiDung } from 'src/app/models/nguoidung.model';
 import { Quyen } from 'src/app/models/quyen.model';
 import { NguoiDungService } from 'src/app/service/nguoidung.service';
 import { QuyenService } from 'src/app/service/quyen.service';
+import { ThamsoService } from 'src/app/service/thamso.service';
 import swal from 'sweetalert2';
 
 @Component({
@@ -44,7 +45,8 @@ export class QlnguoidungComponent {
 
   constructor(
     private nguoiDungService: NguoiDungService, 
-    private quyenService: QuyenService
+    private quyenService: QuyenService,
+    private thamsoService: ThamsoService
   ){}
 
   ngOnInit(){
@@ -139,52 +141,52 @@ export class QlnguoidungComponent {
       return;
     }
 
-    const nguoidung: any = {
-      taiKhoan: this.taiKhoan,
-      matKhau: '123456',
-      email: this.email,
-      ten: this.ten,
-      diaChi: this.diaChi,
-      sdt: this.sdt,
-      gioiTinh: this.gioiTinh.toString(),
-      trangThai: this.trangThai ? '1' : '0',
-      idQuyen: this.idQuyen,
-      confirmationLink: `${window.location.origin}/confirm`
-    }
-
-    this.id = this.idQuyen;
-
-    this.nguoiDungService.create(nguoidung).subscribe(res => {
-      if (res.success) {
-        swal.fire({
-            icon: 'success',
-            title: 'Thành công',
+    this.thamsoService.getbyma("PASS").subscribe(res => {
+      const nguoidung: any = {
+        taiKhoan: this.taiKhoan,
+        matKhau: res.data.noiDung,
+        email: this.email,
+        ten: this.ten,
+        diaChi: this.diaChi,
+        sdt: this.sdt,
+        gioiTinh: this.gioiTinh.toString(),
+        trangThai: this.trangThai ? '1' : '0',
+        idQuyen: this.idQuyen,
+        confirmationLink: `${window.location.origin}/confirm`
+      }
+  
+      this.nguoiDungService.create(nguoidung).subscribe(res => {
+        if (res.success) {
+          swal.fire({
+              icon: 'success',
+              title: 'Thành công',
+              text: res.message
+          }).then(() => {
+            this.getall(this.id);
+          });
+        } else{
+          swal.fire({
+            icon: 'error',
+            title: 'Lỗi',
             text: res.message
         }).then(() => {
-          this.getall(this.id);
+            
         });
-      } else{
-        swal.fire({
-          icon: 'error',
-          title: 'Lỗi',
-          text: res.message
-      }).then(() => {
-          
-      });
-      }
-
-      this.getall(this.id);
+        }
   
-      // Đóng modal khi tạo thành công
-      const addModal = this.addModal.nativeElement;
-      addModal.classList.remove('show');
-      addModal.style.display = 'none';
-      document.body.classList.remove('modal-open');
-      const modalBackdrop = document.getElementsByClassName('modal-backdrop');
-      for (let i = 0; i < modalBackdrop.length; i++) {
-        modalBackdrop[i].remove();
-      }
-    });
+        this.getall(this.id);
+    
+        // Đóng modal khi tạo thành công
+        const addModal = this.addModal.nativeElement;
+        addModal.classList.remove('show');
+        addModal.style.display = 'none';
+        document.body.classList.remove('modal-open');
+        const modalBackdrop = document.getElementsByClassName('modal-backdrop');
+        for (let i = 0; i < modalBackdrop.length; i++) {
+          modalBackdrop[i].remove();
+        }
+      });
+    })
   }
 
   //Sửa
@@ -195,7 +197,6 @@ export class QlnguoidungComponent {
         return;
       }
 
-      this.id = this.idQuyen;
 
       const formData = new FormData();
       
@@ -234,34 +235,37 @@ export class QlnguoidungComponent {
   //Sửa
   reset() {
     if (this.selectedRow) {
+      const id = this.selectedRow.id;
 
-      this.id = this.idQuyen;
-
-      const formData = new FormData();
-      formData.append('id', String(this.selectedRow.id));
-      formData.append('matKhau', '123456');
-
-      // Gọi phương thức sửa từ service
-      this.nguoiDungService.update(formData).subscribe(res => {
-        this.getall(this.id);
-        swal.fire({
-          icon: 'success',
-          title: res.message,
-          showConfirmButton: true,
-          timer: 1500
-        });(res.message);
-        this.selectedRow = null;
-
-        // Đóng modal khi tạo thành công
-        const resetModal = this.resetModal.nativeElement;
-        resetModal.classList.remove('show');
-        resetModal.style.display = 'none';
-        document.body.classList.remove('modal-open');
-        const modalBackdrop = document.getElementsByClassName('modal-backdrop');
-        for (let i = 0; i < modalBackdrop.length; i++) {
-          modalBackdrop[i].remove();
-        }
-      });
+      this.thamsoService.getbyma("PASS").subscribe(res => {
+        const formData = new FormData();
+        formData.append('id', id.toString());
+        formData.append('matKhau', res.data.noiDung);
+        
+        console.log(res.data.noiDung);
+        console.log(id);
+        // Gọi phương thức sửa từ service
+        this.nguoiDungService.update(formData).subscribe(res => {
+          this.getall(this.id);
+          swal.fire({
+            icon: 'success',
+            title: res.message,
+            showConfirmButton: true,
+            timer: 1500
+          });(res.message);
+          this.selectedRow = null;
+  
+          // Đóng modal khi tạo thành công
+          const resetModal = this.resetModal.nativeElement;
+          resetModal.classList.remove('show');
+          resetModal.style.display = 'none';
+          document.body.classList.remove('modal-open');
+          const modalBackdrop = document.getElementsByClassName('modal-backdrop');
+          for (let i = 0; i < modalBackdrop.length; i++) {
+            modalBackdrop[i].remove();
+          }
+        });
+      })
     }
   }
 
@@ -269,7 +273,6 @@ export class QlnguoidungComponent {
   delete() {
     if (this.selectedRow) {
       const id = this.selectedRow.id; // Lấy id để xoá
-      this.id = this.idQuyen;
       // Gọi phương thức xoá từ service    
       this.nguoiDungService.detele(id).subscribe(res => {
         this.getall(this.id);

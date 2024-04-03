@@ -32,7 +32,7 @@ namespace DAL
                 throw ex;
             }
         }
-        public List<SlideModel> GetAll(int pageIndex, int pageSize, out int total)
+        public List<SlideModel> GetAll(int pageIndex, int pageSize, out int total, string TieuDe)
         {
             string msgError = "";
             total = 0;
@@ -40,7 +40,8 @@ namespace DAL
             {
                 var dt = _dbHelper.ExecuteSProcedureReturnDataTable(out msgError, "sp_slide_getall_desc",
                     "@p_pageindex", pageIndex,
-                    "@p_pagesize", pageSize);
+                    "@p_pagesize", pageSize,
+                    "@p_tieude", TieuDe);
                 if (!string.IsNullOrEmpty(msgError))
                     throw new Exception(msgError);
                 if (dt.Rows.Count > 0) total = (int)dt.Rows[0]["TotalCount"];
@@ -72,8 +73,12 @@ namespace DAL
             try
             {
                 var result = _dbHelper.ExecuteSProcedureReturnDataTable(out msgError, "sp_slide_create",
+                     "@p_tieude", model.TieuDe,
+                     "@p_noidung", model.NoiDung,
                      "@p_anh", model.Anh,
-                     "@p_trangthai", model.TrangThai);
+                     "@p_kieu", model.Kieu,
+                     "@p_trangthai", model.TrangThai,
+                     "@p_idcha", model.IDCha);
                 if ((result != null && !string.IsNullOrEmpty(result.ToString())) || !string.IsNullOrEmpty(msgError))
                 {
                     throw new Exception(Convert.ToString(result) + msgError);
@@ -92,8 +97,12 @@ namespace DAL
             {
                 var result = _dbHelper.ExecuteSProcedureReturnDataTable(out msgError, "sp_slide_update",
                     "@p_id", model.ID,
+                    "@p_tieude", model.TieuDe,
+                    "@p_noidung", model.NoiDung,
                     "@p_anh", model.Anh,
-                    "@p_trangthai", model.TrangThai);
+                    "@p_kieu", model.Kieu,
+                    "@p_trangthai", model.TrangThai,
+                    "@p_idcha", model.IDCha);
                 if ((result != null && !string.IsNullOrEmpty(result.ToString())) || !string.IsNullOrEmpty(msgError))
                 {
                     throw new Exception(Convert.ToString(result) + msgError);

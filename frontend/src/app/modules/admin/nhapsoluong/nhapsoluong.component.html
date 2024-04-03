@@ -12,14 +12,14 @@
                                 <a class="text-danger">Các trường có dấu (*) không được để trống</a>
                             </div>
                             <div class="form-row mt-5">
-                                <div class="form-group col-md-3 col-xs-12">
+                                <div class="form-group col-md-6 col-xs-12">
                                     <label for="IDNhaCungCap">Nhà cung cấp <a class="text-danger"> (*)</a>:</label>
                                     <select class="form-control" name="IDNhaCungCap" [(ngModel)]="IDNhaCungCap">
                                         <option value="" selected disabled>--- Chọn nhà cung cấp ---</option>
                                         <option *ngFor="let ncc of ListNhaCungCap" value="{{ ncc.id }}">{{ ncc.ten }}</option>
                                     </select>
                                 </div>                                                                  
-                                <div class="form-group col-md-3 col-xs-12">
+                                <div class="form-group col-md-6 col-xs-12">
                                     <label for="ten">Người nhập </label>
                                     <input class="form-control" value="{{ user.ten }}" readonly/>   
                                 </div>                                                                                   

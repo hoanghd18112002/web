@@ -8,16 +8,20 @@
                             <div class="container p-0">
                                 <div class="slider-main-content">
                                     <div class="slider-content-img">
-                                        <img src="/assets/client/img/slider/slider11_lable1.png" alt="">
-                                        <img src="/assets/client/img/slider/slider11_lable2.png" alt="">
-                                        <img src="/assets/client/img/slider/slider11_lable3.png" alt="">
+                                        <ng-container *ngFor="let child of sl.children">
+                                            <img *ngIf="child.kieu === 1" src="/assets/client/img/slider/{{ child.anh }}" alt="">
+                                            <img *ngIf="child.kieu === 2" src="/assets/client/img/slider/{{ child.anh }}" alt="">
+                                            <img *ngIf="child.kieu === 3" src="/assets/client/img/slider/{{ child.anh }}" alt="">
+                                        </ng-container>
                                     </div>
                                     <div class="slider-text">
                                         <div class="slider-label">
-                                            <img src="/assets/client/img/slider/slider11_lable4.png" alt="">
-                                        </div>
-                                        <h1>headphones az12</h1>
-                                        <p>Typi Non Habent Claritatem Insitam; Est Usus Legentis</p>
+                                            <ng-container *ngFor="let child of sl.children">
+                                                <img *ngIf="child.kieu === 4" src="/assets/client/img/slider/{{ child.anh }}" alt="">
+                                            </ng-container>
+                                        </div>                                        
+                                        <h1>{{ sl.tieuDe }}</h1>
+                                        <p>{{ sl.noiDung }}</p>
                                     </div>
                                 </div>
                             </div>

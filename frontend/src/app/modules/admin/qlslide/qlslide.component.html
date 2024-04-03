@@ -31,16 +31,24 @@
                                     <thead id="mainTable" class="table table-striped">
                                         <tr class="text-center"class="text-center">
                                             <th>#</th>
+                                            <th>Tiêu đề</th>
+                                            <th>Nội dung</th>
                                             <th>Ảnh</th>
+                                            <th>Kiểu</th>
+                                            <th>Slide cha</th>                               
                                             <th>Trạng thái</th>
                                         </tr>
                                     </thead>
                                     <tbody *ngFor="let sl of ListSlide; let i = index">
                                         <tr (click)="onRowClick(sl)" [class.selected]="selectedRow === sl" class="text-center">
                                             <td>{{ i + 1 }}</td>
+                                            <td>{{ sl.tieuDe }}</td>
+                                            <td>{{ sl.noiDung }}</td>
                                             <td>
-                                                <img style="width: 300px; height: 200px;" src="/assets/client/img/slider/{{ sl.anh }}"/>                                                  
+                                                <img style="width: 100px; height: 70px;" src="/assets/client/img/slider/{{ sl.anh }}"/>                                                  
                                             </td>
+                                            <td>{{ sl.kieu }}</td>
+                                            <td>{{ sl.tenSlideCha }}</td>
                                             <td>
                                                 <span *ngIf="sl.trangThai === 1" class="badge badge-success">Hoạt động</span>
                                                 <span *ngIf="sl.trangThai === 0" class="badge badge-danger">Khoá</span>
@@ -99,18 +107,48 @@
                 <form>
                     <div class="card-body">
                         <div class="form-row">
-                            <div class="form-group col-12">
-                                <label for="anh">Ảnh<a class="text-danger"> (*)</a>:</label>
-                                <input type="file" class="form-control" name="anh" [(ngModel)]="anh" (change)="onFileChange($event)"/>
+                            <div class="form-group col-md-6 col-xs-12">
+                                <label for="tieuDe">Tiêu đề:</label>
+                                <textarea class="form-control" rows="3" name="tieuDe" [(ngModel)]="tieuDe" placeholder="Nhập tiêu đề (nếu có)"></textarea>
                             </div>
-                            <div class="form-group col-12">
+                            <div class="form-group col-md-6 col-xs-12">
+                                <label for="noiDung">Nội dung:</label>
+                                <textarea class="form-control" rows="3" name="noiDung" [(ngModel)]="noiDung" placeholder="Nhập nội dung (nếu có)"></textarea>
+                            </div>                                                                       
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group col-md-6 col-xs-12">
+                                <label for="anh">Ảnh<a class="text-danger"> (*)</a>:</label>
+                                <input type="file" class="form-control" name="anh" [(ngModel)]="anh" (change)="onFileChange($event)" />
+                            </div>
+                            <div class="form-group col-md-6 col-xs-12">
                                 <label for="trangThai" class="d-block">Trạng thái:</label>
                                 <div class="custom-control custom-switch ml-10">
                                     <input type="checkbox" class="custom-control-input" id="trangThai" name="trangThai" [(ngModel)]="trangThai">
                                     <label class="custom-control-label" for="trangThai">Hoạt động</label>
-                                </div>                              
-                            </div>                                                                                 
-                        </div>
+                                </div>
+                            </div>
+                        </div> 
+                        <div class="form-row">
+                            <div class="form-group col-md-6 col-xs-12">
+                                <label for="kieu">Kiểu<a class="text-danger"> (*)</a>:</label>
+                                <select class="form-control" name="kieu" [(ngModel)]="kieu">
+                                    <option value="" selected disabled>--- Chọn kiểu slide ---</option>
+                                    <option value="0">Ảnh chính (0)</option>
+                                    <option value="0">Ảnh phụ (1)</option>
+                                    <option value="2">Ảnh phụ (2)</option>
+                                    <option value="3">Ảnh phụ (3)</option>
+                                    <option value="4">Ảnh phụ (4)</option>
+                                </select>
+                            </div>
+                            <div class="form-group col-md-6 col-xs-12">
+                                <label for="idCha">Slide cha:</label>
+                                <select class="form-control" name="idCha" [(ngModel)]="idCha">
+                                    <option value="0" selected disabled>--- Chọn slide cha ---</option>
+                                    <option *ngFor="let mn of ListSlideCha" value="{{ mn.id }}">{{ mn.tieuDe }}</option>
+                                </select>
+                            </div>
+                        </div>     
                     </div>
                 </form>                  
             </div>
@@ -140,13 +178,17 @@
                     <div class="card-body">
                         <div class="form-row">
                             <div class="form-group col-12 text-center">
-                                <img style="width: 500px; height: 300px;" src="/assets/client/img/slider/{{ anh }}" />
+                                <img class="img-fluid rounded" src="/assets/client/img/slider/{{ anh }}" alt="">
                             </div>
-                            <div class="news-text">
-                                <strong>Trạng thái: 
-                                    <span *ngIf="trangThai === 1" class="badge badge-success">Hoạt động</span>
-                                    <span *ngIf="trangThai === 0" class="badge badge-danger">Khoá</span>
-                                </strong>
+                            <div class="form-group col-12 news-text">
+                                <h4 class="text-center mb-4">{{ tieuDe }}</h4>
+                                <p><strong>Nội dung: </strong> {{ noiDung }}</p>
+                                <p><strong>Loại: </strong> {{ kieu }}</p>
+                                <p><strong>Slide cha: </strong> {{ tenSlideCha }}</p>
+                                <p><strong>Trạng thái: 
+                                    <span *ngIf="trangThai === 1" class="badge badge-success ml-2">Hoạt động</span>
+                                    <span *ngIf="trangThai === 0" class="badge badge-danger ml-2">Khoá</span>
+                                </strong></p>
                             </div>     
                         </div>
                     </div>
@@ -179,18 +221,48 @@
                 <form>
                     <div class="card-body">
                         <div class="form-row">
-                            <div class="form-group col-12">
-                                <label for="anh">Ảnh:</label>
-                                <input type="file" class="form-control" name="anh" [(ngModel)]="anh" (change)="onFileChange($event)"/>
+                            <div class="form-group col-md-6 col-xs-12">
+                                <label for="tieuDe">Tiêu đề:</label>
+                                <textarea class="form-control" rows="3" name="tieuDe" [(ngModel)]="tieuDe" placeholder="Nhập tiêu đề (nếu có)"></textarea>
                             </div>
-                            <div class="form-group col-12">
+                            <div class="form-group col-md-6 col-xs-12">
+                                <label for="noiDung">Nội dung:</label>
+                                <textarea class="form-control" rows="3" name="noiDung" [(ngModel)]="noiDung" placeholder="Nhập nội dung (nếu có)"></textarea>
+                            </div>                                                                       
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group col-md-6 col-xs-12">
+                                <label for="anh">Ảnh:</label>
+                                <input type="file" class="form-control" name="anh" [(ngModel)]="anh" (change)="onFileChange($event)" />
+                            </div>
+                            <div class="form-group col-md-6 col-xs-12">
                                 <label for="trangThai" class="d-block">Trạng thái:</label>
                                 <div class="custom-control custom-switch ml-10">
                                     <input type="checkbox" class="custom-control-input" id="trangThai" name="trangThai" [(ngModel)]="trangThai">
                                     <label class="custom-control-label" for="trangThai">Hoạt động</label>
-                                </div>                              
-                            </div>    
-                        </div>
+                                </div>
+                            </div>
+                        </div> 
+                        <div class="form-row">
+                            <div class="form-group col-md-6 col-xs-12">
+                                <label for="kieu">Kiểu<a class="text-danger"> (*)</a>:</label>
+                                <select class="form-control" name="kieu" [(ngModel)]="kieu">
+                                    <option value="" selected disabled>--- Chọn kiểu slide ---</option>
+                                    <option value="0">Ảnh chính (0)</option>
+                                    <option value="0">Ảnh phụ (1)</option>
+                                    <option value="2">Ảnh phụ (2)</option>
+                                    <option value="3">Ảnh phụ (3)</option>
+                                    <option value="4">Ảnh phụ (4)</option>
+                                </select>
+                            </div>
+                            <div class="form-group col-md-6 col-xs-12">
+                                <label for="idCha">Slide cha:</label>
+                                <select class="form-control" name="idCha" [(ngModel)]="idCha">
+                                    <option value="0" selected disabled>--- Chọn slide cha ---</option>
+                                    <option *ngFor="let mn of ListSlideCha" value="{{ mn.id }}">{{ mn.tieuDe }}</option>
+                                </select>
+                            </div>
+                        </div>     
                     </div>
                 </form>
             </div>

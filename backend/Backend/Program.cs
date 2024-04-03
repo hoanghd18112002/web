@@ -100,6 +100,9 @@ builder.Services.AddTransient<ISanPhamBLL, SanPhamBLL>();
 builder.Services.AddTransient<ISlideDAL, SlideDAL>();
 builder.Services.AddTransient<ISlideBLL, SlideBLL>();
 
+builder.Services.AddTransient<IThamSoDAL, ThamSoDAL>();
+builder.Services.AddTransient<IThamSoBLL, ThamSoBLL>();
+
 builder.Services.AddTransient<IThongKeDAL, ThongKeDAL>();
 builder.Services.AddTransient<IThongKeBLL, ThongKeBLL>();
 

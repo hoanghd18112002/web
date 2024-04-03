@@ -103,8 +103,6 @@ export class ThanhtoanComponent {
         idNguoiDung: this.user.id,
       };
 
-      console.log(donhang);
-
       // Gọi phương thức tạo đơn hàng
       this.donHangService.createDonHang(donhang).subscribe(res => {
         // Xử lý sau khi tạo đơn hàng thành công

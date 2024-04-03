@@ -113,7 +113,7 @@
                                 <label for="idCha">Menu cha:</label>
                                 <select class="form-control" name="idCha" [(ngModel)]="idCha">
                                     <option value="" selected disabled>--- Chọn menu cha ---</option>
-                                    <option *ngFor="let mn of ListMenu" value="{{ mn.id }}">{{ mn.ten }}</option>
+                                    <option *ngFor="let mn of ListMenuCha" value="{{ mn.id }}">{{ mn.ten }}</option>
                                 </select>
                             </div>
                             <div class="form-group col-12">

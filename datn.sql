@@ -11,7 +11,7 @@
  Target Server Version : 100427
  File Encoding         : 65001
 
- Date: 02/04/2024 23:28:06
+ Date: 03/04/2024 17:25:52
 */
 
 SET NAMES utf8mb4;
@@ -32,7 +32,7 @@ CREATE TABLE `ctdonhang`  (
   INDEX `CTDonHang_DonHang_IDDonHang`(`IDDonHang`) USING BTREE,
   CONSTRAINT `CTDonHang_DonHang_IDDonHang` FOREIGN KEY (`IDDonHang`) REFERENCES `donhang` (`ID`) ON DELETE CASCADE ON UPDATE CASCADE,
   CONSTRAINT `CTDonHang_SanPham_IDSanPham` FOREIGN KEY (`IDSanPham`) REFERENCES `sanpham` (`ID`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE = InnoDB AUTO_INCREMENT = 212 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = DYNAMIC;
+) ENGINE = InnoDB AUTO_INCREMENT = 215 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of ctdonhang
@@ -68,26 +68,29 @@ INSERT INTO `ctdonhang` VALUES (29, 1, 22690000, 50, 19);
 INSERT INTO `ctdonhang` VALUES (30, 1, 10390000, 48, 19);
 INSERT INTO `ctdonhang` VALUES (31, 2, 27090000, 18, 19);
 INSERT INTO `ctdonhang` VALUES (32, 1, 10390000, 48, 20);
-INSERT INTO `ctdonhang` VALUES (33, 1, 5421500, 49, 21);
-INSERT INTO `ctdonhang` VALUES (34, 1, 22690000, 50, 21);
+INSERT INTO `ctdonhang` VALUES (33, 1, 5421500, 31, 21);
+INSERT INTO `ctdonhang` VALUES (34, 1, 22690000, 27, 21);
 INSERT INTO `ctdonhang` VALUES (35, 8, 14090000, 38, 22);
 INSERT INTO `ctdonhang` VALUES (36, 5, 8590000, 40, 22);
-INSERT INTO `ctdonhang` VALUES (37, 1, 32340000, 51, 23);
-INSERT INTO `ctdonhang` VALUES (38, 1, 22690000, 50, 23);
-INSERT INTO `ctdonhang` VALUES (50, 1, 43590000, 47, 49);
-INSERT INTO `ctdonhang` VALUES (51, 3, 17390000, 46, 49);
-INSERT INTO `ctdonhang` VALUES (52, 3, 20390000, 45, 49);
-INSERT INTO `ctdonhang` VALUES (53, 1, 12990000, 44, 49);
+INSERT INTO `ctdonhang` VALUES (37, 1, 32340000, 30, 23);
+INSERT INTO `ctdonhang` VALUES (38, 1, 22690000, 31, 23);
+INSERT INTO `ctdonhang` VALUES (50, 1, 43590000, 32, 49);
+INSERT INTO `ctdonhang` VALUES (51, 3, 17390000, 33, 49);
+INSERT INTO `ctdonhang` VALUES (52, 3, 20390000, 34, 49);
+INSERT INTO `ctdonhang` VALUES (53, 1, 12990000, 35, 49);
 INSERT INTO `ctdonhang` VALUES (54, 2, 22690000, 50, 50);
 INSERT INTO `ctdonhang` VALUES (55, 2, 10390000, 48, 50);
 INSERT INTO `ctdonhang` VALUES (85, 1, 22690000, 50, 50);
 INSERT INTO `ctdonhang` VALUES (86, 1, 8100000, 5, 50);
 INSERT INTO `ctdonhang` VALUES (87, 2, 10390000, 48, 50);
-INSERT INTO `ctdonhang` VALUES (88, 2, 5421500, 49, 50);
-INSERT INTO `ctdonhang` VALUES (89, 1, 43590000, 47, 50);
-INSERT INTO `ctdonhang` VALUES (159, 1, 8100000, 5, 67);
-INSERT INTO `ctdonhang` VALUES (160, 1, 4647000, 49, 68);
+INSERT INTO `ctdonhang` VALUES (88, 2, 5421500, 40, 50);
+INSERT INTO `ctdonhang` VALUES (89, 1, 43590000, 30, 50);
+INSERT INTO `ctdonhang` VALUES (159, 1, 8100000, 7, 67);
+INSERT INTO `ctdonhang` VALUES (160, 1, 4647000, 5, 68);
 INSERT INTO `ctdonhang` VALUES (161, 1, 10390000, 48, 68);
+INSERT INTO `ctdonhang` VALUES (212, 2, 4647000, 49, 115);
+INSERT INTO `ctdonhang` VALUES (213, 2, 10390000, 48, 115);
+INSERT INTO `ctdonhang` VALUES (214, 6, 43590000, 47, 115);
 
 -- ----------------------------
 -- Table structure for cthoadonnhap
@@ -104,7 +107,7 @@ CREATE TABLE `cthoadonnhap`  (
   INDEX `CTHoaDonNhap_HoaDonNhap_IDHoaDonNhap`(`IDHoaDonNhap`) USING BTREE,
   CONSTRAINT `CTHoaDonNhap_HoaDonNhap_IDHoaDonNhap` FOREIGN KEY (`IDHoaDonNhap`) REFERENCES `hoadonnhap` (`ID`) ON DELETE CASCADE ON UPDATE CASCADE,
   CONSTRAINT `CTHoaDonNhap_SanPham_IDSanPham` FOREIGN KEY (`IDSanPham`) REFERENCES `sanpham` (`ID`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE = InnoDB AUTO_INCREMENT = 30 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = DYNAMIC;
+) ENGINE = InnoDB AUTO_INCREMENT = 40 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of cthoadonnhap
@@ -122,6 +125,16 @@ INSERT INTO `cthoadonnhap` VALUES (11, 20, 17545000, 11, 3);
 INSERT INTO `cthoadonnhap` VALUES (12, 20, 17545000, 12, 4);
 INSERT INTO `cthoadonnhap` VALUES (15, 50, 90000000, 50, 18);
 INSERT INTO `cthoadonnhap` VALUES (16, 71, 78000000, 46, 18);
+INSERT INTO `cthoadonnhap` VALUES (30, 23, 5000000, 51, 42);
+INSERT INTO `cthoadonnhap` VALUES (31, 32, 600000, 50, 42);
+INSERT INTO `cthoadonnhap` VALUES (32, 12, 5000000, 51, 43);
+INSERT INTO `cthoadonnhap` VALUES (33, 21, 600000, 50, 43);
+INSERT INTO `cthoadonnhap` VALUES (34, 5, 400000, 49, 44);
+INSERT INTO `cthoadonnhap` VALUES (35, 32, 500000, 48, 44);
+INSERT INTO `cthoadonnhap` VALUES (36, 31, 5000000, 51, 45);
+INSERT INTO `cthoadonnhap` VALUES (37, 22, 5000000, 50, 45);
+INSERT INTO `cthoadonnhap` VALUES (38, 11, 600000, 50, 46);
+INSERT INTO `cthoadonnhap` VALUES (39, 21, 500000, 51, 46);
 
 -- ----------------------------
 -- Table structure for dieukhoan
@@ -208,7 +221,7 @@ CREATE TABLE `donhang`  (
   INDEX `DonHang_PhuongThucThanhToan_IDPhuongThuc`(`IDPhuongThuc`) USING BTREE,
   CONSTRAINT `DonHang_NguoiDung_IDNguoiDung` FOREIGN KEY (`IDNguoiDung`) REFERENCES `nguoidung` (`ID`) ON DELETE RESTRICT ON UPDATE RESTRICT,
   CONSTRAINT `DonHang_PhuongThucThanhToan_IDPhuongThuc` FOREIGN KEY (`IDPhuongThuc`) REFERENCES `phuongthucthanhtoan` (`ID`) ON DELETE RESTRICT ON UPDATE RESTRICT
-) ENGINE = InnoDB AUTO_INCREMENT = 115 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = DYNAMIC;
+) ENGINE = InnoDB AUTO_INCREMENT = 116 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of donhang
@@ -228,13 +241,14 @@ INSERT INTO `donhang` VALUES (15, 'Phạm Đức Hoàng', 'Hà nội', '09060901
 INSERT INTO `donhang` VALUES (18, 'Phạm Đức Hoàng', 'Hà nội', '0906090112', '2023-11-20 20:52:47', 1, 'Gửi hàng nhanh nhá', 6, 1, 1);
 INSERT INTO `donhang` VALUES (19, 'Phạm Đức Hoàng', 'Hà nội', '0906090112', '2023-10-20 20:54:38', 1, 'Cẩn thận hàng dễ vỡ', 2, 1, 1);
 INSERT INTO `donhang` VALUES (20, 'Phạm Đức Hoàng', 'Hà nội', '0906090112', '2023-12-20 20:56:43', 1, 'Gửi hàng nhanh nhá', 6, 1, 1);
-INSERT INTO `donhang` VALUES (21, 'Phạm Đức Hoàng', 'Hà nội', '0906090112', '2023-12-20 21:14:10', 1, 'Cẩn thận hàng dễ vỡ', 0, 1, 1);
+INSERT INTO `donhang` VALUES (21, 'Phạm Đức Hoàng', 'Hà nội', '0906090112', '2023-12-20 21:14:10', 1, 'Cẩn thận hàng dễ vỡ', 6, 1, 1);
 INSERT INTO `donhang` VALUES (22, 'Phạm Đức Hoàng', 'Hà nội', '0906090112', '2023-12-21 08:45:10', 1, 'Gửi hàng nhanh nhá', 4, 1, 1);
-INSERT INTO `donhang` VALUES (23, 'Phạm Đức Hoàng', 'Hà nội', '0906090112', '2023-12-21 09:41:54', 1, 'Cẩn thận hàng dễ vỡ', 3, 1, 1);
-INSERT INTO `donhang` VALUES (49, 'Lê Ngọc Mai', 'Hà nội', '0987654321', '2023-12-22 21:08:11', 1, 'Gửi hàng nhanh nhá', 2, 1, 2);
-INSERT INTO `donhang` VALUES (50, 'Lê Ngọc Mai', 'Hà nội', '0987654321', '2023-12-22 21:13:08', 1, 'Cẩn thận hàng dễ vỡ', 6, 1, 2);
-INSERT INTO `donhang` VALUES (67, 'Phạm Đức Hoàng', 'Hà nội', '0906090112', '2024-03-25 21:25:34', 1, 'Cẩn thận hàng dễ vỡ', 6, 2, 1);
+INSERT INTO `donhang` VALUES (23, 'Phạm Đức Hoàng', 'Hà nội', '0906090112', '2024-03-25 21:25:34', 1, 'Cẩn thận hàng dễ vỡ', 6, 1, 1);
+INSERT INTO `donhang` VALUES (49, 'Lê Ngọc Mai', 'Hà nội', '0987654321', '2024-03-25 21:25:34', 1, 'Gửi hàng nhanh nhá', 6, 1, 2);
+INSERT INTO `donhang` VALUES (50, 'Lê Ngọc Mai', 'Hà nội', '0987654321', '2024-03-25 21:25:34', 1, 'Cẩn thận hàng dễ vỡ', 6, 1, 2);
+INSERT INTO `donhang` VALUES (67, 'Phạm Đức Hoàng', 'Hà nội', '0906090112', '2024-03-25 21:25:34', 1, 'Cẩn thận hàng dễ vỡ', 3, 2, 1);
 INSERT INTO `donhang` VALUES (68, 'Phạm Đức Hoàng', 'Hà nội', '0906090112', '2024-03-25 22:08:02', 3, 'Cẩn thận hàng dễ vỡ', 6, 2, 1);
+INSERT INTO `donhang` VALUES (115, 'Phạm Đức Hoàng', 'Hải Dương', '0906090112', '2024-04-03 17:23:12', 1, '', 6, 1, 1);
 
 -- ----------------------------
 -- Table structure for giamgia
@@ -371,7 +385,7 @@ CREATE TABLE `hoadonnhap`  (
   INDEX `HoaDonNhap_NguoiDung_IDNguoiDung`(`IDNguoiDung`) USING BTREE,
   CONSTRAINT `HoaDonNhap_NguoiDung_IDNguoiDung` FOREIGN KEY (`IDNguoiDung`) REFERENCES `nguoidung` (`ID`) ON DELETE RESTRICT ON UPDATE RESTRICT,
   CONSTRAINT `HoaDonNhap_NhaCungCap_IDNhaCungCap` FOREIGN KEY (`IDNhaCungCap`) REFERENCES `nhacungcap` (`ID`) ON DELETE RESTRICT ON UPDATE RESTRICT
-) ENGINE = InnoDB AUTO_INCREMENT = 42 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = DYNAMIC;
+) ENGINE = InnoDB AUTO_INCREMENT = 47 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of hoadonnhap
@@ -391,6 +405,11 @@ INSERT INTO `hoadonnhap` VALUES (38, '2024-04-01 20:05:32', 1, 1);
 INSERT INTO `hoadonnhap` VALUES (39, '2024-04-01 20:05:56', 2, 1);
 INSERT INTO `hoadonnhap` VALUES (40, '2024-04-01 20:09:06', 1, 1);
 INSERT INTO `hoadonnhap` VALUES (41, '2024-04-01 20:17:37', 2, 1);
+INSERT INTO `hoadonnhap` VALUES (42, '2024-04-03 16:37:52', 1, 1);
+INSERT INTO `hoadonnhap` VALUES (43, '2024-04-03 16:40:06', 1, 1);
+INSERT INTO `hoadonnhap` VALUES (44, '2024-04-03 16:42:04', 3, 1);
+INSERT INTO `hoadonnhap` VALUES (45, '2024-04-03 16:43:45', 1, 1);
+INSERT INTO `hoadonnhap` VALUES (46, '2024-04-03 16:47:32', 1, 1);
 
 -- ----------------------------
 -- Table structure for lienhe
@@ -451,7 +470,7 @@ CREATE TABLE `menu`  (
   `TrangThai` int NULL DEFAULT NULL,
   `IDCha` int NULL DEFAULT NULL,
   PRIMARY KEY (`ID`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 19 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = DYNAMIC;
+) ENGINE = InnoDB AUTO_INCREMENT = 22 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of menu
@@ -490,7 +509,7 @@ CREATE TABLE `nguoidung`  (
   PRIMARY KEY (`ID`) USING BTREE,
   INDEX `NguoiDung_Quyen_IDQuyen`(`IDQuyen`) USING BTREE,
   CONSTRAINT `NguoiDung_Quyen_IDQuyen` FOREIGN KEY (`IDQuyen`) REFERENCES `quyen` (`ID`) ON DELETE RESTRICT ON UPDATE RESTRICT
-) ENGINE = InnoDB AUTO_INCREMENT = 12 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = DYNAMIC;
+) ENGINE = InnoDB AUTO_INCREMENT = 13 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of nguoidung
@@ -501,7 +520,7 @@ INSERT INTO `nguoidung` VALUES (3, 'phamhaihuan', 'e10adc3949ba59abbe56e057f20f8
 INSERT INTO `nguoidung` VALUES (4, 'tranmylinh', 'e10adc3949ba59abbe56e057f20f883e', 'tranMyLinh@gmail.com', 'Trần Mỹ Linh', '2002-09-17 00:00:00', 'Hà Nội', '093567567', 0, 'tranmylinh.png', 1, 4, b'1', '1f326bbd-b676-4645-af02-1263138513f8');
 INSERT INTO `nguoidung` VALUES (5, 'phamducduy', 'e10adc3949ba59abbe56e057f20f883e', 'phamducduy@gmail.com', 'Phạm Đức Duy', '2002-12-08 00:00:00', 'Bắc Giang', '098765567', 1, 'phamducduy.png', 1, 2, b'1', '1f326bbd-b676-4645-af02-1263138513f8');
 INSERT INTO `nguoidung` VALUES (6, 'phamvanhoan', 'e10adc3949ba59abbe56e057f20f883e', 'phamvanhoan@gmail.com', 'Phạm Văn Hoàn', '2002-10-19 00:00:00', '123 Điện Biên Phủ tp Hải Dương', '0987654321', 1, 'phamvanhoan.png', 1, 3, b'1', '1f326bbd-b676-4645-af02-1263138513f8');
-INSERT INTO `nguoidung` VALUES (11, 'phamthanhduong', 'e10adc3949ba59abbe56e057f20f883e', 'genshinsdt3@gmail.com', 'Phạm Thanh Dương', '2024-04-01 20:40:53', 'hải dương', '1234567890', 1, 'avatar.png', 1, 2, b'1', '76zTxbtPU2pDtcI4qdCLcjbYUj8JYs9jgLaZTwyW7ck=');
+INSERT INTO `nguoidung` VALUES (12, 'phamthanhduong', 'e10adc3949ba59abbe56e057f20f883e', 'genshinsdt3@gmail.com', 'Chiến thần Ấn Độ', '2024-04-03 14:20:06', '55 Thái Thuỵ5', '0987654321', 1, 'avatar.png', 1, 2, b'1', 'p/S6Hap8oLZsN8pPYK7xJCgn6eNHOq4hXgCUjcdZDtM=');
 
 -- ----------------------------
 -- Table structure for nhacungcap
@@ -623,7 +642,7 @@ CREATE TABLE `sanpham`  (
 INSERT INTO `sanpham` VALUES (1, 'Smart Tivi Samsung UA50AU9000', 'Smart Tivi SamsungUA50AU9000 có thiết kế gọn gàng, tinh tế, tông màu bạc nổi bật, tạo cảm giác sang trọng, hiện đại hơn cho căn phòng sử dụng. Kích thước màn hình lớn 55 inch giúp Smart Tivi SamsungUA50AU9000 rất thích hợp bố trí vào nhiều không gian nội thất khác nhau như phòng khách, phòng họp,... N ài ra, chân đế chữ V bằng kim loại chắc chắn, giúp giữ vững tivi trên nhiều dạng bề mặt phẳng khác nhau', 50, 'smarttivisamsungUA50AU9000.png', '2023-03-30 03:30:04', 1, 1, 1);
 INSERT INTO `sanpham` VALUES (2, 'Smart Tivi Samsung UA50AU8000', 'Smart Tivi SamsungUA50AU9000 có thiết kế gọn gàng, tinh tế, tông màu bạc nổi bật, tạo cảm giác sang trọng, hiện đại hơn cho căn phòng sử dụng. Kích thước màn hình lớn 55 inch giúp Smart Tivi SamsungUA50AU9000 rất thích hợp bố trí vào nhiều không gian nội thất khác nhau như phòng khách, phòng họp,... N ài ra, chân đế chữ V bằng kim loại chắc chắn, giúp giữ vững tivi trên nhiều dạng bề mặt phẳng khác nhau', 50, 'smarttivisamsungUA50AU8000.png', '2023-03-30 03:30:04', 1, 1, 1);
 INSERT INTO `sanpham` VALUES (3, 'Smart tivi NEO Samsung65', 'Smart Tivi SamsungUA50AU9000 có thiết kế gọn gàng, tinh tế, tông màu bạc nổi bật, tạo cảm giác sang trọng, hiện đại hơn cho căn phòng sử dụng.  Kích thước màn hình lớn 55 inch giúp Smart Tivi SamsungUA50AU9000 rất thích hợp bố trí vào nhiều không gian nội thất khác nhau như phòng khách, phòng họp,... N ài ra, chân đế chữ V bằng kim loại chắc chắn, giúp giữ vững tivi trên nhiều dạng bề mặt phẳng khác nhau', 50, 'smarttivineosamsungqa65.png', '2023-03-30 03:30:04', 1, 1, 1);
-INSERT INTO `sanpham` VALUES (4, 'Smart Tivi NEO Samsung75', 'Smart Tivi Neo Samsung75 có thiết kế gọn gàng, tinh tế, tông màu bạc nổi bật, tạo cảm giác sang trọng, hiện đại hơn cho căn phòng sử dụng.Kích thước màn hình lớn 55 inch giúp Smart Tivi SamsungUA50AU9000 rất thích hợp bố trí vào nhiều không gian nội thất khác nhau như phòng khách, phòng họp,... N ài ra, chân đế chữ V bằng kim loại chắc chắn, giúp giữ vững tivi trên nhiều dạng bề mặt phẳng khác nhau', 49, 'smarttivineosamsungqa75.png', '2023-03-30 03:30:04', 1, 1, 1);
+INSERT INTO `sanpham` VALUES (4, 'Smart Tivi NEO Samsung75', 'Smart Tivi Neo Samsung75 có thiết kế gọn gàng, tinh tế, tông màu bạc nổi bật, tạo cảm giác sang trọng, hiện đại hơn cho căn phòng sử dụng.Kích thước màn hình lớn 55 inch giúp Smart Tivi SamsungUA50AU9000 rất thích hợp bố trí vào nhiều không gian nội thất khác nhau như phòng khách, phòng họp,... N ài ra, chân đế chữ V bằng kim loại chắc chắn, giúp giữ vững tivi trên nhiều dạng bề mặt phẳng khác nhau', 50, 'smarttivineosamsungqa75.png', '2023-03-30 03:30:04', 1, 1, 1);
 INSERT INTO `sanpham` VALUES (5, 'Smart Tivi Samsung UA50AU7000', 'Smart Tivi SamsungUA50AU7000 có thiết kế gọn gàng, tinh tế, tông màu bạc nổi bật, tạo cảm giác sang trọng, hiện đại hơn cho căn phòng sử dụng.Kích thước màn hình lớn 55 inch giúp Smart Tivi SamsungUA50AU9000 rất thích hợp bố trí vào nhiều không gian nội thất khác nhau như phòng khách, phòng họp,... N ài ra, chân đế chữ V bằng kim loại chắc chắn, giúp giữ vững tivi trên nhiều dạng bề mặt phẳng khác nhau', 50, 'smarttivisamsungUA50AU7000.png', '2023-03-30 03:30:04', 1, 1, 1);
 INSERT INTO `sanpham` VALUES (6, 'Android Tivi Philips65', 'Android Tivi Philips65 có thiết kế gọn gàng, tinh tế, tông màu bạc nổi bật, tạo cảm giác sang trọng, hiện đại hơn cho căn phòng sử dụng.  Kích thước màn hình lớn 55 inch giúp Smart Tivi SamsungUA50AU9000 rất thích hợp bố trí vào nhiều không gian nội thất khác nhau như phòng khách, phòng họp,... N ài ra, chân đế chữ V bằng kim loại chắc chắn, giúp giữ vững tivi trên nhiều dạng bề mặt phẳng khác nhau', 50, 'androidtiviphilips65.png', '2023-03-30 03:30:04', 1, 2, 1);
 INSERT INTO `sanpham` VALUES (7, 'Smart Tivi LG65UP', 'Chiếc tivi có hiệu LG, có thiết kế rất hiện đại. Thuộc thế hệ màn hình phẳng, chỉ dày khoảng 2cm nên nó mỏng và gọn hơn chiếc tivi lồi cũ của nhà em. Toàn thân chiếc tivi được sơn một màu đen bóng loáng, sạch và không hề bị bám bụi, trông rõ nét như một chiếc gương.', 50, 'smarttivilg65up.png', '2023-03-30 03:30:04', 1, 5, 1);
@@ -665,9 +684,9 @@ INSERT INTO `sanpham` VALUES (43, 'Máy giặt Samsung WA22R88', 'Loại máy gi
 INSERT INTO `sanpham` VALUES (44, 'Máy giặt Samsung WW10TP5', 'Loại máy giặt: Cửa trước Lồng giặt: Lồng ngang Khối lượng giặt: Giặt 10Kg Tốc độ quay vắt: 1400 vòng/phút Hiệu suất sử dụng điện:  Kiểu động cơ: Truyền động dây coroa Inverter: Có Công nghệ giặt Chương trình hoạt động:  Công nghệ giặt: Cửa phụ Add door, QuickDrive giặt xả hiệu quả chỉ trong 39 phút, Công nghệ giặt bong bóng Eco Bubble Tiện ích: Tổng quan Chất liệu lồng giặt: Thép không gỉ Chất liệu vỏ máy: Thép chống gỉ Chất liệu nắp máy: Kính chịu lực Bảng điều khiển: Tiếng Việt Số người sử dụng: Từ 5-7 người Kích thước - Khối lượng: Ngang 60 cm - Cao 85 cm - Sâu 55 cm - Nặng 67 kg Nơi sản xuất: Việt Nam Năm sản xuất: 2021 Bảo hành: 24 tháng', 50, 'maygiat2.png', '2023-04-03 12:54:05', 1, 1, 3);
 INSERT INTO `sanpham` VALUES (45, 'Điều hòa LG B24END1', 'Công suất làm lạnh: 24.000 BTU Công suất sưởi ấm: 26.000BTU Phạm vi làm lạnh hiệu quả: Từ 30-40m² Công nghệ Inverter: Điều hòa inverter Loại máy: Điều hoà 1 chiều (chỉ làm lạnh) Tính Năng Tiện ích:Chức năng tự chẩn đoán lỗi, Chức năng tự làm sạch, Có tự điều chỉnh nhiệt độ (chế độ ngủ đêm), Công nghệ Gold-Fin chống ăn mòn, Làm lạnh nhanh tức thì, Màn hình hiển thị nhiệt độ trên dàn lạnh, Thổi gió dễ chịu Comfort Air (cho trẻ em, người già), Tự khởi động lại khi có điện, Đảo gió 4 chiều giúp hơi lạnh lan toả đồng đều Công nghệ tiết kiệm điện: Dual inverter Kháng khuẩn khử mùi: Màng lọc sơ cấp Chế độ làm lạnh nhanh: Jet Cool Chế độ gió:Tuỳ chỉnh điều khiển lên xuống trái phải tự động  Thông tin chung Thông tin cục lạnh: Dài 99.8 cm - Cao 34.5 cm - Dày 21 cm - Nặng 11 kg Thông tin cục nóng: Dài 87 cm - Cao 65 cm - Dày 33 cm - Nặng 43 kg Loại Gas sử dụng: R32 Nơi sản xuất: Thái Lan Năm ra mắt: 2022 Bảo hành: 24 tháng', 50, 'dh1.png', '2023-04-03 12:54:27', 1, 5, 4);
 INSERT INTO `sanpham` VALUES (46, 'Điều hòa LG B18END1', 'Tổng quan Công suất làm lạnh: 18.000 BTU Công suất sưởi ấm: 19000BTU Phạm vi làm lạnh hiệu quả: Từ 20-30m² Công nghệ Inverter: Điều hòa inverter Loại máy: Điều hoà 1 chiều (chỉ làm lạnh) Tính Năng Tiện ích:Chức năng tự chẩn đoán lỗi, Chức năng tự làm sạch, Có tự điều chỉnh nhiệt độ (chế độ ngủ đêm), Công nghệ Gold-Fin chống ăn mòn, Làm lạnh nhanh tức thì, Màn hình hiển thị nhiệt độ trên dàn lạnh, Thổi gió dễ chịu Comfort Air (cho trẻ em, người già), Tự khởi động lại khi có điện, Đảo gió 4 chiều giúp hơi lạnh lan toả đồng đều Công nghệ tiết kiệm điện: Dual inverter Kháng khuẩn khử mùi: Màng lọc sơ cấp Chế độ làm lạnh nhanh: Jet Cool Chế độ gió:Tuỳ chỉnh điều khiển lên xuống trái phải tự động  Thông tin chung Thông tin cục lạnh: Dài 99.8cm - Cao 34.5 cm - Dày 21 cm - Nặng 11 kg Thông tin cục nóng: Dài 87 cm - Cao 65 cm - Dày 33 cm - Nặng 43 kg Loại Gas sử dụng: R32 Nơi sản xuất: Thái Lan Năm ra mắt: 2022 Bảo hành: 24 tháng', 50, 'dh2.png', '2023-04-03 12:54:48', 1, 5, 4);
-INSERT INTO `sanpham` VALUES (47, 'Google Tivi Sony XR65A', 'Hệ điều hành, giao diện: Google TV Remote thông minh: Remote tích hợp tích micro tìm kiếm giọng nói (RMF-TX800P) Chiếu hình từ điện thoại lên TV: AirPlay 2, Chromecast Điều khiển tivi bằng điện thoại: Ứng dụng Android TV Kết nối ứng dụng các thiết bị trong nhà: Đang cập nhật Điều khiển bằng giọng nói: Tìm kiếm giọng nói trên YouTube bằng tiếng Việt, Google Assistant có tiếng Việt Tiện ích thông minh khác: Micro tích hợp trên TV điều khiển giọng nói rảnh tay, Bravia CAM (mua thêm camera)', 50, 'googletivisonyxr65a.png', '2023-04-03 12:55:07', 1, 6, 1);
-INSERT INTO `sanpham` VALUES (48, 'Điều hòa LG B13END1', 'Tổng quan Công suất làm lạnh: 1 HP - 12.000 BTU Công suất sưởi ấm: 12800BTU Phạm vi làm lạnh hiệu quả: Từ 15 - 20m² (từ 40 đến 60 m³) Công nghệ Inverter: Điều hòa inverter Loại máy: Điều hoà 1 chiều (chỉ làm lạnh) Tính Năng Tiện ích:Chức năng tự chẩn đoán lỗi, Chức năng tự làm sạch, Có tự điều chỉnh nhiệt độ (chế độ ngủ đêm), Công nghệ Gold-Fin chống ăn mòn, Làm lạnh nhanh tức thì, Màn hình hiển thị nhiệt độ trên dàn lạnh, Thổi gió dễ chịu Comfort Air (cho trẻ em, người già), Tự khởi động lại khi có điện, Đảo gió 4 chiều giúp hơi lạnh lan toả đồng đều Công nghệ tiết kiệm điện: Dual inverter Kháng khuẩn khử mùi: Màng lọc sơ cấp Chế độ làm lạnh nhanh: Jet Cool Chế độ gió:Tuỳ chỉnh điều khiển lên xuống trái phải tự động  Thông tin chung Thông tin cục lạnh: Dài 82 cm - Cao 29 cm - Dày 19 cm - Nặng 8.5 kg Thông tin cục nóng: Dài 72 cm - Cao 50 cm - Dày 23 cm - Nặng 24.7 kg Loại Gas sử dụng: R32 Nơi sản xuất: Thái Lan Năm ra mắt: 2022 Bảo hành: 24 tháng', 40, 'dh3.png', '2023-04-03 12:55:36', 1, 5, 4);
-INSERT INTO `sanpham` VALUES (49, 'Google Tivi Sony KD55X', 'Hệ điều hành, giao diện: Google TV Remote thông minh: Remote tích hợp tích micro tìm kiếm giọng nói (RMF-TX800P) Chiếu hình từ điện thoại lên TV: AirPlay 2, Chromecast Điều khiển tivi bằng điện thoại: Ứng dụng Android TV Điều khiển bằng giọng nói: Google Assistant có tiếng Việt, Tìm kiếm giọng nói trên YouTube bằng tiếng Việt Tiện ích thông minh khác: Bravia CAM (mua thêm camera), Micro tích hợp trên TV điều khiển giọng nói rảnh tay', 33, 'googletivisonykd55x.png', '2023-04-03 12:56:00', 1, 6, 1);
+INSERT INTO `sanpham` VALUES (47, 'Google Tivi Sony XR65A', 'Hệ điều hành, giao diện: Google TV Remote thông minh: Remote tích hợp tích micro tìm kiếm giọng nói (RMF-TX800P) Chiếu hình từ điện thoại lên TV: AirPlay 2, Chromecast Điều khiển tivi bằng điện thoại: Ứng dụng Android TV Kết nối ứng dụng các thiết bị trong nhà: Đang cập nhật Điều khiển bằng giọng nói: Tìm kiếm giọng nói trên YouTube bằng tiếng Việt, Google Assistant có tiếng Việt Tiện ích thông minh khác: Micro tích hợp trên TV điều khiển giọng nói rảnh tay, Bravia CAM (mua thêm camera)', 44, 'googletivisonyxr65a.png', '2023-04-03 12:55:07', 1, 6, 1);
+INSERT INTO `sanpham` VALUES (48, 'Điều hòa LG B13END1', 'Tổng quan Công suất làm lạnh: 1 HP - 12.000 BTU Công suất sưởi ấm: 12800BTU Phạm vi làm lạnh hiệu quả: Từ 15 - 20m² (từ 40 đến 60 m³) Công nghệ Inverter: Điều hòa inverter Loại máy: Điều hoà 1 chiều (chỉ làm lạnh) Tính Năng Tiện ích:Chức năng tự chẩn đoán lỗi, Chức năng tự làm sạch, Có tự điều chỉnh nhiệt độ (chế độ ngủ đêm), Công nghệ Gold-Fin chống ăn mòn, Làm lạnh nhanh tức thì, Màn hình hiển thị nhiệt độ trên dàn lạnh, Thổi gió dễ chịu Comfort Air (cho trẻ em, người già), Tự khởi động lại khi có điện, Đảo gió 4 chiều giúp hơi lạnh lan toả đồng đều Công nghệ tiết kiệm điện: Dual inverter Kháng khuẩn khử mùi: Màng lọc sơ cấp Chế độ làm lạnh nhanh: Jet Cool Chế độ gió:Tuỳ chỉnh điều khiển lên xuống trái phải tự động  Thông tin chung Thông tin cục lạnh: Dài 82 cm - Cao 29 cm - Dày 19 cm - Nặng 8.5 kg Thông tin cục nóng: Dài 72 cm - Cao 50 cm - Dày 23 cm - Nặng 24.7 kg Loại Gas sử dụng: R32 Nơi sản xuất: Thái Lan Năm ra mắt: 2022 Bảo hành: 24 tháng', 48, 'dh3.png', '2023-04-03 12:55:36', 1, 5, 4);
+INSERT INTO `sanpham` VALUES (49, 'Google Tivi Sony KD55X', 'Hệ điều hành, giao diện: Google TV Remote thông minh: Remote tích hợp tích micro tìm kiếm giọng nói (RMF-TX800P) Chiếu hình từ điện thoại lên TV: AirPlay 2, Chromecast Điều khiển tivi bằng điện thoại: Ứng dụng Android TV Điều khiển bằng giọng nói: Google Assistant có tiếng Việt, Tìm kiếm giọng nói trên YouTube bằng tiếng Việt Tiện ích thông minh khác: Bravia CAM (mua thêm camera), Micro tích hợp trên TV điều khiển giọng nói rảnh tay', 48, 'googletivisonykd55x.png', '2023-04-03 12:56:00', 1, 6, 1);
 INSERT INTO `sanpham` VALUES (50, 'Android Tivi Mini TCL 65X', 'Lỗi máy giặt bị lệch tâm sẽ dẫn đến hiện tượng quần áo bị xoắn rối, quấn hoặc dẫn đấn rách quần áo. Hơn thế đối với lỗi máy giặt bị lệch tâm như vậy dẫn đến tiếng ồn lớn mang đến cảm giác khó chịu và ảnh hưởng xấu tới các linh kiện bên trong máy. Vậy Nguyên nhân, tác hại và cách khắc phục lỗi máy giặt bị lệch tâm? Hệ điều hành, giao diện: Android 9.0 Remote thông minh: Remote tích hợp micro tìm kiếm bằng giọng nói Chiếu hình từ điện thoại lên TV: Chromecast, Screen Mirroring, T-Cast Điều khiển tivi bằng điện thoại: Ứng dụng Google Cast, Ứng dụng MagiConnect Kết nối ứng dụng các thiết bị trong nhà: Không Điều khiển bằng giọng nói: Tìm kiếm giọng nói trên YouTube bằng tiếng Việt, Google Assistant có tiếng Việt Tiện ích thông minh khác: Micro tích hợp trên TV điều khiển giọng nói rảnh tay', 50, 'Androidtiviminitcl65x.png', '2023-04-03 12:56:35', 1, 7, 1);
 INSERT INTO `sanpham` VALUES (51, 'Smart Tivi Samsung NEO QLE', 'Smart Tivi Neo QLED Samsung 4K 55 inch QA55QN90C là phiên bản tivi 55 inch mới được nhà sản xuất Hàn Quốc đưa tới thị trường Việt Nam năm 2023. Sản phẩm không chỉ được trang bị màn hình NEO QLED cao cấp mà các tính năng khác cũng thuộc hàng hiện đại hàng đầu.', 50, 'smarttivisamsungneoQLED4k.png', '2023-05-03 17:12:11', 1, 1, 1);
 
@@ -682,15 +701,57 @@ CREATE TABLE `slide`  (
   `Anh` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL,
   `Kieu` int NULL DEFAULT NULL,
   `TrangThai` int NULL DEFAULT NULL,
-  `SlideCha` int NULL DEFAULT NULL,
+  `IDCha` int NULL DEFAULT NULL,
   PRIMARY KEY (`ID`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 4 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = DYNAMIC;
+) ENGINE = InnoDB AUTO_INCREMENT = 19 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of slide
 -- ----------------------------
-INSERT INTO `slide` VALUES (1, NULL, NULL, 'slider11_bg.jpg', NULL, 1, NULL);
-INSERT INTO `slide` VALUES (2, NULL, NULL, 'slider12_bg.jpg', NULL, 1, NULL);
+INSERT INTO `slide` VALUES (1, 'Headphones az12', 'Âm thanh sống động sắc nét', 'slider11_bg.jpg', 0, 1, 0);
+INSERT INTO `slide` VALUES (2, 'Headphones az15', 'Sự lựa chọn của người đam mê âm nhạc.', 'slider12_bg.jpg', 0, 1, 0);
+INSERT INTO `slide` VALUES (4, NULL, NULL, 'slider11_lable1.png', 1, 1, 1);
+INSERT INTO `slide` VALUES (5, NULL, NULL, 'slider11_lable2.png', 2, 1, 1);
+INSERT INTO `slide` VALUES (6, NULL, NULL, 'slider11_lable3.png', 3, 1, 1);
+INSERT INTO `slide` VALUES (7, NULL, NULL, 'slider11_lable1.png', 1, 1, 2);
+INSERT INTO `slide` VALUES (8, NULL, NULL, 'slider11_lable2.png', 2, 1, 2);
+INSERT INTO `slide` VALUES (9, NULL, NULL, 'slider11_lable3.png', 3, 1, 2);
+INSERT INTO `slide` VALUES (12, NULL, NULL, 'slider11_lable4.png', 4, 1, 1);
+INSERT INTO `slide` VALUES (13, NULL, NULL, 'slider11_lable4.png', 4, 1, 2);
+
+-- ----------------------------
+-- Table structure for thamso
+-- ----------------------------
+DROP TABLE IF EXISTS `thamso`;
+CREATE TABLE `thamso`  (
+  `ID` int NOT NULL AUTO_INCREMENT,
+  `Ma` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL,
+  `Ten` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL,
+  `NoiDung` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL,
+  `Anh` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL,
+  `TrangThai` int NULL DEFAULT NULL,
+  PRIMARY KEY (`ID`) USING BTREE
+) ENGINE = InnoDB AUTO_INCREMENT = 17 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = Dynamic;
+
+-- ----------------------------
+-- Records of thamso
+-- ----------------------------
+INSERT INTO `thamso` VALUES (1, 'NAME', 'Tên website', 'Galio', NULL, 1);
+INSERT INTO `thamso` VALUES (2, 'LOGO', 'Logo của website', NULL, 'logo.png', 1);
+INSERT INTO `thamso` VALUES (3, 'COPYRIGHT', 'Bản quyền của website', '@Bản quyền thuộc về Phạm Đức Hoàng - 12520096, Đề tài: Xây dựng hệ thống website cửa hàng điện máy', NULL, 1);
+INSERT INTO `thamso` VALUES (4, 'EMAIL', 'Email liên hệ website', 'support@galio.com', NULL, 1);
+INSERT INTO `thamso` VALUES (5, 'NUMBER', 'Số điện thoại liên hệ website', '0906090112', NULL, 1);
+INSERT INTO `thamso` VALUES (6, 'ICON', 'Icon website', '', 'favicon.ico', 1);
+INSERT INTO `thamso` VALUES (7, 'LINK_SERVER', 'Đường dẫn backend', 'http://localhost:5226/api', NULL, 1);
+INSERT INTO `thamso` VALUES (8, 'PASS', 'Mật khẩu mặc định', '123456', NULL, 1);
+INSERT INTO `thamso` VALUES (9, 'ADRESS', 'Địa chỉ cửa hàng', '3/43 Hoàng Diệu, Cẩm Thượng, Hải Dương', NULL, 1);
+INSERT INTO `thamso` VALUES (10, 'TIME', 'Thời gian làm việc', 'Mon- Sun: 8.00 - 18.00', NULL, 1);
+INSERT INTO `thamso` VALUES (11, 'SHIPPING', 'Giao hàng', 'Giao hàng nhanh chóng', NULL, 1);
+INSERT INTO `thamso` VALUES (12, 'REFUND', 'Hoàn tiền 100%', 'Trong vòng 30 ngày sau khi giao hàng', NULL, 1);
+INSERT INTO `thamso` VALUES (13, 'PAYMENT', 'Các loại thanh toán', NULL, 'payment.png', 1);
+INSERT INTO `thamso` VALUES (14, 'FREE', 'Miễn phí toàn quốc', 'Galio Shop giao hàng trên mọi miền tổ quốc.', NULL, 1);
+INSERT INTO `thamso` VALUES (15, 'FAST', 'Giao hàng nhanh', 'Galio Shop giao hàng siêu nhanh.', NULL, 1);
+INSERT INTO `thamso` VALUES (16, 'CHAT', 'Hỗ trợ khách hàng', 'Galio Shop sẽ hỗ trợ khách hàng hết mình.', NULL, 1);
 
 -- ----------------------------
 -- Table structure for thongso
@@ -2992,11 +3053,15 @@ delimiter ;
 -- ----------------------------
 DROP PROCEDURE IF EXISTS `sp_slide_create`;
 delimiter ;;
-CREATE PROCEDURE `sp_slide_create`(IN p_anh VARCHAR(255),
-    IN p_trangthai INT)
+CREATE PROCEDURE `sp_slide_create`(IN p_tieude VARCHAR(255),
+		IN p_noidung VARCHAR(255),
+		IN p_anh VARCHAR(255),
+		IN p_kieu INT,
+    IN p_trangthai INT,
+		IN p_idcha INT)
 BEGIN
-    INSERT INTO slide (anh, trangthai)
-    VALUES (p_anh, p_trangthai);
+    INSERT INTO slide (tieude, noidung, anh, kieu, trangthai, idCha)
+    VALUES (p_tieude, p_noidung, p_anh, p_kieu, p_trangthai, p_idcha);
 END
 ;;
 delimiter ;
@@ -3019,18 +3084,23 @@ delimiter ;
 DROP PROCEDURE IF EXISTS `sp_slide_getall_desc`;
 delimiter ;;
 CREATE PROCEDURE `sp_slide_getall_desc`(IN p_pageindex INT,
-    IN p_pagesize INT)
+    IN p_pagesize INT,
+    IN p_tieude VARCHAR(255))
 BEGIN
     DECLARE start_index INT;
     DECLARE total_count INT;
     
     SET start_index = (p_pageindex - 1) * p_pagesize;
     
-    SELECT COUNT(*) INTO total_count FROM slide;
-    
-    SELECT *, total_count AS TotalCount
+    SELECT COUNT(*) INTO total_count 
     FROM slide 
-    ORDER BY ID DESC 
+    WHERE (p_tieude = '' OR tieude LIKE CONCAT('%', p_tieude, '%'));
+    
+    SELECT s.*, total_count AS TotalCount, sl.tieude AS TenSlideCha 
+    FROM slide s 
+    LEFT JOIN slide sl ON sl.id = s.idCha
+    WHERE (p_tieude = '' OR s.tieude LIKE CONCAT('%', p_tieude, '%'))
+    ORDER BY s.ID DESC 
     LIMIT start_index, p_pagesize;
 END
 ;;
@@ -3069,13 +3139,125 @@ delimiter ;
 DROP PROCEDURE IF EXISTS `sp_slide_update`;
 delimiter ;;
 CREATE PROCEDURE `sp_slide_update`(IN p_id INT,
-    IN p_anh VARCHAR(255),
-    IN p_trangthai INT)
+    IN p_tieude VARCHAR(255),
+		IN p_noidung VARCHAR(255),
+		IN p_anh VARCHAR(255),
+		IN p_kieu INT,
+    IN p_trangthai INT,
+		IN p_idCha INT)
 BEGIN
     UPDATE slide 
     SET 
+				tieude = IFNULL(p_tieude, tieude),
+				noidung = IFNULL(p_noidung, noidung),
         anh = IFNULL(p_anh, anh),
-        trangthai = IFNULL(p_trangthai, trangthai)
+				kieu = IFNULL(p_kieu, kieu),
+        trangthai = IFNULL(p_trangthai, trangthai),
+				idcha = IFNULL(p_idCha, idcha)
+    WHERE id = p_id;
+END
+;;
+delimiter ;
+
+-- ----------------------------
+-- Procedure structure for sp_thamso_create
+-- ----------------------------
+DROP PROCEDURE IF EXISTS `sp_thamso_create`;
+delimiter ;;
+CREATE PROCEDURE `sp_thamso_create`(IN p_ma VARCHAR(255),
+		IN p_ten VARCHAR(255),
+		IN p_noidung VARCHAR(255),
+		IN p_anh VARCHAR(255),
+    IN p_trangthai INT)
+BEGIN
+    INSERT INTO thamso (ma, ten, noidung, anh, trangthai)
+    VALUES (p_ma, p_ten, p_noidung, p_anh, p_trangthai);
+END
+;;
+delimiter ;
+
+-- ----------------------------
+-- Procedure structure for sp_thamso_delete
+-- ----------------------------
+DROP PROCEDURE IF EXISTS `sp_thamso_delete`;
+delimiter ;;
+CREATE PROCEDURE `sp_thamso_delete`(IN p_id INT)
+BEGIN
+    DELETE FROM thamso WHERE id = p_id;
+END
+;;
+delimiter ;
+
+-- ----------------------------
+-- Procedure structure for sp_thamso_getall_desc
+-- ----------------------------
+DROP PROCEDURE IF EXISTS `sp_thamso_getall_desc`;
+delimiter ;;
+CREATE PROCEDURE `sp_thamso_getall_desc`(IN p_pageindex INT,
+    IN p_pagesize INT,
+    IN p_ten TEXT)
+BEGIN
+    DECLARE start_index INT;
+    DECLARE total_count INT;
+    
+    SET start_index = (p_pageindex - 1) * p_pagesize;
+    
+    SELECT COUNT(*) INTO total_count FROM thamso WHERE ten LIKE CONCAT('%', p_ten, '%');
+    
+    SELECT *, total_count AS TotalCount
+    FROM thamso 
+    WHERE ten LIKE CONCAT('%', p_ten, '%')
+    ORDER BY ID DESC 
+    LIMIT start_index, p_pagesize;
+END
+;;
+delimiter ;
+
+-- ----------------------------
+-- Procedure structure for sp_thamso_getbyid
+-- ----------------------------
+DROP PROCEDURE IF EXISTS `sp_thamso_getbyid`;
+delimiter ;;
+CREATE PROCEDURE `sp_thamso_getbyid`(IN p_id INT)
+BEGIN
+    SELECT * FROM thamso WHERE ID = p_id;
+END
+;;
+delimiter ;
+
+-- ----------------------------
+-- Procedure structure for sp_thamso_getbyma
+-- ----------------------------
+DROP PROCEDURE IF EXISTS `sp_thamso_getbyma`;
+delimiter ;;
+CREATE PROCEDURE `sp_thamso_getbyma`(IN p_ma VARCHAR(255))
+BEGIN
+    SELECT * 
+		FROM thamso 
+		WHERE ma = p_ma AND trangthai = 1;
+END
+;;
+delimiter ;
+
+-- ----------------------------
+-- Procedure structure for sp_thamso_update
+-- ----------------------------
+DROP PROCEDURE IF EXISTS `sp_thamso_update`;
+delimiter ;;
+CREATE PROCEDURE `sp_thamso_update`(IN p_id INT,
+    IN p_ma VARCHAR(255),
+		IN p_ten VARCHAR(255),
+		IN p_noidung VARCHAR(255),
+    IN p_anh VARCHAR(255),
+		IN p_trangthai INT)
+BEGIN
+    UPDATE thamso 
+    SET 
+        ma = IFNULL(p_ma, ma),
+				ten = IFNULL(p_ten, ten),
+				noidung = IFNULL(p_noidung, noidung),
+				anh = IFNULL(p_anh, anh),
+				trangthai = IFNULL(p_trangthai, trangthai)
     WHERE id = p_id;
 END
 ;;

@@ -10,7 +10,7 @@ namespace DAL.Interfaces
     public interface ISlideDAL
     {
         List<SlideModel> Get();
-        List<SlideModel> GetAll(int pageIndex, int pageSize, out int total);
+        List<SlideModel> GetAll(int pageIndex, int pageSize, out int total, string TieuDe);
         SlideModel GetByID(int id);
         bool Create(SlideModel model);
         bool Update(SlideModel model);

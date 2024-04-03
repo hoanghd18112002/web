@@ -48,6 +48,7 @@ import { DoithongtinComponent } from './modules/admin/doithongtin/doithongtin.co
 import { ConfirmComponent } from './modules/client/confirm/confirm.component';
 import { CamonComponent } from './modules/client/camon/camon.component';
 import { NhapsoluongComponent } from './modules/admin/nhapsoluong/nhapsoluong.component';
+import { QlthamsoComponent } from './modules/admin/qlthamso/qlthamso.component';
 
 const routes: Routes = [
   {
@@ -143,6 +144,11 @@ const routes: Routes = [
         path: 'qlgiamgia',
         component: QlgiamgiaComponent,
         title: 'Quản lý giảm giá - Cửa hàng điện máy'
+      },
+      {
+        path: 'qlthamso',
+        component: QlthamsoComponent,
+        title: 'Quản lý tham số - Cửa hàng điện máy'
       },
       {
         path: 'nhapsoluong',

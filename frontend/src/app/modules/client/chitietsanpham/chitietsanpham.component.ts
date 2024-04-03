@@ -8,7 +8,6 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { ThongSo } from 'src/app/models/thongso.model';
 import { CartService } from 'src/app/service/cart.service';
 import { ThongSoService } from 'src/app/service/thongso.service';
-import swal from 'sweetalert2';
 
 @Component({
   selector: 'app-chitietsanpham',

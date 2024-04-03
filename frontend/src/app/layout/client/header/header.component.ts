@@ -7,6 +7,8 @@ import { Router, NavigationEnd } from '@angular/router';
 import { CartService } from 'src/app/service/cart.service';
 import { AuthService } from 'src/app/service/auth.service';
 import { Subscription } from 'rxjs';
+import { ThamsoService } from 'src/app/service/thamso.service';
+import { ThamSo } from 'src/app/models/thamso.model';
 
 @Component({
   selector: 'app-header',
@@ -16,6 +18,13 @@ import { Subscription } from 'rxjs';
 export class HeaderComponent implements OnInit {
   ListMenu: Menu[] = [];
   ListDanhMuc: LoaiSanPham[] = [];
+
+  logo: ThamSo = new ThamSo();
+  email: ThamSo = new ThamSo();
+  sdt: ThamSo = new ThamSo();
+  time: ThamSo = new ThamSo();
+  shipping: ThamSo = new ThamSo();
+  refund: ThamSo = new ThamSo();
 
   SoLuong: number = 0;
   TongGia: number = 0;
@@ -32,6 +41,7 @@ export class HeaderComponent implements OnInit {
     private menuService: MenuService,
     private cartService: CartService,
     private authService: AuthService,
+    private thamsoService: ThamsoService,
   ) {
     // Subscribe to router events
     this.routerSubscription = this._router.events.subscribe(event => {
@@ -46,6 +56,7 @@ export class HeaderComponent implements OnInit {
     this.getalldanhmuc();
     this.loadGioHang();
     this.loadUser();
+    this.loadThamSo();
     
     this.cartService.cartUpdated.subscribe(() => {
       this.loadGioHang();
@@ -87,4 +98,26 @@ export class HeaderComponent implements OnInit {
     this.SoLuong = cart.SoLuong;
     this.TongGia = cart.TongGia;
   }
+
+  //Tham số
+  loadThamSo() {
+    this.thamsoService.getbyma("LOGO").subscribe(res => {
+      this.logo = res.data;
+    });
+    this.thamsoService.getbyma("EMAIL").subscribe(res => {
+      this.email = res.data;
+    });
+    this.thamsoService.getbyma("NUMBER").subscribe(res => {
+      this.sdt = res.data;
+    });
+    this.thamsoService.getbyma("TIME").subscribe(res => {
+      this.time = res.data;
+    });
+    this.thamsoService.getbyma("SHIPPING").subscribe(res => {
+      this.shipping = res.data;
+    });
+    this.thamsoService.getbyma("REFUND").subscribe(res => {
+      this.refund = res.data;
+    });
+  }  
 }

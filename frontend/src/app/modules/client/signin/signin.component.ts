@@ -25,7 +25,6 @@ export class SigninComponent {
 
   //Đăng ký
   Signin() {
-    // Kiểm tra điều kiện nhập đầy đủ thông tin
     if (!this.TaiKhoan || !this.MatKhau || !this.Ten || !this.SDT || !this.Email || !this.DiaChi) {
       swal.fire({
         icon: 'error',

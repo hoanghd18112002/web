@@ -8,11 +8,11 @@
                     <div class="header-call-action">
                         <a href="#">
                             <i class="fa fa-envelope"></i>
-                            Support@Galio.Com
+                            {{ email.noiDung }}
                         </a>
                         <a href="#">
                             <i class="fa fa-phone"></i>
-                            123.456.789
+                            {{ sdt.noiDung | slice:0:3 }}.{{ sdt.noiDung | slice:3:6 }}.{{ sdt.noiDung | slice:6:10 }}
                         </a>
                     </div>
                 </div>
@@ -64,7 +64,7 @@
                 <div class="col-lg-3">
                     <div class="brand-logo">
                         <a routerLink="/">
-                            <img src="/assets/client/img/logo/logo.png" alt="brand logo">
+                            <img src="/assets/client/img/logo/{{ logo.anh }}" alt="brand logo">
                         </a>
                     </div>
                 </div> <!-- end logo area -->
@@ -76,8 +76,8 @@
                                     <i class="fa fa-clock-o"></i>
                                 </div>
                                 <div class="shipping-content">
-                                    <h5>Thời gian làm việc</h5>
-                                    <span>Mon- Sun: 8.00 - 18.00</span>
+                                    <h5>{{ time.ten }}</h5>
+                                    <span>{{ time.noiDung }}</span>
                                 </div>
                             </div> <!-- end single shipping -->
                             <div class="single-block-shipping">
@@ -85,8 +85,8 @@
                                     <i class="fa fa-truck"></i>
                                 </div>
                                 <div class="shipping-content">
-                                    <h5>GIAO HÀNG</h5>
-                                    <span>Giao hàng nhanh chóng</span>
+                                    <h5>{{ shipping.ten }}</h5>
+                                    <span>{{ shipping.noiDung }}</span>
                                 </div>
                             </div> <!-- end single shipping -->
                             <div class="single-block-shipping">
@@ -94,8 +94,8 @@
                                     <i class="fa fa-money"></i>
                                 </div>
                                 <div class="shipping-content">
-                                    <h5>HOÀN TIỀN 100%</h5>
-                                    <span>Trong vòng 30 ngày sau khi giao hàng</span>
+                                    <h5>{{ refund.ten }}</h5>
+                                    <span>{{ refund.noiDung }}</span>
                                 </div>
                             </div> <!-- end single shipping -->
                         </div>

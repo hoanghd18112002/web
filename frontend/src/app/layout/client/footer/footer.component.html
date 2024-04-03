@@ -50,9 +50,9 @@
                         </div>
                         <div class="widget-body">
                             <ul class="location">
-                                <li><i class="fa fa-envelope"></i>support@galio.com</li>
-                                <li><i class="fa fa-phone"></i>+(84) 123.456.789</li>
-                                <li><i class="fa fa-map-marker"></i>Địa chỉ: 24 Hai Bà Trưng, Hà Nội</li>
+                                <li><i class="fa fa-envelope"></i>{{ email.noiDung }}</li>
+                                <li><i class="fa fa-phone"></i>+(84) {{ sdt.noiDung | slice:0:3 }}.{{ sdt.noiDung | slice:3:6 }}.{{ sdt.noiDung | slice:6:10 }}</li>
+                                <li><i class="fa fa-map-marker"></i>Địa chỉ: {{ diaChi.noiDung }}</li>
                             </ul>
                             <a class="map-btn" routerLink="contact-us.html">Mở trong google map</a>
                         </div>
@@ -116,10 +116,10 @@
         <div class="container">
             <div class="footer-bottom-wrap">
                 <div class="copyright-text">
-                    <p><a target="_blank">@Bản quyền thuộc về Phạm Đức Hoàng - 12520096, Đề tài: Xây dựng hệ thống website cửa hàng điện máy</a></p>
+                    <p><a target="_blank">{{ banquyen.noiDung }}</a></p>
                 </div>
                 <div class="payment-method-img">
-                    <img src="/assets/client/img/payment.png" alt="">
+                    <img src="/assets/client/img/logo/{{ payment.anh }}" alt="">
                 </div>
             </div>
         </div>

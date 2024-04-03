@@ -16,10 +16,12 @@ namespace Backend.Controllers
     {
         private IChiTietHoaDonNhapBLL _chitiethoadonnhapbll;
         private IHoaDonNhapBLL _hoadonnhapbll;
-        public ChiTietHoaDonNhapController(IChiTietHoaDonNhapBLL chitiethoadonnhapbll, IHoaDonNhapBLL hoadonnhapbll)
+        private IThamSoBLL _thamsobll;
+        public ChiTietHoaDonNhapController(IChiTietHoaDonNhapBLL chitiethoadonnhapbll, IHoaDonNhapBLL hoadonnhapbll, IThamSoBLL thamsobll)
         {
             _chitiethoadonnhapbll = chitiethoadonnhapbll;
             _hoadonnhapbll = hoadonnhapbll;
+            _thamsobll = thamsobll;
         }
 
         [Route("get-by-hoa-don-nhap/{id}")]
@@ -106,6 +108,7 @@ namespace Backend.Controllers
                 // Lấy thông tin hoá đơn nhập và chi tiết hoá đơn nhập từ BLL
                 var hoaDonNhap = _hoadonnhapbll.GetByID(id);
                 var chiTietHoaDonNhap = _chitiethoadonnhapbll.GetByHoaDonNhap(id);
+                var thamso = _thamsobll.GetByMa("NAME");
 
                 using (var package = new ExcelPackage())
                 {
@@ -113,7 +116,7 @@ namespace Backend.Controllers
                     var worksheet = package.Workbook.Worksheets.Add("Hoá Đơn");
 
                     // Thêm thông tin cửa hàng và hoá đơn vào các ô
-                    worksheet.Cells["A1"].Value = "Cửa hàng điện máy GALIO";
+                    worksheet.Cells["A1"].Value = "Cửa hàng điện máy " + thamso.NoiDung;
                     worksheet.Cells["A2"].Value = "Tên nhà cung cấp: " + hoaDonNhap.TenNhaCungCap;
                     worksheet.Cells["A3"].Value = "Tên người dùng: " + hoaDonNhap.TenNguoiDung;
 

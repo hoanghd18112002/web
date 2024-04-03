@@ -45,6 +45,7 @@
                                             <th>SĐT</th>
                                             <th>Quyền</th>
                                             <th>Giới tính</th>
+                                            <th>Xác thực</th>
                                             <th>Trạng thái</th>
                                         </tr>
                                     </thead>
@@ -62,6 +63,10 @@
                                                 <span *ngIf="nd.gioiTinh === 1" class="badge badge-blue">Nam</span> 
                                                 <span *ngIf="nd.gioiTinh === 0" class="badge badge-pink">Nữ</span> 
                                             </td> 
+                                            <td>
+                                                <span *ngIf="!nd.emailConfimed" class="badge badge-danger">Chưa xác thực</span> 
+                                                <span *ngIf="nd.emailConfimed" class="badge badge-success">Đã xác thực</span> 
+                                            </td>                                            
                                             <td> 
                                                 <span *ngIf="nd.trangThai === 1" class="badge badge-success">Hoạt động</span> 
                                                 <span *ngIf="nd.trangThai === 0" class="badge badge-danger">Khoá</span> 

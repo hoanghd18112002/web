@@ -10,7 +10,8 @@ import swal from 'sweetalert2';
 })
 export class QlmenuComponent {
   ListMenu: Menu[] = [];
-  
+  ListMenuCha: Menu[] = [];
+
   ten: string = '';
   link: string = '';
   trangThai = 1;
@@ -46,6 +47,9 @@ export class QlmenuComponent {
       this.ListMenu = res.data;
       this.totalItems = res.totalItems;
       this.calculateTotalPages();
+    });
+    this.menuService.get().subscribe(res => {
+      this.ListMenuCha = res.data.filter((item:any) => item.idCha === 0);
     });
   }
 

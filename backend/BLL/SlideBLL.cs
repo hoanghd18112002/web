@@ -20,9 +20,9 @@ namespace BLL
         {
             return _res.Get();
         }
-        public List<SlideModel> GetAll(int pageIndex, int pageSize, out int total)
+        public List<SlideModel> GetAll(int pageIndex, int pageSize, out int total, string TieuDe)
         {
-            return _res.GetAll(pageIndex, pageSize, out total);
+            return _res.GetAll(pageIndex, pageSize, out total, TieuDe);
         }
         public SlideModel GetByID(int id)
         {

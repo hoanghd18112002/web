@@ -10,9 +10,15 @@ import swal from 'sweetalert2';
 })
 export class QlslideComponent {
   ListSlide: Slide[] = [];
+  ListSlideCha: Slide[] = [];
   
+  tieuDe: any = '';
+  noiDung: any = '';
   anh: any = null;
+  kieu: any = '';
   trangThai = 1;
+  idCha: any = 0;
+  tenSlideCha: any = "";
 
   searchTerm: string = ''; 
   p: number = 1;
@@ -44,12 +50,16 @@ export class QlslideComponent {
   getall(){
     const obj = {
       page: this.p,
-      pageSize: this.pageSize
+      pageSize: this.pageSize,
+      tieuDe: this.searchTerm
     };
     this.slideService.getall(obj).subscribe(res => {
       this.ListSlide = res.data;
       this.totalItems = res.totalItems;
       this.calculateTotalPages();
+    });
+    this.slideService.get().subscribe(res => {
+      this.ListSlideCha = res.data.filter((item:any) => item.kieu === 0 && item.idCha === 0);
     });
   }
 
@@ -78,8 +88,12 @@ export class QlslideComponent {
 
   //Tạo mới xoá nội dung form
   loadForm(){
+    this.tieuDe = '';
+    this.noiDung = '';
     this.anh = null;
+    this.kieu = '';
     this.trangThai = 1;
+    this.idCha = 0;
 
     this.selectedRow = null;
   }
@@ -92,8 +106,12 @@ export class QlslideComponent {
     }
 
     const formData = new FormData();
+    formData.append('tieuDe', this.tieuDe);
+    formData.append('noiDung', this.noiDung);
     formData.append('file', this.anh!);
+    formData.append('kieu', this.kieu);
     formData.append('trangThai', this.trangThai ? '1' : '0');
+    formData.append('idCha', this.idCha);
 
     this.slideService.create(formData).subscribe(res => {
       this.getall();
@@ -121,8 +139,12 @@ export class QlslideComponent {
     if (this.selectedRow) {
       const formData = new FormData();
       formData.append('id', String(this.selectedRow.id));
+      formData.append('tieuDe', this.tieuDe);
+      formData.append('noiDung', this.noiDung);
       formData.append('file', this.anh!);
+      formData.append('kieu', this.kieu);
       formData.append('trangThai', this.trangThai ? '1' : '0');
+      formData.append('idCha', this.idCha);
       
       // Gọi phương thức sửa từ service
       this.slideService.update(formData).subscribe(res => {
@@ -182,8 +204,13 @@ export class QlslideComponent {
   onRowClick(slide: Slide) {
     this.selectedRow = slide;
 
+    this.tieuDe = this.selectedRow.tieuDe;
+    this.noiDung = this.selectedRow.noiDung;
     this.anh = this.selectedRow.anh;
+    this.kieu = this.selectedRow.kieu;
     this.trangThai = this.selectedRow.trangThai;
+    this.idCha = this.selectedRow.idCha;
+    this.tenSlideCha = this.selectedRow.tenSlideCha;
   }
 
   modalTagel: string = "#messageModal"; //Mặc định nếu chưa chọn 1 dòng dữ liệu thì hiện thông báo

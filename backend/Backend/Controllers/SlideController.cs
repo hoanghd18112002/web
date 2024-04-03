@@ -27,7 +27,8 @@ namespace Backend.Controllers
             try
             {
                 var kq = _bll.Get();
-                return Ok(new { success = true, message = "Lấy dữ liệu thành công", data = kq });
+                var tree = BuildTree(kq);
+                return Ok(new { success = true, message = "Lấy dữ liệu thành công", data = tree });
             }
             catch (Exception ex)
             {
@@ -43,9 +44,15 @@ namespace Backend.Controllers
             {
                 var page = int.Parse(formData["page"].ToString());
                 var pageSize = int.Parse(formData["pageSize"].ToString());
+                string tieuDe = "";
+
+                if (formData.Keys.Contains("tieuDe") && !string.IsNullOrEmpty(Convert.ToString(formData["tieuDe"])))
+                {
+                    tieuDe = Convert.ToString(formData["tieuDe"].ToString());
+                }
 
                 int total = 0;
-                var data = _bll.GetAll(page, pageSize, out total);
+                var data = _bll.GetAll(page, pageSize, out total, tieuDe);
 
                 var response = new
                 {
@@ -111,8 +118,12 @@ namespace Backend.Controllers
                 // Tạo đối tượng Model mới với các thông tin
                 var Model = new SlideModel
                 {
+                    TieuDe = model.TieuDe,
+                    NoiDung = model.NoiDung,
                     Anh = imagePath, // Đường dẫn tương đối của ảnh
-                    TrangThai = model.TrangThai 
+                    Kieu = model.Kieu,
+                    TrangThai = model.TrangThai,
+                    IDCha = model.IDCha,
                 };
 
                 // Gọi phương thức Create từ BLL để thêm mới vào cơ sở dữ liệu
@@ -217,6 +228,46 @@ namespace Backend.Controllers
             {
                 return StatusCode(500, new { success = false, message = "Đã xảy ra lỗi: " + ex.Message });
             }
+        }
+
+        private List<SlideModel> BuildTree(List<SlideModel> slideItems)
+        {
+            var slideMap = new Dictionary<int, SlideModel>();
+            var rootItems = new List<SlideModel>();
+
+            foreach (var slideItem in slideItems)
+            {
+                var slideNode = new SlideModel
+                {
+                    ID = slideItem.ID,
+                    TieuDe = slideItem.TieuDe,
+                    NoiDung = slideItem.NoiDung,
+                    Anh = slideItem.Anh,
+                    Kieu = slideItem.Kieu,
+                    TrangThai = slideItem.TrangThai,
+                    IDCha = slideItem.IDCha,
+                    Children = new List<SlideModel>()
+                };
+                slideMap[slideItem.ID] = slideNode;
+
+                if (slideItem.IDCha == 0)
+                {
+                    rootItems.Add(slideNode);
+                }
+                else
+                {
+                    if (!slideMap.ContainsKey(slideItem.IDCha))
+                    {
+
+                    }
+                    else
+                    {
+                        slideMap[slideItem.IDCha].Children.Add(slideNode);
+                    }
+                }
+            }
+
+            return rootItems;
         }
     }
 }

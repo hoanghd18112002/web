@@ -105,7 +105,7 @@ export class QldonhangComponent {
         
         if(trangThai === 2){
           for(var i = 0; i < this.ListCTDonHang.length; i++){
-            this.giamSoLuong(this.ListCTDonHang[i].id, this.ListCTDonHang[i].soLuong) ;
+            this.tangSoLuong(this.ListCTDonHang[i].id, this.ListCTDonHang[i].soLuong) ;
           }
         }
 
@@ -122,11 +122,11 @@ export class QldonhangComponent {
     }
   }
 
-  giamSoLuong(id: number, soluong: number){
+  tangSoLuong(id: number, soluong: number){
     this.sanPhamService.getbyid(id).subscribe(res => { 
       const formData = new FormData();
       formData.append('id', id.toString());
-      formData.append('soLuong', (res.data.soLuong + soluong).toString());
+      formData.append('soLuong', (Number(res.data.soLuong) + Number(soluong)).toString());
       
       this.sanPhamService.update(formData).subscribe(res => {})
     })

@@ -63,6 +63,7 @@ import { ErroradminComponent } from './modules/admin/erroradmin/erroradmin.compo
 import { ConfirmComponent } from './modules/client/confirm/confirm.component';
 import { CamonComponent } from './modules/client/camon/camon.component';
 import { NhapsoluongComponent } from './modules/admin/nhapsoluong/nhapsoluong.component';
+import { QlthamsoComponent } from './modules/admin/qlthamso/qlthamso.component';
 
 @NgModule({
   declarations: [
@@ -119,7 +120,8 @@ import { NhapsoluongComponent } from './modules/admin/nhapsoluong/nhapsoluong.co
     DoithongtinComponent,
     ConfirmComponent,
     CamonComponent,
-    NhapsoluongComponent
+    NhapsoluongComponent,
+    QlthamsoComponent,
   ],
   imports: [
     BrowserModule,

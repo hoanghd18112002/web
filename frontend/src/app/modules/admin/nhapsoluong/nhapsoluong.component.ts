@@ -61,12 +61,7 @@ export class NhapsoluongComponent {
             idHoaDonNhap: res.data.id,
           }
           this.hoaDonNhapService.createCTHoaDonNhap(ctHoaDonNhap).subscribe(res => {});
-
-          const formData = new FormData();
-          formData.append('id', this.chiTiet[i].IDSanPham.toString());
-          formData.append('soLuong', this.chiTiet[i].SoLuong.toString());
-
-          this.sanPhamService.update(formData).subscribe(res => {});
+          this.tangSoLuong(this.chiTiet[i].IDSanPham, this.chiTiet[i].SoLuong);
         }
 
         this.IDNhaCungCap = '';
@@ -79,6 +74,16 @@ export class NhapsoluongComponent {
         });
       });
     });
+  }
+
+  tangSoLuong(id: number, soluong: number){
+    this.sanPhamService.getbyid(id).subscribe(res => { 
+      const formData = new FormData();
+      formData.append('id', id.toString());
+      formData.append('soLuong', (Number(res.data.soLuong) + Number(soluong)).toString());
+      
+      this.sanPhamService.update(formData).subscribe(res => {})
+    })
   }
 
   //Thêm chi tiết
