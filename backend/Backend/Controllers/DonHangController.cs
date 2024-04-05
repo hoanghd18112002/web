@@ -1,4 +1,5 @@
-﻿using BLL.Interfaces;
+﻿using BLL;
+using BLL.Interfaces;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -12,9 +13,13 @@ namespace Backend.Controllers
     public class DonHangController : ControllerBase
     {
         private IDonHangBLL _bll;
-        public DonHangController(IDonHangBLL bll)
+        private IEmailBLL _emailbll;
+        private IThamSoBLL _thamsobll;
+        public DonHangController(IDonHangBLL bll, IEmailBLL emailbll, IThamSoBLL thamsobll)
         {
             _bll = bll;
+            _emailbll = emailbll;
+            _thamsobll = thamsobll;
         }
 
         [Route("get-by-nguoi-dung")]
@@ -111,6 +116,7 @@ namespace Backend.Controllers
             }
         }
 
+        [AllowAnonymous]
         [Route("get-by-id/{id}")]
         [HttpGet]
         public IActionResult GetByID(int id)
@@ -149,6 +155,23 @@ namespace Backend.Controllers
             {
                 _bll.Update(model);
                 return Ok(new { success = true, message = "Cập nhật thành công" });
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, new { success = false, message = "Đã xảy ra lỗi: " + ex.Message });
+            }
+        }
+
+        [Route("order-email")]
+        [HttpPost]
+        public IActionResult SendOrderEmail([FromBody] NguoiDungModel model)
+        {
+            try
+            {
+                var thamso = _thamsobll.GetByMa("NAME");
+                _emailbll.SendOrderEmail(model.Email, model.ConfirmationLink, thamso.NoiDung, model.ID);
+
+                return Ok(new { success = true, message = "Thông tin đơn hàng đã được gửi đến email của bạn" });
             }
             catch (Exception ex)
             {

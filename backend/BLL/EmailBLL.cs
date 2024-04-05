@@ -18,9 +18,14 @@ namespace BLL
             _emailDAL = emailDAL;
         }
 
-        public void SendConfirmationEmail(string toEmail, string confirmationLink, string token)
+        public void SendConfirmationEmail(string toEmail, string confirmationLink, string token, string Ten)
         {
-            _emailDAL.SendConfirmationEmail(toEmail, confirmationLink, token);
+            _emailDAL.SendConfirmationEmail(toEmail, confirmationLink, token, Ten);
+        }
+
+        public void SendOrderEmail(string toEmail, string confirmationLink, string Ten, int ID)
+        {
+            _emailDAL.SendOrderEmail(toEmail, confirmationLink, Ten, ID);
         }
     }
 }

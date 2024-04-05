@@ -50,4 +50,8 @@ export class DonHangService {
   excel(id: number): Observable<Blob> {
     return this.http.get(`${this.apiUrl1}/excel/${id}`, { headers, responseType: 'blob' });
   }
+
+  orderEmail(object: object): Observable<any> {
+    return this.http.post<any>(`${this.apiUrl}/order-email`, object, { headers });
+  } 
 }

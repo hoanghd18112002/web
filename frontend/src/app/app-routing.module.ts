@@ -49,6 +49,7 @@ import { ConfirmComponent } from './modules/client/confirm/confirm.component';
 import { CamonComponent } from './modules/client/camon/camon.component';
 import { NhapsoluongComponent } from './modules/admin/nhapsoluong/nhapsoluong.component';
 import { QlthamsoComponent } from './modules/admin/qlthamso/qlthamso.component';
+import { TracuudonhangComponent } from './modules/client/tracuudonhang/tracuudonhang.component';
 
 const routes: Routes = [
   {
@@ -270,6 +271,11 @@ const routes: Routes = [
         path: 'camon',
         component: CamonComponent,
         title: 'Cảm ơn - Cửa hàng điện máy'
+      },
+      {
+        path: 'tracuudonhang',
+        component: TracuudonhangComponent,
+        title: 'Tra cứu đơn hàng - Cửa hàng điện máy'
       },
     ]
   },

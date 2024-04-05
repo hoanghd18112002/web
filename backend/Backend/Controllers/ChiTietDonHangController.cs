@@ -26,6 +26,7 @@ namespace Backend.Controllers
             _thamsobll = thamsobll;
         }
 
+        [AllowAnonymous]
         [Route("get-by-don-hang/{id}")]
         [HttpGet]
         public IActionResult GetByDonHang(int id)

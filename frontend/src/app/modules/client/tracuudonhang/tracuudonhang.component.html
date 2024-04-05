@@ -1,0 +1,123 @@
+<!-- breadcrumb area start -->
+<div class="breadcrumb-area">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <div class="breadcrumb-wrap">
+                    <nav aria-label="breadcrumb">
+                        <ul class="breadcrumb">
+                            <li class="breadcrumb-item"><a routerLink="/">Trang chủ</a></li>
+                            <li class="breadcrumb-item active" aria-current="page">Tra cứu đơn hàng</li>
+                        </ul>
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- breadcrumb area end -->
+
+<!-- contact area start -->
+<div class="contact-area pb-5">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-lg-8">
+                <div class="contact-info text-center mt-5">
+                    <h1 class="text-danger mb-4">Tra cứu đơn hàng</h1>
+                    <div class="form-group">
+                        <label for="id" class="form-label">Nhập mã đơn hàng:</label>
+                        <input type="text" class="form-control" id="id" name="id" placeholder="Nhập mã đơn hàng" [(ngModel)]="id">
+                    </div>
+                    <button class="sqr-btn" (click)="tracuu()">Tra cứu</button>
+
+                    <div *ngIf="donhang" class="mt-4">
+                        <div class="modal-body">
+                            <form>
+                                <div class="card">
+                                    <div class="card-body">
+                                        <div class="form-row">
+                                            <div class="form-group col-md-8">
+                                                <label for="ten">Tên: <a class="text-success"> {{ donhang.ten }} </a></label>
+                                            </div>
+                                            <div class="form-group col-md-4">
+                                                <label for="diaChi">Mã đơn hàng: <a class="text-success"> {{ donhang.id }} </a></label>
+                                            </div>                              
+                                        </div>
+                                        <div class="form-row">
+                                            <div class="form-group col-md-8">
+                                                <label for="sdt">Địa chỉ: <a class="text-success"> {{ donhang.diaChi }} </a></label>
+                                            </div>
+                                            <div class="form-group col-md-4">
+                                                <label for="diaChi">Ngày đặt: <a class="text-success"> {{ donhang.ngayDat | date: 'HH:mm:ss dd/MM/yyyy' }} </a></label>
+                                            </div>                              
+                                        </div>
+                                        <div class="form-row">
+                                            <div class="form-group col-md-8">
+                                                <label for="kieuGiaoHang">Kiểu giao hàng: 
+                                                    <a class="text-success">
+                                                        <ng-container *ngIf="donhang.kieuGiaoHang === 1">Giao hàng thông thường</ng-container>
+                                                        <ng-container *ngIf="donhang.kieuGiaoHang === 2">Giao hàng tiết kiệm</ng-container>
+                                                        <ng-container *ngIf="donhang.kieuGiaoHang === 3">Giao hàng nhanh</ng-container>
+                                                    </a>
+                                                </label>
+                                            </div>
+                                            <div class="form-group col-md-4">
+                                                <label for="ngayDat">Số điện thoại: <a class="text-success"> {{ donhang.sdt }} </a></label>
+                                            </div>                            
+                                        </div>
+                                        <div class="form-row"> 
+                                            <div class="form-group col-md-8">
+                                                <label for="tenPhuongThuc">Phương thức thanh toán: <a class="text-success"> {{ donhang.tenPhuongThuc }} </a></label>
+                                            </div>
+                                            <div class="form-group col-md-4">
+                                                <label for="trangThai">Trạng thái: 
+                                                    <ng-container *ngIf="donhang.trangThai === 0"><a class="text-warning"> Chờ xử lý </a></ng-container>
+                                                    <ng-container *ngIf="donhang.trangThai === 1"><a class="text-success"> Đã duyệt </a></ng-container>
+                                                    <ng-container *ngIf="donhang.trangThai === 2"><a class="text-danger"> Đã huỷ </a></ng-container>
+                                                    <ng-container *ngIf="donhang.trangThai === 3"><a class="text-warning"> Chưa thanh toán </a></ng-container>
+                                                    <ng-container *ngIf="donhang.trangThai === 4"><a class="text-info"> Đã thanh toán </a></ng-container>
+                                                    <ng-container *ngIf="donhang.trangThai === 5"><a class="text-info"> Đang giao </a></ng-container>
+                                                    <ng-container *ngIf="donhang.trangThai === 6"><a class="text-success"> Đã nhận hàng </a></ng-container>
+                                                </label>
+                                            </div>                              
+                                        </div>
+                                        <div class="form-row"> 
+                                            <div class="form-group col-md-8">
+                                                <label for="ghiChu">Ghi chú: {{ donhang.ghiChu }}</label>
+                                            </div>
+                                            <div class="form-group col-md-4">
+                                                <label for="ngayDat">Tổng hoá đơn: <a class="text-success"> {{ donhang.tongTien | number:'1.0-0' }} đ</a></label>
+                                            </div>
+                                        </div>
+                                        <table class="table table-hover" style="width:100%;">
+                                            <thead id="mainTable" class="table table-striped">
+                                                <tr>
+                                                    <th>#</th>
+                                                    <th>Sản phẩm</th>
+                                                    <th>Giá</th>
+                                                    <th>Số lượng</th>
+                                                    <th>Thành tiền</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody *ngFor="let ct of ctdonhang, let i = index">
+                                                <tr>
+                                                    <td>{{ i + 1 }}</td>
+                                                    <td>{{ ct.tenSanPham }}</td>
+                                                    <td>{{ ct.gia | number:'1.0-0' }} đ</td>
+                                                    <td>{{ ct.soLuong }}</td>
+                                                    <td>{{ ct.gia * ct.soLuong | number:'1.0-0' }} đ</td>
+                                                </tr>
+                                            </tbody>                        
+                                        </table>
+                                    </div>
+                                </div>                                               
+                            </form>
+                        </div>
+                        
+                    </div>
+                    <a routerLink="/" class="btn btn-link mt-4">Quay lại trang chủ</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

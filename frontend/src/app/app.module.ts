@@ -64,6 +64,7 @@ import { ConfirmComponent } from './modules/client/confirm/confirm.component';
 import { CamonComponent } from './modules/client/camon/camon.component';
 import { NhapsoluongComponent } from './modules/admin/nhapsoluong/nhapsoluong.component';
 import { QlthamsoComponent } from './modules/admin/qlthamso/qlthamso.component';
+import { TracuudonhangComponent } from './modules/client/tracuudonhang/tracuudonhang.component';
 
 @NgModule({
   declarations: [
@@ -122,6 +123,7 @@ import { QlthamsoComponent } from './modules/admin/qlthamso/qlthamso.component';
     CamonComponent,
     NhapsoluongComponent,
     QlthamsoComponent,
+    TracuudonhangComponent,
   ],
   imports: [
     BrowserModule,

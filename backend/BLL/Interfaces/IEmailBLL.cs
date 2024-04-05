@@ -8,7 +8,8 @@ namespace BLL.Interfaces
 {
     public interface IEmailBLL
     {
-        void SendConfirmationEmail(string toEmail, string confirmationLink, string token);
+        void SendConfirmationEmail(string toEmail, string confirmationLink, string token, string Ten);
+        void SendOrderEmail(string toEmail, string confirmationLink, string Ten, int ID);
     }
 
 }

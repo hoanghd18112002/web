@@ -1,31 +1,35 @@
-import { Component } from '@angular/core';
+import { Component, OnDestroy } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { VnPayService } from 'src/app/service/vnpay.service';
-
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-camon',
   templateUrl: './camon.component.html',
   styleUrls: ['./camon.component.css']
 })
-export class CamonComponent {
+export class CamonComponent implements OnDestroy {
   success: string = "Thanh toán không thành công";
   text: string = "Vui lòng kiểm tra lại";
+  private routeSubscription: Subscription;
 
   constructor(
     private vnPayService: VnPayService,
     private route: ActivatedRoute,
     private router: Router
-  ) {}
-
-  ngOnInit() {
-    //Lấy params trên url lưu vào biến params
-    this.route.queryParams.subscribe(params => {
-      //xoá params hiển thị trên url
-      this.router.navigate([], { queryParams: {} });
-      //Gọi callback truyền params
-      this.callback(params);
+  ) {
+    this.routeSubscription = this.route.queryParams.subscribe(params => {
+      if (params && Object.keys(params).length > 0) {
+        this.router.navigate([], { queryParams: {} });
+        this.callback(params);
+      }
     });
+  }
+
+  ngOnDestroy() {
+    if (this.routeSubscription) {
+      this.routeSubscription.unsubscribe();
+    }
   }
 
   callback(params: any) {
@@ -34,6 +38,6 @@ export class CamonComponent {
         this.success = "Thanh toán thành công cho đơn hàng " + res.orderId;
         this.text = "Cảm ơn bạn đã sử dụng dịch vụ";
       }
-    })
+    });
   }
 }

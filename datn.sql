@@ -11,7 +11,7 @@
  Target Server Version : 100427
  File Encoding         : 65001
 
- Date: 03/04/2024 17:25:52
+ Date: 05/04/2024 21:27:44
 */
 
 SET NAMES utf8mb4;
@@ -32,7 +32,7 @@ CREATE TABLE `ctdonhang`  (
   INDEX `CTDonHang_DonHang_IDDonHang`(`IDDonHang`) USING BTREE,
   CONSTRAINT `CTDonHang_DonHang_IDDonHang` FOREIGN KEY (`IDDonHang`) REFERENCES `donhang` (`ID`) ON DELETE CASCADE ON UPDATE CASCADE,
   CONSTRAINT `CTDonHang_SanPham_IDSanPham` FOREIGN KEY (`IDSanPham`) REFERENCES `sanpham` (`ID`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE = InnoDB AUTO_INCREMENT = 215 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = DYNAMIC;
+) ENGINE = InnoDB AUTO_INCREMENT = 220 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of ctdonhang
@@ -91,6 +91,11 @@ INSERT INTO `ctdonhang` VALUES (161, 1, 10390000, 48, 68);
 INSERT INTO `ctdonhang` VALUES (212, 2, 4647000, 49, 115);
 INSERT INTO `ctdonhang` VALUES (213, 2, 10390000, 48, 115);
 INSERT INTO `ctdonhang` VALUES (214, 6, 43590000, 47, 115);
+INSERT INTO `ctdonhang` VALUES (215, 5, 32340000, 51, 116);
+INSERT INTO `ctdonhang` VALUES (216, 2, 22690000, 50, 117);
+INSERT INTO `ctdonhang` VALUES (217, 1, 22690000, 50, 118);
+INSERT INTO `ctdonhang` VALUES (218, 1, 43590000, 47, 118);
+INSERT INTO `ctdonhang` VALUES (219, 1, 43590000, 47, 119);
 
 -- ----------------------------
 -- Table structure for cthoadonnhap
@@ -221,12 +226,12 @@ CREATE TABLE `donhang`  (
   INDEX `DonHang_PhuongThucThanhToan_IDPhuongThuc`(`IDPhuongThuc`) USING BTREE,
   CONSTRAINT `DonHang_NguoiDung_IDNguoiDung` FOREIGN KEY (`IDNguoiDung`) REFERENCES `nguoidung` (`ID`) ON DELETE RESTRICT ON UPDATE RESTRICT,
   CONSTRAINT `DonHang_PhuongThucThanhToan_IDPhuongThuc` FOREIGN KEY (`IDPhuongThuc`) REFERENCES `phuongthucthanhtoan` (`ID`) ON DELETE RESTRICT ON UPDATE RESTRICT
-) ENGINE = InnoDB AUTO_INCREMENT = 116 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = DYNAMIC;
+) ENGINE = InnoDB AUTO_INCREMENT = 120 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of donhang
 -- ----------------------------
-INSERT INTO `donhang` VALUES (1, 'Phạm Đức Hoàng', 'Hà nội', '0906090112', '2023-02-25 15:41:20', 1, 'Gửi hàng nhanh nhá', 6, 1, 1);
+INSERT INTO `donhang` VALUES (1, 'Phạm Đức Hoàng', 'Hà nội', '0906090112', '2023-02-25 15:41:20', 1, 'Gửi hàng nhanh nhá', 0, 1, 1);
 INSERT INTO `donhang` VALUES (2, 'Lê Ngọc Mai', 'Hà nội', '0987654321', '2023-01-25 15:41:20', 1, 'Cẩn thận hàng dễ vỡ', 6, 1, 2);
 INSERT INTO `donhang` VALUES (3, 'Phạm Hải Huấn', 'Hà nội', '098234567', '2022-12-25 15:41:20', 2, 'Gửi hàng nhanh nhá', 6, 1, 3);
 INSERT INTO `donhang` VALUES (4, 'Trần Mỹ Linh', 'Hà nội', '093567567', '2022-11-25 15:41:20', 2, 'Cẩn thận hàng dễ vỡ', 6, 2, 4);
@@ -249,6 +254,10 @@ INSERT INTO `donhang` VALUES (50, 'Lê Ngọc Mai', 'Hà nội', '0987654321', '
 INSERT INTO `donhang` VALUES (67, 'Phạm Đức Hoàng', 'Hà nội', '0906090112', '2024-03-25 21:25:34', 1, 'Cẩn thận hàng dễ vỡ', 3, 2, 1);
 INSERT INTO `donhang` VALUES (68, 'Phạm Đức Hoàng', 'Hà nội', '0906090112', '2024-03-25 22:08:02', 3, 'Cẩn thận hàng dễ vỡ', 6, 2, 1);
 INSERT INTO `donhang` VALUES (115, 'Phạm Đức Hoàng', 'Hải Dương', '0906090112', '2024-04-03 17:23:12', 1, '', 6, 1, 1);
+INSERT INTO `donhang` VALUES (116, 'Phạm Đức Hoàng', 'Hải Dương', '0906090112', '2024-04-03 19:57:31', 1, '', 0, 1, 1);
+INSERT INTO `donhang` VALUES (117, 'Phạm Đức Hoàng', 'Hải Dương', '0906090112', '2024-04-03 20:01:53', 1, '', 0, 1, 1);
+INSERT INTO `donhang` VALUES (118, 'Phạm Đức Hoàng', 'Hải Dương', '0906090112', '2024-04-05 20:57:11', 1, '', 0, 1, 1);
+INSERT INTO `donhang` VALUES (119, 'Phạm Đức Hoàng', 'Hải Dương', '0906090112', '2024-04-05 20:57:58', 1, '', 0, 1, 1);
 
 -- ----------------------------
 -- Table structure for giamgia
@@ -684,11 +693,11 @@ INSERT INTO `sanpham` VALUES (43, 'Máy giặt Samsung WA22R88', 'Loại máy gi
 INSERT INTO `sanpham` VALUES (44, 'Máy giặt Samsung WW10TP5', 'Loại máy giặt: Cửa trước Lồng giặt: Lồng ngang Khối lượng giặt: Giặt 10Kg Tốc độ quay vắt: 1400 vòng/phút Hiệu suất sử dụng điện:  Kiểu động cơ: Truyền động dây coroa Inverter: Có Công nghệ giặt Chương trình hoạt động:  Công nghệ giặt: Cửa phụ Add door, QuickDrive giặt xả hiệu quả chỉ trong 39 phút, Công nghệ giặt bong bóng Eco Bubble Tiện ích: Tổng quan Chất liệu lồng giặt: Thép không gỉ Chất liệu vỏ máy: Thép chống gỉ Chất liệu nắp máy: Kính chịu lực Bảng điều khiển: Tiếng Việt Số người sử dụng: Từ 5-7 người Kích thước - Khối lượng: Ngang 60 cm - Cao 85 cm - Sâu 55 cm - Nặng 67 kg Nơi sản xuất: Việt Nam Năm sản xuất: 2021 Bảo hành: 24 tháng', 50, 'maygiat2.png', '2023-04-03 12:54:05', 1, 1, 3);
 INSERT INTO `sanpham` VALUES (45, 'Điều hòa LG B24END1', 'Công suất làm lạnh: 24.000 BTU Công suất sưởi ấm: 26.000BTU Phạm vi làm lạnh hiệu quả: Từ 30-40m² Công nghệ Inverter: Điều hòa inverter Loại máy: Điều hoà 1 chiều (chỉ làm lạnh) Tính Năng Tiện ích:Chức năng tự chẩn đoán lỗi, Chức năng tự làm sạch, Có tự điều chỉnh nhiệt độ (chế độ ngủ đêm), Công nghệ Gold-Fin chống ăn mòn, Làm lạnh nhanh tức thì, Màn hình hiển thị nhiệt độ trên dàn lạnh, Thổi gió dễ chịu Comfort Air (cho trẻ em, người già), Tự khởi động lại khi có điện, Đảo gió 4 chiều giúp hơi lạnh lan toả đồng đều Công nghệ tiết kiệm điện: Dual inverter Kháng khuẩn khử mùi: Màng lọc sơ cấp Chế độ làm lạnh nhanh: Jet Cool Chế độ gió:Tuỳ chỉnh điều khiển lên xuống trái phải tự động  Thông tin chung Thông tin cục lạnh: Dài 99.8 cm - Cao 34.5 cm - Dày 21 cm - Nặng 11 kg Thông tin cục nóng: Dài 87 cm - Cao 65 cm - Dày 33 cm - Nặng 43 kg Loại Gas sử dụng: R32 Nơi sản xuất: Thái Lan Năm ra mắt: 2022 Bảo hành: 24 tháng', 50, 'dh1.png', '2023-04-03 12:54:27', 1, 5, 4);
 INSERT INTO `sanpham` VALUES (46, 'Điều hòa LG B18END1', 'Tổng quan Công suất làm lạnh: 18.000 BTU Công suất sưởi ấm: 19000BTU Phạm vi làm lạnh hiệu quả: Từ 20-30m² Công nghệ Inverter: Điều hòa inverter Loại máy: Điều hoà 1 chiều (chỉ làm lạnh) Tính Năng Tiện ích:Chức năng tự chẩn đoán lỗi, Chức năng tự làm sạch, Có tự điều chỉnh nhiệt độ (chế độ ngủ đêm), Công nghệ Gold-Fin chống ăn mòn, Làm lạnh nhanh tức thì, Màn hình hiển thị nhiệt độ trên dàn lạnh, Thổi gió dễ chịu Comfort Air (cho trẻ em, người già), Tự khởi động lại khi có điện, Đảo gió 4 chiều giúp hơi lạnh lan toả đồng đều Công nghệ tiết kiệm điện: Dual inverter Kháng khuẩn khử mùi: Màng lọc sơ cấp Chế độ làm lạnh nhanh: Jet Cool Chế độ gió:Tuỳ chỉnh điều khiển lên xuống trái phải tự động  Thông tin chung Thông tin cục lạnh: Dài 99.8cm - Cao 34.5 cm - Dày 21 cm - Nặng 11 kg Thông tin cục nóng: Dài 87 cm - Cao 65 cm - Dày 33 cm - Nặng 43 kg Loại Gas sử dụng: R32 Nơi sản xuất: Thái Lan Năm ra mắt: 2022 Bảo hành: 24 tháng', 50, 'dh2.png', '2023-04-03 12:54:48', 1, 5, 4);
-INSERT INTO `sanpham` VALUES (47, 'Google Tivi Sony XR65A', 'Hệ điều hành, giao diện: Google TV Remote thông minh: Remote tích hợp tích micro tìm kiếm giọng nói (RMF-TX800P) Chiếu hình từ điện thoại lên TV: AirPlay 2, Chromecast Điều khiển tivi bằng điện thoại: Ứng dụng Android TV Kết nối ứng dụng các thiết bị trong nhà: Đang cập nhật Điều khiển bằng giọng nói: Tìm kiếm giọng nói trên YouTube bằng tiếng Việt, Google Assistant có tiếng Việt Tiện ích thông minh khác: Micro tích hợp trên TV điều khiển giọng nói rảnh tay, Bravia CAM (mua thêm camera)', 44, 'googletivisonyxr65a.png', '2023-04-03 12:55:07', 1, 6, 1);
+INSERT INTO `sanpham` VALUES (47, 'Google Tivi Sony XR65A', 'Hệ điều hành, giao diện: Google TV Remote thông minh: Remote tích hợp tích micro tìm kiếm giọng nói (RMF-TX800P) Chiếu hình từ điện thoại lên TV: AirPlay 2, Chromecast Điều khiển tivi bằng điện thoại: Ứng dụng Android TV Kết nối ứng dụng các thiết bị trong nhà: Đang cập nhật Điều khiển bằng giọng nói: Tìm kiếm giọng nói trên YouTube bằng tiếng Việt, Google Assistant có tiếng Việt Tiện ích thông minh khác: Micro tích hợp trên TV điều khiển giọng nói rảnh tay, Bravia CAM (mua thêm camera)', 42, 'googletivisonyxr65a.png', '2023-04-03 12:55:07', 1, 6, 1);
 INSERT INTO `sanpham` VALUES (48, 'Điều hòa LG B13END1', 'Tổng quan Công suất làm lạnh: 1 HP - 12.000 BTU Công suất sưởi ấm: 12800BTU Phạm vi làm lạnh hiệu quả: Từ 15 - 20m² (từ 40 đến 60 m³) Công nghệ Inverter: Điều hòa inverter Loại máy: Điều hoà 1 chiều (chỉ làm lạnh) Tính Năng Tiện ích:Chức năng tự chẩn đoán lỗi, Chức năng tự làm sạch, Có tự điều chỉnh nhiệt độ (chế độ ngủ đêm), Công nghệ Gold-Fin chống ăn mòn, Làm lạnh nhanh tức thì, Màn hình hiển thị nhiệt độ trên dàn lạnh, Thổi gió dễ chịu Comfort Air (cho trẻ em, người già), Tự khởi động lại khi có điện, Đảo gió 4 chiều giúp hơi lạnh lan toả đồng đều Công nghệ tiết kiệm điện: Dual inverter Kháng khuẩn khử mùi: Màng lọc sơ cấp Chế độ làm lạnh nhanh: Jet Cool Chế độ gió:Tuỳ chỉnh điều khiển lên xuống trái phải tự động  Thông tin chung Thông tin cục lạnh: Dài 82 cm - Cao 29 cm - Dày 19 cm - Nặng 8.5 kg Thông tin cục nóng: Dài 72 cm - Cao 50 cm - Dày 23 cm - Nặng 24.7 kg Loại Gas sử dụng: R32 Nơi sản xuất: Thái Lan Năm ra mắt: 2022 Bảo hành: 24 tháng', 48, 'dh3.png', '2023-04-03 12:55:36', 1, 5, 4);
 INSERT INTO `sanpham` VALUES (49, 'Google Tivi Sony KD55X', 'Hệ điều hành, giao diện: Google TV Remote thông minh: Remote tích hợp tích micro tìm kiếm giọng nói (RMF-TX800P) Chiếu hình từ điện thoại lên TV: AirPlay 2, Chromecast Điều khiển tivi bằng điện thoại: Ứng dụng Android TV Điều khiển bằng giọng nói: Google Assistant có tiếng Việt, Tìm kiếm giọng nói trên YouTube bằng tiếng Việt Tiện ích thông minh khác: Bravia CAM (mua thêm camera), Micro tích hợp trên TV điều khiển giọng nói rảnh tay', 48, 'googletivisonykd55x.png', '2023-04-03 12:56:00', 1, 6, 1);
-INSERT INTO `sanpham` VALUES (50, 'Android Tivi Mini TCL 65X', 'Lỗi máy giặt bị lệch tâm sẽ dẫn đến hiện tượng quần áo bị xoắn rối, quấn hoặc dẫn đấn rách quần áo. Hơn thế đối với lỗi máy giặt bị lệch tâm như vậy dẫn đến tiếng ồn lớn mang đến cảm giác khó chịu và ảnh hưởng xấu tới các linh kiện bên trong máy. Vậy Nguyên nhân, tác hại và cách khắc phục lỗi máy giặt bị lệch tâm? Hệ điều hành, giao diện: Android 9.0 Remote thông minh: Remote tích hợp micro tìm kiếm bằng giọng nói Chiếu hình từ điện thoại lên TV: Chromecast, Screen Mirroring, T-Cast Điều khiển tivi bằng điện thoại: Ứng dụng Google Cast, Ứng dụng MagiConnect Kết nối ứng dụng các thiết bị trong nhà: Không Điều khiển bằng giọng nói: Tìm kiếm giọng nói trên YouTube bằng tiếng Việt, Google Assistant có tiếng Việt Tiện ích thông minh khác: Micro tích hợp trên TV điều khiển giọng nói rảnh tay', 50, 'Androidtiviminitcl65x.png', '2023-04-03 12:56:35', 1, 7, 1);
-INSERT INTO `sanpham` VALUES (51, 'Smart Tivi Samsung NEO QLE', 'Smart Tivi Neo QLED Samsung 4K 55 inch QA55QN90C là phiên bản tivi 55 inch mới được nhà sản xuất Hàn Quốc đưa tới thị trường Việt Nam năm 2023. Sản phẩm không chỉ được trang bị màn hình NEO QLED cao cấp mà các tính năng khác cũng thuộc hàng hiện đại hàng đầu.', 50, 'smarttivisamsungneoQLED4k.png', '2023-05-03 17:12:11', 1, 1, 1);
+INSERT INTO `sanpham` VALUES (50, 'Android Tivi Mini TCL 65X', 'Lỗi máy giặt bị lệch tâm sẽ dẫn đến hiện tượng quần áo bị xoắn rối, quấn hoặc dẫn đấn rách quần áo. Hơn thế đối với lỗi máy giặt bị lệch tâm như vậy dẫn đến tiếng ồn lớn mang đến cảm giác khó chịu và ảnh hưởng xấu tới các linh kiện bên trong máy. Vậy Nguyên nhân, tác hại và cách khắc phục lỗi máy giặt bị lệch tâm? Hệ điều hành, giao diện: Android 9.0 Remote thông minh: Remote tích hợp micro tìm kiếm bằng giọng nói Chiếu hình từ điện thoại lên TV: Chromecast, Screen Mirroring, T-Cast Điều khiển tivi bằng điện thoại: Ứng dụng Google Cast, Ứng dụng MagiConnect Kết nối ứng dụng các thiết bị trong nhà: Không Điều khiển bằng giọng nói: Tìm kiếm giọng nói trên YouTube bằng tiếng Việt, Google Assistant có tiếng Việt Tiện ích thông minh khác: Micro tích hợp trên TV điều khiển giọng nói rảnh tay', 47, 'Androidtiviminitcl65x.png', '2023-04-03 12:56:35', 1, 7, 1);
+INSERT INTO `sanpham` VALUES (51, 'Smart Tivi Samsung NEO QLE', 'Smart Tivi Neo QLED Samsung 4K 55 inch QA55QN90C là phiên bản tivi 55 inch mới được nhà sản xuất Hàn Quốc đưa tới thị trường Việt Nam năm 2023. Sản phẩm không chỉ được trang bị màn hình NEO QLED cao cấp mà các tính năng khác cũng thuộc hàng hiện đại hàng đầu.', 45, 'smarttivisamsungneoQLED4k.png', '2023-05-03 17:12:11', 1, 1, 1);
 
 -- ----------------------------
 -- Table structure for slide

@@ -19,11 +19,13 @@ namespace Backend.Controllers
     {
         private INguoiDungBLL _nguoiDungbll;
         private IEmailBLL _emailbll;
+        private IThamSoBLL _thamsobll;
         private string _path;
-        public NguoiDungController(INguoiDungBLL nguoiDungbll, IEmailBLL emailbll, IConfiguration configuration)
+        public NguoiDungController(INguoiDungBLL nguoiDungbll, IEmailBLL emailbll, IConfiguration configuration, IThamSoBLL thamsobll)
         {
             _nguoiDungbll = nguoiDungbll;
             _emailbll = emailbll;
+            _thamsobll = thamsobll;
             _path = configuration["AppSettings:PATH_NGUOIDUNG"];
         }
 
@@ -103,7 +105,8 @@ namespace Backend.Controllers
 
                 _nguoiDungbll.Create(model);
 
-                _emailbll.SendConfirmationEmail(model.Email, model.ConfirmationLink, model.Token);
+                var thamso = _thamsobll.GetByMa("NAME");
+                _emailbll.SendConfirmationEmail(model.Email, model.ConfirmationLink, model.Token, thamso.NoiDung);
 
                 return Ok(new { success = true, message = "Đăng ký thành công, Email xác nhận đã được gửi" });
             }

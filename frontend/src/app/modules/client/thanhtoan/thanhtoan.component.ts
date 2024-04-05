@@ -118,6 +118,14 @@ export class ThanhtoanComponent {
             this.giamSoLuong(this.ListGioHang[i].id, this.ListGioHang[i].soluong);
             this.donHangService.createCTDonHang(ctdonhang).subscribe(res => {});
           }
+
+          const email: any = {
+            email: this.user.email,
+            confirmationLink: `${window.location.origin}/tracuudonhang`,
+            id: id
+          };
+          this.donHangService.orderEmail(email).subscribe(res => {});
+
           if (this.loaiThanhToan === 2) {
             this.vnPay(id);
           }
@@ -173,7 +181,7 @@ export class ThanhtoanComponent {
     this.sanPhamService.getbyid(id).subscribe(res => { 
       const formData = new FormData();
       formData.append('id', id.toString());
-      formData.append('soLuong', (res.data.soLuong - soluong).toString());
+      formData.append('soLuong', (Number(res.data.soLuong) - Number(soluong)).toString());
       
       this.sanPhamService.update(formData).subscribe(res => {})
     })
