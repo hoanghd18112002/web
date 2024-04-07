@@ -12,6 +12,6 @@ export interface NguoiDung {
     trangThai: number;
     idQuyen: number;
     tenQuyen: string;
-    emailConfimed: boolean;
+    emailConfirmed: boolean;
     token: string;
 }

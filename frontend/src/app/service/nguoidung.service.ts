@@ -38,10 +38,6 @@ export class NguoiDungService {
     return this.http.delete<any>(`${this.apiUrl}/delete/${id}`, { headers });
   } 
 
-  confirmationemail(object: object): Observable<any> {
-    return this.http.post<any>(`${this.apiUrl}/send-confirmation-email`, object);
-  }
-
   confirmemail(object: object): Observable<any> {
     return this.http.post<any>(`${this.apiUrl}/confirm-email`, object);
   }

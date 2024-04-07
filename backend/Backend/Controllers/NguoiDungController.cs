@@ -43,7 +43,7 @@ namespace Backend.Controllers
                 if (kq == null)
                     return BadRequest(new { success = false, message = "Tài khoản hoặc mật khẩu không chính xác" });
 
-                if (kq.EmailConfimed == false)
+                if (kq.EmailConfirmed == false)
                     return Ok(new { success = false, message = "Tài khoản chưa được xác minh, vui lòng xác minh trong email của bạn" });                       
                 return Ok(new { success = true, message = "Đăng nhập thành công", data = kq });
             }

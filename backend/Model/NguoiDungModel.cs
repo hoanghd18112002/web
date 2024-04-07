@@ -24,7 +24,7 @@ namespace Model
         public string? TenQuyen { get; set; }
         public IFormFile? File { get; set; }
         public string? Token { get; set; }
-        public bool? EmailConfimed { get; set; }
+        public bool? EmailConfirmed { get; set; }
         public string? ConfirmationLink { get; set; }
     }
 }

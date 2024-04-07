@@ -11,7 +11,7 @@
  Target Server Version : 100427
  File Encoding         : 65001
 
- Date: 05/04/2024 21:27:44
+ Date: 07/04/2024 09:29:04
 */
 
 SET NAMES utf8mb4;
@@ -518,7 +518,7 @@ CREATE TABLE `nguoidung`  (
   PRIMARY KEY (`ID`) USING BTREE,
   INDEX `NguoiDung_Quyen_IDQuyen`(`IDQuyen`) USING BTREE,
   CONSTRAINT `NguoiDung_Quyen_IDQuyen` FOREIGN KEY (`IDQuyen`) REFERENCES `quyen` (`ID`) ON DELETE RESTRICT ON UPDATE RESTRICT
-) ENGINE = InnoDB AUTO_INCREMENT = 13 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = DYNAMIC;
+) ENGINE = InnoDB AUTO_INCREMENT = 15 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of nguoidung
@@ -529,7 +529,7 @@ INSERT INTO `nguoidung` VALUES (3, 'phamhaihuan', 'e10adc3949ba59abbe56e057f20f8
 INSERT INTO `nguoidung` VALUES (4, 'tranmylinh', 'e10adc3949ba59abbe56e057f20f883e', 'tranMyLinh@gmail.com', 'Trần Mỹ Linh', '2002-09-17 00:00:00', 'Hà Nội', '093567567', 0, 'tranmylinh.png', 1, 4, b'1', '1f326bbd-b676-4645-af02-1263138513f8');
 INSERT INTO `nguoidung` VALUES (5, 'phamducduy', 'e10adc3949ba59abbe56e057f20f883e', 'phamducduy@gmail.com', 'Phạm Đức Duy', '2002-12-08 00:00:00', 'Bắc Giang', '098765567', 1, 'phamducduy.png', 1, 2, b'1', '1f326bbd-b676-4645-af02-1263138513f8');
 INSERT INTO `nguoidung` VALUES (6, 'phamvanhoan', 'e10adc3949ba59abbe56e057f20f883e', 'phamvanhoan@gmail.com', 'Phạm Văn Hoàn', '2002-10-19 00:00:00', '123 Điện Biên Phủ tp Hải Dương', '0987654321', 1, 'phamvanhoan.png', 1, 3, b'1', '1f326bbd-b676-4645-af02-1263138513f8');
-INSERT INTO `nguoidung` VALUES (12, 'phamthanhduong', 'e10adc3949ba59abbe56e057f20f883e', 'genshinsdt3@gmail.com', 'Chiến thần Ấn Độ', '2024-04-03 14:20:06', '55 Thái Thuỵ5', '0987654321', 1, 'avatar.png', 1, 2, b'1', 'p/S6Hap8oLZsN8pPYK7xJCgn6eNHOq4hXgCUjcdZDtM=');
+INSERT INTO `nguoidung` VALUES (14, 'phamthanhduong', 'e10adc3949ba59abbe56e057f20f883e', 'genshinsdt3@gmail.com', 'Phạm Thanh Dương', '2024-04-07 09:24:42', 'hải dương', '1234567890', 1, 'avatar.png', 1, 2, b'1', 'ghBDhiBELdXQudxihbxOQgQwWuPBLwUEQnfThEOODEJYthRNZyPseewClWpiXbFh');
 
 -- ----------------------------
 -- Table structure for nhacungcap
