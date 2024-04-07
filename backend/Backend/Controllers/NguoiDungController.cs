@@ -101,7 +101,7 @@ namespace Backend.Controllers
                     return Ok(new { success = false, message = "Tài khoản hoặc email đã tồn tại trong hệ thống", data = kq });
 
                 model.MatKhau = CalculateMD5Hash(model.MatKhau);
-                model.Token = GenerateToken(32);
+                model.Token = GenerateToken(64);
 
                 _nguoiDungbll.Create(model);
 
@@ -250,11 +250,17 @@ namespace Backend.Controllers
 
         public static string GenerateToken(int length)
         {
+            const string chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz";
             using (var rng = new RNGCryptoServiceProvider())
             {
                 var bytes = new byte[length];
                 rng.GetBytes(bytes);
-                return Convert.ToBase64String(bytes);
+                var charArray = new char[length];
+                for (int i = 0; i < length; i++)
+                {
+                    charArray[i] = chars[bytes[i] % chars.Length];
+                }
+                return new string(charArray);
             }
         }
     }

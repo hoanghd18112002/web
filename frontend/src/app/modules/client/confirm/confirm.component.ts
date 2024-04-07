@@ -1,39 +1,46 @@
-import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
-import { NgForm } from '@angular/forms';
+import { Component, OnDestroy } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
 import { NguoiDungService } from 'src/app/service/nguoidung.service';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-confirm',
   templateUrl: './confirm.component.html',
   styleUrls: ['./confirm.component.css']
 })
-export class ConfirmComponent implements OnInit {
-  emailConfirmationToken: string = "";
-  confirmationError: string = "";
-  confirmationSuccess: boolean = false;
+export class ConfirmComponent implements OnDestroy {
+  success: string = "Xác nhận email thất bại";
+  text: string = "Vui lòng kiểm tra lại";
+  text1: string = "Có lỗi xảy ra";
 
-  constructor(private route: ActivatedRoute, private nguoiDungService: NguoiDungService) { }
+  private routeSubscription: Subscription;
 
-  ngOnInit(): void {
-    // Lấy thông tin về token xác nhận email từ URL
-    this.route.queryParams.subscribe(params => {
-      this.emailConfirmationToken = params['token'];
-      if (this.emailConfirmationToken) {
-        // Gọi phương thức xác nhận email khi component được khởi tạo
-        this.confirmEmail();
+  constructor(
+    private route: ActivatedRoute, 
+    private nguoiDungService: NguoiDungService,
+    private router: Router
+  ) { 
+    this.routeSubscription = this.route.queryParams.subscribe(params => {
+      if (params && Object.keys(params).length > 0) {
+        this.router.navigate([], { queryParams: {} });
+        this.confirmEmail(params['token']);
       }
     });
   }
 
-  confirmEmail() {
-    const obj = {
-      token: this.emailConfirmationToken
+  ngOnDestroy() {
+    if (this.routeSubscription) {
+      this.routeSubscription.unsubscribe();
     }
-    // Gửi yêu cầu xác nhận email với token đến backend
-    this.nguoiDungService.confirmemail(obj).subscribe(res =>{
-      console.log(res);
-      },
-    );
+  }
+
+  confirmEmail(token: string) {
+    this.nguoiDungService.confirmemail({ token }).subscribe(res => {
+      if(res.success){
+        this.success = "Xác nhận email thành công";
+        this.text = "Cảm ơn bạn đã xác nhận email thành công.";
+        this.text1 = "Bạn có thể đăng nhập vào tài khoản của mình bây giờ.";
+      }
+    });
   }
 }
