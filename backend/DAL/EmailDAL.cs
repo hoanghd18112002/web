@@ -55,5 +55,50 @@ namespace DAL
                 client.Disconnect(true);
             }
         }
+
+        public void SendOrderEmail(string toEmail, string confirmationLink, string Ten, string HoTen, string DiaChi, string SDT, int? ID, List<ChiTietDonHangModel> model)
+        {
+            var message = new MimeMessage();
+            message.From.Add(new MailboxAddress(_mailSettings.SenderName, _mailSettings.SenderEmail));
+            message.To.Add(new MailboxAddress("", toEmail));
+            message.Subject = "Thông tin đơn hàng đặt tại " + Ten;
+
+            var bodyBuilder = new BodyBuilder();
+            string htmlContent = @"
+                <h2>Cảm ơn bạn đã đặt hàng tại " + Ten + @"</h2>
+                <p>Xin chào " + HoTen + @",</p>
+                <p>Dưới đây là chi tiết đơn hàng của bạn:</p>
+                <table border='1'>
+                    <tr>
+                        <th>Sản phẩm</th>
+                        <th>Số lượng</th>
+                        <th>Giá</th>
+                    </tr>";
+                    foreach (var item in model)
+                    {
+                        htmlContent += @"
+                    <tr>
+                        <td>" + item.TenSanPham + @"</td>
+                        <td>" + item.SoLuong + @"</td>
+                        <td>" + item.Gia + @" đ</td>
+                    </tr>";
+                    }
+                    htmlContent += @"
+                </table>
+                <p>Địa chỉ giao hàng: " + DiaChi + @"</p>
+                <p>Số điện thoại liên hệ: " + SDT + @"</p>
+                <p>Bạn có thể tra cứu đơn hàng của bạn <a href='" + confirmationLink + "?id=" + ID + "'>Tại đây</a></p><p> Xin chân thành cảm ơn!</ p > ";
+
+            bodyBuilder.HtmlBody = htmlContent;
+            message.Body = bodyBuilder.ToMessageBody();
+
+            using (var client = new SmtpClient())
+            {
+                client.Connect(_mailSettings.Server, _mailSettings.Port, false);
+                client.Authenticate(_mailSettings.SenderEmail, _mailSettings.Password);
+                client.Send(message);
+                client.Disconnect(true);
+            }
+        }
     }
 }

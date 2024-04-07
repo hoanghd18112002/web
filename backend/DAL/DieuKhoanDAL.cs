@@ -32,7 +32,7 @@ namespace DAL
                 throw ex;
             }
         }
-        public List<DieuKhoanModel> GetAll(int pageIndex, int pageSize, out int total, int? Kieu)
+        public List<DieuKhoanModel> GetAll(int pageIndex, int pageSize, out int total, string NoiDung)
         {
             string msgError = "";
             total = 0;
@@ -41,7 +41,7 @@ namespace DAL
                 var dt = _dbHelper.ExecuteSProcedureReturnDataTable(out msgError, "sp_dieukhoan_getall_desc",
                     "@p_pageindex", pageIndex,
                     "@p_pagesize", pageSize,
-                    "@p_kieu", Kieu);
+                    "@p_noidung", NoiDung);
                 if (!string.IsNullOrEmpty(msgError))
                     throw new Exception(msgError);
                 if (dt.Rows.Count > 0) total = (int)dt.Rows[0]["TotalCount"];

@@ -41,15 +41,15 @@ namespace Backend.Controllers
             {
                 var page = int.Parse(formData["page"].ToString());
                 var pageSize = int.Parse(formData["pageSize"].ToString());
-                int? kieu = null;
+                string noiDung = "";
 
-                if (formData.Keys.Contains("kieu") && !string.IsNullOrEmpty(Convert.ToString(formData["kieu"])))
+                if (formData.Keys.Contains("noiDung") && !string.IsNullOrEmpty(Convert.ToString(formData["noiDung"])))
                 {
-                    kieu = int.Parse(formData["kieu"].ToString());
+                    noiDung = Convert.ToString(formData["noiDung"].ToString());
                 }
 
                 int total = 0;
-                var data = _bll.GetAll(page, pageSize, out total, kieu);
+                var data = _bll.GetAll(page, pageSize, out total, noiDung);
 
                 var response = new
                 {

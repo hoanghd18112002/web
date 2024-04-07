@@ -39,9 +39,6 @@ export class QlsanphamComponent {
   p: number = 1;
   pageSize: number = 10;
   totalItems: number = 0;
-  totalPages: number = 0;
-  totalPagesArray: number[] = [];
-  visiblePages: number[] = [];
 
   newThongSo: { ten: string, moTa: string} = { ten: '', moTa: ''};
   thongSo: { ten: string, moTa: string}[] = [];
@@ -59,7 +56,7 @@ export class QlsanphamComponent {
   ){}
 
   ngOnInit(){
-    this.getall();
+    this.getall(this.p);
     this.getNhaSanXuat();
     this.getLoai();
   }
@@ -73,40 +70,17 @@ export class QlsanphamComponent {
   }
 
   //Lấy danh sách toàn bộ
-  getall(){
+  getall(p: number){
     const obj = {
-      page: this.p,
+      page: p,
       pageSize: this.pageSize,
       ten: this.searchTerm
     };
     this.sanPhamService.getall(obj).subscribe(res => {
       this.ListSanPham = res.data;
       this.totalItems = res.totalItems;
-      this.calculateTotalPages();
+      this.p = p;
     });
-  }
-
-  calculateTotalPages(): void {
-    this.totalPages = Math.ceil(this.totalItems / this.pageSize);
-  
-    // Tính toán các trang được hiển thị
-    if (this.totalPages <= 3) {
-      this.visiblePages = Array.from({ length: this.totalPages }, (_, i) => i + 1);
-    } else {
-      if (this.p === 1) {
-        this.visiblePages = [1, 2, 3];
-      } else if (this.p === this.totalPages) {
-        this.visiblePages = [this.totalPages - 2, this.totalPages - 1, this.totalPages];
-      } else {
-        this.visiblePages = [this.p - 1, this.p, this.p + 1];
-      }
-    }
-  }
-
-  pageChanged(page: number): void {
-    this.p = page;
-    this.calculateTotalPages();
-    this.getall();
   }
 
   //Lấy danh sách
@@ -165,7 +139,7 @@ export class QlsanphamComponent {
           ngayKetThuc: this.ngayKetThuc,
           idSanPham: res.data.id,
         }
-        this.giaSanPhamService.create(giasanpham).subscribe(res => {this.getall();});
+        this.giaSanPhamService.create(giasanpham).subscribe(res => {this.getall(this.p);});
 
         for (let i = 0; i < this.thongSo.length; i++) {
           const thongso: any = {
@@ -173,11 +147,11 @@ export class QlsanphamComponent {
             moTa: this.thongSo[i].moTa,
             idSanPham: res.data.id,
           }
-          this.thongSoService.create(thongso).subscribe(res => {this.getall();});
+          this.thongSoService.create(thongso).subscribe(res => {this.getall(this.p);});
         }
       });
 
-      this.getall();
+      this.getall(this.p);
       swal.fire({
         icon: 'success',
         title: res.message,
@@ -243,10 +217,10 @@ export class QlsanphamComponent {
             ngayBatDau: this.ngayBatDau,
             ngayKetThuc: this.ngayKetThuc,
           }
-          this.giaSanPhamService.update(giasanpham).subscribe(res => {this.getall();});
+          this.giaSanPhamService.update(giasanpham).subscribe(res => {this.getall(this.p);});
 
         });
-        this.getall();
+        this.getall(this.p);
         swal.fire({
           icon: 'success',
           title: res.message,
@@ -298,7 +272,7 @@ export class QlsanphamComponent {
       const id = this.selectedRow.id; // Lấy id để xoá
       // Gọi phương thức xoá từ service
       this.sanPhamService.detele(id).subscribe(res => {
-        this.getall();
+        this.getall(this.p);
         swal.fire({
           icon: 'success',
           title: res.message,

@@ -18,7 +18,7 @@
                                 <div class="input-group">
                                     <input class="form-control" type="search" placeholder="Bạn đang tìm gì.." aria-label="Search" data-width="200" id="searchInput" [(ngModel)]="searchTerm">
                                     <div class="input-group-append">
-                                        <button class="btn btn-outline-secondary" type="submit" (click)="getall()"><i class="fas fa-search"></i></button>
+                                        <button class="btn btn-outline-secondary" type="submit" (click)="getall(1)"><i class="fas fa-search"></i></button>
                                     </div>
                                 </div>
                             </div>
@@ -37,7 +37,7 @@
                                             <th>Trạng thái</th>
                                         </tr>
                                     </thead>
-                                    <tbody *ngFor="let ncc of ListNhaCungCap; let i = index">
+                                    <tbody *ngFor="let ncc of ListNhaCungCap | paginate: { itemsPerPage: pageSize, currentPage: p, totalItems: totalItems }; let i = index">
                                         <tr (click)="onRowClick(ncc)" [class.selected]="selectedRow === ncc" class="text-center">
                                             <td>{{ i + 1 }}</td>
                                             <td>{{ ncc.ten }}</td>
@@ -55,27 +55,12 @@
                         <div class="paginatoin-area float-right pt-30 pb-30">
                             <div class="row mt-3">
                                 <div class="col-12">
-                                    <ul class="pagination justify-content-center">
-                                        <li class="page-item" [class.disabled]="p === 1" (click)="pageChanged(1)">
-                                            <a class="page-link">Đầu</a>
-                                        </li>
-                                        <li class="page-item" *ngIf="p > 3">
-                                            <a class="page-link">...</a>
-                                        </li>
-                                        <li class="page-item" *ngFor="let page of visiblePages" [class.active]="page === p"
-                                            (click)="pageChanged(page)">
-                                            <a class="page-link">{{ page }}</a>
-                                        </li>
-                                        <li class="page-item" *ngIf="p < totalPages - 2">
-                                            <a class="page-link">...</a>
-                                        </li>
-                                        <li class="page-item" [class.disabled]="p === totalPages" (click)="pageChanged(totalPages)">
-                                            <a class="page-link">Cuối</a>
-                                        </li>
-                                    </ul>
+                                    <div class="text-center mt-4">
+                                        <pagination-controls class="pagination-controls"(pageChange)="getall($event)"(pageBoundsCorrection)="getall($event)"previousLabel="Trước"nextLabel="Sau"></pagination-controls>
+                                    </div>
                                 </div>
                             </div>
-                        </div>   
+                        </div>    
                     </div>
                 </div>
             </div>

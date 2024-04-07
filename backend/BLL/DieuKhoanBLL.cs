@@ -20,9 +20,9 @@ namespace BLL
         {
             return _res.GetByKieu(Kieu);
         }
-        public List<DieuKhoanModel> GetAll(int pageIndex, int pageSize, out int total, int? Kieu)
+        public List<DieuKhoanModel> GetAll(int pageIndex, int pageSize, out int total, string NoiDung)
         {
-            return _res.GetAll(pageIndex, pageSize, out total, Kieu);
+            return _res.GetAll(pageIndex, pageSize, out total, NoiDung);
         }
         public DieuKhoanModel GetByID(int id)
         {

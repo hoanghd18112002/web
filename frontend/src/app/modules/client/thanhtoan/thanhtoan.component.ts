@@ -132,13 +132,18 @@ export class ThanhtoanComponent {
         });
       });
   
-      // Xóa giỏ hàng sau khi tạo đơn hàng thành công
       localStorage.removeItem('cart');
       swal.fire({
         icon: 'success',
         title: 'Thành công!',
-        text: 'Thanh toán thành công! Cảm ơn bạn đã sử dụng dịch vụ.'
-      }).then(() => {
+        text: 'Thanh toán thành công! Đang xử lý',
+        timer: 5000, 
+        timerProgressBar: true,
+        didOpen: () => {
+          swal.showLoading()
+        }
+      }).then((result) => {
+        if (result.dismiss === swal.DismissReason.timer) {}
         if (this.loaiThanhToan === 1) {
           location.assign('/');
         }

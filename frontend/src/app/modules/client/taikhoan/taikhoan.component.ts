@@ -22,9 +22,6 @@ export class TaikhoanComponent {
   p: number = 1;
   pageSize: number = 6;
   totalItems: number = 0;
-  totalPages: number = 0;
-  totalPagesArray: number[] = [];
-  visiblePages: number[] = [];
 
   id: number = 0;
   ten: string = '';
@@ -65,6 +62,7 @@ export class TaikhoanComponent {
 
   ngOnInit(){
     this.loadUser();
+    this.loadDonHang(this.p);
   }
 
   //Thông tin đơn hàng
@@ -256,45 +254,20 @@ export class TaikhoanComponent {
       this.NgayTao = this.formatDate(this.user.ngayTao);
       this.GioiTinh = this.user.gioiTinh;
       this.TenQuyen = this.user.tenQuyen;
-
-      this.loadDonHang(this.user.id);
     }
   } 
 
-  loadDonHang(id: number) {
+  loadDonHang(p: number) {
     const obj = {
-      page: this.p,
+      page: p,
       pageSize: this.pageSize,
-      id: id
+      id: this.user.id
     };
     this.donHangService.getByNguoiDung(obj).subscribe(res => {
       this.ListDonHang = res.data;
       this.totalItems = res.totalItems;
-      this.calculateTotalPages();
+      this.p = p;
     });
-  }
-
-  calculateTotalPages(): void {
-    this.totalPages = Math.ceil(this.totalItems / this.pageSize);
-  
-    // Tính toán các trang được hiển thị
-    if (this.totalPages <= 3) {
-      this.visiblePages = Array.from({ length: this.totalPages }, (_, i) => i + 1);
-    } else {
-      if (this.p === 1) {
-        this.visiblePages = [1, 2, 3];
-      } else if (this.p === this.totalPages) {
-        this.visiblePages = [this.totalPages - 2, this.totalPages - 1, this.totalPages];
-      } else {
-        this.visiblePages = [this.p - 1, this.p, this.p + 1];
-      }
-    }
-  }
-
-  pageChanged(page: number): void {
-    this.p = page;
-    this.calculateTotalPages();
-    this.loadDonHang(this.user.id);
   }
 
   //File

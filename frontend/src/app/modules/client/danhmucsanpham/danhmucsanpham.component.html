@@ -117,7 +117,7 @@
                     <!-- product item start -->
                     <div class="shop-product-wrap grid row">
 
-                        <ng-container *ngFor="let sp of ListSanPham">
+                        <ng-container *ngFor="let sp of ListSanPham | paginate: { itemsPerPage: pageSize, currentPage: p, totalItems: totalItems }">
                             <div class="col-lg-3 col-md-4 col-sm-6">
                                 <!-- product single grid item start -->
                                 <div class="product-item fix mb-30">
@@ -188,30 +188,15 @@
                 <!-- product view wrapper area end -->
 
                 <!-- start pagination area -->
-                <div class="paginatoin-area text-center pt-30 pb-30">
+                <div class="paginatoin-area pt-30 pb-30">
                     <div class="row mt-3">
                         <div class="col-12">
-                            <ul class="pagination justify-content-center">
-                                <li class="page-item" [class.disabled]="p === 1" (click)="pageChanged(1)">
-                                    <a class="page-link">Đầu</a>
-                                </li>
-                                <li class="page-item" *ngIf="p > 3">
-                                    <a class="page-link">...</a>
-                                </li>
-                                <li class="page-item" *ngFor="let page of visiblePages" [class.active]="page === p"
-                                    (click)="pageChanged(page)">
-                                    <a class="page-link">{{ page }}</a>
-                                </li>
-                                <li class="page-item" *ngIf="p < totalPages - 2">
-                                    <a class="page-link">...</a>
-                                </li>
-                                <li class="page-item" [class.disabled]="p === totalPages" (click)="pageChanged(totalPages)">
-                                    <a class="page-link">Cuối</a>
-                                </li>
-                            </ul>
+                            <div class="text-center mt-4">
+                                <pagination-controls class="pagination-controls"(pageChange)="getsanphambyloai($event)"(pageBoundsCorrection)="getsanphambyloai($event)"previousLabel="Trước"nextLabel="Sau"></pagination-controls>
+                            </div>
                         </div>
                     </div>
-                </div>      
+                </div>       
                 <!-- end pagination area -->
 
             </div>

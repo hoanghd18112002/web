@@ -11,7 +11,7 @@
  Target Server Version : 100427
  File Encoding         : 65001
 
- Date: 07/04/2024 09:29:04
+ Date: 07/04/2024 18:09:06
 */
 
 SET NAMES utf8mb4;
@@ -32,7 +32,7 @@ CREATE TABLE `ctdonhang`  (
   INDEX `CTDonHang_DonHang_IDDonHang`(`IDDonHang`) USING BTREE,
   CONSTRAINT `CTDonHang_DonHang_IDDonHang` FOREIGN KEY (`IDDonHang`) REFERENCES `donhang` (`ID`) ON DELETE CASCADE ON UPDATE CASCADE,
   CONSTRAINT `CTDonHang_SanPham_IDSanPham` FOREIGN KEY (`IDSanPham`) REFERENCES `sanpham` (`ID`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE = InnoDB AUTO_INCREMENT = 220 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = DYNAMIC;
+) ENGINE = InnoDB AUTO_INCREMENT = 236 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of ctdonhang
@@ -95,7 +95,6 @@ INSERT INTO `ctdonhang` VALUES (215, 5, 32340000, 51, 116);
 INSERT INTO `ctdonhang` VALUES (216, 2, 22690000, 50, 117);
 INSERT INTO `ctdonhang` VALUES (217, 1, 22690000, 50, 118);
 INSERT INTO `ctdonhang` VALUES (218, 1, 43590000, 47, 118);
-INSERT INTO `ctdonhang` VALUES (219, 1, 43590000, 47, 119);
 
 -- ----------------------------
 -- Table structure for cthoadonnhap
@@ -226,7 +225,7 @@ CREATE TABLE `donhang`  (
   INDEX `DonHang_PhuongThucThanhToan_IDPhuongThuc`(`IDPhuongThuc`) USING BTREE,
   CONSTRAINT `DonHang_NguoiDung_IDNguoiDung` FOREIGN KEY (`IDNguoiDung`) REFERENCES `nguoidung` (`ID`) ON DELETE RESTRICT ON UPDATE RESTRICT,
   CONSTRAINT `DonHang_PhuongThucThanhToan_IDPhuongThuc` FOREIGN KEY (`IDPhuongThuc`) REFERENCES `phuongthucthanhtoan` (`ID`) ON DELETE RESTRICT ON UPDATE RESTRICT
-) ENGINE = InnoDB AUTO_INCREMENT = 120 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = DYNAMIC;
+) ENGINE = InnoDB AUTO_INCREMENT = 128 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of donhang
@@ -257,7 +256,6 @@ INSERT INTO `donhang` VALUES (115, 'Phạm Đức Hoàng', 'Hải Dương', '090
 INSERT INTO `donhang` VALUES (116, 'Phạm Đức Hoàng', 'Hải Dương', '0906090112', '2024-04-03 19:57:31', 1, '', 0, 1, 1);
 INSERT INTO `donhang` VALUES (117, 'Phạm Đức Hoàng', 'Hải Dương', '0906090112', '2024-04-03 20:01:53', 1, '', 0, 1, 1);
 INSERT INTO `donhang` VALUES (118, 'Phạm Đức Hoàng', 'Hải Dương', '0906090112', '2024-04-05 20:57:11', 1, '', 0, 1, 1);
-INSERT INTO `donhang` VALUES (119, 'Phạm Đức Hoàng', 'Hải Dương', '0906090112', '2024-04-05 20:57:58', 1, '', 0, 1, 1);
 
 -- ----------------------------
 -- Table structure for giamgia
@@ -271,7 +269,7 @@ CREATE TABLE `giamgia`  (
   `IDSanPham` int NULL DEFAULT NULL,
   PRIMARY KEY (`ID`) USING BTREE,
   CONSTRAINT `GiamGia_SanPham_IDSanPham` FOREIGN KEY (`ID`) REFERENCES `sanpham` (`ID`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE = InnoDB AUTO_INCREMENT = 29 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = DYNAMIC;
+) ENGINE = InnoDB AUTO_INCREMENT = 30 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of giamgia
@@ -513,12 +511,12 @@ CREATE TABLE `nguoidung`  (
   `Anh` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL,
   `TrangThai` int NULL DEFAULT NULL,
   `IDQuyen` int NULL DEFAULT NULL,
-  `EmailConfimed` bit(1) NULL DEFAULT NULL,
+  `EmailConfirmed` bit(1) NULL DEFAULT NULL,
   `Token` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL,
   PRIMARY KEY (`ID`) USING BTREE,
   INDEX `NguoiDung_Quyen_IDQuyen`(`IDQuyen`) USING BTREE,
   CONSTRAINT `NguoiDung_Quyen_IDQuyen` FOREIGN KEY (`IDQuyen`) REFERENCES `quyen` (`ID`) ON DELETE RESTRICT ON UPDATE RESTRICT
-) ENGINE = InnoDB AUTO_INCREMENT = 15 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = DYNAMIC;
+) ENGINE = InnoDB AUTO_INCREMENT = 17 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of nguoidung
@@ -529,7 +527,7 @@ INSERT INTO `nguoidung` VALUES (3, 'phamhaihuan', 'e10adc3949ba59abbe56e057f20f8
 INSERT INTO `nguoidung` VALUES (4, 'tranmylinh', 'e10adc3949ba59abbe56e057f20f883e', 'tranMyLinh@gmail.com', 'Trần Mỹ Linh', '2002-09-17 00:00:00', 'Hà Nội', '093567567', 0, 'tranmylinh.png', 1, 4, b'1', '1f326bbd-b676-4645-af02-1263138513f8');
 INSERT INTO `nguoidung` VALUES (5, 'phamducduy', 'e10adc3949ba59abbe56e057f20f883e', 'phamducduy@gmail.com', 'Phạm Đức Duy', '2002-12-08 00:00:00', 'Bắc Giang', '098765567', 1, 'phamducduy.png', 1, 2, b'1', '1f326bbd-b676-4645-af02-1263138513f8');
 INSERT INTO `nguoidung` VALUES (6, 'phamvanhoan', 'e10adc3949ba59abbe56e057f20f883e', 'phamvanhoan@gmail.com', 'Phạm Văn Hoàn', '2002-10-19 00:00:00', '123 Điện Biên Phủ tp Hải Dương', '0987654321', 1, 'phamvanhoan.png', 1, 3, b'1', '1f326bbd-b676-4645-af02-1263138513f8');
-INSERT INTO `nguoidung` VALUES (14, 'phamthanhduong', 'e10adc3949ba59abbe56e057f20f883e', 'genshinsdt3@gmail.com', 'Phạm Thanh Dương', '2024-04-07 09:24:42', 'hải dương', '1234567890', 1, 'avatar.png', 1, 2, b'1', 'ghBDhiBELdXQudxihbxOQgQwWuPBLwUEQnfThEOODEJYthRNZyPseewClWpiXbFh');
+INSERT INTO `nguoidung` VALUES (16, 'phamthanhduong', 'e10adc3949ba59abbe56e057f20f883e', 'genshinsdt3@gmail.com', 'Phạm Thanh Dương', '2024-04-07 13:05:06', 'hải dương', '1234567890', 1, 'avatar.png', 1, 2, b'1', 'oBSHXdRByaJMTvJeUHfRXNLSRDWquhGEyCtYUzJNOZjjCuWnBBOGDuHZbjFqTIzz');
 
 -- ----------------------------
 -- Table structure for nhacungcap
@@ -692,10 +690,10 @@ INSERT INTO `sanpham` VALUES (42, 'Máy giặt Panasonic NAV10', 'Loại máy gi
 INSERT INTO `sanpham` VALUES (43, 'Máy giặt Samsung WA22R88', 'Loại máy giặt: Máy giặt cửa trên Lồng giặt: Lồng đứng Khối lượng giặt: 22 Kg Tốc độ quay vắt: 700 vòng/phút Lượng nước tiêu thụ chuẩn: Hiệu suất sử dụng điện: Kiểu động cơ: Truyền động dây Curoa Inverter: Có Công nghệ giặt Chương trình hoạt động: 6 chương trình Công nghệ giặt: Công nghệ Magic Clean giặt nước nóng diệt khuẩn mức 40 và 60 độ C, Công nghệ Intensive Wash đánh tan xà phòng giúp tăng khả năng thẩm thấu vào sợi vải, Bộ lọc xơ vải Magic Filter, Hộp đánh tan bột giặt Magic Dispenser, Mâm giặt Wobble tạo luồng nước đa chiều, Công nghệ giặt Activ Dualwash Tiện ích: Điều khiển bằng smartphone qua ứng dụng SmartThings, Giặt nước nóng, Khóa trẻ em, Công nghệ Inverter tiết kiệm điện, Tự khởi động lại khi có điện, Vệ sinh lồng giặt, Hẹn giờ giặt xong Tổng quan Chất liệu lồng giặt: Thép không gỉ Chất liệu vỏ máy: Kim loại sơn tĩnh điện Chất liệu nắp máy: Kính chịu lực Bảng điều khiển: Song ngữ Anh-Việt cảm ứng có màn hình hiển thị Số người sử dụng: Từ trên 6 người (Trên 8.5 kg) Kích th', 50, 'maygiat1.png', '2023-04-03 12:53:46', 1, 8, 3);
 INSERT INTO `sanpham` VALUES (44, 'Máy giặt Samsung WW10TP5', 'Loại máy giặt: Cửa trước Lồng giặt: Lồng ngang Khối lượng giặt: Giặt 10Kg Tốc độ quay vắt: 1400 vòng/phút Hiệu suất sử dụng điện:  Kiểu động cơ: Truyền động dây coroa Inverter: Có Công nghệ giặt Chương trình hoạt động:  Công nghệ giặt: Cửa phụ Add door, QuickDrive giặt xả hiệu quả chỉ trong 39 phút, Công nghệ giặt bong bóng Eco Bubble Tiện ích: Tổng quan Chất liệu lồng giặt: Thép không gỉ Chất liệu vỏ máy: Thép chống gỉ Chất liệu nắp máy: Kính chịu lực Bảng điều khiển: Tiếng Việt Số người sử dụng: Từ 5-7 người Kích thước - Khối lượng: Ngang 60 cm - Cao 85 cm - Sâu 55 cm - Nặng 67 kg Nơi sản xuất: Việt Nam Năm sản xuất: 2021 Bảo hành: 24 tháng', 50, 'maygiat2.png', '2023-04-03 12:54:05', 1, 1, 3);
 INSERT INTO `sanpham` VALUES (45, 'Điều hòa LG B24END1', 'Công suất làm lạnh: 24.000 BTU Công suất sưởi ấm: 26.000BTU Phạm vi làm lạnh hiệu quả: Từ 30-40m² Công nghệ Inverter: Điều hòa inverter Loại máy: Điều hoà 1 chiều (chỉ làm lạnh) Tính Năng Tiện ích:Chức năng tự chẩn đoán lỗi, Chức năng tự làm sạch, Có tự điều chỉnh nhiệt độ (chế độ ngủ đêm), Công nghệ Gold-Fin chống ăn mòn, Làm lạnh nhanh tức thì, Màn hình hiển thị nhiệt độ trên dàn lạnh, Thổi gió dễ chịu Comfort Air (cho trẻ em, người già), Tự khởi động lại khi có điện, Đảo gió 4 chiều giúp hơi lạnh lan toả đồng đều Công nghệ tiết kiệm điện: Dual inverter Kháng khuẩn khử mùi: Màng lọc sơ cấp Chế độ làm lạnh nhanh: Jet Cool Chế độ gió:Tuỳ chỉnh điều khiển lên xuống trái phải tự động  Thông tin chung Thông tin cục lạnh: Dài 99.8 cm - Cao 34.5 cm - Dày 21 cm - Nặng 11 kg Thông tin cục nóng: Dài 87 cm - Cao 65 cm - Dày 33 cm - Nặng 43 kg Loại Gas sử dụng: R32 Nơi sản xuất: Thái Lan Năm ra mắt: 2022 Bảo hành: 24 tháng', 50, 'dh1.png', '2023-04-03 12:54:27', 1, 5, 4);
-INSERT INTO `sanpham` VALUES (46, 'Điều hòa LG B18END1', 'Tổng quan Công suất làm lạnh: 18.000 BTU Công suất sưởi ấm: 19000BTU Phạm vi làm lạnh hiệu quả: Từ 20-30m² Công nghệ Inverter: Điều hòa inverter Loại máy: Điều hoà 1 chiều (chỉ làm lạnh) Tính Năng Tiện ích:Chức năng tự chẩn đoán lỗi, Chức năng tự làm sạch, Có tự điều chỉnh nhiệt độ (chế độ ngủ đêm), Công nghệ Gold-Fin chống ăn mòn, Làm lạnh nhanh tức thì, Màn hình hiển thị nhiệt độ trên dàn lạnh, Thổi gió dễ chịu Comfort Air (cho trẻ em, người già), Tự khởi động lại khi có điện, Đảo gió 4 chiều giúp hơi lạnh lan toả đồng đều Công nghệ tiết kiệm điện: Dual inverter Kháng khuẩn khử mùi: Màng lọc sơ cấp Chế độ làm lạnh nhanh: Jet Cool Chế độ gió:Tuỳ chỉnh điều khiển lên xuống trái phải tự động  Thông tin chung Thông tin cục lạnh: Dài 99.8cm - Cao 34.5 cm - Dày 21 cm - Nặng 11 kg Thông tin cục nóng: Dài 87 cm - Cao 65 cm - Dày 33 cm - Nặng 43 kg Loại Gas sử dụng: R32 Nơi sản xuất: Thái Lan Năm ra mắt: 2022 Bảo hành: 24 tháng', 50, 'dh2.png', '2023-04-03 12:54:48', 1, 5, 4);
-INSERT INTO `sanpham` VALUES (47, 'Google Tivi Sony XR65A', 'Hệ điều hành, giao diện: Google TV Remote thông minh: Remote tích hợp tích micro tìm kiếm giọng nói (RMF-TX800P) Chiếu hình từ điện thoại lên TV: AirPlay 2, Chromecast Điều khiển tivi bằng điện thoại: Ứng dụng Android TV Kết nối ứng dụng các thiết bị trong nhà: Đang cập nhật Điều khiển bằng giọng nói: Tìm kiếm giọng nói trên YouTube bằng tiếng Việt, Google Assistant có tiếng Việt Tiện ích thông minh khác: Micro tích hợp trên TV điều khiển giọng nói rảnh tay, Bravia CAM (mua thêm camera)', 42, 'googletivisonyxr65a.png', '2023-04-03 12:55:07', 1, 6, 1);
-INSERT INTO `sanpham` VALUES (48, 'Điều hòa LG B13END1', 'Tổng quan Công suất làm lạnh: 1 HP - 12.000 BTU Công suất sưởi ấm: 12800BTU Phạm vi làm lạnh hiệu quả: Từ 15 - 20m² (từ 40 đến 60 m³) Công nghệ Inverter: Điều hòa inverter Loại máy: Điều hoà 1 chiều (chỉ làm lạnh) Tính Năng Tiện ích:Chức năng tự chẩn đoán lỗi, Chức năng tự làm sạch, Có tự điều chỉnh nhiệt độ (chế độ ngủ đêm), Công nghệ Gold-Fin chống ăn mòn, Làm lạnh nhanh tức thì, Màn hình hiển thị nhiệt độ trên dàn lạnh, Thổi gió dễ chịu Comfort Air (cho trẻ em, người già), Tự khởi động lại khi có điện, Đảo gió 4 chiều giúp hơi lạnh lan toả đồng đều Công nghệ tiết kiệm điện: Dual inverter Kháng khuẩn khử mùi: Màng lọc sơ cấp Chế độ làm lạnh nhanh: Jet Cool Chế độ gió:Tuỳ chỉnh điều khiển lên xuống trái phải tự động  Thông tin chung Thông tin cục lạnh: Dài 82 cm - Cao 29 cm - Dày 19 cm - Nặng 8.5 kg Thông tin cục nóng: Dài 72 cm - Cao 50 cm - Dày 23 cm - Nặng 24.7 kg Loại Gas sử dụng: R32 Nơi sản xuất: Thái Lan Năm ra mắt: 2022 Bảo hành: 24 tháng', 48, 'dh3.png', '2023-04-03 12:55:36', 1, 5, 4);
-INSERT INTO `sanpham` VALUES (49, 'Google Tivi Sony KD55X', 'Hệ điều hành, giao diện: Google TV Remote thông minh: Remote tích hợp tích micro tìm kiếm giọng nói (RMF-TX800P) Chiếu hình từ điện thoại lên TV: AirPlay 2, Chromecast Điều khiển tivi bằng điện thoại: Ứng dụng Android TV Điều khiển bằng giọng nói: Google Assistant có tiếng Việt, Tìm kiếm giọng nói trên YouTube bằng tiếng Việt Tiện ích thông minh khác: Bravia CAM (mua thêm camera), Micro tích hợp trên TV điều khiển giọng nói rảnh tay', 48, 'googletivisonykd55x.png', '2023-04-03 12:56:00', 1, 6, 1);
+INSERT INTO `sanpham` VALUES (46, 'Điều hòa LG B18END1', 'Tổng quan Công suất làm lạnh: 18.000 BTU Công suất sưởi ấm: 19000BTU Phạm vi làm lạnh hiệu quả: Từ 20-30m² Công nghệ Inverter: Điều hòa inverter Loại máy: Điều hoà 1 chiều (chỉ làm lạnh) Tính Năng Tiện ích:Chức năng tự chẩn đoán lỗi, Chức năng tự làm sạch, Có tự điều chỉnh nhiệt độ (chế độ ngủ đêm), Công nghệ Gold-Fin chống ăn mòn, Làm lạnh nhanh tức thì, Màn hình hiển thị nhiệt độ trên dàn lạnh, Thổi gió dễ chịu Comfort Air (cho trẻ em, người già), Tự khởi động lại khi có điện, Đảo gió 4 chiều giúp hơi lạnh lan toả đồng đều Công nghệ tiết kiệm điện: Dual inverter Kháng khuẩn khử mùi: Màng lọc sơ cấp Chế độ làm lạnh nhanh: Jet Cool Chế độ gió:Tuỳ chỉnh điều khiển lên xuống trái phải tự động  Thông tin chung Thông tin cục lạnh: Dài 99.8cm - Cao 34.5 cm - Dày 21 cm - Nặng 11 kg Thông tin cục nóng: Dài 87 cm - Cao 65 cm - Dày 33 cm - Nặng 43 kg Loại Gas sử dụng: R32 Nơi sản xuất: Thái Lan Năm ra mắt: 2022 Bảo hành: 24 tháng', 47, 'dh2.png', '2023-04-03 12:54:48', 1, 5, 4);
+INSERT INTO `sanpham` VALUES (47, 'Google Tivi Sony XR65A', 'Hệ điều hành, giao diện: Google TV Remote thông minh: Remote tích hợp tích micro tìm kiếm giọng nói (RMF-TX800P) Chiếu hình từ điện thoại lên TV: AirPlay 2, Chromecast Điều khiển tivi bằng điện thoại: Ứng dụng Android TV Kết nối ứng dụng các thiết bị trong nhà: Đang cập nhật Điều khiển bằng giọng nói: Tìm kiếm giọng nói trên YouTube bằng tiếng Việt, Google Assistant có tiếng Việt Tiện ích thông minh khác: Micro tích hợp trên TV điều khiển giọng nói rảnh tay, Bravia CAM (mua thêm camera)', 36, 'googletivisonyxr65a.png', '2023-04-03 12:55:07', 1, 6, 1);
+INSERT INTO `sanpham` VALUES (48, 'Điều hòa LG B13END1', 'Tổng quan Công suất làm lạnh: 1 HP - 12.000 BTU Công suất sưởi ấm: 12800BTU Phạm vi làm lạnh hiệu quả: Từ 15 - 20m² (từ 40 đến 60 m³) Công nghệ Inverter: Điều hòa inverter Loại máy: Điều hoà 1 chiều (chỉ làm lạnh) Tính Năng Tiện ích:Chức năng tự chẩn đoán lỗi, Chức năng tự làm sạch, Có tự điều chỉnh nhiệt độ (chế độ ngủ đêm), Công nghệ Gold-Fin chống ăn mòn, Làm lạnh nhanh tức thì, Màn hình hiển thị nhiệt độ trên dàn lạnh, Thổi gió dễ chịu Comfort Air (cho trẻ em, người già), Tự khởi động lại khi có điện, Đảo gió 4 chiều giúp hơi lạnh lan toả đồng đều Công nghệ tiết kiệm điện: Dual inverter Kháng khuẩn khử mùi: Màng lọc sơ cấp Chế độ làm lạnh nhanh: Jet Cool Chế độ gió:Tuỳ chỉnh điều khiển lên xuống trái phải tự động  Thông tin chung Thông tin cục lạnh: Dài 82 cm - Cao 29 cm - Dày 19 cm - Nặng 8.5 kg Thông tin cục nóng: Dài 72 cm - Cao 50 cm - Dày 23 cm - Nặng 24.7 kg Loại Gas sử dụng: R32 Nơi sản xuất: Thái Lan Năm ra mắt: 2022 Bảo hành: 24 tháng', 46, 'dh3.png', '2023-04-03 12:55:36', 1, 5, 4);
+INSERT INTO `sanpham` VALUES (49, 'Google Tivi Sony KD55X', 'Hệ điều hành, giao diện: Google TV Remote thông minh: Remote tích hợp tích micro tìm kiếm giọng nói (RMF-TX800P) Chiếu hình từ điện thoại lên TV: AirPlay 2, Chromecast Điều khiển tivi bằng điện thoại: Ứng dụng Android TV Điều khiển bằng giọng nói: Google Assistant có tiếng Việt, Tìm kiếm giọng nói trên YouTube bằng tiếng Việt Tiện ích thông minh khác: Bravia CAM (mua thêm camera), Micro tích hợp trên TV điều khiển giọng nói rảnh tay', 43, 'googletivisonykd55x.png', '2023-04-03 12:56:00', 1, 6, 1);
 INSERT INTO `sanpham` VALUES (50, 'Android Tivi Mini TCL 65X', 'Lỗi máy giặt bị lệch tâm sẽ dẫn đến hiện tượng quần áo bị xoắn rối, quấn hoặc dẫn đấn rách quần áo. Hơn thế đối với lỗi máy giặt bị lệch tâm như vậy dẫn đến tiếng ồn lớn mang đến cảm giác khó chịu và ảnh hưởng xấu tới các linh kiện bên trong máy. Vậy Nguyên nhân, tác hại và cách khắc phục lỗi máy giặt bị lệch tâm? Hệ điều hành, giao diện: Android 9.0 Remote thông minh: Remote tích hợp micro tìm kiếm bằng giọng nói Chiếu hình từ điện thoại lên TV: Chromecast, Screen Mirroring, T-Cast Điều khiển tivi bằng điện thoại: Ứng dụng Google Cast, Ứng dụng MagiConnect Kết nối ứng dụng các thiết bị trong nhà: Không Điều khiển bằng giọng nói: Tìm kiếm giọng nói trên YouTube bằng tiếng Việt, Google Assistant có tiếng Việt Tiện ích thông minh khác: Micro tích hợp trên TV điều khiển giọng nói rảnh tay', 47, 'Androidtiviminitcl65x.png', '2023-04-03 12:56:35', 1, 7, 1);
 INSERT INTO `sanpham` VALUES (51, 'Smart Tivi Samsung NEO QLE', 'Smart Tivi Neo QLED Samsung 4K 55 inch QA55QN90C là phiên bản tivi 55 inch mới được nhà sản xuất Hàn Quốc đưa tới thị trường Việt Nam năm 2023. Sản phẩm không chỉ được trang bị màn hình NEO QLED cao cấp mà các tính năng khác cũng thuộc hàng hiện đại hàng đầu.', 45, 'smarttivisamsungneoQLED4k.png', '2023-05-03 17:12:11', 1, 1, 1);
 
@@ -1294,18 +1292,18 @@ DROP PROCEDURE IF EXISTS `sp_dieukhoan_getall_desc`;
 delimiter ;;
 CREATE PROCEDURE `sp_dieukhoan_getall_desc`(IN p_pageindex INT,
     IN p_pagesize INT,
-    IN p_kieu INT)
+    IN p_noidung TEXT)
 BEGIN
     DECLARE start_index INT;
     DECLARE total_count INT;
     
     SET start_index = (p_pageindex - 1) * p_pagesize;
     
-    SELECT COUNT(*) INTO total_count FROM dieukhoan WHERE IFNULL(p_kieu, kieu) = kieu;
+    SELECT COUNT(*) INTO total_count FROM dieukhoan WHERE noidung LIKE CONCAT('%', p_noidung, '%');
     
     SELECT *, total_count AS TotalCount
     FROM dieukhoan 
-    WHERE IFNULL(p_kieu, kieu) = kieu 
+    WHERE noidung LIKE CONCAT('%', p_noidung, '%')
     ORDER BY ID DESC 
     LIMIT start_index, p_pagesize;
 END
@@ -2201,7 +2199,7 @@ CREATE PROCEDURE `sp_nguoidung_confirm`(IN p_token VARCHAR(255))
 BEGIN
     UPDATE nguoidung 
     SET 
-				emailconfimed = true
+				emailconfirmed = true
     WHERE token = p_token;
 END
 ;;
@@ -2223,7 +2221,7 @@ CREATE PROCEDURE `sp_nguoidung_create`(IN p_taikhoan VARCHAR(255),
 		IN p_idquyen INT,
 		IN p_token VARCHAR(255))
 BEGIN
-    INSERT INTO nguoidung (taikhoan, matkhau, email, ten, ngaytao, diachi, sdt, gioitinh, anh, trangthai, idquyen, emailconfimed, token)
+    INSERT INTO nguoidung (taikhoan, matkhau, email, ten, ngaytao, diachi, sdt, gioitinh, anh, trangthai, idquyen, emailConfirmed, token)
     VALUES (p_taikhoan, p_matkhau, p_email, p_ten, NOW(), p_diachi, p_sdt, 1, "avatar.png", p_trangthai, p_idquyen, 0, p_token);
 END
 ;;
@@ -2291,7 +2289,7 @@ delimiter ;;
 CREATE PROCEDURE `sp_nguoidung_kiemtra`(IN p_taikhoan VARCHAR(255),
 		IN p_email VARCHAR(255))
 BEGIN
-    SELECT n.taikhoan AS TaiKhoan, n.email AS Email, n.emailconfimed AS EmailConfimed
+    SELECT n.taikhoan AS TaiKhoan, n.email AS Email, n.emailconfirmed AS EmailConfirmed
 		FROM nguoidung n 
 		WHERE (n.taikhoan = p_taikhoan OR n.email = p_email);
 END

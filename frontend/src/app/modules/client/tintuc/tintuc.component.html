@@ -25,7 +25,7 @@
                 <div class="blog-wrapper-inner">
                     <div class="row">
 
-                        <ng-container *ngFor="let tt of ListTinTuc">
+                        <ng-container *ngFor="let tt of ListTinTuc | paginate: { itemsPerPage: pageSize, currentPage: p, totalItems: totalItems }">
                             <!-- start single blog item -->
                             <div class="col-lg-4 col-md-6">
                                 <div class="blog-item mb-26">
@@ -54,24 +54,7 @@
                 <div class="paginatoin-area text-center pt-30 pb-30">
                     <div class="row mt-3">
                         <div class="col-12">
-                            <ul class="pagination justify-content-center">
-                                <li class="page-item" [class.disabled]="p === 1" (click)="pageChanged(1)">
-                                    <a class="page-link">Đầu</a>
-                                </li>
-                                <li class="page-item" *ngIf="p > 3">
-                                    <a class="page-link">...</a>
-                                </li>
-                                <li class="page-item" *ngFor="let page of visiblePages" [class.active]="page === p"
-                                    (click)="pageChanged(page)">
-                                    <a class="page-link">{{ page }}</a>
-                                </li>
-                                <li class="page-item" *ngIf="p < totalPages - 2">
-                                    <a class="page-link">...</a>
-                                </li>
-                                <li class="page-item" [class.disabled]="p === totalPages" (click)="pageChanged(totalPages)">
-                                    <a class="page-link">Cuối</a>
-                                </li>
-                            </ul>
+                            <pagination-controls class="pagination-controls"(pageChange)="getTinTuc($event)"(pageBoundsCorrection)="getTinTuc($event)"previousLabel="Trước"nextLabel="Sau"></pagination-controls>
                         </div>
                     </div>
                 </div>                  

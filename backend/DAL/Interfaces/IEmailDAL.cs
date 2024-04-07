@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Model;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -9,6 +10,6 @@ namespace DAL.Interfaces
     public interface IEmailDAL
     {
         void SendConfirmationEmail(string toEmail, string confirmationLink, string token, string Ten);
-        void SendOrderEmail(string toEmail, string confirmationLink, string Ten, int ID);
+        void SendOrderEmail(string toEmail, string confirmationLink, string Ten, string HoTen, string DiaChi, string SDT, int? ID, List<ChiTietDonHangModel> model);
     }
 }

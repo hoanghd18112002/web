@@ -34,9 +34,6 @@ export class QlnguoidungComponent {
   p: number = 1;
   pageSize: number = 10;
   totalItems: number = 0;
-  totalPages: number = 0;
-  totalPagesArray: number[] = [];
-  visiblePages: number[] = [];
 
   @ViewChild('addModal') addModal!: ElementRef;
   @ViewChild('updateModal') updateModal!: ElementRef;
@@ -51,7 +48,7 @@ export class QlnguoidungComponent {
 
   ngOnInit(){
     this.getquyen();
-    this.getall(null);
+    this.getall(this.p, null);
   }
 
   //File
@@ -63,9 +60,9 @@ export class QlnguoidungComponent {
   }
 
   //Lấy danh sách toàn bộ
-  getall(idQuyen: any){
+  getall(p: number, idQuyen: any){
     const obj = {
-      page: this.p,
+      page: p,
       pageSize: this.pageSize,
       ten: this.searchTerm,
       idQuyen: idQuyen
@@ -73,31 +70,8 @@ export class QlnguoidungComponent {
     this.nguoiDungService.getall(obj).subscribe(res => {
       this.ListNguoiDung = res.data;
       this.totalItems = res.totalItems;
-      this.calculateTotalPages();
+      this.p = p
     });
-  }
-
-  calculateTotalPages(): void {
-    this.totalPages = Math.ceil(this.totalItems / this.pageSize);
-  
-    // Tính toán các trang được hiển thị
-    if (this.totalPages <= 3) {
-      this.visiblePages = Array.from({ length: this.totalPages }, (_, i) => i + 1);
-    } else {
-      if (this.p === 1) {
-        this.visiblePages = [1, 2, 3];
-      } else if (this.p === this.totalPages) {
-        this.visiblePages = [this.totalPages - 2, this.totalPages - 1, this.totalPages];
-      } else {
-        this.visiblePages = [this.p - 1, this.p, this.p + 1];
-      }
-    }
-  }
-
-  pageChanged(page: number): void {
-    this.p = page;
-    this.calculateTotalPages();
-    this.getall(this.id);
   }
 
   //Chọn quyền
@@ -105,9 +79,9 @@ export class QlnguoidungComponent {
     this.id = event.target.value === 'null' ? null : event.target.value;
     this.idQuyen = this.id
     if (this.id === "null") {
-        this.getall(null);
+        this.getall(this.p, null);
     } else {
-        this.getall(this.id);
+        this.getall(this.p, this.id);
     }
   }
 
@@ -162,7 +136,7 @@ export class QlnguoidungComponent {
               title: 'Thành công',
               text: res.message
           }).then(() => {
-            this.getall(this.id);
+            this.getall(this.p, this.id);
           });
         } else{
           swal.fire({
@@ -174,7 +148,7 @@ export class QlnguoidungComponent {
         });
         }
   
-        this.getall(this.id);
+        this.getall(this.p, this.id);
     
         // Đóng modal khi tạo thành công
         const addModal = this.addModal.nativeElement;
@@ -210,7 +184,7 @@ export class QlnguoidungComponent {
 
       // Gọi phương thức sửa từ service
       this.nguoiDungService.update(formData).subscribe(res => {
-        this.getall(this.id);
+        this.getall(this.p, this.id);
         swal.fire({
           icon: 'success',
           title: res.message,
@@ -246,7 +220,7 @@ export class QlnguoidungComponent {
         console.log(id);
         // Gọi phương thức sửa từ service
         this.nguoiDungService.update(formData).subscribe(res => {
-          this.getall(this.id);
+          this.getall(this.p, this.id);
           swal.fire({
             icon: 'success',
             title: res.message,
@@ -275,7 +249,7 @@ export class QlnguoidungComponent {
       const id = this.selectedRow.id; // Lấy id để xoá
       // Gọi phương thức xoá từ service    
       this.nguoiDungService.detele(id).subscribe(res => {
-        this.getall(this.id);
+        this.getall(this.p, this.id);
         swal.fire({
           icon: 'success',
           title: res.message,

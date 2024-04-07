@@ -28,9 +28,6 @@ export class TimkiemComponent {
   p: number = 1;
   pageSize: number = 12;
   totalItems: number = 0;
-  totalPages: number = 0;
-  totalPagesArray: number[] = [];
-  visiblePages: number[] = [];
   
   constructor(
     private _route: ActivatedRoute,
@@ -44,7 +41,7 @@ export class TimkiemComponent {
   ngOnInit(){
     this.getalldanhmuc();
     this.getallnhasanxuat();
-    this.getsanphamsearch();
+    this.getsanphamsearch(this.p);
   }
 
   //Sự kiện tìm kiếm
@@ -60,7 +57,7 @@ export class TimkiemComponent {
   }  
 
   //Lấy sản phẩm tìm kiếm
-  getsanphamsearch() {
+  getsanphamsearch(p: number) {
     this._route.queryParams.subscribe(params => {
       this.ten = params['ten'];
       this.IDLoai = params['idLoai'];
@@ -69,7 +66,7 @@ export class TimkiemComponent {
       this.MaxGia = params['maxGia'];
       
       const SanPham = {
-        page: this.p,
+        page: p,
         pageSize: this.pageSize,
         id: null,
         ten: this.ten,
@@ -84,34 +81,11 @@ export class TimkiemComponent {
       this.sanPhamService.search(SanPham).subscribe(res => {
         this.ListSanPham = res.data;
         this.totalItems = res.totalItems;
-        this.calculateTotalPages();
+        this.p = p;
       });
     });
   }
-
-  calculateTotalPages(): void {
-    this.totalPages = Math.ceil(this.totalItems / this.pageSize);
   
-    // Tính toán các trang được hiển thị
-    if (this.totalPages <= 3) {
-      this.visiblePages = Array.from({ length: this.totalPages }, (_, i) => i + 1);
-    } else {
-      if (this.p === 1) {
-        this.visiblePages = [1, 2, 3];
-      } else if (this.p === this.totalPages) {
-        this.visiblePages = [this.totalPages - 2, this.totalPages - 1, this.totalPages];
-      } else {
-        this.visiblePages = [this.p - 1, this.p, this.p + 1];
-      }
-    }
-  }
-
-  pageChanged(page: number): void {
-    this.p = page;
-    this.calculateTotalPages();
-    this.getsanphamsearch();
-  }
-
   //Thêm vào giỏ hàng
   addToCart(id: number) {
     this.cartService.addToCart(id, 1);

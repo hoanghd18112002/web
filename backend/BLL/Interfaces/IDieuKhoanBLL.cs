@@ -10,7 +10,7 @@ namespace BLL.Interfaces
     public interface IDieuKhoanBLL
     {
         List<DieuKhoanModel> GetByKieu(int Kieu);
-        List<DieuKhoanModel> GetAll(int pageIndex, int pageSize, out int total, int? Kieu);
+        List<DieuKhoanModel> GetAll(int pageIndex, int pageSize, out int total, string NoiDung);
         DieuKhoanModel GetByID(int id);
         bool Create(DieuKhoanModel model);
         bool Update(DieuKhoanModel model);
