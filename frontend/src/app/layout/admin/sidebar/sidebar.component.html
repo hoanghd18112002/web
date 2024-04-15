@@ -12,6 +12,8 @@
           <li><a *ngIf="user.idQuyen === 1 || user.idQuyen === 3" class="nav-link" routerLink="/admin/"><i data-feather="monitor"></i><span>Bảng điều khiển</span></a></li>
           <li><a class="nav-link" routerLink="/admin/profile/"><i data-feather="user"></i><span>Thông tin tài khoản</span></a></li>
           <li><a class="nav-link" routerLink="/admin/doithongtin/"><i data-feather="edit"></i><span>Đổi thông tin</span></a></li>
+          <li><a class="nav-link" routerLink="/"><i data-feather="home"></i><span>Trang Client</span></a></li>
+          <li><a class="nav-link" href="#" (click)="deleteUser()"><i data-feather="log-out"></i><span>Đăng xuất</span></a></li>
         </ul>
       </li> 
 

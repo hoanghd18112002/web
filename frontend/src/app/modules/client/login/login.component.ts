@@ -55,9 +55,9 @@ export class LoginComponent {
             if (res.data.idQuyen == 2) {
                 location.assign('/');
             } else if (res.data.idQuyen == 1 || res.data.idQuyen == 3){
-                location.assign('/admin/profile');
+                location.assign('/admin/');
             } else{
-                location.assign('/admin/profile');
+                location.assign('/admin/');
             }      
         } else {
             swal.fire({

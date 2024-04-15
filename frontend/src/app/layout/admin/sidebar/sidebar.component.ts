@@ -33,5 +33,10 @@ export class SidebarComponent {
     this.thamsoService.getbyma("LOGO").subscribe(res => {
       this.logo = res.data;
     });
-  }  
+  } 
+  
+  //Đăng xuất
+  deleteUser() {
+    this.service.logout();
+  }   
 }

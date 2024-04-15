@@ -32,6 +32,21 @@ export class MainComponent {
     this.LoadSoLuong();
   }
 
+  ngOnDestroy(): void {
+    if (this.chart) {
+      this.chart.destroy();
+    }
+    if (this.chart1) {
+      this.chart1.destroy();
+    }
+    if (this.chart2) {
+      this.chart2.destroy();
+    }
+    if (this.chart3) {
+      this.chart3.destroy();
+    }
+  }
+
   //Lấy danh sách toàn bộ doanh thu theo tháng
   LoadDoanhThuTheoThang(){
     this.thongKeService.getdoanhthutheothang(this.soThang).subscribe(res => {
