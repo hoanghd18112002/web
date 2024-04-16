@@ -10,6 +10,8 @@ namespace BLL.Interfaces
     public interface IThongKeBLL
     {
         List<DoanhThuTheoThangModel> DoanhThuTheoThang(int sl);
+        List<DoanhThuTheoNamModel> DoanhThuTheoNam(int nam);
+        List<DoanhThuTheoQuyModel> DoanhThuTheoQuy(int nam);
         List<DoanhThuSanPhamModel> DoanhThuSanPham(int sl);
         List<LoaiSanPhamBanChayModel> LoaiSanPhamBanChay(int sl);
         List<SoLuongModel> SoLuong();

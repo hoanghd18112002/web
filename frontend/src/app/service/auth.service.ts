@@ -52,7 +52,7 @@ export class AuthService {
   isTokenValid(): boolean {
     const user = this.getCurrentUser();
     if (user && user.token) {
-      const tokenExpiration = new Date(new Date().getTime() + 7 * 24 * 60 * 60 * 1000);
+      const tokenExpiration = new Date(new Date().getTime() * 24 * 60 * 60 * 1000);
       const tokenExpirationTime = tokenExpiration.getTime();
       const currentTime = new Date().getTime();
       if (currentTime > tokenExpirationTime) {

@@ -18,6 +18,14 @@ export class ThongKeService {
     return this.http.get<any>(`${this.apiUrl}/doanh-thu-theo-thang/${sl}`, { headers });
   }
 
+  getdoanhthutheonam(nam: number): Observable<any> {
+    return this.http.get<any>(`${this.apiUrl}/doanh-thu-theo-nam/${nam}`, { headers });
+  }
+
+  getdoanhthutheoquy(nam: number): Observable<any> {
+    return this.http.get<any>(`${this.apiUrl}/doanh-thu-theo-quy/${nam}`, { headers });
+  }
+
   getdoanhthusanpham(sl: number): Observable<any> {
     return this.http.get<any>(`${this.apiUrl}/doanh-thu-san-pham/${sl}`, { headers });
   }

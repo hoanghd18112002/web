@@ -32,6 +32,36 @@ namespace DAL
                 throw ex;
             }
         }
+        public List<DoanhThuTheoNamModel> DoanhThuTheoNam(int nam)
+        {
+            string msgError = "";
+            try
+            {
+                var dt = _dbHelper.ExecuteSProcedureReturnDataTable(out msgError, "sp_thongke_doanhthutheonam", "@p_nam", nam);
+                if (!string.IsNullOrEmpty(msgError))
+                    throw new Exception(msgError);
+                return dt.ConvertTo<DoanhThuTheoNamModel>().ToList();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+        public List<DoanhThuTheoQuyModel> DoanhThuTheoQuy(int nam)
+        {
+            string msgError = "";
+            try
+            {
+                var dt = _dbHelper.ExecuteSProcedureReturnDataTable(out msgError, "sp_thongke_doanhthutheoquy", "@p_nam", nam);
+                if (!string.IsNullOrEmpty(msgError))
+                    throw new Exception(msgError);
+                return dt.ConvertTo<DoanhThuTheoQuyModel>().ToList();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
         public List<DoanhThuSanPhamModel> DoanhThuSanPham(int sl)
         {
             string msgError = "";

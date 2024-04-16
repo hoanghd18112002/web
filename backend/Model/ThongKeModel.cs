@@ -11,6 +11,16 @@ namespace Model
         public string? ThoiGian { get; set; }
         public long? DoanhThuTheoThang { get; set; }
     }
+    public class DoanhThuTheoNamModel
+    {
+        public string? ThoiGian { get; set; }
+        public long? DoanhThuTheoNam { get; set; }
+    }
+    public class DoanhThuTheoQuyModel
+    {
+        public string? ThoiGian { get; set; }
+        public long? DoanhThuTheoQuy { get; set; }
+    }
     public class DoanhThuSanPhamModel
     {
         public int ID { get; set; }

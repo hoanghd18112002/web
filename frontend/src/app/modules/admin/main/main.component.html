@@ -91,11 +91,8 @@
                 <div class="card">
                     <div class="card-header">
                         <h4>THỐNG KÊ DOANH THU THEO THÁNG</h4>
-                        <select class="btn btn-info" name="soThang" [(ngModel)]="soThang" (change)="LoadDoanhThuTheoThang()">
-                            <option [value]="6">6 tháng</option>
-                            <option [value]="12">12 tháng</option>
-                            <option [value]="18">18 tháng</option>
-                        </select>
+                        <input type="number" class="form-control" name="soThang" [(ngModel)]="soThang" placeholder="Nhập số tháng" style="width: 100px;">
+                        <button class="btn btn-info" (click)="LoadDoanhThuTheoThang()">Xem</button>
                     </div>
                     <div class="card-body">
                         <div class="col-lg-12 mx-auto text-center">
@@ -109,12 +106,9 @@
             <div class="col-12 col-sm-12 col-lg-6">
                 <div class="card">
                     <div class="card-header">
-                        <h4>THỐNG KÊ LOẠI SẢN PHẨM BÁN CHẠY</h4>
-                        <select class="btn btn-info" name="soLoaiSanPham" [(ngModel)]="soLoaiSanPham" (change)="LoadDoanhThuLoaiSanPham()">
-                            <option [value]="5">5 loại</option>
-                            <option [value]="7">7 loại</option>
-                            <option [value]="10">10 loại</option>
-                        </select>
+                        <h4>THỐNG KÊ DOANH THU THEO NĂM</h4>
+                        <input type="number" class="form-control" name="thongkenam" [(ngModel)]="thongkenam" placeholder="Nhập năm" style="width: 100px;">
+                        <button class="btn btn-info" (click)="LoadDoanhThuTheoNam()">Xem</button>
                     </div>
                     <div class="card-body">
                         <div class="col-lg-12 mx-auto">
@@ -126,16 +120,43 @@
             <div class="col-12 col-sm-12 col-lg-6">
                 <div class="card">
                     <div class="card-header">
-                        <h4>THỐNG KẾ SẢN PHẨM BÁN CHẠY</h4>
-                        <select class="btn btn-info" name="soSanPham" [(ngModel)]="soSanPham" (change)="LoadDoanhThuSanPham()">
-                            <option [value]="5">5 sản phẩm</option>
-                            <option [value]="7">7 sản phẩm</option>
-                            <option [value]="10">10 sản phẩm</option>
-                        </select>
+                        <h4>THỐNG KÊ DOANH THU THEO QUÝ</h4>
+                        <input type="number" class="form-control" name="thongkequy" [(ngModel)]="thongkequy" placeholder="Nhập năm" style="width: 100px;">
+                        <button class="btn btn-info" (click)="LoadDoanhThuTheoQuy()">Xem</button>
                     </div>
                     <div class="card-body">
                         <div class="col-lg-12 mx-auto">
                             <canvas id="chart2"></canvas>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-12 col-sm-12 col-lg-6">
+                <div class="card">
+                    <div class="card-header">
+                        <h4>THỐNG KÊ LOẠI SẢN PHẨM BÁN CHẠY</h4>
+                        <input type="number" class="form-control" name="soLoaiSanPham" [(ngModel)]="soLoaiSanPham" placeholder="Nhập số loại sản phẩm" style="width: 100px;">
+                        <button class="btn btn-info" (click)="LoadDoanhThuLoaiSanPham()">Xem</button>
+                    </div>
+                    <div class="card-body">
+                        <div class="col-lg-12 mx-auto">
+                            <canvas id="chart3"></canvas>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-12 col-sm-12 col-lg-6">
+                <div class="card">
+                    <div class="card-header">
+                        <h4>THỐNG KẾ SẢN PHẨM BÁN CHẠY</h4>
+                        <input type="number" class="form-control" name="soSanPham" [(ngModel)]="soSanPham" placeholder="Nhập số sản phẩm" style="width: 100px;">
+                        <button class="btn btn-info" (click)="LoadDoanhThuSanPham()">Xem</button>
+                    </div>
+                    <div class="card-body">
+                        <div class="col-lg-12 mx-auto">
+                            <canvas id="chart4"></canvas>
                         </div>
                     </div>
                 </div>

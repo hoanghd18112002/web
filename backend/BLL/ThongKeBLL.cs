@@ -21,6 +21,14 @@ namespace BLL
         {
             return _res.DoanhThuTheoThang(sl);
         }
+        public List<DoanhThuTheoNamModel> DoanhThuTheoNam(int nam)
+        {
+            return _res.DoanhThuTheoNam(nam);
+        }
+        public List<DoanhThuTheoQuyModel> DoanhThuTheoQuy(int nam)
+        {
+            return _res.DoanhThuTheoQuy(nam);
+        }
         public List<DoanhThuSanPhamModel> DoanhThuSanPham(int sl)
         {
             return _res.DoanhThuSanPham(sl);

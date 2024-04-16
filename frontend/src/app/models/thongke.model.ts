@@ -3,6 +3,16 @@ export interface ThongKeDoanhThuTheoThang {
     doanhThuTheoThang: number;
 }
 
+export interface ThongKeDoanhThuTheoNam{
+    thoiGian: string;
+    doanhThuTheoNam: number;
+}
+
+export interface ThongKeDoanhThuTheoQuy {
+    thoiGian: string;
+    doanhThuTheoQuy: number;
+}
+
 export interface ThongKeDoanhThuSanPham {
     id: number;
     ten: string;

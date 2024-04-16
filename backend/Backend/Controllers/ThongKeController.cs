@@ -31,6 +31,36 @@ namespace Backend.Controllers
             }
         }
 
+        [Route("doanh-thu-theo-nam/{nam}")]
+        [HttpGet]
+        public IActionResult DoanhThuTheoNam(int nam)
+        {
+            try
+            {
+                var kq = _bll.DoanhThuTheoNam(nam);
+                return Ok(new { success = true, message = "Lấy dữ liệu thành công", data = kq });
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, new { success = false, message = "Đã xảy ra lỗi: " + ex.Message });
+            }
+        }
+
+        [Route("doanh-thu-theo-quy/{nam}")]
+        [HttpGet]
+        public IActionResult DoanhThuTheoQuy(int nam)
+        {
+            try
+            {
+                var kq = _bll.DoanhThuTheoQuy(nam);
+                return Ok(new { success = true, message = "Lấy dữ liệu thành công", data = kq });
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, new { success = false, message = "Đã xảy ra lỗi: " + ex.Message });
+            }
+        }
+
         [Route("doanh-thu-san-pham/{sl}")]
         [HttpGet]
         public IActionResult DoanhThuSanPham(int sl)
