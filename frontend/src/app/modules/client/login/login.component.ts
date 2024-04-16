@@ -20,7 +20,6 @@ export class LoginComponent {
   //Đăng nhập
   Login() {
     if (!this.TaiKhoan || !this.MatKhau) {
-        // Thông báo khi tài khoản hoặc mật khẩu trống
         swal.fire({
             icon: 'error',
             title: 'Lỗi',
@@ -50,8 +49,11 @@ export class LoginComponent {
             });
             return;
         } else if (res.success) {
-            let user = JSON.stringify(res.data);
-            localStorage.setItem('user', user);
+            const user = {
+                ...res.data,
+                loginTime: new Date().getTime()
+            };
+            localStorage.setItem('user', JSON.stringify(user));
             if (res.data.idQuyen == 2) {
                 location.assign('/');
             } else if (res.data.idQuyen == 1 || res.data.idQuyen == 3){

@@ -16,11 +16,6 @@ export class AppComponent implements OnInit {
   }
 
   checkTokenExpiration() {
-    const user = this.authService.getCurrentUser();
-    if (user && user.token) {
-      if (!this.authService.isTokenValid()) {
-        this.authService.logout();
-      }
-    }
+    this.authService.isTokenValid();
   }
 }
