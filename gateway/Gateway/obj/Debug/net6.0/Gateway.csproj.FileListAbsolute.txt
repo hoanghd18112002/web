@@ -7,16 +7,10 @@ D:\PhamDucHoang\DoAn\DoAnTN\Web\Gateway\Gateway\bin\Debug\net6.0\Gateway.runtime
 D:\PhamDucHoang\DoAn\DoAnTN\Web\Gateway\Gateway\bin\Debug\net6.0\Gateway.dll
 D:\PhamDucHoang\DoAn\DoAnTN\Web\Gateway\Gateway\bin\Debug\net6.0\Gateway.pdb
 D:\PhamDucHoang\DoAn\DoAnTN\Web\Gateway\Gateway\bin\Debug\net6.0\FluentValidation.dll
-D:\PhamDucHoang\DoAn\DoAnTN\Web\Gateway\Gateway\bin\Debug\net6.0\Microsoft.AspNetCore.Authentication.JwtBearer.dll
 D:\PhamDucHoang\DoAn\DoAnTN\Web\Gateway\Gateway\bin\Debug\net6.0\Microsoft.AspNetCore.JsonPatch.dll
 D:\PhamDucHoang\DoAn\DoAnTN\Web\Gateway\Gateway\bin\Debug\net6.0\Microsoft.AspNetCore.MiddlewareAnalysis.dll
 D:\PhamDucHoang\DoAn\DoAnTN\Web\Gateway\Gateway\bin\Debug\net6.0\Microsoft.AspNetCore.Mvc.NewtonsoftJson.dll
 D:\PhamDucHoang\DoAn\DoAnTN\Web\Gateway\Gateway\bin\Debug\net6.0\Microsoft.Extensions.DiagnosticAdapter.dll
-D:\PhamDucHoang\DoAn\DoAnTN\Web\Gateway\Gateway\bin\Debug\net6.0\Microsoft.IdentityModel.JsonWebTokens.dll
-D:\PhamDucHoang\DoAn\DoAnTN\Web\Gateway\Gateway\bin\Debug\net6.0\Microsoft.IdentityModel.Logging.dll
-D:\PhamDucHoang\DoAn\DoAnTN\Web\Gateway\Gateway\bin\Debug\net6.0\Microsoft.IdentityModel.Protocols.dll
-D:\PhamDucHoang\DoAn\DoAnTN\Web\Gateway\Gateway\bin\Debug\net6.0\Microsoft.IdentityModel.Protocols.OpenIdConnect.dll
-D:\PhamDucHoang\DoAn\DoAnTN\Web\Gateway\Gateway\bin\Debug\net6.0\Microsoft.IdentityModel.Tokens.dll
 D:\PhamDucHoang\DoAn\DoAnTN\Web\Gateway\Gateway\bin\Debug\net6.0\Microsoft.OpenApi.dll
 D:\PhamDucHoang\DoAn\DoAnTN\Web\Gateway\Gateway\bin\Debug\net6.0\Newtonsoft.Json.dll
 D:\PhamDucHoang\DoAn\DoAnTN\Web\Gateway\Gateway\bin\Debug\net6.0\Newtonsoft.Json.Bson.dll
@@ -24,7 +18,6 @@ D:\PhamDucHoang\DoAn\DoAnTN\Web\Gateway\Gateway\bin\Debug\net6.0\Ocelot.dll
 D:\PhamDucHoang\DoAn\DoAnTN\Web\Gateway\Gateway\bin\Debug\net6.0\Swashbuckle.AspNetCore.Swagger.dll
 D:\PhamDucHoang\DoAn\DoAnTN\Web\Gateway\Gateway\bin\Debug\net6.0\Swashbuckle.AspNetCore.SwaggerGen.dll
 D:\PhamDucHoang\DoAn\DoAnTN\Web\Gateway\Gateway\bin\Debug\net6.0\Swashbuckle.AspNetCore.SwaggerUI.dll
-D:\PhamDucHoang\DoAn\DoAnTN\Web\Gateway\Gateway\bin\Debug\net6.0\System.IdentityModel.Tokens.Jwt.dll
 D:\PhamDucHoang\DoAn\DoAnTN\Web\Gateway\Gateway\obj\Debug\net6.0\Gateway.csproj.AssemblyReference.cache
 D:\PhamDucHoang\DoAn\DoAnTN\Web\Gateway\Gateway\obj\Debug\net6.0\Gateway.GeneratedMSBuildEditorConfig.editorconfig
 D:\PhamDucHoang\DoAn\DoAnTN\Web\Gateway\Gateway\obj\Debug\net6.0\Gateway.AssemblyInfoInputs.cache

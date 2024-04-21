@@ -1,15 +1,15 @@
 {
   "format": 1,
   "restore": {
-    "D:\\PhamDucHoang\\DoAn\\DoAnTN\\Web\\gateway\\Gateway\\Gateway.csproj": {}
+    "D:\\PhamDucHoang\\DoAn\\DoAnTN\\Web\\Gateway\\Gateway\\Gateway.csproj": {}
   },
   "projects": {
-    "D:\\PhamDucHoang\\DoAn\\DoAnTN\\Web\\gateway\\Gateway\\Gateway.csproj": {
+    "D:\\PhamDucHoang\\DoAn\\DoAnTN\\Web\\Gateway\\Gateway\\Gateway.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\PhamDucHoang\\DoAn\\DoAnTN\\Web\\gateway\\Gateway\\Gateway.csproj",
+        "projectUniqueName": "D:\\PhamDucHoang\\DoAn\\DoAnTN\\Web\\Gateway\\Gateway\\Gateway.csproj",
         "projectName": "Gateway",
-        "projectPath": "D:\\PhamDucHoang\\DoAn\\DoAnTN\\Web\\gateway\\Gateway\\Gateway.csproj",
+        "projectPath": "D:\\PhamDucHoang\\DoAn\\DoAnTN\\Web\\Gateway\\Gateway\\Gateway.csproj",
         "packagesPath": "C:\\Users\\Admin\\.nuget\\packages\\",
         "outputPath": "D:\\PhamDucHoang\\DoAn\\DoAnTN\\Web\\gateway\\Gateway\\obj\\",
         "projectStyle": "PackageReference",
