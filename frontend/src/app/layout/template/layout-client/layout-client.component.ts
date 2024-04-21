@@ -13,13 +13,24 @@ export class LayoutClientComponent implements OnInit {
 
   ngOnInit(): void {
     this.loadScripts();
+    // this.loadCss();
 
     this.router.events.pipe(
       filter((event) => event instanceof NavigationEnd)
     ).subscribe(() => {
       this.loadScripts();
+      // this.loadCss();
     });
   }
+
+  // private async loadCss(): Promise<void> {
+  //   this.load.loadCSS('assets/client/css/bootstrap.min.css');
+  //   this.load.loadCSS('assets/client/css/font-awesome.min.css');
+  //   this.load.loadCSS('assets/client/css/helper.min.css');
+  //   this.load.loadCSS('assets/client/css/plugins.css');
+  //   this.load.loadCSS('assets/client/css/style.css');
+  //   this.load.loadCSS('assets/client/css/skin-default.css');
+  // }
 
   private async loadScripts(): Promise<void> {
     // await this.load.loadScript('assets/client/js/vendor/modernizr-3.6.0.min.js');
