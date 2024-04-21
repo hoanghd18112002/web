@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "D:\\PhamDucHoang\\DoAn\\DoAnTN\\Web\\Gateway\\Gateway\\Gateway.csproj": {}
+    "D:\\PhamDucHoang\\DoAn\\DoAnTN\\Web\\gateway\\Gateway\\Gateway.csproj": {}
   },
   "projects": {
-    "D:\\PhamDucHoang\\DoAn\\DoAnTN\\Web\\Gateway\\Gateway\\Gateway.csproj": {
+    "D:\\PhamDucHoang\\DoAn\\DoAnTN\\Web\\gateway\\Gateway\\Gateway.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\PhamDucHoang\\DoAn\\DoAnTN\\Web\\Gateway\\Gateway\\Gateway.csproj",
+        "projectUniqueName": "D:\\PhamDucHoang\\DoAn\\DoAnTN\\Web\\gateway\\Gateway\\Gateway.csproj",
         "projectName": "Gateway",
-        "projectPath": "D:\\PhamDucHoang\\DoAn\\DoAnTN\\Web\\Gateway\\Gateway\\Gateway.csproj",
+        "projectPath": "D:\\PhamDucHoang\\DoAn\\DoAnTN\\Web\\gateway\\Gateway\\Gateway.csproj",
         "packagesPath": "C:\\Users\\Admin\\.nuget\\packages\\",
-        "outputPath": "D:\\PhamDucHoang\\DoAn\\DoAnTN\\Web\\Gateway\\Gateway\\obj\\",
+        "outputPath": "D:\\PhamDucHoang\\DoAn\\DoAnTN\\Web\\gateway\\Gateway\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages",
@@ -45,10 +45,6 @@
         "net6.0": {
           "targetAlias": "net6.0",
           "dependencies": {
-            "Microsoft.AspNetCore.Authentication.JwtBearer": {
-              "target": "Package",
-              "version": "[6.0.14, )"
-            },
             "Ocelot": {
               "target": "Package",
               "version": "[18.0.0, )"
