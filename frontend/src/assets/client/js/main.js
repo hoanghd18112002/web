@@ -338,7 +338,7 @@ $('.category-menu').on('click', 'li a, li a .menu-expand', function (e) {
 		infinite: true,
 		arrows: true,
 		autoplay: true,
-		speed: 1000,
+		speed: 3000,
 		pauseOnFocus: false,
 		pauseOnHover: false,
 		slidesToShow: 5,

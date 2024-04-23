@@ -192,39 +192,41 @@
                         <h3>Sản phẩm tương tự</h3>
                     </div> <!-- section title end -->
                     <!-- featured category start -->
-                    <div class="featured-carousel-active slick-padding slick-arrow-style">
+                    <div class="slick-padding slick-arrow-style">
 
-                        <div *ngFor="let sp of ListSanPhamTuongTu">
-                            <!-- product single item start -->
-                            <div class="product-item">
-                                <div class="product-thumb">
-                                    <a (click)="reloadPage(sp.id)">
-                                        <img src="/assets/client/img/sanpham/{{ sp.anh }}" class="img-pri" alt="">
-                                    </a>
-                                    <ng-container *ngIf="sp.phanTram !== null && sp.phanTram !== undefined">
-                                        <div class="product-label ml-140">
-                                            <span>{{ sp.phanTram }} %</span>
-                                        </div>
-                                    </ng-container>
-                                    <div class="product-action-link mt-154">
-                                        <a (click)="addToCart(sp.id, 1)"><i class="fa fa-shopping-cart"></i></a>
-                                    </div>
-                                </div>
-                                <div class="product-content text-center border-top">
-                                    <a (click)="reloadPage(sp.id)" class="product-title text-dark font-weight-bold">{{ sp.ten }}</a>
-                                    <div class="pricebox">
-                                        <ng-container *ngIf="sp.phanTram === null || sp.phanTram === undefined">
-                                            <span class="price text-danger">Giá: {{ sp.gia | number:'1.0-0' }} đ</span><br/>
-                                        </ng-container>
+                        <!-- product single item start -->
+                        <owl-carousel-o [options]="sanPhamTuongTuSlide">
+                            <ng-template carouselSlide *ngFor="let sp of ListSanPhamTuongTu">
+                                <div class="product-item">
+                                    <div class="product-thumb">
+                                        <a (click)="reloadPage(sp.id)">
+                                            <img src="/assets/client/img/sanpham/{{ sp.anh }}" class="img-pri" alt="">
+                                        </a>
                                         <ng-container *ngIf="sp.phanTram !== null && sp.phanTram !== undefined">
-                                            <span class="price text-danger">Giá giảm giá: {{ sp.giaGiamGia | number:'1.0-0' }} đ</span><br/>
-                                            <span class="strikethrough text-muted"><s>Giá cũ: {{ sp.gia | number:'1.0-0' }} đ</s></span>
+                                            <div class="product-label ml-140">
+                                                <span>{{ sp.phanTram }} %</span>
+                                            </div>
                                         </ng-container>
+                                        <div class="product-action-link mt-154">
+                                            <a (click)="addToCart(sp.id, 1)"><i class="fa fa-shopping-cart"></i></a>
+                                        </div>
+                                    </div>
+                                    <div class="product-content text-center border-top">
+                                        <a (click)="reloadPage(sp.id)" class="product-title text-dark font-weight-bold">{{ sp.ten }}</a>
+                                        <div class="pricebox">
+                                            <ng-container *ngIf="sp.phanTram === null || sp.phanTram === undefined">
+                                                <span class="price text-danger">Giá: {{ sp.gia | number:'1.0-0' }} đ</span><br/>
+                                            </ng-container>
+                                            <ng-container *ngIf="sp.phanTram !== null && sp.phanTram !== undefined">
+                                                <span class="price text-danger">Giá giảm giá: {{ sp.giaGiamGia | number:'1.0-0' }} đ</span><br/>
+                                                <span class="strikethrough text-muted"><s>Giá cũ: {{ sp.gia | number:'1.0-0' }} đ</s></span>
+                                            </ng-container>
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
-                            <!-- product single item end -->
-                        </div>
+                            </ng-template>
+                        </owl-carousel-o> 
+                        <!-- product single item end -->
 
                     </div>
                     <!-- featured category end -->
@@ -242,33 +244,37 @@
                             <h3>Ngẫu nhiên</h3>
                             <div class="category-append"></div>
                         </div> <!-- section title end -->
-                        <div class="category-carousel-active row" data-row="4">
-                            <ng-container *ngFor="let sp of ListSanPhamNgauNhien">
-                                <div class="col">
-                                    <div class="category-item">
-                                        <div class="category-thumb">
-                                            <a (click)="reloadPage(sp.id)">
-                                                <img src="/assets/client/img/sanpham/{{ sp.anh }}" alt="">
-                                            </a>
-                                        </div>
-                                        <div class="category-content">
-                                            <h4><a (click)="reloadPage(sp.id)">{{ sp.ten }}</a></h4>
-                                            <div class="price-box">
-                                                <div class="pricebox">
-                                                    <ng-container *ngIf="sp.phanTram === null || sp.phanTram === undefined">
-                                                        <span class="price text-danger">{{ sp.gia | number:'1.0-0' }} đ</span><br/>
-                                                    </ng-container>
-                                                    <ng-container *ngIf="sp.phanTram !== null && sp.phanTram !== undefined">
-                                                        <span class="price text-danger">{{ sp.giaGiamGia | number:'1.0-0' }} đ</span><br/>
-                                                        <span class="strikethrough text-muted"><s>{{ sp.gia | number:'1.0-0' }} đ</s></span>
-                                                    </ng-container>
+
+                        <!-- <div class="row" data-row="4">  -->
+                            <owl-carousel-o [options]="sanPhamTuongTuSlide">
+                                <ng-template carouselSlide>
+                                    <ng-container *ngFor="let sp of ListSanPhamNgauNhien">
+                                        <div class="category-item">
+                                            <div class="category-thumb">
+                                                <a (click)="reloadPage(sp.id)">
+                                                    <img src="/assets/client/img/sanpham/{{ sp.anh }}" alt="">
+                                                </a>
+                                            </div>
+                                            <div class="category-content">
+                                                <h4><a (click)="reloadPage(sp.id)">{{ sp.ten }}</a></h4>
+                                                <div class="price-box">
+                                                    <div class="pricebox">
+                                                        <ng-container *ngIf="sp.phanTram === null || sp.phanTram === undefined">
+                                                            <span class="price text-danger">{{ sp.gia | number:'1.0-0' }} đ</span><br/>
+                                                        </ng-container>
+                                                        <ng-container *ngIf="sp.phanTram !== null && sp.phanTram !== undefined">
+                                                            <span class="price text-danger">{{ sp.giaGiamGia | number:'1.0-0' }} đ</span><br/>
+                                                            <span class="strikethrough text-muted"><s>{{ sp.gia | number:'1.0-0' }} đ</s></span>
+                                                        </ng-container>
+                                                    </div>
                                                 </div>
                                             </div>
-                                        </div>
-                                    </div> <!-- end single item -->
-                                </div> <!-- end single item column -->   
-                            </ng-container>                            
-                        </div>
+                                        </div> <!-- end single item -->
+                                    </ng-container>
+                                </ng-template>
+                            </owl-carousel-o>                           
+                        <!-- </div> -->
+
                     </div>
                     <!-- featured category end -->
 

@@ -29,8 +29,6 @@
               "src/styles.css",
 
               "src/assets/admin/css/app.min.css",
-              "src/assets/admin/bundles/datatables/datatables.min.css",
-              "src/assets/admin/bundles/datatables/DataTables-1.10.16/css/dataTables.bootstrap4.min.css",
               "src/assets/admin/css/style.css",
               "src/assets/admin/css/components.css",
               "src/assets/admin/css/custom.css",
@@ -40,15 +38,14 @@
               "src/assets/client/css/helper.min.css",
               "src/assets/client/css/plugins.css",
               "src/assets/client/css/style.css",
-              "src/assets/client/css/skin-default.css"
+              "src/assets/client/css/skin-default.css",
+              
+              "node_modules/ngx-owl-carousel-o/lib/styles/prebuilt-themes/owl.carousel.min.css",
+              "node_modules/ngx-owl-carousel-o/lib/styles/prebuilt-themes/owl.theme.default.min.css"
             ],
             "scripts": [
-              "src/assets/client/js/vendor/modernizr-3.6.0.min.js",
               "src/assets/client/js/vendor/jquery-3.3.1.min.js",
-              "src/assets/client/js/vendor/popper.min.js",
-              "src/assets/client/js/plugins.js",
-              "src/assets/client/js/ajax-mail.js",
-              "src/assets/client/js/switcher.js"
+              "src/assets/client/js/main.js"
             ]
           },
           "configurations": {

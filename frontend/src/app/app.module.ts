@@ -5,6 +5,8 @@ import { HttpClientModule } from '@angular/common/http';
 import { NgxPaginationModule } from 'ngx-pagination';
 import { AngularEditorModule } from '@kolkov/angular-editor';
 import { NgSelectModule } from '@ng-select/ng-select';
+import { CarouselModule } from 'ngx-owl-carousel-o';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -134,6 +136,8 @@ import { TracuudonhangComponent } from './modules/client/tracuudonhang/tracuudon
     ReactiveFormsModule,
     AngularEditorModule,
     NgSelectModule,
+    CarouselModule,
+    BrowserAnimationsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -12,12 +12,14 @@
         </div>
         <div class="row">
             <div class="col-12">
-                <div class="brand-active slick-padding slick-arrow-style">
-                    <ng-container>
-                        <div class="brand-item text-center" *ngFor="let nsx of ListNhaSanXuat">
-                            <a (click)="searchNhaSanXuat(nsx.id)"><img src="/assets/client/img/nhasanxuat/{{ nsx.anh }}" alt=""></a>
-                        </div>
-                    </ng-container>
+                <div class="slick-padding slick-arrow-style">
+                    <owl-carousel-o [options]="brandSlide">
+                        <ng-template carouselSlide *ngFor="let nsx of ListNhaSanXuat">
+                            <div class="brand-item text-center">
+                                <a (click)="searchNhaSanXuat(nsx.id)"><img src="/assets/client/img/nhasanxuat/{{ nsx.anh }}" width="200" height="100" alt=""></a>
+                            </div>
+                        </ng-template>
+                    </owl-carousel-o>
                 </div>
             </div>
         </div>

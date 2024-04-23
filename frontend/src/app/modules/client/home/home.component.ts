@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { SanPham } from 'src/app/models/sanpham.model';
 import { CartService } from 'src/app/service/cart.service';
 import { SanPhamService } from 'src/app/service/sanpham.service';
+import { OwlOptions } from 'ngx-owl-carousel-o';
 
 @Component({
   selector: 'app-home',
@@ -49,4 +50,31 @@ export class HomeComponent {
       this.ListSanPhamGiamGia = res.data;
     });
   }
+
+  sanPhamSlide: OwlOptions = {
+    loop: true,
+    margin: 15,
+    autoplay: true,
+    autoplayHoverPause: true,
+    autoplayTimeout: 3000,
+    smartSpeed: 1000,
+    dots: false,
+    responsive: {
+      994: {
+        items: 5
+      },
+      768: {
+        items: 4
+      },
+      575: {
+        items: 3
+      },
+      479: {
+        items: 2
+      },
+      0: {
+        items: 2
+      }
+    }
+  };
 }

@@ -3,6 +3,7 @@ import { SanPham } from 'src/app/models/sanpham.model';
 import { LoaiSanPhamService } from 'src/app/service/loaisanpham.service';
 import { NhaSanXuatService } from 'src/app/service/nhasanxuat.service';
 import { SanPhamService } from 'src/app/service/sanpham.service';
+import { OwlOptions } from 'ngx-owl-carousel-o';
 
 import { ActivatedRoute, Router } from '@angular/router';
 import { ThongSo } from 'src/app/models/thongso.model';
@@ -96,7 +97,7 @@ export class ChitietsanphamComponent implements OnInit {
 
   //Lấy sản phẩm ngẫu nhiên
   getsanphamngaunhien() {
-    this.sanPhamService.getsanphamngaunhien(8).subscribe(res => {
+    this.sanPhamService.getsanphamngaunhien(4).subscribe(res => {
       this.ListSanPhamNgauNhien = res.data;
     });
   }
@@ -120,4 +121,56 @@ export class ChitietsanphamComponent implements OnInit {
       this._router.navigate(['/chitietsanpham', id]);
     });
   }
+
+  sanPhamTuongTuSlide: OwlOptions = {
+    loop: true,
+    margin: 15,
+    autoplay: true,
+    autoplayHoverPause: true,
+    autoplayTimeout: 3000,
+    dots: false,
+    responsive: {
+      994: {
+        items: 4
+      },
+      768: {
+        items: 4
+      },
+      575: {
+        items: 3
+      },
+      479: {
+        items: 2
+      },
+      0: {
+        items: 1
+      }
+    }
+  };
+
+  sanPhamNgauNhienSlide: OwlOptions = {
+    loop: true,
+    autoplay: true,
+    autoplayHoverPause: true,
+    autoplayTimeout: 3000,
+    smartSpeed: 1000,
+    dots: false,
+    responsive: {
+      994: {
+        items: 1
+      },
+      768: {
+        items: 1
+      },
+      575: {
+        items: 1
+      },
+      479: {
+        items: 1
+      },
+      0: {
+        items: 1
+      }
+    }
+  };
 }

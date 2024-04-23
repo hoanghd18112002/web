@@ -1,32 +1,35 @@
 <div class="container">
     <div class="row">
         <div class="col-lg-12">
-            <div class="slider-wrapper-area">
-                <div class="hero-slider-active hero__1 slick-dot-style hero-dot">
-                    <ng-container *ngFor="let sl of ListSlide">
-                        <div class="single-slider" style="background-image: url(/assets/client/img/slider/{{ sl.anh }});">
-                            <div class="container p-0">
-                                <div class="slider-main-content">
-                                    <div class="slider-content-img">
-                                        <ng-container *ngFor="let child of sl.children">
-                                            <img *ngIf="child.kieu === 1" src="/assets/client/img/slider/{{ child.anh }}" alt="">
-                                            <img *ngIf="child.kieu === 2" src="/assets/client/img/slider/{{ child.anh }}" alt="">
-                                            <img *ngIf="child.kieu === 3" src="/assets/client/img/slider/{{ child.anh }}" alt="">
-                                        </ng-container>
-                                    </div>
-                                    <div class="slider-text">
-                                        <div class="slider-label">
+            <div class="slider-wrapper-area" style="padding-top: 0px;">
+                <div class="hero__1">
+
+                    <owl-carousel-o [options]="slide">
+                        <ng-template carouselSlide *ngFor="let sl of ListSlide">
+                            <div class="single-slider" style="background-image: url(/assets/client/img/slider/{{ sl.anh }});">
+                                <div class="container p-0">
+                                    <div class="slider-main-content">
+                                        <div class="slider-content-img">
                                             <ng-container *ngFor="let child of sl.children">
-                                                <img *ngIf="child.kieu === 4" src="/assets/client/img/slider/{{ child.anh }}" alt="">
+                                                <img *ngIf="child.kieu === 1" src="/assets/client/img/slider/{{ child.anh }}" alt="">
+                                                <img *ngIf="child.kieu === 2" src="/assets/client/img/slider/{{ child.anh }}" alt="">
+                                                <img *ngIf="child.kieu === 3" src="/assets/client/img/slider/{{ child.anh }}" alt="">
                                             </ng-container>
-                                        </div>                                        
-                                        <h1>{{ sl.tieuDe }}</h1>
-                                        <p>{{ sl.noiDung }}</p>
+                                        </div>
+                                        <div class="slider-text">
+                                            <div class="slider-label">
+                                                <ng-container *ngFor="let child of sl.children">
+                                                    <img *ngIf="child.kieu === 4" src="/assets/client/img/slider/{{ child.anh }}" alt="">
+                                                </ng-container>
+                                            </div>                                        
+                                            <h1>{{ sl.tieuDe }}</h1>
+                                            <p>{{ sl.noiDung }}</p>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                    </ng-container>
+                        </ng-template>
+                    </owl-carousel-o> 
                 </div>
             </div>
         </div>
