@@ -13,6 +13,8 @@ using Model;
 
 var builder = WebApplication.CreateBuilder(args);
 
+builder.WebHost.UseUrls("http://localhost:5226");
+
 // Cấu hình xác thực người dùng
 builder.Services.AddCors(options =>
 {
