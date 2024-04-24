@@ -61,7 +61,7 @@ export class MainComponent {
   LoadDoanhThuTheoThang(){
     this.thongKeService.getdoanhthutheothang(this.soThang).subscribe(res => {
       this.ThongKeDoanhThuThang = res.data;
-
+      console.log(this.ThongKeDoanhThuThang);
       const thoiGian = this.ThongKeDoanhThuThang.map(item => item.thoiGian);
       const doanhThu = this.ThongKeDoanhThuThang.map(item => item.doanhThuTheoThang);
 
