@@ -1,26 +1,25 @@
 .not-found-container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 300px;
-  
-    .not-found-content {
-      text-align: center;
-  
-      h1 {
-        font-size: 6rem;
-        color: #e74c3c; /* Màu đỏ đậm */
-      }
-  
-      p {
-        font-size: 1.5rem;
-        color: #333;
-        margin-bottom: 20px;
-      }
-  
-      button {
-        font-size: 1rem;
-      }
-    }
-  }
-  
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 300px;
+}
+
+.not-found-content {
+  text-align: center;
+}
+
+.not-found-content h1 {
+  font-size: 6rem;
+  color: #e74c3c; /* Màu đỏ đậm */
+}
+
+.not-found-content p {
+  font-size: 1.5rem;
+  color: #333;
+  margin-bottom: 20px;
+}
+
+.not-found-content button {
+  font-size: 1rem;
+}
