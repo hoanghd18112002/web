@@ -37,7 +37,7 @@
                                     </thead>
                                     <tbody *ngFor="let lh of ListLienHe | paginate: { itemsPerPage: pageSize, currentPage: p, totalItems: totalItems }; let i = index">
                                         <tr (click)="onRowClick(lh)" [class.selected]="selectedRow === lh">
-                                            <td>{{ i + 1 }}</td>
+                                            <td>{{ (p - 1) * pageSize + i + 1 }}</td>
                                             <td [innerHTML]="lh.noiDung | slice: 0:1000"></td>
                                             <td>
                                                 <span *ngIf="lh.trangThai === 1" class="badge badge-success">Hoạt động</span>

@@ -38,7 +38,7 @@
                                     </thead>
                                     <tbody *ngFor="let pt of ListPhuongThuc | paginate: { itemsPerPage: pageSize, currentPage: p, totalItems: totalItems }; let i = index">
                                         <tr (click)="onRowClick(pt)" [class.selected]="selectedRow === pt" class="text-center">
-                                            <td>{{ i + 1 }}</td>
+                                            <td>{{ (p - 1) * pageSize + i + 1 }}</td>
                                             <td>{{ pt.ten }}</td>
                                             <td>{{ pt.moTa | slice: 0:500 }}</td>
                                             <td>

@@ -6,7 +6,7 @@ platformBrowserDynamic().bootstrapModule(AppModule)
   .then(platformRef => {
     const thamSoService = platformRef.injector.get(ThamsoService);
     thamSoService.getbyma("ICON").subscribe(res => {
-      const icon = "/assets/client/img/logo/" + res.data.anh;
+      const icon = "data:image/jpg;base64," + res.data.anh;
       const faviconLink = document.getElementById('faviconLink') as HTMLLinkElement;
       if (faviconLink) {faviconLink.href = icon;}
     });

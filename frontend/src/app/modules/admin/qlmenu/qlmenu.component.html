@@ -39,7 +39,7 @@
                                     </thead>
                                     <tbody *ngFor="let mn of ListMenu | paginate: { itemsPerPage: pageSize, currentPage: p, totalItems: totalItems }; let i = index">
                                         <tr (click)="onRowClick(mn)" [class.selected]="selectedRow === mn" class="text-center">
-                                            <td>{{ i + 1 }}</td>
+                                            <td>{{ (p - 1) * pageSize + i + 1 }}</td>
                                             <td>{{ mn.ten }}</td>
                                             <td>{{ mn.link }}</td>
                                             <td>{{ mn.tenMenuCha }}</td>

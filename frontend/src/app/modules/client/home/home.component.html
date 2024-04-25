@@ -25,7 +25,7 @@
                             <div class="product-item">
                                 <div class="product-thumb">
                                     <a routerLink="/chitietsanpham/{{ sp.id }}">
-                                        <img style="width: 210px; height: 210px;" src="/assets/client/img/sanpham/{{ sp.anh }}" class="img-pri" alt="">
+                                        <img style="width: 210px; height: 210px;" [src]="'data:image/jpg;base64,' + sp.anh" class="img-pri" alt="">
                                     </a>
                                     <div class="product-label ml-160">
                                         <span>mới</span>
@@ -81,7 +81,7 @@
                             <div class="product-item">
                                 <div class="product-thumb">
                                     <a routerLink="/chitietsanpham/{{ sp.id }}">
-                                        <img style="width: 210px; height: 210px;" src="/assets/client/img/sanpham/{{ sp.anh }}" class="img-pri" alt="">
+                                        <img style="width: 210px; height: 210px;" [src]="'data:image/jpg;base64,' + sp.anh" class="img-pri" alt="">
                                     </a>
                                     <div class="product-label ml-160">
                                         <span>Hot</span>
@@ -137,7 +137,7 @@
                             <div class="product-item">
                                 <div class="product-thumb">
                                     <a routerLink="/chitietsanpham/{{ sp.id }}">
-                                        <img style="width: 210px; height: 210px;" src="/assets/client/img/sanpham/{{ sp.anh }}" class="img-pri" alt="">
+                                        <img style="width: 210px; height: 210px;" [src]="'data:image/jpg;base64,' + sp.anh" class="img-pri" alt="">
                                     </a>
                                     <div class="product-label ml-160">
                                         <span>{{ sp.phanTram }} %</span>

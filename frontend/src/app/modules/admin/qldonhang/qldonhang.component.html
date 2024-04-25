@@ -38,7 +38,7 @@
                                     </thead>
                                     <tbody *ngFor="let dh of ListDonHang | paginate: { itemsPerPage: pageSize, currentPage: p, totalItems: totalItems }; let i = index">
                                         <tr (click)="onRowClick(dh)" [class.selected]="selectedRow === dh" class="text-center">
-                                            <td>{{ i + 1 }}</td>
+                                            <td>{{ (p - 1) * pageSize + i + 1 }}</td>
                                             <td>{{ dh.ten }}</td>
                                             <td>{{ dh.diaChi }}</td>
                                             <td>{{ dh.ngayDat | date: 'HH:mm:ss dd/MM/yyyy' }}</td>

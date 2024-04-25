@@ -39,7 +39,7 @@
                                     </thead>
                                     <tbody *ngFor="let ncc of ListNhaCungCap | paginate: { itemsPerPage: pageSize, currentPage: p, totalItems: totalItems }; let i = index">
                                         <tr (click)="onRowClick(ncc)" [class.selected]="selectedRow === ncc" class="text-center">
-                                            <td>{{ i + 1 }}</td>
+                                            <td>{{ (p - 1) * pageSize + i + 1 }}</td>
                                             <td>{{ ncc.ten }}</td>
                                             <td>{{ ncc.diaChi }}</td>
                                             <td>{{ ncc.sdt }}</td>

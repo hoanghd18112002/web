@@ -11,7 +11,7 @@ namespace Model
     {
         public int ID { get; set; }
         public string? Ten { get; set; }
-        public string? Anh { get; set; }
+        public byte[]? Anh { get; set; }
         public string? MoTa { get; set; }
         public int TrangThai { get; set; }
         public int? SoLuong { get; set; }

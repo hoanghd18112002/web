@@ -31,7 +31,7 @@
                                 <div class="blog-item mb-26">
                                     <div class="blog-thumb img-full fix">
                                         <a routerLink="/chitiettintuc/{{ tt.id }}">
-                                            <img src="/assets/client/img/tintuc/{{ tt.anh }}" alt="">
+                                            <img [src]="'data:image/jpg;base64,' + tt.anh" alt="">
                                         </a>
                                     </div>
                                     <div class="blog-content">

@@ -68,13 +68,6 @@
                     </div>
                     <!-- sidebar categorie start -->
 
-                    <!-- sidebar banner start -->
-                    <div class="sidebar-widget mb-30">
-                        <div class="img-container fix img-full">
-                            <a><img src="/assets/client/img/banner/banner_shop.jpg" alt=""></a>
-                        </div>
-                    </div>
-                    <!-- sidebar banner end -->
                 </div>
             </div>
             <!-- sidebar end -->
@@ -126,7 +119,7 @@
                                     <div class="product-item fix">
                                         <div class="product-thumb">
                                             <a routerLink="/chitietsanpham/{{ sp.id }}">
-                                                <img src="/assets/client/img/sanpham/{{ sp.anh }}" class="img-pri" alt="">
+                                                <img [src]="'data:image/jpg;base64,' + sp.anh" class="img-pri" alt="">
                                             </a>
                                             <ng-container *ngIf="sp.phanTram !== null && sp.phanTram !== undefined">
                                                 <div class="product-label ml-140">
@@ -158,7 +151,7 @@
                                 <div class="product-list-item mb-30">
                                     <div class="product-thumb">
                                         <a routerLink="/chitietsanpham/{{ sp.id }}">
-                                            <img src="/assets/client/img/sanpham/{{ sp.anh }}" class="img-pri" alt="">
+                                            <img [src]="'data:image/jpg;base64,' + sp.anh" class="img-pri" alt="">
                                         </a>                                                                                      
                                     </div>
                                     <div class="product-list-content">

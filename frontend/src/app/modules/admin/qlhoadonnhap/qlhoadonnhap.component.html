@@ -36,7 +36,7 @@
                                     </thead>
                                     <tbody *ngFor="let hdn of ListHoaDonNhap | paginate: { itemsPerPage: pageSize, currentPage: p, totalItems: totalItems }; let i = index">
                                         <tr (click)="onRowClick(hdn)" [class.selected]="selectedRow === hdn" class="text-center">
-                                            <td>{{ i + 1 }}</td>
+                                            <td>{{ (p - 1) * pageSize + i + 1 }}</td>
                                             <td>{{ hdn.tenNguoiDung }}</td>
                                             <td>{{ hdn.tenNhaCungCap }}</td>                                         
                                             <td>{{ hdn.ngayNhap | date: 'dd/MM/yyyy' }}</td>

@@ -18,7 +18,7 @@ namespace Model
         public string? DiaChi { get; set; }
         public string? SDT { get; set; }
         public int? GioiTinh { get; set; }
-        public string? Anh { get; set; }
+        public byte[]? Anh { get; set; }
         public int? TrangThai { get; set; }
         public int? IDQuyen { get; set; }
         public string? TenQuyen { get; set; }

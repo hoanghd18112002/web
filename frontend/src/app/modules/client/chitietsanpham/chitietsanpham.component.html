@@ -29,7 +29,7 @@
                         <div class="col-lg-6">
                             <div class="product-large-slider mb-20 slick-arrow-style_2">
                                 <div class="pro-large-img img-zoom" id="img1">
-                                    <img src="/assets/client/img/sanpham/{{ sanpham.anh }}" alt="" />
+                                    <img [src]="'data:image/jpg;base64,' + sanpham.anh" alt="" />
                                 </div>
                             </div>
                         </div>
@@ -200,7 +200,7 @@
                                 <div class="product-item">
                                     <div class="product-thumb">
                                         <a (click)="reloadPage(sp.id)">
-                                            <img src="/assets/client/img/sanpham/{{ sp.anh }}" class="img-pri" alt="">
+                                            <img [src]="'data:image/jpg;base64,' + sp.anh" class="img-pri" alt="">
                                         </a>
                                         <ng-container *ngIf="sp.phanTram !== null && sp.phanTram !== undefined">
                                             <div class="product-label ml-140">
@@ -252,7 +252,7 @@
                                         <div class="category-item">
                                             <div class="category-thumb">
                                                 <a (click)="reloadPage(sp.id)">
-                                                    <img src="/assets/client/img/sanpham/{{ sp.anh }}" alt="">
+                                                    <img [src]="'data:image/jpg;base64,' + sp.anh" alt="">
                                                 </a>
                                             </div>
                                             <div class="category-content">
@@ -307,14 +307,7 @@
                         </div>
                     </div>
                     <!-- product tag end -->
-
-                    <!-- sidebar banner start -->
-                    <div class="sidebar-widget mb-22">
-                        <div class="img-container fix img-full mt-30">
-                            <a routerLink="#"><img src="/assets/client/img/banner/banner_shop.jpg" alt=""></a>
-                        </div>
-                    </div>
-                    <!-- sidebar banner end -->
+                    
                 </div>
             </div>
             <!-- sidebar end -->

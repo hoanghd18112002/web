@@ -41,11 +41,11 @@
                                     </thead>
                                     <tbody *ngFor="let sl of ListSlide | paginate: { itemsPerPage: pageSize, currentPage: p, totalItems: totalItems }; let i = index">
                                         <tr (click)="onRowClick(sl)" [class.selected]="selectedRow === sl" class="text-center">
-                                            <td>{{ i + 1 }}</td>
+                                            <td>{{ (p - 1) * pageSize + i + 1 }}</td>
                                             <td>{{ sl.tieuDe }}</td>
                                             <td>{{ sl.noiDung }}</td>
                                             <td>
-                                                <img style="width: 100px; height: 70px;" src="/assets/client/img/slider/{{ sl.anh }}"/>                                                  
+                                                <img *ngIf="sl.anh" style="width: 100px; height: 70px;" [src]="'data:image/jpg;base64,' + sl.anh" />                                                  
                                             </td>
                                             <td>{{ sl.kieu }}</td>
                                             <td>{{ sl.tenSlideCha }}</td>
@@ -163,7 +163,7 @@
                     <div class="card-body">
                         <div class="form-row">
                             <div class="form-group col-12 text-center">
-                                <img class="img-fluid rounded" src="/assets/client/img/slider/{{ anh }}" alt="">
+                                <img *ngIf="anh" class="img-fluid rounded" [src]="'data:image/jpg;base64,' + anh" alt="">
                             </div>
                             <div class="form-group col-12 news-text">
                                 <h4 class="text-center mb-4">{{ tieuDe }}</h4>

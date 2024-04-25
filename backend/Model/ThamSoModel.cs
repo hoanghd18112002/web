@@ -13,7 +13,7 @@ namespace Model
         public string Ma { get; set; }
         public string Ten { get; set; }
         public string? NoiDung { get; set; }
-        public string? Anh { get; set; }
+        public byte[]? Anh { get; set; }
         public int TrangThai { get; set; }
         public IFormFile? File { get; set; }
     }

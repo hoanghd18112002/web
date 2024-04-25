@@ -41,7 +41,7 @@
                             <tbody *ngIf="ListGioHang.length > 0; else emptyCart">
                                 <tr *ngFor="let gh of ListGioHang">
                                     <td class="pro-thumbnail">
-                                        <a routerLink="/chitietsanpham/{{ gh.id }}"><img class="img-fluid" src="/assets/client/img/sanpham/{{ gh.anh }}" alt="Product"/></a>
+                                        <a routerLink="/chitietsanpham/{{ gh.id }}"><img class="img-fluid" [src]="'data:image/jpg;base64,' + gh.anh" alt="Product"/></a>
                                     </td>
                                     <td class="pro-title">
                                         <a routerLink="/chitietsanpham/{{ gh.id }}">{{ gh.ten }}</a>

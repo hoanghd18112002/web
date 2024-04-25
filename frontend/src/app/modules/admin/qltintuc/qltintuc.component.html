@@ -40,10 +40,10 @@
                                     </thead>
                                     <tbody *ngFor="let tt of ListTinTuc | paginate: { itemsPerPage: pageSize, currentPage: p, totalItems: totalItems }; let i = index">
                                         <tr (click)="onRowClick(tt)" [class.selected]="selectedRow === tt" class="text-center">
-                                            <td>{{ i + 1 }}</td>
+                                            <td>{{ (p - 1) * pageSize + i + 1 }}</td>
                                             <td>{{ tt.tieuDe | slice: 0:100}}</td>
                                             <td>
-                                                <img style="width: 300px; height: 150px;" src="/assets/client/img/tintuc/{{ tt.anh }}"/>                                                 
+                                                <img style="width: 300px; height: 150px;" [src]="'data:image/jpg;base64,' + tt.anh" />                                                 
                                             </td>
                                             <td>{{ tt.ngayDang | date: 'HH:mm:ss dd/MM/yyyy' }}</td>
                                             <td>{{ tt.ten }}</td>
@@ -160,7 +160,7 @@
                                 </div>
                                 <div class="news-content">
                                     <div class="image-container text-center">
-                                        <img src="/assets/client/img/tintuc/{{ anh }}" alt="Ảnh tin tức" class="news-image" />
+                                        <img [src]="'data:image/jpg;base64,' + anh" alt="Ảnh tin tức" class="news-image" />
                                     </div>
                                     <div class="text-container mt-5">
                                         <div class="news-text" [innerHTML]="noiDung">{{ noiDung }}</div>

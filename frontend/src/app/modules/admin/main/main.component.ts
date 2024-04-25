@@ -61,7 +61,7 @@ export class MainComponent {
   LoadDoanhThuTheoThang(){
     this.thongKeService.getdoanhthutheothang(this.soThang).subscribe(res => {
       this.ThongKeDoanhThuThang = res.data;
-      console.log(this.ThongKeDoanhThuThang);
+
       const thoiGian = this.ThongKeDoanhThuThang.map(item => item.thoiGian);
       const doanhThu = this.ThongKeDoanhThuThang.map(item => item.doanhThuTheoThang);
 
@@ -102,7 +102,7 @@ export class MainComponent {
           data: doanhThu,
           fill: false,
           tension: 0.1,
-          backgroundColor: '#6677ef'
+          backgroundColor: '#9966FF'
         }]
       };
 
@@ -132,7 +132,7 @@ export class MainComponent {
           data: doanhThu,
           fill: false,
           tension: 0.1,
-          backgroundColor: '#6677ef'
+          backgroundColor: '#4BC0C0'
         }]
       };
 

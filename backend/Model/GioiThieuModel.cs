@@ -10,7 +10,7 @@ namespace Model
     public class GioiThieuModel
     {
         public int ID { get; set; }
-        public string? Anh { get; set; }
+        public byte[]? Anh { get; set; }
         public string? NoiDung { get; set; }
         public int TrangThai { get; set; }
         public IFormFile? File { get; set; }

@@ -13,7 +13,7 @@ namespace Model
         public string? TieuDe { get; set; }
         public string? NoiDung { get; set; }
         public DateTime? NgayDang { get; set; }
-        public string? Anh { get; set; }
+        public byte[]? Anh { get; set; }
         public int TrangThai { get; set; }
         public int IDNguoiDung { get; set; }
         public string? Ten { get; set; }

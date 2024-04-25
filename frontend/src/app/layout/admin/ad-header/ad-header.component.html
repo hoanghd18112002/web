@@ -124,7 +124,7 @@
       </li>
       <li class="dropdown dropdown-list-toggle">
         <a data-toggle="dropdown" class="nav-link dropdown-toggle nav-link-lg nav-link-user"> 
-          <img alt="image" src="/assets/client/img/nguoidung/{{ user.anh }}" class="user-img-radious-style"> 
+          <img alt="image" [src]="'data:image/jpg;base64,' + user.anh" class="user-img-radious-style"> 
           <span class="d-sm-none d-lg-inline-block"></span>
         </a>
         <div class="dropdown-menu dropdown-list dropdown-menu-right pullDown">

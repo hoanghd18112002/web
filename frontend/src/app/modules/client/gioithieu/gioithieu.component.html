@@ -31,7 +31,7 @@
                 <ng-container *ngIf="gt.anh !== null && gt.anh !== ''">
                     <div class="col-lg-5 ml-auto">
                         <div class="about-image-wrap mt-md-26 mt-sm-26">                  
-                            <img src="/assets/client/img/gioithieu/{{ gt.anh }}" alt="About" />
+                            <img [src]="'data:image/jpg;base64,' + gt.anh" alt="About" />
                         </div>                    
                     </div>
                 </ng-container>

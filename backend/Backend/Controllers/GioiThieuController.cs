@@ -92,12 +92,13 @@ namespace Backend.Controllers
         {
             try
             {
-                // Khởi tạo biến imagePath
-                string imagePath = null;
-
-                // Kiểm tra xem có dữ liệu file ảnh được gửi lên không và có dung lượng lớn hơn 0 không
                 if (model.File != null && model.File.Length > 0)
                 {
+                    if (model.File.Length > 5 * 1024 * 1024) // Kiểm tra kích thước tệp, 5MB
+                    {
+                        return BadRequest(new { success = false, message = "Kích thước tệp ảnh không được vượt quá 5MB." });
+                    }
+
                     // Tạo tên file duy nhất bằng cách kết hợp GUID và tên file gốc
                     string uniqueFileName = Guid.NewGuid().ToString() + "_" + model.File.FileName;
 
@@ -110,27 +111,24 @@ namespace Backend.Controllers
                         model.File.CopyTo(stream); // Copy dữ liệu file vào stream
                     }
 
-                    // Tạo đường dẫn tương đối của ảnh từ thư mục gốc
-                    imagePath = uniqueFileName;
+                    var Model = new GioiThieuModel
+                    {
+                        Anh = System.IO.File.ReadAllBytes(filePath), // Chuyển đổi tệp ảnh thành mảng byte
+                        NoiDung = model.NoiDung,
+                        TrangThai = model.TrangThai
+                    };
+
+                    _bll.Create(Model);
+
+                    return Ok(new { success = true, message = "Tạo mới thành công" });
                 }
-
-                // Tạo đối tượng Model mới với các thông tin
-                var Model = new GioiThieuModel
+                else
                 {
-                    Anh = imagePath, // Đường dẫn tương đối của ảnh
-                    NoiDung = model.NoiDung, 
-                    TrangThai = model.TrangThai 
-                };
-
-                // Gọi phương thức Create từ BLL để thêm mới vào cơ sở dữ liệu
-                _bll.Create(Model);
-
-                // Trả về kết quả thành công
-                return Ok(new { success = true, message = "Tạo mới thành công" });
+                    return BadRequest(new { success = false, message = "Vui lòng chọn một tệp ảnh." });
+                }
             }
             catch (Exception ex)
             {
-                // Nếu có lỗi xảy ra, trả về mã lỗi 500 và thông báo lỗi
                 return StatusCode(500, new { success = false, message = "Đã xảy ra lỗi: " + ex.Message });
             }
         }
@@ -142,38 +140,28 @@ namespace Backend.Controllers
             try
             {
                 // Kiểm tra xem người dùng có tải lên một ảnh mới không
-                if (Request.Form.Files.Count > 0)
+                if (model.File != null && model.File.Length > 0)
                 {
-                    // Lấy file ảnh từ yêu cầu
-                    var uploadedFile = Request.Form.Files[0];
-                    // Tạo tên file duy nhất cho ảnh mới
-                    string uniqueFileName = Guid.NewGuid().ToString() + "_" + uploadedFile.FileName;
+                    if (model.File.Length > 5 * 1024 * 1024) // Kiểm tra kích thước tệp, 5MB
+                    {
+                        return BadRequest(new { success = false, message = "Kích thước tệp ảnh không được vượt quá 5MB." });
+                    }
+
+                    // Tạo tên file duy nhất bằng cách kết hợp GUID và tên file gốc
+                    string uniqueFileName = Guid.NewGuid().ToString() + "_" + model.File.FileName;
+
                     // Kết hợp đường dẫn thư mục lưu trữ ảnh và tên file duy nhất để tạo đường dẫn đầy đủ
                     string filePath = Path.Combine(_path, uniqueFileName);
 
-                    var Model = _bll.GetByID(model.ID);
-
-                    // Xoá file ảnh cũ nếu có
-                    if (!string.IsNullOrEmpty(Model.Anh))
-                    {
-                        string oldFilePath = Path.Combine(_path, Model.Anh);
-                        if (System.IO.File.Exists(oldFilePath))
-                        {
-                            System.IO.File.Delete(oldFilePath);
-                        }
-                    }
-
-                    // Lưu ảnh mới vào thư mục được chỉ định
+                    // Lưu file ảnh vào thư mục được chỉ định
                     using (var stream = new FileStream(filePath, FileMode.Create))
                     {
-                        uploadedFile.CopyTo(stream);
+                        model.File.CopyTo(stream); // Copy dữ liệu file vào stream
                     }
 
-                    // Cập nhật đường dẫn ảnh mới vào đối tượng Model
-                    model.Anh = uniqueFileName;
+                    model.Anh = System.IO.File.ReadAllBytes(filePath);
                 }
 
-                // Gọi phương thức cập nhật từ BLL với thông tin mới
                 _bll.Update(model);
 
                 return Ok(new { success = true, message = "Cập nhật thành công" });
@@ -190,7 +178,6 @@ namespace Backend.Controllers
         {
             try
             {
-                // Lấy thông tin từ cơ sở dữ liệu
                 var model = _bll.GetByID(id);
 
                 if (model == null)
@@ -198,17 +185,6 @@ namespace Backend.Controllers
                     return NotFound(new { success = false, message = "Giới thiệu không tồn tại" });
                 }
 
-                // Xoá file ảnh từ thư mục lưu trữ
-                if (!string.IsNullOrEmpty(model.Anh))
-                {
-                    string filePath = Path.Combine(_path, model.Anh);
-                    if (System.IO.File.Exists(filePath))
-                    {
-                        System.IO.File.Delete(filePath);
-                    }
-                }
-
-                // Xoá từ cơ sở dữ liệu
                 bool result = _bll.Delete(id);
 
                 if (result)

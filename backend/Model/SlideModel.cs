@@ -12,7 +12,7 @@ namespace Model
         public int ID { get; set; }
         public string? TieuDe { get; set; }
         public string? NoiDung { get; set; }
-        public string? Anh { get; set; }
+        public byte[]? Anh { get; set; }
         public int? Kieu { get; set; }
         public int TrangThai { get; set; }
         public int IDCha { get; set; }

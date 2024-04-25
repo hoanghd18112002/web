@@ -39,10 +39,10 @@
                                     </thead>
                                     <tbody *ngFor="let nsx of ListNhaSanXuat | paginate: { itemsPerPage: pageSize, currentPage: p, totalItems: totalItems }; let i = index">
                                         <tr (click)="onRowClick(nsx)" [class.selected]="selectedRow === nsx" class="text-center">
-                                            <td>{{ i + 1 }}</td>
+                                            <td>{{ (p - 1) * pageSize + i + 1 }}</td>
                                             <td>{{ nsx.ten }}</td>
                                             <td>
-                                                <img style="width: 300px; height: 150px;" src="/assets/client/img/nhasanxuat/{{ nsx.anh }}"/>                                                 
+                                                <img style="width: 300px; height: 150px;" [src]="'data:image/jpg;base64,' + nsx.anh" />                                                 
                                             </td>
                                             <td [innerHTML]="nsx.moTa | slice: 0:70"></td>
                                             <td>
@@ -95,7 +95,7 @@
                         </div>
                         <div class="form-row">
                             <div class="form-group col-6">
-                                <label for="anh">Ảnh:</label>
+                                <label for="anh">Ảnh<a class="text-danger"> (*)</a>:</label>
                                 <input type="file" class="form-control" name="anh" [(ngModel)]="anh" (change)="onFileChange($event)"/>
                             </div>
                             <div class="form-group col-6">
@@ -145,7 +145,7 @@
                                 <p>{{ ten }}</p>
                             </div>
                             <div class="form-group col-12 text-center">
-                                <img style="width: 300px; height: 150px;" src="/assets/client/img/nhasanxuat/{{ anh }}" />
+                                <img style="width: 300px; height: 150px;" [src]="'data:image/jpg;base64,' + anh" />
                             </div>
                             <div class="form-group col-12">
                                 <strong for="moTa">Mô tả:</strong>

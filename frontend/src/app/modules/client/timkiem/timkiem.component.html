@@ -120,7 +120,7 @@
                                     <div class="product-item fix">
                                         <div class="product-thumb">
                                             <a routerLink="/chitietsanpham/{{ sp.id }}">
-                                                <img src="/assets/client/img/sanpham/{{ sp.anh }}" class="img-pri" alt="">
+                                                <img [src]="'data:image/jpg;base64,' + sp.anh" class="img-pri" alt="">
                                             </a>
                                             <div class="product-action-link mt-154">
                                                 <a (click)="addToCart(sp.id)"><i class="fa fa-shopping-cart"></i></a>

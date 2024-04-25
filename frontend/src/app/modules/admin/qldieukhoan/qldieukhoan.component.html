@@ -38,7 +38,7 @@
                                     </thead>
                                     <tbody *ngFor="let dk of ListDieuKhoan | paginate: { itemsPerPage: pageSize, currentPage: p, totalItems: totalItems }; let i = index">
                                         <tr (click)="onRowClick(dk)" [class.selected]="selectedRow === dk">
-                                            <td>{{ i + 1 }}</td>
+                                            <td>{{ (p - 1) * pageSize + i + 1 }}</td>
                                             <td [innerHTML]="dk.noiDung | slice: 0:1000"></td>
                                             <td>
                                                 <span *ngIf="dk.kieu === 1" class="badge badge-primary">Điều khoản dịch vụ</span>

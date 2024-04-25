@@ -38,7 +38,7 @@
                                     </thead>
                                     <tbody *ngFor="let q of ListQuyen | paginate: { itemsPerPage: pageSize, currentPage: p, totalItems: totalItems }; let i = index">
                                         <tr (click)="onRowClick(q)" [class.selected]="selectedRow === q" class="text-center">
-                                            <td>{{ i + 1 }}</td>
+                                            <td>{{ (p - 1) * pageSize + i + 1 }}</td>
                                             <td>{{ q.ten }}</td>
                                             <td>{{ q.moTa | slice: 0:500 }}</td>
                                             <td>

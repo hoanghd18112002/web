@@ -38,10 +38,10 @@
                                     </thead>
                                     <tbody *ngFor="let gt of ListGioiThieu | paginate: { itemsPerPage: pageSize, currentPage: p, totalItems: totalItems }; let i = index">                      
                                         <tr (click)="onRowClick(gt)" [class.selected]="selectedRow === gt">
-                                            <td>{{ i + 1 }}</td>
+                                            <td>{{ (p - 1) * pageSize + i + 1 }}</td>
                                             <td>
                                                 <ng-container *ngIf="gt.anh !== '' && gt.anh !== null">
-                                                    <img style="width: 124px; height: 87px;" src="/assets/client/img/gioithieu/{{ gt.anh }}"/>
+                                                    <img style="width: 124px; height: 87px;" [src]="'data:image/jpg;base64,' + gt.anh" />
                                                 </ng-container>                                                   
                                             </td>
                                             <td [innerHTML]="gt.noiDung | slice: 0:1000"></td>
@@ -131,7 +131,7 @@
                     <div class="card-body">
                         <div class="form-row">
                             <div class="form-group col-12 text-center">
-                                <img *ngIf="anh !== '' && anh !== null" style="width: 248px; height: 174px;" src="/assets/client/img/gioithieu/{{ anh }}" />
+                                <img *ngIf="anh !== '' && anh !== null" style="width: 248px; height: 174px;" [src]="'data:image/jpg;base64,' + anh" />
                             </div>
                             <div class="form-group col-12">
                                 <strong for="noiDung">Nội dung:</strong>

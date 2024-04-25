@@ -6,20 +6,20 @@
 
                     <owl-carousel-o [options]="slide">
                         <ng-template carouselSlide *ngFor="let sl of ListSlide">
-                            <div class="single-slider" style="background-image: url(/assets/client/img/slider/{{ sl.anh }});">
+                            <div class="single-slider" style="background-image: url(data:image/jpg;base64,{{sl.anh}});">
                                 <div class="container p-0">
                                     <div class="slider-main-content">
                                         <div class="slider-content-img">
                                             <ng-container *ngFor="let child of sl.children">
-                                                <img *ngIf="child.kieu === 1" src="/assets/client/img/slider/{{ child.anh }}" alt="">
-                                                <img *ngIf="child.kieu === 2" src="/assets/client/img/slider/{{ child.anh }}" alt="">
-                                                <img *ngIf="child.kieu === 3" src="/assets/client/img/slider/{{ child.anh }}" alt="">
+                                                <img *ngIf="child.kieu === 1" [src]="'data:image/jpg;base64,' + child.anh" alt="">
+                                                <img *ngIf="child.kieu === 2" [src]="'data:image/jpg;base64,' + child.anh" alt="">
+                                                <img *ngIf="child.kieu === 3" [src]="'data:image/jpg;base64,' + child.anh" alt="">
                                             </ng-container>
                                         </div>
                                         <div class="slider-text">
                                             <div class="slider-label">
                                                 <ng-container *ngFor="let child of sl.children">
-                                                    <img *ngIf="child.kieu === 4" src="/assets/client/img/slider/{{ child.anh }}" alt="">
+                                                    <img *ngIf="child.kieu === 4" [src]="'data:image/jpg;base64,' + child.anh" alt="">
                                                 </ng-container>
                                             </div>                                        
                                             <h1>{{ sl.tieuDe }}</h1>

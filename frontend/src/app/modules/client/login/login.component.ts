@@ -58,7 +58,10 @@ export class LoginComponent {
                 location.assign('/');
             } else if (res.data.idQuyen == 1 || res.data.idQuyen == 3){
                 location.assign('/admin/');
-            } else{
+            } else if (res.data.idQuyen == 4){
+                location.assign('/admin/doithongtin');
+            } 
+            else{
                 location.assign('/admin/');
             }      
         } else {

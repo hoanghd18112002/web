@@ -119,7 +119,7 @@
                     <p><a target="_blank">{{ banquyen.noiDung }}</a></p>
                 </div>
                 <div class="payment-method-img">
-                    <img src="/assets/client/img/logo/{{ payment.anh }}" alt="">
+                    <img [src]="'data:image/jpg;base64,' + payment.anh" alt="">
                 </div>
             </div>
         </div>

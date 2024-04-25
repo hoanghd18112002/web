@@ -42,10 +42,10 @@
                                     </thead>
                                     <tbody *ngFor="let sp of ListSanPham | paginate: { itemsPerPage: pageSize, currentPage: p, totalItems: totalItems }; let i = index">
                                         <tr (click)="onRowClick(sp)" [class.selected]="selectedRow === sp" class="text-center">
-                                            <td>{{ i + 1 }}</td> 
+                                            <td>{{ (p - 1) * pageSize + i + 1 }}</td> 
                                             <td>{{ sp.ten }}</td> 
                                             <td>
-                                                <img style="width: 100px; height: 100px;" src="/assets/client/img/sanpham/{{ sp.anh }}">
+                                                <img style="width: 100px; height: 100px;" [src]="'data:image/jpg;base64,' + sp.anh">
                                             </td> 
                                             <td>{{ sp.tenNhaSanXuat }}</td> 
                                             <td>{{ sp.tenLoai }}</td> 
@@ -214,7 +214,7 @@
                             <div class="container mt-5">
                                 <div class="row">
                                     <div class="col-md-5 text-center">
-                                        <img style="width: 200px; height: 200px;" src="/assets/client/img/sanpham/{{ anh }}" alt="Product Image">
+                                        <img style="width: 200px; height: 200px;" [src]="'data:image/jpg;base64,' + anh" alt="Product Image">
                                     </div>
                                     <div class="col-md-7">
                                         <h3 class="mb-3"><b>{{ ten }}</b></h3>

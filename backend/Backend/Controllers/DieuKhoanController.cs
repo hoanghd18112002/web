@@ -120,6 +120,13 @@ namespace Backend.Controllers
         {
             try
             {
+                var model = _bll.GetByID(id);
+
+                if (model == null)
+                {
+                    return NotFound(new { success = false, message = "Điều khoản không tồn tại" });
+                }
+
                 bool result = _bll.Delete(id);
                 return Ok(new { success = true, message = "Xóa thành công" });
             }
