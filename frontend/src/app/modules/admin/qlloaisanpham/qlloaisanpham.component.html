@@ -41,7 +41,7 @@
                                             <td>{{ i + 1 }}</td>
                                             <td>{{ lsp.ten }}</td>
                                             <td>
-                                                <img style="width: 100px; height: 100px;" src="/assets/client/img/icon/{{ lsp.bieuTuong }}"/>                                                 
+                                                <img style="width: 100px; height: 100px;" [src]="'data:image/jpg;base64,' + lsp.bieuTuong"/>                                                 
                                             </td>
                                             <td>
                                                 <span *ngIf="lsp.trangThai === 1" class="badge badge-success">Hoạt động</span>
@@ -135,7 +135,7 @@
                                 <p>{{ ten }}</p>
                             </div>
                             <div class="form-group col-12 text-center">
-                                <img style="width: 100px; height: 100px;" src="/assets/client/img/icon/{{ bieuTuong }}" />
+                                <img style="width: 100px; height: 100px;" [src]="'data:image/jpg;base64,' + bieuTuong" />
                             </div>
                             <div class="news-text">
                                 <strong>Trạng thái: 

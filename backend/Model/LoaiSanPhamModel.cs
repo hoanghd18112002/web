@@ -11,7 +11,7 @@ namespace Model
     {
         public int ID { get; set; }
         public string? Ten { get; set; }
-        public string? BieuTuong { get; set; }
+        public byte[]? BieuTuong { get; set; }
         public int TrangThai { get; set; }
         public int? SoLuong { get; set; }
         public IFormFile? File { get; set; }

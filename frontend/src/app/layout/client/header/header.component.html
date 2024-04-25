@@ -140,7 +140,7 @@
                             <nav class="category-menu" [ngClass]="{'hm-1': isHomePage, 'category-style-2': !isHomePage}">
                                 <ul>
                                     <ng-container *ngFor="let mn of ListDanhMuc">
-                                        <li><a routerLink="/danhmucsanpham/{{ mn.id }}"><img style="width: 20px;" src="/assets/client/img/icon/{{ mn.bieuTuong }}" /> <i></i> {{ mn.ten }} </a></li>     
+                                        <li><a routerLink="/danhmucsanpham/{{ mn.id }}"><img style="width: 20px;" [src]="'data:image/jpg;base64,' + mn.bieuTuong" /> <i></i> {{ mn.ten }} </a></li>     
                                     </ng-container>
                                 </ul>
                             </nav>                        
