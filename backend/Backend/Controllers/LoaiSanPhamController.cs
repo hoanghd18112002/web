@@ -118,6 +118,15 @@ namespace Backend.Controllers
                         BieuTuong = System.IO.File.ReadAllBytes(filePath) // Chuyển đổi tệp ảnh thành mảng byte
                     };
 
+                    if (!string.IsNullOrEmpty(uniqueFileName))
+                    {
+                        string filePathDelete = Path.Combine(_path, uniqueFileName);
+                        if (System.IO.File.Exists(filePathDelete))
+                        {
+                            System.IO.File.Delete(filePathDelete);
+                        }
+                    }
+
                     _bll.Create(Model);
 
                     return Ok(new { success = true, message = "Tạo mới thành công" });

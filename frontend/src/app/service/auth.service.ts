@@ -3,6 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { Observable, of } from 'rxjs';
 import { catchError, tap } from 'rxjs/operators';
 import { API_BASE_URL } from 'src/app/service/api';
+import { Router } from '@angular/router';
 
 @Injectable({
   providedIn: 'root',
@@ -12,7 +13,8 @@ export class AuthService {
   private currentUser: any;
 
   constructor(
-    private http: HttpClient
+    private http: HttpClient,
+    private router: Router
   ) {}
 
   login(nguoidung: object): Observable<any> {
@@ -26,7 +28,7 @@ export class AuthService {
   logout() {
     localStorage.removeItem('user');
     this.currentUser = null;
-    location.assign('/login');
+    this.router.navigate(['/login']);
   }
 
   isAuthenticated(): boolean {

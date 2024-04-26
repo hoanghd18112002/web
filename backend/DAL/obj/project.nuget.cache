@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "fvTYkJf4Wjq9oFlqxD974PCOcNHuVTmv9g5bWhPtisqYjV0sETEg+BWIWwUS1X67NJOgoon0yMwHN6xIQ2xlkA==",
+  "dgSpecHash": "erD2gckZ+cgvwYihHQCYi+Ynrr8xTpPe98DWC43XOqX2ygpNySpPK0+/9SAA0F0eC0i2viNEZMALXDeCUV3TiQ==",
   "success": true,
-  "projectFilePath": "D:\\PhamDucHoang\\DoAn\\DoAnTN\\Web\\backend\\DAL\\DAL.csproj",
+  "projectFilePath": "D:\\PhamDucHoang\\DoAn\\DoAnTN\\Web\\Backend\\DAL\\DAL.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Admin\\.nuget\\packages\\bouncycastle.cryptography\\2.2.1\\bouncycastle.cryptography.2.2.1.nupkg.sha512",
     "C:\\Users\\Admin\\.nuget\\packages\\google.protobuf\\3.25.1\\google.protobuf.3.25.1.nupkg.sha512",

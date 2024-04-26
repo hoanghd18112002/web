@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 import { NguoiDungService } from 'src/app/service/nguoidung.service';
 import swal from 'sweetalert2';
 
@@ -19,7 +20,7 @@ export class SigninComponent {
   ThongBao: string = '';
   isTermsChecked: boolean = false;
 
-  constructor(private nguoiDungService: NguoiDungService) {}
+  constructor(private nguoiDungService: NguoiDungService, private router: Router) {}
 
   ngOnInit(){}
 
@@ -82,7 +83,7 @@ export class SigninComponent {
             title: 'Thành công',
             text: res.message
         }).then(() => {
-            location.assign('/login');
+          this.router.navigate(['/login']);
         });
       } else{
         swal.fire({

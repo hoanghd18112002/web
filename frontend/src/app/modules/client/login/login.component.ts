@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 import { AuthService } from 'src/app/service/auth.service';
 import swal from 'sweetalert2';
 
@@ -13,7 +14,7 @@ export class LoginComponent {
   
   ThongBao: string = '';
   
-  constructor(private service: AuthService) {}
+  constructor(private service: AuthService, private router: Router) {}
 
   ngOnInit(){}
 
@@ -55,14 +56,14 @@ export class LoginComponent {
             };
             localStorage.setItem('user', JSON.stringify(user));
             if (res.data.idQuyen == 2) {
-                location.assign('/');
+                this.router.navigate(['/']);
             } else if (res.data.idQuyen == 1 || res.data.idQuyen == 3){
-                location.assign('/admin/');
+                this.router.navigate(['/admin/']);
             } else if (res.data.idQuyen == 4){
-                location.assign('/admin/doithongtin');
+                this.router.navigate(['/admin/doithongtin']);
             } 
             else{
-                location.assign('/admin/');
+                this.router.navigate(['/admin/']);
             }      
         } else {
             swal.fire({

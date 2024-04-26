@@ -13,21 +13,21 @@ export class LayoutAdminComponent implements OnInit {
     this.loadScripts();
   }
 
-  // private loadCss(): void {
-  //   const links = [
-  //     'assets/admin/css/app.min.css',
-  //     'assets/admin/css/style.css',
-  //     'assets/admin/css/components.css',
-  //     'assets/admin/css/custom.css',
-  //   ];
+  private loadCss(): void {
+    const links = [
+      'assets/admin/css/app.min.css',
+      'assets/admin/css/style.css',
+      'assets/admin/css/components.css',
+      'assets/admin/css/custom.css',
+    ];
 
-  //   links.forEach(link => {
-  //     const styleElement = document.createElement('link');
-  //     styleElement.rel = 'stylesheet';
-  //     styleElement.href = link;
-  //     document.head.appendChild(styleElement);
-  //   });
-  // }
+    links.forEach(link => {
+      const styleElement = document.createElement('link');
+      styleElement.rel = 'stylesheet';
+      styleElement.href = link;
+      document.head.appendChild(styleElement);
+    });
+  }
 
   private loadScripts(): void {
     const scripts = [

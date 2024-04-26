@@ -7,6 +7,7 @@ import swal from 'sweetalert2';
 import { VnPayService } from 'src/app/service/vnpay.service';
 import { PaymentInformation } from 'src/app/models/vnpayment.model';
 import { SanPhamService } from 'src/app/service/sanpham.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-thanhtoan',
@@ -35,6 +36,7 @@ export class ThanhtoanComponent {
     private authService: AuthService,
     private vnPayService: VnPayService,
     private sanPhamService: SanPhamService,
+    private router: Router
   ) {}
 
   ngOnInit(){
@@ -145,7 +147,7 @@ export class ThanhtoanComponent {
       }).then((result) => {
         if (result.dismiss === swal.DismissReason.timer) {}
         if (this.loaiThanhToan === 1) {
-          location.assign('/');
+          this.router.navigate(['/']);
         }
       });
     } else {

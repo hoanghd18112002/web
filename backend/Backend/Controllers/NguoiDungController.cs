@@ -162,6 +162,15 @@ namespace Backend.Controllers
                     }
 
                     model.Anh = System.IO.File.ReadAllBytes(filePath);
+
+                    if (!string.IsNullOrEmpty(uniqueFileName))
+                    {
+                        string filePathDelete = Path.Combine(_path, uniqueFileName);
+                        if (System.IO.File.Exists(filePathDelete))
+                        {
+                            System.IO.File.Delete(filePathDelete);
+                        }
+                    }
                 }
 
                 // Mã hoá mật khẩu nếu nó được cung cấp

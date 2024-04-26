@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 import { CartService } from 'src/app/service/cart.service';
 import swal from 'sweetalert2';
 
@@ -12,7 +13,7 @@ export class CartComponent {
   SoLuong: number = 0;
   TongGia: number = 0;
 
-  constructor(private service: CartService) {}
+  constructor(private service: CartService, private router: Router) {}
 
   ngOnInit(){
     this.loadGioHang();
@@ -74,6 +75,6 @@ export class CartComponent {
         return;
     }
 
-    location.assign('/thanhtoan');
+    this.router.navigate(['/thanhtoan']);
   }
 }
