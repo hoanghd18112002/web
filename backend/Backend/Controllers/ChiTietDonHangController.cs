@@ -177,41 +177,5 @@ namespace Backend.Controllers
                 return StatusCode(500, new { success = false, message = "Đã xảy ra lỗi: " + ex.Message });
             }
         }
-
-        //[Route("excel/{id}")]
-        //[HttpGet]
-        //public IActionResult ExportToExcel(int id)
-        //{
-        //    try
-        //    {
-        //        var kq = _chitietdonhangbll.GetByDonHang(id);
-
-        //        using (var package = new ExcelPackage())
-        //        {
-        //            var worksheet = package.Workbook.Worksheets.Add("donhang");
-        //            worksheet.Cells[1, 1].Value = "STT";
-        //            worksheet.Cells[1, 2].Value = "Tên sản phẩm";
-        //            worksheet.Cells[1, 3].Value = "Số lượng";
-        //            worksheet.Cells[1, 4].Value = "Giá";
-
-        //            int rowIndex = 2;
-        //            foreach (var item in kq)
-        //            {
-        //                worksheet.Cells[rowIndex, 1].Value = rowIndex - 1;
-        //                worksheet.Cells[rowIndex, 2].Value = item.TenSanPham;
-        //                worksheet.Cells[rowIndex, 3].Value = item.SoLuong;
-        //                worksheet.Cells[rowIndex, 4].Value = item.Gia;
-        //                rowIndex++;
-        //            }
-
-        //            var fileBytes = package.GetAsByteArray();
-        //            return File(fileBytes, "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet", "donhang.xlsx");
-        //        }
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        return StatusCode(500, new { success = false, message = "Đã xảy ra lỗi: " + ex.Message });
-        //    }
-        //}
     }
 }

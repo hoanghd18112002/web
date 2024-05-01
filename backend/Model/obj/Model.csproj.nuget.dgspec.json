@@ -1,15 +1,15 @@
 {
   "format": 1,
   "restore": {
-    "D:\\PhamDucHoang\\DoAn\\DoAnTN\\Web\\Backend\\Model\\Model.csproj": {}
+    "D:\\PhamDucHoang\\DoAn\\DoAnTN\\Web\\backend\\Model\\Model.csproj": {}
   },
   "projects": {
-    "D:\\PhamDucHoang\\DoAn\\DoAnTN\\Web\\Backend\\Model\\Model.csproj": {
+    "D:\\PhamDucHoang\\DoAn\\DoAnTN\\Web\\backend\\Model\\Model.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\PhamDucHoang\\DoAn\\DoAnTN\\Web\\Backend\\Model\\Model.csproj",
+        "projectUniqueName": "D:\\PhamDucHoang\\DoAn\\DoAnTN\\Web\\backend\\Model\\Model.csproj",
         "projectName": "Model",
-        "projectPath": "D:\\PhamDucHoang\\DoAn\\DoAnTN\\Web\\Backend\\Model\\Model.csproj",
+        "projectPath": "D:\\PhamDucHoang\\DoAn\\DoAnTN\\Web\\backend\\Model\\Model.csproj",
         "packagesPath": "C:\\Users\\Admin\\.nuget\\packages\\",
         "outputPath": "D:\\PhamDucHoang\\DoAn\\DoAnTN\\Web\\backend\\Model\\obj\\",
         "projectStyle": "PackageReference",
