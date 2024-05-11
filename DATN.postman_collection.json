@@ -1,0 +1,2702 @@
+{
+	"info": {
+		"_postman_id": "982cdd7a-0eea-4595-a961-f57fab5f1f1d",
+		"name": "DATN",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json",
+		"_exporter_id": "29288815"
+	},
+	"item": [
+		{
+			"name": "ChiTietDonHang",
+			"item": [
+				{
+					"name": "get-by-don-hang",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "{{TOKEN_API}}"
+							}
+						},
+						"method": "GET",
+						"header": [],
+						"url": "http://localhost:5226/api/chitietdonhang/get-by-don-hang/1"
+					},
+					"response": []
+				},
+				{
+					"name": "get-by-id",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": "http://localhost:5226/api/chitietdonhang/get-by-id/1"
+					},
+					"response": []
+				},
+				{
+					"name": "create",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"soLuong\": \"10\",\r\n    \"gia\": \"10\",\r\n    \"idSanPham\": \"1\",\r\n    \"idDonHang\": \"1\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "http://localhost:5226/api/chitietdonhang/create"
+					},
+					"response": []
+				},
+				{
+					"name": "excel",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "{{TOKEN_API}}"
+							}
+						},
+						"method": "GET",
+						"header": [],
+						"url": "http://localhost:5226/api/chitietdonhang/excel/1"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "ChiTietHoaDonNhap",
+			"item": [
+				{
+					"name": "create",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"soLuong\": \"10\",\r\n    \"gia\": \"10\",\r\n    \"idSanPham\": \"1\",\r\n    \"idHoaDonNhap\": \"1\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "http://localhost:5226/api/chitiethoadonnhap/create"
+					},
+					"response": []
+				},
+				{
+					"name": "update",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id\": \"17\",\r\n    \"soLuong\": \"11\",\r\n    \"gia\": \"11\",\r\n    \"idSanPham\": \"2\",\r\n    \"idHoaDonNhap\": \"2\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "http://localhost:5226/api/chitiethoadonnhap/update"
+					},
+					"response": []
+				},
+				{
+					"name": "delete",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": "http://localhost:5226/api/chitiethoadonnhap/delete/18"
+					},
+					"response": []
+				},
+				{
+					"name": "get-by-hoa-don-nhap",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "{{TOKEN_API}}"
+							}
+						},
+						"method": "GET",
+						"header": [],
+						"url": "http://localhost:5226/api/chitiethoadonnhap/get-by-hoa-don-nhap/2"
+					},
+					"response": []
+				},
+				{
+					"name": "get-by-id",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": "http://localhost:5226/api/chitiethoadonnhap/get-by-id/18"
+					},
+					"response": []
+				},
+				{
+					"name": "excel",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "{{TOKEN_API}}"
+							}
+						},
+						"method": "GET",
+						"header": [],
+						"url": "http://localhost:5226/api/chitiethoadonnhap/excel/1"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "DieuKhoan",
+			"item": [
+				{
+					"name": "get-by-kieu",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": "http://localhost:5226/api/dieukhoan/get-by-kieu/2"
+					},
+					"response": []
+				},
+				{
+					"name": "get-all",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"page\": \"1\",\r\n    \"pageSize\": \"10\",\r\n    \"kieu\": null\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "http://localhost:5226/api/dieukhoan/get-all"
+					},
+					"response": []
+				},
+				{
+					"name": "get-by-id",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": "http://localhost:5226/api/dieukhoan/get-by-id/1"
+					},
+					"response": []
+				},
+				{
+					"name": "create",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"noiDung\": \"Test\",\r\n    \"kieu\": \"1\",\r\n    \"trangThai\": \"1\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "http://localhost:5226/api/dieukhoan/create"
+					},
+					"response": []
+				},
+				{
+					"name": "update",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id\": \"52\",\r\n    \"noiDung\": \"Test1\",\r\n    \"kieu\": \"2\",\r\n    \"trangThai\": \"0\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "http://localhost:5226/api/dieukhoan/update"
+					},
+					"response": []
+				},
+				{
+					"name": "delete",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": "http://localhost:5226/api/dieukhoan/delete/52"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "DonHang",
+			"item": [
+				{
+					"name": "get-by-nguoi-dung",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "{{TOKEN_API}}"
+							}
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"page\": \"1\",\r\n    \"pageSize\": \"10\",\r\n    \"id\": \"2\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "http://localhost:5226/api/donhang/get-by-nguoi-dung"
+					},
+					"response": []
+				},
+				{
+					"name": "get-all",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "{{TOKEN_API}}"
+							}
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"page\": \"1\",\r\n    \"pageSize\": \"10\",\r\n    \"id\": null,\r\n    \"trangThai\": 6\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "http://localhost:5226/api/donhang/get-all"
+					},
+					"response": []
+				},
+				{
+					"name": "get-new",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": "http://localhost:5226/api/donhang/get-new"
+					},
+					"response": []
+				},
+				{
+					"name": "get-by-id",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": "http://localhost:5226/api/donhang/get-by-id/1"
+					},
+					"response": []
+				},
+				{
+					"name": "create",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"ten\": \"10\",\r\n    \"diaChi\": \"1\",\r\n    \"sdt\": \"1\",\r\n    \"kieuGiaoHang\": \"1\",\r\n    \"ghiChu\": \"1\",\r\n    \"trangThai\": \"1\",\r\n    \"idPhuongThuc\": \"1\",\r\n    \"idNguoiDung\": \"1\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "http://localhost:5226/api/donhang/create"
+					},
+					"response": []
+				},
+				{
+					"name": "update",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "{{TOKEN_API}}"
+							}
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id\": \"21\",\r\n    \"trangThai\": \"0\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "http://localhost:5226/api/donhang/update"
+					},
+					"response": []
+				},
+				{
+					"name": "order-email",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "{{TOKEN_API}}"
+							}
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\": \"genshinsdt3@gmail.com\",\r\n    \"confirmationLink\": \"http://localhost:4200/tracuudonhang\",\r\n    \"id\": \"115\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "http://localhost:5226/api/donhang/order-email"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "GiamGia",
+			"item": [
+				{
+					"name": "get-by-san-pham",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "{{TOKEN_API}}"
+							}
+						},
+						"method": "GET",
+						"header": [],
+						"url": "http://localhost:5226/api/giamgia/get-by-san-pham/2"
+					},
+					"response": []
+				},
+				{
+					"name": "get-all",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "{{TOKEN_API}}"
+							}
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"page\": \"1\",\r\n    \"pageSize\": \"10\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "http://localhost:5226/api/giamgia/get-all"
+					},
+					"response": []
+				},
+				{
+					"name": "get-by-id",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": "http://localhost:5226/api/giamgia/get-by-id/10"
+					},
+					"response": []
+				},
+				{
+					"name": "create",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"phanTram\": \"10\",\r\n    \"ngayBatDau\": \"2023-10-10\",\r\n    \"ngayKetThuc\": \"2025-10-10\",\r\n    \"idSanPham\": \"1\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "http://localhost:5226/api/giamgia/create"
+					},
+					"response": []
+				},
+				{
+					"name": "update",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id\": \"18\",\r\n    \"phanTram\": \"20\",\r\n    \"ngayBatDau\": \"2023-11-11\",\r\n    \"ngayKetThuc\": \"2025-11-11\",\r\n    \"idSanPham\": \"2\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "http://localhost:5226/api/giamgia/update"
+					},
+					"response": []
+				},
+				{
+					"name": "delete",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": "http://localhost:5226/api/giamgia/delete/18"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "GiaSanPham",
+			"item": [
+				{
+					"name": "get-by-san-pham",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": "http://localhost:5226/api/giasanpham/get-by-san-pham/49"
+					},
+					"response": []
+				},
+				{
+					"name": "get-all",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"page\": \"1\",\r\n    \"pageSize\": \"10\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "http://localhost:5226/api/giasanpham/get-all"
+					},
+					"response": []
+				},
+				{
+					"name": "getbyid",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "{{TOKEN_API}}"
+							}
+						},
+						"method": "GET",
+						"header": [],
+						"url": "http://localhost:5226/api/giasanpham/get-by-id/89"
+					},
+					"response": []
+				},
+				{
+					"name": "create",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"gia\": \"10\",\r\n    \"ngayBatDau\": \"2023-10-10\",\r\n    \"ngayKetThuc\": \"2025-10-10\",\r\n    \"idSanPham\": \"1\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "http://localhost:5226/api/giasanpham/create"
+					},
+					"response": []
+				},
+				{
+					"name": "update",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "{{TOKEN_API}}"
+							}
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id\": \"89\",\r\n    \"gia\": \"500001\",\r\n    \"ngayBatDau\": \"2023-11-11\",\r\n    \"ngayKetThuc\": \"2025-11-11\",\r\n    \"idSanPham\": null\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "http://localhost:5226/api/giasanpham/update"
+					},
+					"response": []
+				},
+				{
+					"name": "delete",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": "http://localhost:5226/api/giasanpham/delete/88"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "GioiThieu",
+			"item": [
+				{
+					"name": "get",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": "http://localhost:5226/api/gioithieu/get"
+					},
+					"response": []
+				},
+				{
+					"name": "get-all",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"page\": \"1\",\r\n    \"pageSize\": \"10\",\r\n    \"noidung\": \"\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "http://localhost:5226/api/gioithieu/get-all"
+					},
+					"response": []
+				},
+				{
+					"name": "get-by-id",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": "http://localhost:5226/api/gioithieu/get-by-id/1"
+					},
+					"response": []
+				},
+				{
+					"name": "create",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "File",
+									"type": "file",
+									"src": "/D:/PhamDucHoang/API/BTL/frontend/assets/admin/images/cropper.jpg"
+								},
+								{
+									"key": "NoiDung",
+									"value": "test",
+									"type": "text"
+								},
+								{
+									"key": "TrangThai",
+									"value": "1",
+									"type": "text"
+								}
+							]
+						},
+						"url": "http://localhost:5226/api/gioithieu/create"
+					},
+					"response": []
+				},
+				{
+					"name": "update",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "File",
+									"type": "file",
+									"src": "/D:/PhamDucHoang/API/BTL/frontend/assets/admin/images/media.jpg"
+								},
+								{
+									"key": "NoiDung",
+									"value": "Test2",
+									"type": "text"
+								},
+								{
+									"key": "TrangThai",
+									"value": "0",
+									"type": "text"
+								},
+								{
+									"key": "ID",
+									"value": "13",
+									"type": "text"
+								}
+							]
+						},
+						"url": "http://localhost:5226/api/gioithieu/update"
+					},
+					"response": []
+				},
+				{
+					"name": "delete",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": "http://localhost:5226/api/gioithieu/delete/13"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "HoaDonNhap",
+			"item": [
+				{
+					"name": "get-all",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "{{TOKEN_API}}"
+							}
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"page\": \"1\",\r\n    \"pageSize\": \"10\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "http://localhost:5226/api/hoadonnhap/get-all"
+					},
+					"response": []
+				},
+				{
+					"name": "getnew",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "{{TOKEN_API}}"
+							}
+						},
+						"method": "GET",
+						"header": [],
+						"url": "http://localhost:5226/api/hoadonnhap/get-new"
+					},
+					"response": []
+				},
+				{
+					"name": "get-by-id",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "{{TOKEN_API}}"
+							}
+						},
+						"method": "GET",
+						"header": [],
+						"url": "http://localhost:5226/api/hoadonnhap/get-by-id/1"
+					},
+					"response": []
+				},
+				{
+					"name": "create",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "{{TOKEN_API}}"
+							}
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"idNhaCungCap\": \"1\",\r\n    \"idNguoiDung\": \"1\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "http://localhost:5226/api/hoadonnhap/create"
+					},
+					"response": []
+				},
+				{
+					"name": "update",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id\": \"19\",\r\n    \"idNhaCungCap\": \"2\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "http://localhost:5226/api/hoadonnhap/update"
+					},
+					"response": []
+				},
+				{
+					"name": "delete",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": "http://localhost:5226/api/hoadonnhap/delete/19"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "LienHe",
+			"item": [
+				{
+					"name": "get",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": "http://localhost:5226/api/lienhe/get"
+					},
+					"response": []
+				},
+				{
+					"name": "get-all",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"page\": \"1\",\r\n    \"pageSize\": \"10\",\r\n    \"noiDung\": \"\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "http://localhost:5226/api/lienhe/get-all"
+					},
+					"response": []
+				},
+				{
+					"name": "get-by-id",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": "http://localhost:5226/api/lienhe/get-by-id/1"
+					},
+					"response": []
+				},
+				{
+					"name": "create",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"noiDung\": \"Test\",\r\n    \"trangThai\": \"1\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "http://localhost:5226/api/lienhe/create"
+					},
+					"response": []
+				},
+				{
+					"name": "update",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id\": \"31\",\r\n    \"noiDung\": \"Test1\",\r\n    \"trangThai\": \"0\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "http://localhost:5226/api/lienhe/update"
+					},
+					"response": []
+				},
+				{
+					"name": "delete",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": "http://localhost:5226/api/lienhe/delete/28"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "LoaiSanPham",
+			"item": [
+				{
+					"name": "get",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": "http://localhost:5226/api/loaisanpham/get"
+					},
+					"response": []
+				},
+				{
+					"name": "get-all",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "{{TOKEN_API}}"
+							}
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"page\": \"1\",\r\n    \"pageSize\": \"10\",\r\n    \"ten\": \"\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "http://localhost:5226/api/loaisanpham/get-all"
+					},
+					"response": []
+				},
+				{
+					"name": "get-by-id",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "{{TOKEN_API}}"
+							}
+						},
+						"method": "GET",
+						"header": [],
+						"url": "http://localhost:5226/api/loaisanpham/get-by-id/1"
+					},
+					"response": []
+				},
+				{
+					"name": "create",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "{{TOKEN_API}}"
+							}
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Ten",
+								"value": "Test",
+								"type": "text",
+								"disabled": true
+							},
+							{
+								"key": "File",
+								"value": "",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "Ten",
+									"value": "Test",
+									"type": "text"
+								},
+								{
+									"key": "File",
+									"type": "file",
+									"src": "/D:/PhamDucHoang/DoAn/DoAnTN/Web/frontend/src/assets/client/img/icon/icon01.png"
+								},
+								{
+									"key": "TrangThai",
+									"value": "1",
+									"type": "text"
+								}
+							]
+						},
+						"url": "http://localhost:5226/api/loaisanpham/create"
+					},
+					"response": []
+				},
+				{
+					"name": "update",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "File",
+									"type": "file",
+									"src": "/D:/PhamDucHoang/DoAn/DoAnTN/Web/frontend/src/assets/client/img/about/about.jpg"
+								},
+								{
+									"key": "Ten",
+									"value": "Test1",
+									"type": "text"
+								},
+								{
+									"key": "TrangThai",
+									"value": "0",
+									"type": "text"
+								},
+								{
+									"key": "ID",
+									"value": "11",
+									"type": "text"
+								}
+							]
+						},
+						"url": "http://localhost:5226/api/loaisanpham/update"
+					},
+					"response": []
+				},
+				{
+					"name": "delete",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": "http://localhost:5226/api/loaisanpham/delete/11"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Menu",
+			"item": [
+				{
+					"name": "get",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": "http://localhost:5226/api/menu/get"
+					},
+					"response": []
+				},
+				{
+					"name": "get-all",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"page\": \"1\",\r\n    \"pageSize\": \"10\",\r\n    \"ten\": \"\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "http://localhost:5226/api/menu/get-all"
+					},
+					"response": []
+				},
+				{
+					"name": "get-by-id",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": "http://localhost:5226/api/menu/get-by-id/17"
+					},
+					"response": []
+				},
+				{
+					"name": "create",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"ten\": \"Test\",\r\n    \"link\": \"Test\",\r\n    \"trangThai\": \"1\",\r\n    \"idCha\": \"0\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "http://localhost:5226/api/menu/create"
+					},
+					"response": []
+				},
+				{
+					"name": "update",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id\": \"17\",\r\n    \"ten\": \"Test1\",\r\n    \"link\": \"Test1\",\r\n    \"trangThai\": \"1\",\r\n    \"idCha\": \"10\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "http://localhost:5226/api/menu/update"
+					},
+					"response": []
+				},
+				{
+					"name": "delete",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": "http://localhost:5226/api/menu/delete/18"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "NguoiDung",
+			"item": [
+				{
+					"name": "login",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"var jsonData = pm.response.json();\r",
+									"pm.globals.clear();\r",
+									"pm.globals.set(\"TOKEN_API\", jsonData.data.token);"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"taiKhoan\": \"phamduchoang\",\r\n    \"matKhau\": \"123456\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "http://localhost:5226/api/nguoidung/login"
+					},
+					"response": []
+				},
+				{
+					"name": "get-all",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "{{TOKEN_API}}"
+							}
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"page\": \"1\",\r\n    \"pageSize\": \"10\",\r\n    \"ten\": \"Hoàng\",\r\n    \"idQuyen\": null\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "http://localhost:5226/api/nguoidung/get-all"
+					},
+					"response": []
+				},
+				{
+					"name": "check",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "{{TOKEN_API}}"
+							}
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"taiKhoan\": \"phamduchoang\",\r\n    \"email\": \"phamthanhduong@gmail.com\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "http://localhost:5226/api/nguoidung/check"
+					},
+					"response": []
+				},
+				{
+					"name": "get-by-id",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "{{TOKEN_API}}"
+							}
+						},
+						"method": "GET",
+						"header": [],
+						"url": "http://localhost:5226/api/nguoidung/get-by-id/1"
+					},
+					"response": []
+				},
+				{
+					"name": "create",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"taiKhoan\": \"test\",\r\n    \"matKhau\": \"123456\",\r\n    \"email\": \"genshinsdt3@gmail.com\",\r\n    \"ten\": \"test\",\r\n    \"sdt\": \"123456\",\r\n    \"diaChi\": \"test\",\r\n    \"gioiTinh\": 1,\r\n    \"trangThai\": \"1\",\r\n    \"idQuyen\": \"2\",\r\n    \"confirmationLink\": \"http://localhost:4200/\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "http://localhost:5226/api/nguoidung/create"
+					},
+					"response": []
+				},
+				{
+					"name": "update",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "{{TOKEN_API}}"
+							}
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "ID",
+									"value": "6",
+									"type": "text"
+								},
+								{
+									"key": "file",
+									"type": "file",
+									"src": "/D:/PhamDucHoang/DoAn/DoAnTN/Web/frontend/src/assets/client/img/nguoidung/phamvanhoan.png"
+								}
+							]
+						},
+						"url": "http://localhost:5226/api/nguoidung/update"
+					},
+					"response": []
+				},
+				{
+					"name": "delete",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "{{TOKEN_API}}"
+							}
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": "http://localhost:5226/api/nguoidung/delete/37"
+					},
+					"response": []
+				},
+				{
+					"name": "confirm-email",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"token\": \"oBSHXdRByaJMTvJeUHfRXNLSRDWquhGEyCtYUzJNOZjjCuWnBBOGDuHZbjFqTIzz\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "http://localhost:5226/api/nguoidung/confirm-email"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "NhaCungCap",
+			"item": [
+				{
+					"name": "get",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "{{TOKEN_API}}"
+							}
+						},
+						"method": "GET",
+						"header": [],
+						"url": "http://localhost:5226/api/nhacungcap/get"
+					},
+					"response": []
+				},
+				{
+					"name": "get-all",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "{{TOKEN_API}}"
+							}
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"page\": \"1\",\r\n    \"pageSize\": \"10\",\r\n    \"ten\": \"\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "http://localhost:5226/api/nhacungcap/get-all"
+					},
+					"response": []
+				},
+				{
+					"name": "get-by-id",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": "http://localhost:5226/api/nhacungcap/get-by-id/1"
+					},
+					"response": []
+				},
+				{
+					"name": "create",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"ten\": \"Test\",\r\n    \"diaChi\": \"Test\",\r\n    \"sdt\": \"Test\",\r\n    \"trangThai\": \"1\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "http://localhost:5226/api/nhacungcap/create"
+					},
+					"response": []
+				},
+				{
+					"name": "update",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id\": \"13\",\r\n    \"ten\": \"Test1\",\r\n    \"diaChi\": \"Test1\",\r\n    \"sdt\": \"Test1\",\r\n    \"trangThai\": \"0\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "http://localhost:5226/api/nhacungcap/update"
+					},
+					"response": []
+				},
+				{
+					"name": "delete",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": "http://localhost:5226/api/nhacungcap/delete/13"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "NhaSanXuat",
+			"item": [
+				{
+					"name": "get",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": "http://localhost:5226/api/nhasanxuat/get"
+					},
+					"response": []
+				},
+				{
+					"name": "getall",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"page\": \"1\",\r\n    \"pageSize\": \"10\",\r\n    \"ten\": \"\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "http://localhost:5226/api/nhasanxuat/get-all"
+					},
+					"response": []
+				},
+				{
+					"name": "get-by-id",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": "http://localhost:5226/api/nhasanxuat/get-by-id/1"
+					},
+					"response": []
+				},
+				{
+					"name": "create",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "Ten",
+									"value": "Test",
+									"type": "text"
+								},
+								{
+									"key": "File",
+									"type": "file",
+									"src": "/D:/PhamDucHoang/API/BTL/frontend/assets/admin/images/cropper.jpg"
+								},
+								{
+									"key": "MoTa",
+									"value": "Test",
+									"type": "text"
+								},
+								{
+									"key": "TrangThai",
+									"value": "1",
+									"type": "text"
+								}
+							]
+						},
+						"url": "http://localhost:5226/api/nhasanxuat/create"
+					},
+					"response": []
+				},
+				{
+					"name": "update",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "ID",
+									"value": "11",
+									"type": "text"
+								},
+								{
+									"key": "Ten",
+									"value": "Test2",
+									"type": "text"
+								},
+								{
+									"key": "File",
+									"type": "file",
+									"src": "/D:/PhamDucHoang/API/BTL/frontend/assets/admin/images/inbox.png"
+								},
+								{
+									"key": "TrangThai",
+									"value": "0",
+									"type": "text"
+								}
+							]
+						},
+						"url": "http://localhost:5226/api/nhasanxuat/update"
+					},
+					"response": []
+				},
+				{
+					"name": "delete",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": "http://localhost:5226/api/nhasanxuat/delete/11"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "PhuongThucThanhToan",
+			"item": [
+				{
+					"name": "get",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": "http://localhost:5226/api/phuongthucthanhtoan/get"
+					},
+					"response": []
+				},
+				{
+					"name": "get-all",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"page\": \"1\",\r\n    \"pageSize\": \"10\",\r\n    \"ten\": \"\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "http://localhost:5226/api/phuongthucthanhtoan/get-all"
+					},
+					"response": []
+				},
+				{
+					"name": "get-by-id",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": "http://localhost:5226/api/phuongthucthanhtoan/get-by-id/1"
+					},
+					"response": []
+				},
+				{
+					"name": "create",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"ten\": \"Test\",\r\n    \"moTa\": \"Test\",\r\n    \"trangThai\": \"1\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "http://localhost:5226/api/phuongthucthanhtoan/create"
+					},
+					"response": []
+				},
+				{
+					"name": "update",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id\": \"6\",\r\n    \"ten\": \"Test1\",\r\n    \"moTa\": \"Test1\",\r\n    \"trangThai\": \"0\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "http://localhost:5226/api/phuongthucthanhtoan/update"
+					},
+					"response": []
+				},
+				{
+					"name": "delete",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": "http://localhost:5226/api/phuongthucthanhtoan/delete/5"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Quyen",
+			"item": [
+				{
+					"name": "get",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "{{TOKEN_API}}"
+							}
+						},
+						"method": "GET",
+						"header": [],
+						"url": "http://localhost:5226/api/quyen/get"
+					},
+					"response": []
+				},
+				{
+					"name": "get-all",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"page\": \"1\",\r\n    \"pageSize\": \"10\",\r\n    \"ten\": \"\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "http://localhost:5226/api/quyen/get-all"
+					},
+					"response": []
+				},
+				{
+					"name": "get-by-id",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": "http://localhost:5226/api/quyen/get-by-id/1"
+					},
+					"response": []
+				},
+				{
+					"name": "create",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"ten\": \"Test\",\r\n    \"moTa\": \"Test\",\r\n    \"trangThai\": \"1\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "http://localhost:5226/api/quyen/create"
+					},
+					"response": []
+				},
+				{
+					"name": "update",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id\": \"6\",\r\n    \"ten\": \"Test1\",\r\n    \"moTa\": \"Test1\",\r\n    \"trangThai\": \"0\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "http://localhost:5226/api/quyen/update"
+					},
+					"response": []
+				},
+				{
+					"name": "delete",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": "http://localhost:5226/api/quyen/delete/6"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "SanPham",
+			"item": [
+				{
+					"name": "get-san-pham-moi",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": "http://localhost:5226/api/sanpham/get-san-pham-moi/100"
+					},
+					"response": []
+				},
+				{
+					"name": "get-san-pham-ban-chay",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": "http://localhost:5226/api/sanpham/get-san-pham-ban-chay/10"
+					},
+					"response": []
+				},
+				{
+					"name": "get-san-pham-giam-gia",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": "http://localhost:5226/api/sanpham/get-san-pham-giam-gia/100"
+					},
+					"response": []
+				},
+				{
+					"name": "get-random",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": "https://localhost:7029/api/sanpham/get-random/100"
+					},
+					"response": []
+				},
+				{
+					"name": "get-all",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "{{TOKEN_API}}"
+							}
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"page\": \"1\",\r\n    \"pageSize\": \"10\",\r\n    \"ten\": \"\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "http://localhost:5226/api/sanpham/get-all"
+					},
+					"response": []
+				},
+				{
+					"name": "get-new",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "{{TOKEN_API}}"
+							}
+						},
+						"method": "GET",
+						"header": [],
+						"url": "http://localhost:5226/api/sanpham/get-new"
+					},
+					"response": []
+				},
+				{
+					"name": "search",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"page\": 1,\r\n    \"pageSize\": 100,\r\n    \"id\": null,\r\n    \"ten\": null,\r\n    \"tenNhaSanXuat\": null,\r\n    \"tenLoai\": null,\r\n    \"minGia\": null,\r\n    \"maxGia\": null,\r\n    \"idNhaSanXuat\": null,\r\n    \"idLoai\": null\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "https://localhost:7029/api/sanpham/search"
+					},
+					"response": []
+				},
+				{
+					"name": "get-by-id",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": "https://103.67.163.152:5226/api/sanpham/get-by-id/1"
+					},
+					"response": []
+				},
+				{
+					"name": "create",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "{{TOKEN_API}}"
+							}
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "Ten",
+									"value": "Test",
+									"type": "text"
+								},
+								{
+									"key": "MoTa",
+									"value": "Test",
+									"type": "text"
+								},
+								{
+									"key": "File",
+									"type": "file",
+									"src": "/D:/PhamDucHoang/DoAn/DoAnTN/Web/frontend/src/assets/client/img/about/about.jpg"
+								},
+								{
+									"key": "TrangThai",
+									"value": "1",
+									"type": "text"
+								},
+								{
+									"key": "IDNhaSanXuat",
+									"value": "1",
+									"type": "text"
+								},
+								{
+									"key": "IDLoai",
+									"value": "1",
+									"type": "text"
+								}
+							]
+						},
+						"url": "https://localhost:7029/api/sanpham/create"
+					},
+					"response": []
+				},
+				{
+					"name": "update",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "{{TOKEN_API}}"
+							}
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "ID",
+									"value": "101",
+									"type": "text"
+								},
+								{
+									"key": "Ten",
+									"value": "Test2",
+									"type": "text"
+								},
+								{
+									"key": "MoTa",
+									"value": "Test3",
+									"type": "text"
+								},
+								{
+									"key": "SoLuong",
+									"value": "0",
+									"type": "text"
+								},
+								{
+									"key": "File",
+									"type": "file",
+									"src": [
+										"/D:/PhamDucHoang/API/BTL/frontend/assets/admin/images/visa.png",
+										"/D:/PhamDucHoang/DoAn/DoAnTN/Web/frontend/src/assets/client/img/about/services.jpg"
+									]
+								},
+								{
+									"key": "TrangThai",
+									"value": "1",
+									"type": "text"
+								},
+								{
+									"key": "IDNhaSanXuat",
+									"value": "2",
+									"type": "text"
+								},
+								{
+									"key": "IDLoai",
+									"value": "2",
+									"type": "text"
+								}
+							]
+						},
+						"url": "https://localhost:7029/api/sanpham/update"
+					},
+					"response": []
+				},
+				{
+					"name": "delete",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "{{TOKEN_API}}"
+							}
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": "http://localhost:5226/api/sanpham/delete/101"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Slide",
+			"item": [
+				{
+					"name": "get",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": "http://localhost:5226/api/slide/get"
+					},
+					"response": []
+				},
+				{
+					"name": "get-all",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "{{TOKEN_API}}"
+							}
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"page\": \"1\",\r\n    \"pageSize\": \"10\",\r\n    \"tieuDe\": \"az\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "http://localhost:5226/api/slide/get-all"
+					},
+					"response": []
+				},
+				{
+					"name": "get-by-id",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "{{TOKEN_API}}"
+							}
+						},
+						"method": "GET",
+						"header": [],
+						"url": "http://localhost:5226/api/slide/get-by-id/1"
+					},
+					"response": []
+				},
+				{
+					"name": "create",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "{{TOKEN_API}}"
+							}
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "TrangThai",
+									"value": "1",
+									"type": "text"
+								},
+								{
+									"key": "File",
+									"type": "file",
+									"src": "/D:/PhamDucHoang/API/BTL/frontend/assets/admin/images/cropper.jpg"
+								},
+								{
+									"key": "TieuDe",
+									"value": "Test",
+									"type": "text"
+								},
+								{
+									"key": "NoiDung",
+									"value": "Test",
+									"type": "text"
+								},
+								{
+									"key": "Kieu",
+									"value": "0",
+									"type": "text"
+								},
+								{
+									"key": "IDCha",
+									"value": "0",
+									"type": "text"
+								}
+							]
+						},
+						"url": "http://localhost:5226/api/slide/create"
+					},
+					"response": []
+				},
+				{
+					"name": "update",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "{{TOKEN_API}}"
+							}
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "File",
+									"type": "file",
+									"src": "/D:/PhamDucHoang/DoAn/DoAnTN/Web/frontend/src/assets/client/img/about/about.jpg"
+								},
+								{
+									"key": "TrangThai",
+									"value": "0",
+									"type": "text"
+								},
+								{
+									"key": "ID",
+									"value": "11",
+									"type": "text"
+								},
+								{
+									"key": "TieuDe",
+									"value": "Test2",
+									"type": "text"
+								},
+								{
+									"key": "NoiDung",
+									"value": "Test2",
+									"type": "text"
+								},
+								{
+									"key": "Kieu",
+									"value": "1",
+									"type": "text"
+								},
+								{
+									"key": "IDCha",
+									"value": "1",
+									"type": "text"
+								}
+							]
+						},
+						"url": "http://localhost:5226/api/slide/update"
+					},
+					"response": []
+				},
+				{
+					"name": "delete",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "{{TOKEN_API}}"
+							}
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": "http://localhost:5226/api/slide/delete/11"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "ThamSo",
+			"item": [
+				{
+					"name": "get-by-ma",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": "http://localhost:5226/api/thamso/get-by-ma/LOGO"
+					},
+					"response": []
+				},
+				{
+					"name": "get-all",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "{{TOKEN_API}}"
+							}
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"page\": \"1\",\r\n    \"pageSize\": \"10\",\r\n    \"ten\": \"\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "http://localhost:5226/api/thamso/get-all"
+					},
+					"response": []
+				},
+				{
+					"name": "get-by-id",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "{{TOKEN_API}}"
+							}
+						},
+						"method": "GET",
+						"header": [],
+						"url": "http://localhost:5226/api/thamso/get-by-id/1"
+					},
+					"response": []
+				},
+				{
+					"name": "create",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "{{TOKEN_API}}"
+							}
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "Ten",
+									"value": "Test",
+									"type": "text"
+								},
+								{
+									"key": "NoiDung",
+									"value": "Test",
+									"type": "text"
+								},
+								{
+									"key": "file",
+									"type": "file",
+									"src": "/D:/PhamDucHoang/DoAn/DoAnTN/Web/frontend/src/assets/client/img/about/about.jpg"
+								},
+								{
+									"key": "Ma",
+									"value": "TEST",
+									"type": "text"
+								},
+								{
+									"key": "TrangThai",
+									"value": "1",
+									"type": "text"
+								}
+							]
+						},
+						"url": "http://localhost:5226/api/thamso/create"
+					},
+					"response": []
+				},
+				{
+					"name": "update",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "{{TOKEN_API}}"
+							}
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "ID",
+									"value": "10",
+									"type": "text"
+								},
+								{
+									"key": "Ten",
+									"value": "Test2",
+									"type": "text"
+								},
+								{
+									"key": "NoiDung",
+									"value": "Test2",
+									"type": "text"
+								},
+								{
+									"key": "Anh",
+									"type": "file",
+									"src": "/D:/PhamDucHoang/DoAn/DoAnTN/Web/frontend/src/assets/client/img/about/services.jpg"
+								},
+								{
+									"key": "Ma",
+									"value": "TEST2",
+									"type": "text"
+								},
+								{
+									"key": "TrangThai",
+									"value": "0",
+									"type": "text"
+								}
+							]
+						},
+						"url": "http://localhost:5226/api/thamso/update"
+					},
+					"response": []
+				},
+				{
+					"name": "delete",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "{{TOKEN_API}}"
+							}
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": "http://localhost:5226/api/thamso/delete/11"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "ThongKe",
+			"item": [
+				{
+					"name": "doanh-thu-theo-thang",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "{{TOKEN_API}}"
+							}
+						},
+						"method": "GET",
+						"header": [],
+						"url": "http://localhost:5226/api/thongke/doanh-thu-theo-thang/12"
+					},
+					"response": []
+				},
+				{
+					"name": "doanh-thu-san-pham",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "{{TOKEN_API}}"
+							}
+						},
+						"method": "GET",
+						"header": [],
+						"url": "http://localhost:5226/api/thongke/doanh-thu-san-pham/7"
+					},
+					"response": []
+				},
+				{
+					"name": "loai-san-pham-ban-chay",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "{{TOKEN_API}}"
+							}
+						},
+						"method": "GET",
+						"header": [],
+						"url": "http://localhost:5226/api/thongke/loai-san-pham-ban-chay/10"
+					},
+					"response": []
+				},
+				{
+					"name": "so-luong",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "{{TOKEN_API}}"
+							}
+						},
+						"method": "GET",
+						"header": [],
+						"url": "http://localhost:5226/api/thongke/so-luong"
+					},
+					"response": []
+				},
+				{
+					"name": "doanh-thu-theo-nam",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "{{TOKEN_API}}"
+							}
+						},
+						"method": "GET",
+						"header": [],
+						"url": "http://localhost:5226/api/thongke/doanh-thu-theo-nam/2024"
+					},
+					"response": []
+				},
+				{
+					"name": "doanh-thu-theo-quy",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "{{TOKEN_API}}"
+							}
+						},
+						"method": "GET",
+						"header": [],
+						"url": "http://localhost:5226/api/thongke/doanh-thu-theo-quy/2024"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "ThongSo",
+			"item": [
+				{
+					"name": "get-by-san-pham",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": "http://localhost:5226/api/thongso/get-by-san-pham/2"
+					},
+					"response": []
+				},
+				{
+					"name": "getbyid",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": "http://localhost:5226/api/thongso/get-by-id/49"
+					},
+					"response": []
+				},
+				{
+					"name": "create",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"ten\": \"Test\",\r\n    \"moTa\": \"Test\",\r\n    \"idSanPham\": \"1\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "http://localhost:5226/api/thongso/create"
+					},
+					"response": []
+				},
+				{
+					"name": "update",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id\": \"393\",\r\n    \"ten\": \"Test1\",\r\n    \"moTa\": \"Test1\",\r\n    \"idSanPham\": \"2\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "http://localhost:5226/api/thongso/update"
+					},
+					"response": []
+				},
+				{
+					"name": "delete",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": "http://localhost:5226/api/thongso/delete/393"
+					},
+					"response": []
+				},
+				{
+					"name": "delete-by-san-pham",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": "http://localhost:5226/api/thongso/delete-by-san-pham/393"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "TinTuc",
+			"item": [
+				{
+					"name": "get",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"page\": \"1\",\r\n    \"pageSize\": \"10\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "http://localhost:5226/api/tintuc/get"
+					},
+					"response": []
+				},
+				{
+					"name": "get-random",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": "http://localhost:5226/api/tintuc/get-random"
+					},
+					"response": []
+				},
+				{
+					"name": "get-all",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"page\": \"1\",\r\n    \"pageSize\": \"3\",\r\n    \"tieuDe\": \"\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "http://localhost:5226/api/tintuc/get-all"
+					},
+					"response": []
+				},
+				{
+					"name": "get-by-id",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": "http://localhost:5226/api/tintuc/get-by-id/1"
+					},
+					"response": []
+				},
+				{
+					"name": "create",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "TieuDe",
+									"value": "Test",
+									"type": "text"
+								},
+								{
+									"key": "NoiDung",
+									"value": "Test",
+									"type": "text"
+								},
+								{
+									"key": "File",
+									"value": "",
+									"type": "text"
+								},
+								{
+									"key": "TrangThai",
+									"value": "1",
+									"type": "text"
+								},
+								{
+									"key": "IDNguoiDung",
+									"value": "1",
+									"type": "text"
+								}
+							]
+						},
+						"url": "http://localhost:5226/api/tintuc/create"
+					},
+					"response": []
+				},
+				{
+					"name": "update",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "ID",
+									"value": "18",
+									"type": "text"
+								},
+								{
+									"key": "TieuDe",
+									"value": "Test2",
+									"type": "text"
+								},
+								{
+									"key": "NoiDung",
+									"value": "Test2",
+									"type": "text"
+								},
+								{
+									"key": "File",
+									"type": "file",
+									"src": "/D:/PhamDucHoang/API/BTL/frontend/assets/admin/images/cropper.jpg"
+								},
+								{
+									"key": "TrangThai",
+									"value": "0",
+									"type": "text"
+								}
+							]
+						},
+						"url": "http://localhost:5226/api/tintuc/update"
+					},
+					"response": []
+				},
+				{
+					"name": "delete",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": "http://localhost:5226/api/tintuc/delete/18"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "VnPay",
+			"item": [
+				{
+					"name": "vnpay",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "{{TOKEN_API}}"
+							}
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"orderId\": 114,\r\n  \"name\": \"Phạm Đức Hoàng\",\r\n  \"amount\": 500000,\r\n  \"orderDescription\": \"Hàng dễ vỡ\",\r\n  \"orderType\": \"other\",\r\n  \"url\": \"http://localhost:4200/\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "http://localhost:5226/api/vnpay/vnpay"
+					},
+					"response": []
+				},
+				{
+					"name": "callback",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "{{TOKEN_API}}"
+							}
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://localhost:5226/api/vnpay/callback?vnp_Amount=50000000&vnp_BankCode=NCB&vnp_BankTranNo=VNP14363414&vnp_CardType=ATM&vnp_OrderInfo=Thanh+toan+cho+don+hang%3A+114&vnp_PayDate=20240402112719&vnp_ResponseCode=00&vnp_TmnCode=D6AX0FPL&vnp_TransactionNo=14363414&vnp_TransactionStatus=00&vnp_TxnRef=114&vnp_SecureHash=3f23b1dd0a2e93feb1a01718769f5972fe03fb95855ed4322a05c3ebdf3417a39c22316d500d7a9e8ff72525fbf84e541dc30e7741751a1fb78f47eb6867f701",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5226",
+							"path": [
+								"api",
+								"vnpay",
+								"callback"
+							],
+							"query": [
+								{
+									"key": "vnp_Amount",
+									"value": "50000000"
+								},
+								{
+									"key": "vnp_BankCode",
+									"value": "NCB"
+								},
+								{
+									"key": "vnp_BankTranNo",
+									"value": "VNP14363414"
+								},
+								{
+									"key": "vnp_CardType",
+									"value": "ATM"
+								},
+								{
+									"key": "vnp_OrderInfo",
+									"value": "Thanh+toan+cho+don+hang%3A+114"
+								},
+								{
+									"key": "vnp_PayDate",
+									"value": "20240402112719"
+								},
+								{
+									"key": "vnp_ResponseCode",
+									"value": "00"
+								},
+								{
+									"key": "vnp_TmnCode",
+									"value": "D6AX0FPL"
+								},
+								{
+									"key": "vnp_TransactionNo",
+									"value": "14363414"
+								},
+								{
+									"key": "vnp_TransactionStatus",
+									"value": "00"
+								},
+								{
+									"key": "vnp_TxnRef",
+									"value": "114"
+								},
+								{
+									"key": "vnp_SecureHash",
+									"value": "3f23b1dd0a2e93feb1a01718769f5972fe03fb95855ed4322a05c3ebdf3417a39c22316d500d7a9e8ff72525fbf84e541dc30e7741751a1fb78f47eb6867f701"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
