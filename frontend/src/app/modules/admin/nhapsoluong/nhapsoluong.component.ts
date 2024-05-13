@@ -121,6 +121,7 @@ export class NhapsoluongComponent {
     
     this.sanPhamService.getall(obj).subscribe(res => {
       this.ListSanPham = res.data;
+      console.log(this.ListSanPham);
     });
   }
   

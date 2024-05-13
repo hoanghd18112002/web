@@ -33,7 +33,7 @@
                             <div class="form-row">
                                 <div class="form-group col-md-3 col-xs-12">
                                     <label for="idSanPham">Sản phẩm <a class="text-danger"> (*)</a>:</label>
-                                    <ng-select [items]="ListSanPham" bindLabel="ten" bindValue="id" class="form-control" [(ngModel)]="newChiTiet.IDSanPham" (input)="onSearchChange($event)">
+                                    <ng-select [items]="ListSanPham" bindLabel="ten" bindValue="id" [(ngModel)]="newChiTiet.IDSanPham" (input)="onSearchChange($event)">
                                         <ng-template ng-option-tmp let-item="item" let-search="searchTerm">
                                             <div class="form-control" class="custom-option">
                                                 {{ item.ten }}

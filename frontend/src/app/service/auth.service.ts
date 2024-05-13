@@ -53,16 +53,16 @@ export class AuthService {
 
   isTokenValid(): boolean {
     const user = this.getCurrentUser();
-    if (user && user.token) {
-      const loginTime = user.loginTime; 
-      const tokenExpirationTime = loginTime + (24 * 60 * 60 * 1000);
-      const currentTime = new Date().getTime();
-      if (currentTime > tokenExpirationTime) {
-        this.logout();
-        return false;
-      }
-      return true;
+    if (user && user.token && user.loginTime) {
+        const loginTime = new Date(user.loginTime).getTime();
+        const tokenExpirationTime = loginTime + (24 * 60 * 60 * 1000);
+        const currentTime = new Date().getTime();
+        if (currentTime > tokenExpirationTime) {
+            this.logout();
+            return false;
+        }
+        return true;
     }
-    return false; 
+    return false;
   }
 }
