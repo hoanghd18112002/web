@@ -47,6 +47,7 @@ export class HeaderComponent implements OnInit {
     this.routerSubscription = this._router.events.subscribe(event => {
       if (event instanceof NavigationEnd) {
         this.isHomePage = event.url === '/';
+        this.loadUser();
       }
     });
   }

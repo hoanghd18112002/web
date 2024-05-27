@@ -64,7 +64,8 @@
                                                     <div class="container mt-5">
                                                         <div class="row">
                                                             <div class="col-md-5 text-center">
-                                                                <img style="width: 300px; height: 300px;" [src]="'data:image/jpg;base64,' + Anh" alt="avatar">
+                                                                <img *ngIf="!Anh" style="width: 300px; height: 300px;" src="assets/client/img/nguoidung/avatar.png" alt="avatar">
+                                                                <img *ngIf="Anh" style="width: 300px; height: 300px;" [src]="'data:image/jpg;base64,' + Anh" alt="avatar">
                                                             </div>
                                                             <div class="col-md-7">
                                                                 <h3 class="mb-3"><b>{{ Ten }}</b></h3>
@@ -128,7 +129,8 @@
                                                 <div class="single-input-item">
                                                     <label for="Anh" class="required">Ảnh</label>
                                                     <input class="mb-10" type="file" required name="Anh" [(ngModel)]="Anh" (change)="onFileChange($event)"/>
-                                                    <img style="width: 150px; height: 150px;" [src]="'data:image/jpg;base64,' + Anh" alt="avatar">
+                                                    <img *ngIf="!Anh" style="width: 150px; height: 150px;" src="assets/client/img/nguoidung/avatar.png" alt="avatar">
+                                                    <img *ngIf="Anh" style="width: 150px; height: 150px;" [src]="'data:image/jpg;base64,' + Anh" alt="avatar">
                                                 </div>                                      
                                                 <div class="row">
                                                     <div class="col-lg-4">
@@ -185,44 +187,51 @@
                                 <div class="tab-pane fade" id="orders" role="tabpanel">
                                     <div class="myaccount-content">
                                         <h3>Đơn hàng của bạn</h3>
-                                        <div class="myaccount-table table-responsive text-center">
-                                            <table class="table table-bordered">
-                                                <thead class="thead-light">
-                                                    <tr>
-                                                        <th>STT</th>
-                                                        <th>Ngày đặt</th>
-                                                        <th>Trạng thái</th>
-                                                        <th>Tổng tiền</th>
-                                                        <th>Hành động</th>
-                                                    </tr>
-                                                </thead>
-                                                <tbody *ngFor="let dh of ListDonHang | paginate: { itemsPerPage: pageSize, currentPage: p, totalItems: totalItems }, let i = index">
-                                                    <tr>
-                                                        <td>{{ (p - 1) * pageSize + i + 1 }}</td>
-                                                        <td>{{ dh.ngayDat | date: 'HH:mm:ss dd/MM/yyyy' }}</td>
-                                                        <td>
-                                                            <span *ngIf="dh.trangThai === 0" class="badge badge-warning">Chờ xử lý</span>
-                                                            <span *ngIf="dh.trangThai === 1" class="badge badge-success">Đã duyệt</span>
-                                                            <span *ngIf="dh.trangThai === 2" class="badge badge-danger">Đã huỷ</span>
-                                                            <span *ngIf="dh.trangThai === 3" class="badge badge-warning">Chưa thanh toán</span>
-                                                            <span *ngIf="dh.trangThai === 4" class="badge badge-info">Đã thanh toán</span>
-                                                            <span *ngIf="dh.trangThai === 5" class="badge badge-info">Đang giao</span>
-                                                            <span *ngIf="dh.trangThai === 6" class="badge badge-success">Đã nhận hàng</span>
-                                                        </td> 
-                                                        <td>{{ dh.tongTien | number:'1.0-0' }} đ</td>
-                                                        <td><button data-toggle="modal" data-target="#viewModal" (click)="thongTinDonHang(dh.id)" class="check-btn sqr-btn ">Chi tiết</button></td>
-                                                    </tr>
-                                                </tbody>
-                                            </table>
-                                        </div>
+                                        <ng-container *ngIf="ListDonHang && ListDonHang.length > 0; else noOrders">
+                                            <div class="myaccount-table table-responsive text-center">                                         
+                                                <table class="table table-bordered">
+                                                    <thead class="thead-light">
+                                                        <tr>
+                                                            <th>STT</th>
+                                                            <th>Ngày đặt</th>
+                                                            <th>Trạng thái</th>
+                                                            <th>Tổng tiền</th>
+                                                            <th>Hành động</th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody *ngFor="let dh of ListDonHang | paginate: { itemsPerPage: pageSize, currentPage: p, totalItems: totalItems }, let i = index">
+                                                        <tr>
+                                                            <td>{{ (p - 1) * pageSize + i + 1 }}</td>
+                                                            <td>{{ dh.ngayDat | date: 'HH:mm:ss dd/MM/yyyy' }}</td>
+                                                            <td>
+                                                                <span *ngIf="dh.trangThai === 0" class="badge badge-warning">Chờ xử lý</span>
+                                                                <span *ngIf="dh.trangThai === 1" class="badge badge-success">Đã duyệt</span>
+                                                                <span *ngIf="dh.trangThai === 2" class="badge badge-danger">Đã huỷ</span>
+                                                                <span *ngIf="dh.trangThai === 3" class="badge badge-warning">Chưa thanh toán</span>
+                                                                <span *ngIf="dh.trangThai === 4" class="badge badge-info">Đã thanh toán</span>
+                                                                <span *ngIf="dh.trangThai === 5" class="badge badge-info">Đang giao</span>
+                                                                <span *ngIf="dh.trangThai === 6" class="badge badge-success">Đã nhận hàng</span>
+                                                            </td> 
+                                                            <td>{{ dh.tongTien | number:'1.0-0' }} đ</td>
+                                                            <td><button data-toggle="modal" data-target="#viewModal" (click)="thongTinDonHang(dh.id)" class="check-btn sqr-btn ">Chi tiết</button></td>
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+                                            </div>  
+                                        </ng-container>                                      
                                     </div>
                                     <div class="paginatoin-area text-center pt-30 pb-30">
-                                        <div class="row mt-3">
-                                            <div class="col-12">
-                                                <pagination-controls class="pagination-controls"(pageChange)="loadDonHang($event)"(pageBoundsCorrection)="loadDonHang($event)"previousLabel="Trước"nextLabel="Sau"></pagination-controls>
+                                        <ng-container *ngIf="ListDonHang && ListDonHang.length > 0;">
+                                            <div class="row mt-3">
+                                                <div class="col-12">
+                                                    <pagination-controls class="pagination-controls"(pageChange)="loadDonHang($event)"(pageBoundsCorrection)="loadDonHang($event)"previousLabel="Trước"nextLabel="Sau"></pagination-controls>
+                                                </div>
                                             </div>
-                                        </div>
-                                    </div>   
+                                        </ng-container>
+                                    </div>  
+                                    <ng-template #noOrders>
+                                        <h2 align="center">Bạn chưa có đơn hàng nào</h2>
+                                    </ng-template> 
                                 </div>
                                 <!-- Single Tab Content End -->
 

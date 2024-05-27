@@ -1,16 +1,22 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 
 @Component({
   selector: 'app-layout-admin',
   templateUrl: './layout-admin.component.html',
   styleUrls: ['./layout-admin.component.css']
 })
-export class LayoutAdminComponent implements OnInit {
+export class LayoutAdminComponent implements OnInit, OnDestroy {
   constructor() {}
 
   ngOnInit(): void {
-    // this.loadCss();
+    this.loadCss();
     this.loadScripts();
+  }
+
+  ngOnDestroy(): void {
+    this.removeCss();
+    this.removeScripts();
+    window.location.reload();
   }
 
   private loadCss(): void {
@@ -43,6 +49,20 @@ export class LayoutAdminComponent implements OnInit {
       const scriptElement = document.createElement('script');
       scriptElement.src = script;
       document.body.appendChild(scriptElement);
+    });
+  }
+
+  private removeCss(): void {
+    const links = document.head.querySelectorAll('link[rel="stylesheet"]');
+    links.forEach(link => {
+      document.head.removeChild(link);
+    });
+  }
+
+  private removeScripts(): void {
+    const scripts = document.body.querySelectorAll('script');
+    scripts.forEach(script => {
+      document.body.removeChild(script);
     });
   }
 }

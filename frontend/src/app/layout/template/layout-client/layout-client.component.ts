@@ -1,17 +1,22 @@
-import { Component, OnInit } from '@angular/core';
-import { LoadScriptService } from 'src/app/service/loadscript.service';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 
 @Component({
   selector: 'app-layout-client',
   templateUrl: './layout-client.component.html',
   styleUrls: ['./layout-client.component.css'],
 })
-export class LayoutClientComponent implements OnInit {
+export class LayoutClientComponent implements OnInit, OnDestroy {
   constructor() {}
 
   ngOnInit(): void {
     this.loadCss();
     this.loadScripts();
+  }
+
+  ngOnDestroy(): void {
+    this.removeCss();
+    this.removeScripts();
+    window.location.reload();
   }
 
   private loadCss(): void {
@@ -47,6 +52,20 @@ export class LayoutClientComponent implements OnInit {
       const scriptElement = document.createElement('script');
       scriptElement.src = script;
       document.body.appendChild(scriptElement);
+    });
+  }
+
+  private removeCss(): void {
+    const links = document.head.querySelectorAll('link[rel="stylesheet"]');
+    links.forEach(link => {
+      document.head.removeChild(link);
+    });
+  }
+
+  private removeScripts(): void {
+    const scripts = document.body.querySelectorAll('script');
+    scripts.forEach(script => {
+      document.body.removeChild(script);
     });
   }
 }

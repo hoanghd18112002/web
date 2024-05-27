@@ -19,7 +19,7 @@ export class TimkiemComponent {
   ListDanhMuc: LoaiSanPham[] = [];
   ListNhaSanXuat: NhaSanXuat[] = [];
 
-  ten: any = '';
+  Ten: any = '';
   IDLoai: any = "";
   IDNhaSanXuat: any = "";
   MinGia: any = ""; 
@@ -48,6 +48,7 @@ export class TimkiemComponent {
   search() {
     this._router.navigate(['/timkiem'], { 
       queryParams: { 
+        'ten': this.Ten, 
         'idLoai': this.IDLoai, 
         'idNhaSanXuat': this.IDNhaSanXuat,
         'minGia': this.MinGia,
@@ -59,17 +60,32 @@ export class TimkiemComponent {
   //Lấy sản phẩm tìm kiếm
   getsanphamsearch(p: number) {
     this._route.queryParams.subscribe(params => {
-      this.ten = params['ten'];
-      this.IDLoai = params['idLoai'];
-      this.IDNhaSanXuat = params['idNhaSanXuat'];
-      this.MinGia = params['minGia'];
-      this.MaxGia = params['maxGia'];
-      
+      // Kiểm tra từng tham số query params và gán giá trị nếu tồn tại
+      if (params.hasOwnProperty('ten')) {
+        this.Ten = params['ten'];
+      }
+  
+      if (params.hasOwnProperty('idLoai')) {
+        this.IDLoai = params['idLoai'];
+      }
+  
+      if (params.hasOwnProperty('idNhaSanXuat')) {
+        this.IDNhaSanXuat = params['idNhaSanXuat'];
+      }
+  
+      if (params.hasOwnProperty('minGia')) {
+        this.MinGia = params['minGia'];
+      }
+  
+      if (params.hasOwnProperty('maxGia')) {
+        this.MaxGia = params['maxGia'];
+      }
+  
       const SanPham = {
         page: p,
         pageSize: this.pageSize,
         id: null,
-        ten: this.ten,
+        ten: this.Ten,
         tenNhaSanXuat: '',
         tenLoai: '',
         minGia: this.MinGia,
@@ -77,7 +93,7 @@ export class TimkiemComponent {
         idNhaSanXuat: this.IDNhaSanXuat,
         idLoai: this.IDLoai,
       };
-      
+
       this.sanPhamService.search(SanPham).subscribe(res => {
         this.ListSanPham = res.data;
         this.totalItems = res.totalItems;

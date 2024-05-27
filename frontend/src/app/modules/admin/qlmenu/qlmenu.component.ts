@@ -47,6 +47,7 @@ export class QlmenuComponent {
     });
     this.menuService.get().subscribe(res => {
       this.ListMenuCha = res.data.filter((item:any) => item.idCha === 0);
+      console.log(this.ListMenuCha);
     });
   }
 

@@ -56,7 +56,7 @@ export class DoithongtinComponent {
     formData.append('gioiTinh', this.GioiTinh);
 
     if (this.Anh && this.Anh.size > 0) {
-      formData.append('file', this.Anh, this.Anh.name);
+      formData.append('file', this.Anh);
     }
 
     if (this.MatKhauCu) {

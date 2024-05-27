@@ -171,16 +171,21 @@ export class QlnguoidungComponent {
         return;
       }
 
-
       const formData = new FormData();
       
       formData.append('id', String(this.selectedRow.id));
       formData.append('ten', this.ten);
       formData.append('diaChi', this.diaChi);
       formData.append('sdt', this.sdt);
-      formData.append('gioiTinh', this.gioiTinh.toString());
+      formData.append('gioiTinh', this.gioiTinh);
       formData.append('trangThai', this.trangThai ? '1' : '0');
-      formData.append('idQuyen', this.id);
+      formData.append('idQuyen', this.idQuyen.toString());
+
+      console.log(this.ten);
+      console.log(this.diaChi);
+      console.log(this.gioiTinh);
+      console.log(this.trangThai);
+      console.log(this.idQuyen);
 
       // Gọi phương thức sửa từ service
       this.nguoiDungService.update(formData).subscribe(res => {

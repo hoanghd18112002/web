@@ -48,7 +48,8 @@
                                             <div class="form-group">
                                                 <label for="Anh" class="required">Ảnh</label>
                                                 <input class="mb-10 form-control-file" type="file" required name="Anh" [(ngModel)]="Anh" (change)="onFileChange($event)" />
-                                                <img style="width: 150px; height: 150px;" [src]="'data:image/jpg;base64,' + Anh" alt="avatar">
+                                                <img *ngIf="!user.anh" style="width: 150px; height: 150px;" src="assets/client/img/nguoidung/avatar.png" alt="avatar">
+                                                <img *ngIf="user.anh" style="width: 150px; height: 150px;" [src]="'data:image/jpg;base64,' + Anh" alt="avatar">
                                             </div>
                                             <div class="row">
                                                 <div class="col-lg-4">

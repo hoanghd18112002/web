@@ -107,7 +107,7 @@ export class TaikhoanComponent {
     formData.append('gioiTinh', this.GioiTinh);
 
     if (this.Anh && this.Anh.size > 0) {
-      formData.append('file', this.Anh, this.Anh.name);
+      formData.append('file', this.Anh);
     }
 
     if (this.MatKhauCu) {
@@ -241,9 +241,8 @@ export class TaikhoanComponent {
   
   //Load người dùng
   loadUser() {
-    this.user = this.user = this.authService.loadUser();
+    this.user = this.authService.loadUser();
     if (this.user) {
-
       this.ID = this.user.id;
       this.Email = this.user.email;
       this.TaiKhoan = this.user.taiKhoan;
@@ -281,7 +280,7 @@ export class TaikhoanComponent {
   //Đăng xuất
   deleteUser() {
     this.authService.logout();
-  }  
+  } 
 
   formatDate(date: string): string {
     const originalDate = new Date(date);

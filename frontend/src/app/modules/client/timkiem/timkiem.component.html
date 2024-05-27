@@ -25,47 +25,47 @@
             <div class="col-12">
                 <form>
                     <div class="row">
-                        <div class="form-group col-md-3 col-xs-12">
+                        <div class="form-group col-md-8 col-xs-12">
+                            <label for="Ten">Tên sản phẩm:</label>
+                            <input type="type" class="form-control" id="Ten" name="Ten" [(ngModel)]="Ten" placeholder="Nhập tên sản phẩm">
+                        </div>
+                        <div class="form-group col-md-4 col-xs-12">
+                            <label for="MinGia" >Giá tối thiểu:</label>
+                            <!-- <select class="form-control" id="minGia" name="MinGia" [(ngModel)]="MinGia">
+                                <option value="" selected>-- Tất cả --</option>
+                                <option value="2000000">2.000.000 đ</option>
+                                <option value="5000000">5.000.000 đ</option>
+                                <option value="10000000">10.000.000 đ</option>
+                                <option value="15000000">15.000.000 đ</option>
+                                <option value="20000000">20.000.000 đ</option>
+                            </select> -->
+                            <input type="type" class="form-control" id="minGia" name="MinGia" [(ngModel)]="MinGia" placeholder="Nhập giá tối thiểu">
+                        </div>
+                        <div class="form-group col-md-4 col-xs-12">
                             <label for="IDLoai">Loại sản phẩm:</label>
                             <select class="form-control" name="IDLoai" [(ngModel)]="IDLoai">
                                 <option value="" selected>-- Tất cả --</option>
                                 <option *ngFor="let dm of ListDanhMuc" value="{{ dm.id }}">{{ dm.ten }}</option>
                             </select>                                                        
                         </div> 
-                        <div class="form-group col-md-3 col-xs-12">
-                            <div class="about-text-wrap">
-                                <label for="IDNhaSanXuat" class="form-label">Nhà sản xuất:</label>
-                                <select class="form-control" name="IDNhaSanXuat" [(ngModel)]="IDNhaSanXuat">
-                                    <option value="" selected>-- Tất cả --</option>
-                                    <option *ngFor="let nsx of ListNhaSanXuat" value="{{ nsx.id }}">{{ nsx.ten }}</option>
-                                </select>
-                            </div>
-                        </div>
-                        <div class="form-group col-md-3 col-xs-12">
-                            <div class="about-text-wrap">
-                                <label for="MinGia" class="form-label">Giá tối thiểu:</label>
-                                <select class="form-control" id="minGia" name="MinGia" [(ngModel)]="MinGia">
-                                    <option value="" selected>-- Tất cả --</option>
-                                    <option value="2000000">2.000.000 đ</option>
-                                    <option value="5000000">5.000.000 đ</option>
-                                    <option value="10000000">10.000.000 đ</option>
-                                    <option value="15000000">15.000.000 đ</option>
-                                    <option value="20000000">20.000.000 đ</option>
-                                </select>
-                            </div>
-                        </div>
-                        <div class="form-group col-md-3 col-xs-12">
-                            <div class="about-text-wrap">
-                                <label for="MaxGia" class="form-label">Giá tối đa:</label>
-                                <select class="form-control" name="MaxGia" [(ngModel)]="MaxGia">
-                                    <option value="" selected>-- Tất cả --</option>
-                                    <option value="2000000">2.000.000 đ</option>
-                                    <option value="5000000">5.000.000 đ</option>
-                                    <option value="10000000">10.000.000 đ</option>
-                                    <option value="15000000">15.000.000 đ</option>
-                                    <option value="20000000">20.000.000 đ</option>
-                                </select>
-                            </div>
+                        <div class="form-group col-md-4 col-xs-12">
+                            <label for="IDNhaSanXuat">Nhà sản xuất:</label>
+                            <select class="form-control" name="IDNhaSanXuat" [(ngModel)]="IDNhaSanXuat">
+                                <option value="" selected>-- Tất cả --</option>
+                                <option *ngFor="let nsx of ListNhaSanXuat" value="{{ nsx.id }}">{{ nsx.ten }}</option>
+                            </select>
+                        </div>                       
+                        <div class="form-group col-md-4 col-xs-12">
+                            <label for="MaxGia">Giá tối đa:</label>
+                            <!-- <select class="form-control" name="MaxGia" [(ngModel)]="MaxGia">
+                                <option value="" selected>-- Tất cả --</option>
+                                <option value="2000000">2.000.000 đ</option>
+                                <option value="5000000">5.000.000 đ</option>
+                                <option value="10000000">10.000.000 đ</option>
+                                <option value="15000000">15.000.000 đ</option>
+                                <option value="20000000">20.000.000 đ</option>
+                            </select> -->
+                            <input type="type" class="form-control" id="maxGia" name="MaxGia" [(ngModel)]="MaxGia" placeholder="Nhập giá tối đa">
                         </div>
                         <div class="col-md-12 mt-22">
                             <div class="about-text-wrap">
@@ -147,7 +147,7 @@
                                 <div class="product-list-item mb-30">
                                     <div class="product-thumb">
                                         <a routerLink="/chitietsanpham/{{ sp.id }}">
-                                            <img src="/assets/client/img/sanpham/{{ sp.anh }}" class="img-pri" alt="">
+                                            <img [src]="'data:image/jpg;base64,' + sp.anh" class="img-pri" alt="">
                                         </a>                                                                                      
                                     </div>
                                     <div class="product-list-content">
@@ -163,7 +163,7 @@
                                         </div>
                                         <p>{{ sp.moTa | slice:0:100 }}</p>
                                         <div class="product-list-action-link">
-                                            <a (click)="addToCart(sp.id)" class="buy-btn" routerLink="#" data-toggle="tooltip" data-placement="top" title="Thêm vào giỏ hàng">Mua hàng<i class="fa fa-shopping-cart"></i> </a>
+                                            <a (click)="addToCart(sp.id)" class="buy-btn" data-toggle="tooltip" data-placement="top" title="Thêm vào giỏ hàng">Mua hàng<i class="fa fa-shopping-cart"></i> </a>
                                         </div>
                                     </div>
                                 </div>
