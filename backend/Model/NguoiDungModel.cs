@@ -26,5 +26,6 @@ namespace Model
         public string? Token { get; set; }
         public bool? EmailConfirmed { get; set; }
         public string? ConfirmationLink { get; set; }
+        public long? Ship { get; set; }
     }
 }

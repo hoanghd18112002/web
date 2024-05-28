@@ -32,21 +32,21 @@ export class HomeComponent {
 
   //Lấy toàn bộ sản phẩm mới
   getsanphammoi() {
-    this.sanPhamService.getsanphammoi().subscribe(res => {
+    this.sanPhamService.getsanphammoi(10).subscribe(res => {
       this.ListSanPhamMoi = res.data;
     });
   }
 
   //Lấy toàn bộ sản phẩm bán chạy
   getsanphambanchay() {
-    this.sanPhamService.getsanphambanchay().subscribe(res => {
+    this.sanPhamService.getsanphambanchay(10).subscribe(res => {
       this.ListSanPhamBanChay = res.data;
     });
   }
 
   //Lấy toàn bộ sản phẩm giảm giá
   getsanphamgiamgia() {
-    this.sanPhamService.getsanphamgiamgia().subscribe(res => {
+    this.sanPhamService.getsanphamgiamgia(10).subscribe(res => {
       this.ListSanPhamGiamGia = res.data;
     });
   }
@@ -60,21 +60,11 @@ export class HomeComponent {
     smartSpeed: 1000,
     dots: false,
     responsive: {
-      994: {
-        items: 5
-      },
-      768: {
-        items: 4
-      },
-      575: {
-        items: 3
-      },
-      479: {
-        items: 2
-      },
-      0: {
-        items: 2
-      }
+      994: { items: 5 },
+      768: { items: 4 },
+      575: { items: 3 },
+      479: { items: 2 },
+      0: { items: 2 }
     }
   };
 }

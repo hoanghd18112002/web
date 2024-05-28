@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { PhuongThuc } from 'src/app/models/phuongthuc.model';
 import { DonHangService } from 'src/app/service/donhang.service';
 import { PhuongThucService } from 'src/app/service/phuongthuc.service';
@@ -8,14 +8,22 @@ import { VnPayService } from 'src/app/service/vnpay.service';
 import { PaymentInformation } from 'src/app/models/vnpayment.model';
 import { SanPhamService } from 'src/app/service/sanpham.service';
 import { Router } from '@angular/router';
+import { ThamsoService } from 'src/app/service/thamso.service';
+import { ThamSo } from 'src/app/models/thamso.model';
+import { forkJoin } from 'rxjs';
+import { CartService } from 'src/app/service/cart.service';
 
 @Component({
   selector: 'app-thanhtoan',
   templateUrl: './thanhtoan.component.html',
   styleUrls: ['./thanhtoan.component.css']
 })
-export class ThanhtoanComponent {
+export class ThanhtoanComponent implements OnInit {
   ListPhuongThuc: PhuongThuc[] = [];
+
+  thongthuong: ThamSo = new ThamSo();
+  tietkiem: ThamSo = new ThamSo();
+  nhanh: ThamSo = new ThamSo();
 
   someConditionHere: boolean = true;
   ListGioHang: any;
@@ -25,6 +33,9 @@ export class ThanhtoanComponent {
 
   loaiShip: string = '1'; 
   loaiThanhToan: number = 1;
+  Ten: string = '';
+  DiaChi: string = '';
+  SDT: string = '';
   GhiChu: string = '';
   isTermsChecked: boolean = false;
 
@@ -36,12 +47,15 @@ export class ThanhtoanComponent {
     private authService: AuthService,
     private vnPayService: VnPayService,
     private sanPhamService: SanPhamService,
+    private thamsoService: ThamsoService,
+    private cartService: CartService,
     private router: Router
   ) {}
 
   ngOnInit(){
     this.getall();
     this.loadUser();
+    this.loadThamSo();
     this.loadGioHang();
   }
 
@@ -126,6 +140,19 @@ export class ThanhtoanComponent {
             confirmationLink: `${window.location.origin}/tracuudonhang`,
             id: id
           };
+
+          console.log(email);
+
+          switch (this.loaiShip) {
+            case '1':
+                email.ship = Number(this.thongthuong.noiDung); break;
+            case '2':
+                email.ship = Number(this.tietkiem.noiDung); break;
+            case '3':
+                email.ship = Number(this.nhanh.noiDung); break;
+            default: break;
+          }
+
           this.donHangService.orderEmail(email).subscribe(res => {});
 
           if (this.loaiThanhToan === 2) {
@@ -135,6 +162,8 @@ export class ThanhtoanComponent {
       });
   
       localStorage.removeItem('cart');
+      this.cartService.load();
+
       swal.fire({
         icon: 'success',
         title: 'Thành công!',
@@ -202,6 +231,9 @@ export class ThanhtoanComponent {
   //Load người dùng
   loadUser() {
     this.user = this.authService.loadUser();
+    this.Ten = this.user.ten;
+    this.DiaChi = this.user.diaChi;
+    this.SDT = this.user.sdt;
   }  
   
   //Load giỏ hàng
@@ -210,11 +242,11 @@ export class ThanhtoanComponent {
     this.ListGioHang = cart;
     this.SoLuong = cart.reduce((total, item) => total + item.soluong, 0);
     this.TongGia = cart.reduce((total, item) => total + (item.gia * item.soluong), 0);
-    this.TongHoaDon = this.TongGia + 100000;
+    this.TongHoaDon = this.TongGia + Number(this.thongthuong.noiDung);
 
     if(this.SoLuong === 0){
       alert("Bạn chưa mua sản phẩm nào, vui lòng quay lại sau");
-      window.location.href = '/';
+      this.router.navigate(['/']);
     }
   } 
 
@@ -228,12 +260,32 @@ export class ThanhtoanComponent {
   updateTotalAmount() {
     switch (this.loaiShip) {
       case '1':
-          this.TongHoaDon = this.TongGia + 100000; break;
+          this.TongHoaDon = this.TongGia + Number(this.thongthuong.noiDung); break;
       case '2':
-          this.TongHoaDon = this.TongGia; break;
+          this.TongHoaDon = this.TongGia + Number(this.tietkiem.noiDung); break;
       case '3':
-          this.TongHoaDon = this.TongGia + 200000;break;
+          this.TongHoaDon = this.TongGia + Number(this.nhanh.noiDung);break;
       default: break;
     }
   }
+
+  //Tham số
+  loadThamSo() {
+    forkJoin({
+      thongthuong: this.thamsoService.getbyma('REGULAR_DELIVERY'),
+      tietkiem: this.thamsoService.getbyma('ECONOMICAL_DELIVERY'),
+      nhanh: this.thamsoService.getbyma('FAST_DELIVERY')
+    }).subscribe(res => {
+      this.thongthuong = res.thongthuong.data;
+      this.tietkiem = res.tietkiem.data;
+      this.nhanh = res.nhanh.data;
+
+      if (isNaN(Number(this.thongthuong.noiDung))) {
+        console.error('Invalid value for thongthuong.noiDung:', this.thongthuong.noiDung);
+      } else {
+        this.TongHoaDon = this.TongGia + Number(this.thongthuong.noiDung);
+        this.updateTotalAmount();
+      }
+    });
+  }  
 }

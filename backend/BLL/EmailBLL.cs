@@ -23,9 +23,9 @@ namespace BLL
             _emailDAL.SendConfirmationEmail(toEmail, confirmationLink, token, Ten);
         }
 
-        public void SendOrderEmail(string toEmail, string confirmationLink, string Ten, string HoTen, string DiaChi, string SDT, int? ID, List<ChiTietDonHangModel> model)
+        public void SendOrderEmail(string toEmail, string confirmationLink, long? Ship, string Ten, string HoTen, string DiaChi, string SDT, int? ID, List<ChiTietDonHangModel> model)
         {
-            _emailDAL.SendOrderEmail(toEmail, confirmationLink, Ten, HoTen, DiaChi, SDT, ID, model);
+            _emailDAL.SendOrderEmail(toEmail, confirmationLink, Ship, Ten, HoTen, DiaChi, SDT, ID, model);
         }
     }
 }

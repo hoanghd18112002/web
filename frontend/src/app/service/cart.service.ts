@@ -66,7 +66,7 @@ export class CartService {
         let cart: any[] = JSON.parse(localStorage.getItem('cart') || '[]');
         var SoLuong = cart.reduce((total, item) => total + item.soluong, 0);
         var TongGia = cart.reduce((total, item) => total + (item.gia * item.soluong), 0);
-
+        
         return { cart: cart, SoLuong: SoLuong, TongGia: TongGia };
     }
 
@@ -81,7 +81,7 @@ export class CartService {
             this.cartUpdated.next();
         }
     }
-
+    
     // Giảm số lượng sản phẩm trong giỏ hàng
     giamGioHang(id: number) {
         let cart: any[] = JSON.parse(localStorage.getItem('cart') || '[]');
@@ -132,5 +132,10 @@ export class CartService {
                 this.cartUpdated.next();
             }
         });
+    }
+
+    //Load khi thanh toán
+    load(){
+        this.cartUpdated.next();
     }
 }

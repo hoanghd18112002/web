@@ -2730,7 +2730,7 @@
       "projectName": "BLL",
       "projectPath": "D:\\PhamDucHoang\\DoAn\\DoAnTN\\Web\\backend\\BLL\\BLL.csproj",
       "packagesPath": "C:\\Users\\Admin\\.nuget\\packages\\",
-      "outputPath": "D:\\PhamDucHoang\\DoAn\\DoAnTN\\Web\\Backend\\BLL\\obj\\",
+      "outputPath": "D:\\PhamDucHoang\\DoAn\\DoAnTN\\Web\\backend\\BLL\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages",

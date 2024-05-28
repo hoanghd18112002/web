@@ -4,6 +4,7 @@ using MailKit.Net.Smtp;
 using Microsoft.Extensions.Options;
 using System;
 using Model;
+using System.Globalization;
 
 namespace DAL
 {
@@ -36,7 +37,7 @@ namespace DAL
             }
         }
 
-        public void SendOrderEmail(string toEmail, string confirmationLink, string Ten, string HoTen, string DiaChi, string SDT, int? ID, List<ChiTietDonHangModel> model)
+        public void SendOrderEmail(string toEmail, string confirmationLink, long? Ship, string Ten, string HoTen, string DiaChi, string SDT, int? ID, List<ChiTietDonHangModel> model)
         {
             var message = new MimeMessage();
             message.From.Add(new MailboxAddress(Ten, _mailSettings.SenderEmail));
@@ -70,8 +71,8 @@ namespace DAL
                         <tr>
                             <td style='padding: 10px; border: 1px solid #ddd; text-align:center;'>" + item.TenSanPham + @"</td>
                             <td style='padding: 10px; border: 1px solid #ddd; text-align:center;'>" + item.SoLuong + @"</td>
-                            <td style='padding: 10px; border: 1px solid #ddd; text-align:center;'>" + item.Gia + @" VNĐ</td>
-                            <td style='padding: 10px; border: 1px solid #ddd; text-align:center;'>" + itemTotal + @" VNĐ</td>
+                            <td style='padding: 10px; border: 1px solid #ddd; text-align:center;'>" + item.Gia.ToString("N0", new CultureInfo("vi-VN")) + @" VNĐ</td>
+                            <td style='padding: 10px; border: 1px solid #ddd; text-align:center;'>" + itemTotal.ToString("N0", new CultureInfo("vi-VN")) + @" VNĐ</td>
                         </tr>";
                     }
 
@@ -79,8 +80,12 @@ namespace DAL
                     </tbody>
                     <tfoot>
                         <tr>
-                            <td colspan='3' style='padding: 10px; border: 1px solid #ddd; text-align: right;'><strong>Tổng tiền:</strong></td>
-                            <td style='padding: 10px; border: 1px solid #ddd;'><strong>" + totalOrderAmount + @" VNĐ</strong></td>
+                            <td colspan='3' style='padding: 10px; border: 1px solid #ddd; text-align: center;'><strong>Phí giao hàng:</strong></td>
+                            <td style='padding: 10px; border: 1px solid #ddd; text-align: center;'><strong>" + Ship?.ToString("N0", new CultureInfo("vi-VN")) + @" VNĐ</strong></td>
+                        </tr>
+                        <tr>
+                            <td colspan='3' style='padding: 10px; border: 1px solid #ddd; text-align: center;'><strong>Tổng hoá đơn:</strong></td>
+                            <td style='padding: 10px; border: 1px solid #ddd; text-align: center;'><strong>" + (totalOrderAmount + Ship)?.ToString("N0", new CultureInfo("vi-VN")) + @" VNĐ</strong></td>
                         </tr>
                     </tfoot>
                 </table>
@@ -99,6 +104,5 @@ namespace DAL
                 client.Disconnect(true);
             }
         }
-
     }
 }

@@ -27,6 +27,8 @@
                         <h1 class="text-danger">{{ success }}</h1>
                         <p></p>
                         <p style="font-size: 25px;">{{ text }}</p> 
+                        <a *ngIf="orderId" [routerLink]="['/tracuudonhang']" [queryParams]="{ id: orderId }">Tra cứu đơn hàng tại đây</a>
+                        <br/>
                         <a routerLink="/">Quay lại trang chủ</a>
                     </div>
                 </div>
@@ -34,3 +36,4 @@
         </div>
     </div>
 </div>
+

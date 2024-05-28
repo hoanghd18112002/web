@@ -11,6 +11,7 @@ import { Subscription } from 'rxjs';
 export class CamonComponent implements OnDestroy {
   success: string = "Thanh toán không thành công";
   text: string = "Vui lòng kiểm tra lại";
+  orderId: string | null = null;
   private routeSubscription: Subscription;
 
   constructor(
@@ -34,9 +35,10 @@ export class CamonComponent implements OnDestroy {
 
   callback(params: any) {
     this.vnPayService.callback(params).subscribe(res => {
-      if(res.success){
+      if (res.success) {
         this.success = "Thanh toán thành công cho đơn hàng " + res.orderId;
         this.text = "Cảm ơn bạn đã sử dụng dịch vụ";
+        this.orderId = res.orderId;
       }
     });
   }

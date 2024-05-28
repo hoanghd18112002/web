@@ -14,16 +14,16 @@ export class SanPhamService {
 
   constructor(private http: HttpClient) {}
 
-  getsanphammoi(): Observable<any> {
-    return this.http.get<any>(`${this.apiUrl}/get-san-pham-moi/10`);
+  getsanphammoi(sl: number): Observable<any> {
+    return this.http.get<any>(`${this.apiUrl}/get-san-pham-moi/${sl}`);
   }
 
-  getsanphambanchay(): Observable<any> {
-    return this.http.get<any>(`${this.apiUrl}/get-san-pham-ban-chay/10`);
+  getsanphambanchay(sl: number): Observable<any> {
+    return this.http.get<any>(`${this.apiUrl}/get-san-pham-ban-chay/${sl}`);
   }
 
-  getsanphamgiamgia(): Observable<any> {
-    return this.http.get<any>(`${this.apiUrl}/get-san-pham-giam-gia/10`);
+  getsanphamgiamgia(sl: number): Observable<any> {
+    return this.http.get<any>(`${this.apiUrl}/get-san-pham-giam-gia/${sl}`);
   }
   
   getsanphamngaunhien(sl: number): Observable<any> {

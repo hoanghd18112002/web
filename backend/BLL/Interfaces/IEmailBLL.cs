@@ -10,7 +10,7 @@ namespace BLL.Interfaces
     public interface IEmailBLL
     {
         void SendConfirmationEmail(string toEmail, string confirmationLink, string token, string Ten);
-        void SendOrderEmail(string toEmail, string confirmationLink, string Ten, string HoTen, string DiaChi, string SDT, int? ID, List<ChiTietDonHangModel> model);
+        void SendOrderEmail(string toEmail, string confirmationLink, long? Ship, string Ten, string HoTen, string DiaChi, string SDT, int? ID, List<ChiTietDonHangModel> model);
     }
 
 }

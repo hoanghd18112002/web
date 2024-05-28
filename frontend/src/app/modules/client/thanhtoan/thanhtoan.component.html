@@ -36,17 +36,17 @@
 
                             <div class="single-input-item">
                                 <label for="Ten" class="required">Họ và tên</label>
-                                <input type="text" id="Ten" name="Ten" [(ngModel)]="user.ten" placeholder="Nhập họ và tên" required />
+                                <input type="text" id="Ten" name="Ten" [(ngModel)]="Ten" placeholder="Nhập họ và tên" required />
                             </div>
 
                             <div class="single-input-item">
                                 <label for="DiaChi" class="required">Địa chỉ</label>
-                                <input type="text" id="DiaChi" name="DiaChi" [(ngModel)]="user.diaChi" placeholder="Nhập địa chỉ" required />
+                                <input type="text" id="DiaChi" name="DiaChi" [(ngModel)]="DiaChi" placeholder="Nhập địa chỉ" required />
                             </div>
 
                             <div class="single-input-item">
                                 <label for="SDT" class="required">Số điện thoại</label>
-                                <input type="text" id="SDT" name="SDT" [(ngModel)]="user.sdt" placeholder="Nhập số điện thoại" required />
+                                <input type="text" id="SDT" name="SDT" [(ngModel)]="SDT" placeholder="Nhập số điện thoại" required />
                             </div>
 
                             <div class="single-input-item">
@@ -66,7 +66,7 @@
                             
                             <div class="single-input-item">
                                 <label for="GhiChu">Ghi chú</label>
-                                <textarea id="GhiChu" name="GhiChu" name="GhiChu" [(ngModel)]="GhiChu" cols="30" rows="3" placeholder="Nhập ghi chú..."></textarea>
+                                <textarea id="GhiChu" name="GhiChu" [(ngModel)]="GhiChu" cols="30" rows="3" placeholder="Nhập ghi chú..."></textarea>
                             </div>                                                
                         </div>
                     </div>
@@ -109,21 +109,21 @@
                                                         <div class="custom-control custom-radio">
                                                             <input type="radio" id="1" name="shipping" class="custom-control-input"
                                                                     [(ngModel)]="loaiShip" value="1" (change)="updateTotalAmount()" checked />
-                                                            <label class="custom-control-label" for="1">Giao hàng thông thường: 100.000 đ</label>
+                                                            <label class="custom-control-label" for="1">{{ thongthuong.ten }}: {{ thongthuong.noiDung | number:'1.0-0' }} đ</label>
                                                         </div>
                                                     </li>
                                                     <li>
                                                         <div class="custom-control custom-radio">
                                                             <input type="radio" id="2" name="shipping" class="custom-control-input"
                                                                     [(ngModel)]="loaiShip" value="2" (change)="updateTotalAmount()" />
-                                                            <label class="custom-control-label" for="2">Giao hàng tiết kiệm: 0 đ</label>
+                                                            <label class="custom-control-label" for="2">{{ tietkiem.ten }}: {{ tietkiem.noiDung | number:'1.0-0' }} đ</label>
                                                         </div>
                                                     </li>
                                                     <li>
                                                         <div class="custom-control custom-radio">
                                                             <input type="radio" id="3" name="shipping" class="custom-control-input"
                                                                     [(ngModel)]="loaiShip" value="3" (change)="updateTotalAmount()" />
-                                                            <label class="custom-control-label" for="3">Giao hàng nhanh: 200.000 đ</label>
+                                                            <label class="custom-control-label" for="3">{{ nhanh.ten }}: {{ nhanh.noiDung | number:'1.0-0' }} đ</label>
                                                         </div>
                                                     </li>
                                                 </ul>

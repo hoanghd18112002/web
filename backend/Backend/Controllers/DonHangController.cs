@@ -171,7 +171,8 @@ namespace Backend.Controllers
         {
             try
             {
-                var thamso = _thamsobll.GetByMa("NAME");
+                var tenCuaHang = _thamsobll.GetByMa("NAME");
+                var logo = _thamsobll.GetByMa("LOGO");
                 var donhang = _donhangbll.GetByID(model.ID);
 
                 var listchitietModel = _chitietbll.GetByDonHang(model.ID).Select(chitiet => new ChiTietDonHangModel
@@ -181,7 +182,7 @@ namespace Backend.Controllers
                     Gia = chitiet.Gia
                 }).ToList();
 
-                _emailbll.SendOrderEmail(model.Email, model.ConfirmationLink, thamso.NoiDung, donhang.Ten, donhang.DiaChi, donhang.SDT, model.ID, listchitietModel);
+                _emailbll.SendOrderEmail(model.Email, model.ConfirmationLink, model.Ship, tenCuaHang.NoiDung, donhang.Ten, donhang.DiaChi, donhang.SDT, model.ID, listchitietModel);
                 return Ok(new { success = true, message = "Thông tin đơn hàng đã được gửi đến email của bạn" });
             }
             catch (Exception ex)
