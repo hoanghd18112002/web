@@ -57,7 +57,7 @@
                                                 <img style="width: 100px; height: 100px;" [src]="'data:image/jpg;base64,' + nd.anh" >
                                             </td> 
                                             <td>{{ nd.ten }}</td> 
-                                            <td>{{ nd.sdt }}</td> 
+                                            <td>{{ nd.sdt | slice:0:3 }}.{{ nd.sdt | slice:3:6 }}.{{ nd.sdt | slice:6:10 }}</td> 
                                             <td>{{ nd.tenQuyen }}</td> 
                                             <td>
                                                 <span *ngIf="nd.gioiTinh === 1" class="badge badge-blue">Nam</span> 
@@ -201,7 +201,7 @@
                                         <h3 class="mb-3"><b>{{ taiKhoan }}</b></h3>
                                         <p class="mt-2"><strong>Email:</strong> {{ email }}</p>
                                         <p class="mt-2"><strong>Tên:</strong> {{ ten }}</p>
-                                        <p class="mt-2"><strong>SĐT:</strong> {{ sdt }} đ</p>
+                                        <p class="mt-2"><strong>SĐT:</strong> {{ sdt | slice:0:3 }}.{{ sdt | slice:3:6 }}.{{ sdt | slice:6:10 }}</p>
                                         <p class="mt-2"><strong>Ngày tạo:</strong> {{ ngayTao | date: 'dd/MM/yyyy' }}</p>
                                         <p class="mt-2"><strong>Địa chỉ:</strong> {{ diaChi }}</p>
                                         <p class="mt-2"><strong>Quyền:</strong> {{ tenQuyen }}</p>

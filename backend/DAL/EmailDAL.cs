@@ -45,9 +45,9 @@ namespace DAL
             message.Subject = "Thông tin đơn hàng đặt tại " + Ten;
 
             var bodyBuilder = new BodyBuilder();
-            string htmlContent = @"
-                <h2 style='text-align: center;'>Cảm ơn bạn đã đặt hàng tại " + Ten + @"</h2>
-                <p>Xin chào " + HoTen + @",</p>
+            string htmlContent = $@"
+                <h2 style='text-align: center;'>Cảm ơn bạn đã đặt hàng tại {Ten}</h2>
+                <p>Xin chào {HoTen},</p>
                 <p>Dưới đây là chi tiết đơn hàng của bạn:</p>
                 <table align='center' border='1' cellpadding='0' cellspacing='0' style='width: 80%; table-layout: fixed; border-collapse: collapse; margin: 0 auto;'>
                     <thead>
@@ -67,31 +67,31 @@ namespace DAL
                         var itemTotal = item.SoLuong * item.Gia;
                         totalOrderAmount += itemTotal;
 
-                        htmlContent += @"
+                        htmlContent += $@"
                         <tr>
-                            <td style='padding: 10px; border: 1px solid #ddd; text-align:center;'>" + item.TenSanPham + @"</td>
-                            <td style='padding: 10px; border: 1px solid #ddd; text-align:center;'>" + item.SoLuong + @"</td>
-                            <td style='padding: 10px; border: 1px solid #ddd; text-align:center;'>" + item.Gia.ToString("N0", new CultureInfo("vi-VN")) + @" VNĐ</td>
-                            <td style='padding: 10px; border: 1px solid #ddd; text-align:center;'>" + itemTotal.ToString("N0", new CultureInfo("vi-VN")) + @" VNĐ</td>
+                            <td style='padding: 10px; border: 1px solid #ddd; text-align:center;'>{item.TenSanPham}</td>
+                            <td style='padding: 10px; border: 1px solid #ddd; text-align:center;'>{item.SoLuong}</td>
+                            <td style='padding: 10px; border: 1px solid #ddd; text-align:center;'>{item.Gia.ToString("N0", new CultureInfo("vi-VN"))} VNĐ</td>
+                            <td style='padding: 10px; border: 1px solid #ddd; text-align:center;'>{itemTotal.ToString("N0", new CultureInfo("vi-VN"))} VNĐ</td>
                         </tr>";
                     }
 
-                    htmlContent += @"
+                    htmlContent += $@"
                     </tbody>
                     <tfoot>
                         <tr>
                             <td colspan='3' style='padding: 10px; border: 1px solid #ddd; text-align: center;'><strong>Phí giao hàng:</strong></td>
-                            <td style='padding: 10px; border: 1px solid #ddd; text-align: center;'><strong>" + Ship?.ToString("N0", new CultureInfo("vi-VN")) + @" VNĐ</strong></td>
+                            <td style='padding: 10px; border: 1px solid #ddd; text-align: center;'><strong>{Ship?.ToString("N0", new CultureInfo("vi-VN"))} VNĐ</strong></td>
                         </tr>
                         <tr>
                             <td colspan='3' style='padding: 10px; border: 1px solid #ddd; text-align: center;'><strong>Tổng hoá đơn:</strong></td>
-                            <td style='padding: 10px; border: 1px solid #ddd; text-align: center;'><strong>" + (totalOrderAmount + Ship)?.ToString("N0", new CultureInfo("vi-VN")) + @" VNĐ</strong></td>
+                            <td style='padding: 10px; border: 1px solid #ddd; text-align: center;'><strong>{(totalOrderAmount + Ship)?.ToString("N0", new CultureInfo("vi-VN"))} VNĐ</strong></td>
                         </tr>
                     </tfoot>
                 </table>
-                <p>Địa chỉ giao hàng: " + DiaChi + @"</p>
-                <p>Số điện thoại liên hệ: " + SDT + @"</p>
-                <p>Bạn có thể tra cứu đơn hàng của bạn <a href='" + confirmationLink + "?id=" + ID + "'>tại đây</a>.</p><p> Xin chân thành cảm ơn!</p> ";
+                <p>Địa chỉ giao hàng: {DiaChi}</p>
+                <p>Số điện thoại liên hệ: {SDT}</p>
+                <p>Bạn có thể tra cứu đơn hàng của bạn <a href='{confirmationLink}?id={ID}'>tại đây</a>.</p><p> Xin chân thành cảm ơn!</p> ";
 
             bodyBuilder.HtmlBody = htmlContent;
             message.Body = bodyBuilder.ToMessageBody();

@@ -252,29 +252,43 @@ export class QlnguoidungComponent {
   delete() {
     if (this.selectedRow) {
       const id = this.selectedRow.id; // Lấy id để xoá
-      // Gọi phương thức xoá từ service    
-      this.nguoiDungService.detele(id).subscribe(res => {
-        this.getall(this.p, this.id);
-        swal.fire({
-          icon: 'success',
-          title: res.message,
-          showConfirmButton: true,
-          timer: 1500
-        });(res.message);
-        this.selectedRow = null;
-        
-        // Đóng modal khi tạo thành công
-        const deleteModal = this.deleteModal.nativeElement;
-        deleteModal.classList.remove('show');
-        deleteModal.style.display = 'none';
-        document.body.classList.remove('modal-open');
-        const modalBackdrop = document.getElementsByClassName('modal-backdrop');
-        for (let i = 0; i < modalBackdrop.length; i++) {
-          modalBackdrop[i].remove();
+      // Gọi phương thức xoá từ service
+      this.nguoiDungService.detele(id).subscribe(
+        res => {
+          // Xử lý khi xóa thành công
+          this.getall(this.p, this.id);
+          swal.fire({
+            icon: 'success',
+            title: res.message,
+            showConfirmButton: true,
+            timer: 1500
+          });
+          this.closeDeleteModal();
+        },
+        error => {
+          swal.fire({
+            icon: 'error',
+            title: 'Lỗi',
+            text: "Không thể xoá người dùng này", 
+            showConfirmButton: true
+          });
+          this.closeDeleteModal();
         }
-      });
+      );
     }
   }
+  
+  // Hàm đóng modal
+  private closeDeleteModal() {
+    const deleteModal = this.deleteModal.nativeElement;
+    deleteModal.classList.remove('show');
+    deleteModal.style.display = 'none';
+    document.body.classList.remove('modal-open');
+    const modalBackdrop = document.getElementsByClassName('modal-backdrop');
+    for (let i = 0; i < modalBackdrop.length; i++) {
+      modalBackdrop[i].remove();
+    }
+  }  
 
   // Xử lý khi ấn vào dòng
   selectedRow: NguoiDung | null = null;

@@ -29,6 +29,9 @@ export class TimkiemComponent {
   pageSize: number = 12;
   totalItems: number = 0;
   
+  // Chuyển tag
+  viewMode: 'grid' | 'list' = 'grid';
+
   constructor(
     private _route: ActivatedRoute,
     private sanPhamService: SanPhamService,
@@ -44,6 +47,10 @@ export class TimkiemComponent {
     this.getsanphamsearch(this.p);
   }
 
+  setView(view: 'grid' | 'list') {
+    this.viewMode = view;
+  }
+  
   //Sự kiện tìm kiếm
   search() {
     this._router.navigate(['/timkiem'], { 

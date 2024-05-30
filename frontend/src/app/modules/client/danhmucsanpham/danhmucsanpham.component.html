@@ -82,8 +82,8 @@
                             <div class="col-lg-7 col-md-6">
                                 <div class="top-bar-left">
                                     <div class="product-view-mode mr-70 mr-sm-0">
-                                        <a href="javascript:void(0);" class="active" data-target="grid"><i class="fa fa-th"></i></a>
-                                        <a href="javascript:void(0);" data-target="list"><i class="fa fa-list"></i></a>
+                                        <a (click)="setView('grid')" [class.active]="viewMode === 'grid'" data-target="grid"><i class="fa fa-th"></i></a>
+                                        <a (click)="setView('list')" [class.active]="viewMode === 'list'" data-target="list"><i class="fa fa-list"></i></a>
                                     </div>                                                                       
                                     <div class="product-amount">
                                         <p>Có tổng {{ totalItems }} sản phẩm</p>
@@ -108,51 +108,47 @@
                     <!-- shop product top wrap start -->
 
                     <!-- product item start -->
-                    <div class="shop-product-wrap grid row">
-
+                    <div class="shop-product-wrap row" [ngClass]="{'grid': viewMode === 'grid', 'list': viewMode === 'list'}">
+                        
                         <ng-container *ngFor="let sp of ListSanPham | paginate: { itemsPerPage: pageSize, currentPage: p, totalItems: totalItems }">
-                            <div class="col-lg-3 col-md-4 col-sm-6">
+                            <div class="col-lg-3 col-md-4 col-sm-6" *ngIf="viewMode === 'grid'">
                                 <!-- product single grid item start -->
                                 <div class="product-item fix mb-30">
-
-                                    <!-- product single item start -->
-                                    <div class="product-item fix">
-                                        <div class="product-thumb">
-                                            <a routerLink="/chitietsanpham/{{ sp.id }}">
-                                                <img [src]="'data:image/jpg;base64,' + sp.anh" class="img-pri" alt="">
-                                            </a>
-                                            <ng-container *ngIf="sp.phanTram !== null && sp.phanTram !== undefined">
-                                                <div class="product-label ml-140">
-                                                    <span>{{ sp.phanTram }} %</span>
-                                                </div>
-                                            </ng-container>
-                                            <div class="product-action-link mt-154">
-                                                <a (click)="addToCart(sp.id)"><i class="fa fa-shopping-cart"></i></a>
+                                    <div class="product-thumb">
+                                        <a routerLink="/chitietsanpham/{{ sp.id }}">
+                                            <img [src]="'data:image/jpg;base64,' + sp.anh" class="img-pri" alt="">
+                                        </a>
+                                        <ng-container *ngIf="sp.phanTram !== null && sp.phanTram !== undefined">
+                                            <div class="product-label ml-140">
+                                                <span>{{ sp.phanTram }} %</span>
                                             </div>
-                                        </div>
-                                        <div class="product-content text-center border-top">
-                                            <a routerLink="/chitietsanpham/{{ sp.id }}" class="product-title text-dark font-weight-bold">{{ sp.ten }}</a>
-                                            <div class="pricebox">
-                                                <ng-container *ngIf="sp.phanTram === null || sp.phanTram === undefined">
-                                                    <span class="price text-danger">Giá: {{ sp.gia | number:'1.0-0' }} đ</span><br/>
-                                                </ng-container>
-                                                <ng-container *ngIf="sp.phanTram !== null && sp.phanTram !== undefined">
-                                                    <span class="price text-danger">Giá giảm giá: {{ sp.giaGiamGia | number:'1.0-0' }} đ</span><br/>
-                                                    <span class="strikethrough text-muted"><s>Giá cũ: {{ sp.gia | number:'1.0-0' }} đ</s></span>
-                                                </ng-container>
-                                            </div>
+                                        </ng-container>
+                                        <div class="product-action-link mt-154">
+                                            <a (click)="addToCart(sp.id)"><i class="fa fa-shopping-cart"></i></a>
                                         </div>
                                     </div>
-                                    <!-- product single item end -->
-
+                                    <div class="product-content text-center border-top">
+                                        <a routerLink="/chitietsanpham/{{ sp.id }}" class="product-title text-dark font-weight-bold">{{ sp.ten }}</a>
+                                        <div class="pricebox">
+                                            <ng-container *ngIf="sp.phanTram === null || sp.phanTram === undefined">
+                                                <span class="price text-danger">Giá: {{ sp.gia | number:'1.0-0' }} đ</span><br/>
+                                            </ng-container>
+                                            <ng-container *ngIf="sp.phanTram !== null && sp.phanTram !== undefined">
+                                                <span class="price text-danger">Giá giảm giá: {{ sp.giaGiamGia | number:'1.0-0' }} đ</span><br/>
+                                                <span class="strikethrough text-muted"><s>Giá cũ: {{ sp.gia | number:'1.0-0' }} đ</s></span>
+                                            </ng-container>
+                                        </div>
+                                    </div>
                                 </div>
                                 <!-- product single grid item end -->
-                                <!-- product single list item start -->
+                            </div>
+                            <!-- product single list item start -->
+                            <div class="col-12" *ngIf="viewMode === 'list'">
                                 <div class="product-list-item mb-30">
                                     <div class="product-thumb">
                                         <a routerLink="/chitietsanpham/{{ sp.id }}">
                                             <img [src]="'data:image/jpg;base64,' + sp.anh" class="img-pri" alt="">
-                                        </a>                                                                                      
+                                        </a>
                                     </div>
                                     <div class="product-list-content">
                                         <h3><a routerLink="/chitietsanpham/{{ sp.id }}">{{ sp.ten }}</a></h3>
@@ -167,14 +163,13 @@
                                         </div>
                                         <p>{{ sp.moTa | slice:0:100 }}</p>
                                         <div class="product-list-action-link">
-                                            <a (click)="addToCart(sp.id)" class="buy-btn" data-toggle="tooltip" data-placement="top" title="Thêm vào giỏ hàng" style="cursor: pointer;">Mua hàng<i class="fa fa-shopping-cart"></i> </a>
+                                            <a (click)="addToCart(sp.id)" class="buy-btn" data-toggle="tooltip" data-placement="top" title="Thêm vào giỏ hàng" style="cursor: pointer;">Mua hàng<i class="fa fa-shopping-cart"></i></a>
                                         </div>
                                     </div>
                                 </div>
-                                <!-- product single list item start -->
-                            </div> <!-- product single column end -->
+                            </div>
+                            <!-- product single list item end -->
                         </ng-container>
-
                     </div>
                     <!-- product item end -->
                 </div>

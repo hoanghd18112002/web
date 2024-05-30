@@ -79,6 +79,13 @@ export class HeaderComponent implements OnInit {
     this._router.navigate(['/timkiem'], { queryParams: { 'ten': this.timkiem } });
   }
 
+  // Handle keyup event on the search input
+  onKeyUp(event: KeyboardEvent) {
+    if (event.key === 'Enter') {
+      this.search();
+    }
+  }
+
   //Lấy toàn bộ danh mục
   getalldanhmuc() {
     this.loaiSanPhamService.get().subscribe(res => {

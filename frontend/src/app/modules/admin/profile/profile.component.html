@@ -36,7 +36,7 @@
                       Điện thoại
                     </span>
                     <span class="float-right text-muted">
-                        {{ user.sdt }}
+                      {{ user.sdt | slice:0:3 }}.{{ user.sdt | slice:3:6 }}.{{ user.sdt | slice:6:10 }}
                     </span>
                   </p>
                   <p class="clearfix">
@@ -75,17 +75,12 @@
                       <div class="col-md-3 col-6 b-r">
                         <strong>Điện thoại</strong>
                         <br>
-                        <p class="text-muted">{{ user.sdt }}</p>
+                        <p class="text-muted">{{ user.sdt | slice:0:3 }}.{{ user.sdt | slice:3:6 }}.{{ user.sdt | slice:6:10 }}</p>
                       </div>
-                      <div class="col-md-3 col-6 b-r">
+                      <div class="col-md-6 col-6 b-r">
                         <strong>Email</strong>
                         <br>
                         <p class="text-muted">{{ user.email }}</p>
-                      </div>
-                      <div class="col-md-3 col-6">
-                        <strong>Quốc gia</strong>
-                        <br>
-                        <p class="text-muted">Việt Nam</p>
                       </div>
                     </div>            
                   </div>

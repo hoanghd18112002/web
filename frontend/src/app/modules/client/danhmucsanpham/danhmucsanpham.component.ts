@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { ActivatedRoute, Route, Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { LoaiSanPham } from 'src/app/models/loaisanpham.model';
 import { NhaSanXuat } from 'src/app/models/nhasanxuat.model';
 import { SanPham } from 'src/app/models/sanpham.model';
@@ -22,7 +22,10 @@ export class DanhmucsanphamComponent {
   p: number = 1;
   pageSize: number = 12;
   totalItems: number = 0;
-  
+
+  // Chuyển tag
+  viewMode: 'grid' | 'list' = 'grid';
+
   constructor(
     private _router: Router,
     private _route: ActivatedRoute, 
@@ -38,7 +41,10 @@ export class DanhmucsanphamComponent {
     this.getsanphambyloai(this.p);
   }
 
-  //Lấy sản phẩm theo loại sản phẩm
+  setView(view: 'grid' | 'list') {
+    this.viewMode = view;
+  }
+
   getsanphambyloai(p: number){
     this._route.params.subscribe(params => {
       const id = params['id'];
@@ -62,31 +68,26 @@ export class DanhmucsanphamComponent {
     });
   }
 
-  //Thêm vào giỏ hàng
   addToCart(id: number) {
     this.cartService.addToCart(id, 1);
   }
 
-  //Tìm kiếm theo khoảng giá
   searchGia(minGia: any, maxGia: any) {
     if(minGia == 0){minGia = null}
     if(maxGia == 0){maxGia = null}
     this._router.navigate(['/timkiem'], { queryParams: { 'minGia': minGia, 'maxGia': maxGia } });
   }
 
-  //Tìm kiếm theo nhà sản xuất
   searchNhaSanXuat(idNhaSanXuat: number) {
     this._router.navigate(['/timkiem'], { queryParams: { 'idNhaSanXuat': idNhaSanXuat } });
   }
 
-  //Lấy toàn bộ danh mục có số lượng
   getalldanhmuc() {
     this.loaiSanPhamService.get().subscribe(res => {
       this.ListDanhMuc = res.data;
     });
   }
 
-  //Lấy toàn bộ nhà sản xuất có số lượng
   getallnhasanxuat() {
     this.nhaSanXuatService.get().subscribe(res => {
       this.ListNhaSanXuat = res.data;

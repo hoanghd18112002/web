@@ -60,7 +60,7 @@ export class LoginComponent {
             } else if (res.data.idQuyen == 1 || res.data.idQuyen == 3){
                 this.router.navigate(['/admin/']);
             } else if (res.data.idQuyen == 4){
-                this.router.navigate(['/admin/doithongtin']);
+                this.router.navigate(['/admin/profile']);
             } 
             else{
                 this.router.navigate(['/admin/']);

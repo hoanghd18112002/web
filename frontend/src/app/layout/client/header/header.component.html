@@ -22,7 +22,7 @@
                             <ul>
                                 <li>
                                     <ng-container *ngIf="user && user.idQuyen !== 2">
-                                        <a routerLink="/admin/">Admin</a>
+                                        <a routerLink="/admin/profile">Admin</a>
                                     </ng-container>                                                           
                                 </li>
                                 <li>
@@ -104,9 +104,9 @@
                         </div>
                         <div class="header-middle-block">
                             <div class="header-middle-searchbox">
-                                <input type="text" [(ngModel)]="timkiem" placeholder="Bạn đang tìm gì...">
+                                <input type="text" [(ngModel)]="timkiem" placeholder="Bạn đang tìm gì..." (keyup)="onKeyUp($event)">
                                 <button (click)="search()" class="search-btn"><i class="fa fa-search"></i></button>
-                            </div>
+                              </div>                              
                             <a routerLink="/cart" class="header-mini-cart">
                                 <div class="mini-cart-btn">
                                     <i class="fa fa-shopping-cart"></i>
