@@ -1,0 +1,6 @@
+D:\PhamDucHoang\DoAn\DoAnTN\Web\backend\publish\Model.dll
+D:\PhamDucHoang\DoAn\DoAnTN\Web\backend\publish\Model.deps.json
+D:\PhamDucHoang\DoAn\DoAnTN\Web\backend\publish\Model.pdb
+D:\PhamDucHoang\DoAn\DoAnTN\Web\backend\publish\Microsoft.AspNetCore.Http.Features.dll
+D:\PhamDucHoang\DoAn\DoAnTN\Web\backend\publish\Microsoft.Extensions.Primitives.dll
+D:\PhamDucHoang\DoAn\DoAnTN\Web\backend\publish\System.IO.Pipelines.dll

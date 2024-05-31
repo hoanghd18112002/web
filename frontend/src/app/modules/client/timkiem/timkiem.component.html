@@ -30,18 +30,6 @@
                             <input type="search" class="form-control" id="Ten" name="Ten" [(ngModel)]="Ten" placeholder="Nhập tên sản phẩm">
                         </div>
                         <div class="form-group col-md-4 col-xs-12">
-                            <label for="MinGia" >Giá tối thiểu:</label>
-                            <!-- <select class="form-control" id="minGia" name="MinGia" [(ngModel)]="MinGia">
-                                <option value="" selected>-- Tất cả --</option>
-                                <option value="2000000">2.000.000 đ</option>
-                                <option value="5000000">5.000.000 đ</option>
-                                <option value="10000000">10.000.000 đ</option>
-                                <option value="15000000">15.000.000 đ</option>
-                                <option value="20000000">20.000.000 đ</option>
-                            </select> -->
-                            <input type="number" class="form-control" id="minGia" name="MinGia" [(ngModel)]="MinGia" placeholder="Nhập giá tối thiểu">
-                        </div>
-                        <div class="form-group col-md-4 col-xs-12">
                             <label for="IDLoai">Loại sản phẩm:</label>
                             <select class="form-control" name="IDLoai" [(ngModel)]="IDLoai">
                                 <option value="" selected>-- Tất cả --</option>
@@ -54,17 +42,13 @@
                                 <option value="" selected>-- Tất cả --</option>
                                 <option *ngFor="let nsx of ListNhaSanXuat" value="{{ nsx.id }}">{{ nsx.ten }}</option>
                             </select>
+                        </div>
+                        <div class="form-group col-md-4 col-xs-12">
+                            <label for="MinGia" >Giá tối thiểu:</label>
+                            <input type="number" class="form-control" id="minGia" name="MinGia" [(ngModel)]="MinGia" placeholder="Nhập giá tối thiểu">
                         </div>                       
                         <div class="form-group col-md-4 col-xs-12">
                             <label for="MaxGia">Giá tối đa:</label>
-                            <!-- <select class="form-control" name="MaxGia" [(ngModel)]="MaxGia">
-                                <option value="" selected>-- Tất cả --</option>
-                                <option value="2000000">2.000.000 đ</option>
-                                <option value="5000000">5.000.000 đ</option>
-                                <option value="10000000">10.000.000 đ</option>
-                                <option value="15000000">15.000.000 đ</option>
-                                <option value="20000000">20.000.000 đ</option>
-                            </select> -->
                             <input type="number" class="form-control" id="maxGia" name="MaxGia" [(ngModel)]="MaxGia" placeholder="Nhập giá tối đa">
                         </div>
                         <div class="col-md-12 mt-22">
@@ -95,12 +79,12 @@
                                 <div class="top-bar-right">
                                     <div class="product-short">
                                         <p>Sắp xếp: </p>
-                                        <select class="nice-select" name="sortby">
-                                            <option value="trending">Ngày thêm</option>
-                                            <option value="sales">Bán chạy</option>
-                                            <option value="sales">Giảm giá</option>
-                                            <option value="sales">Ngẫu nhiên</option>
-                                        </select>
+                                        <select class="nice-select" name="sortby" [(ngModel)]="KieuSapXep" (change)="search()">
+                                            <option value="ngaytao">Ngày thêm</option>
+                                            <option value="tangdan">Giá tăng dần</option>
+                                            <option value="giamdan">Giá giảm dần</option>
+                                            <option value="ngaunhien">Ngẫu nhiên</option>
+                                        </select>                                          
                                     </div>
                                 </div>
                             </div>
@@ -109,7 +93,7 @@
                     <!-- shop product top wrap start -->
 
                     <!-- product item start -->
-                    <div class="shop-product-wrap grid row" [ngClass]="{'grid': viewMode === 'grid', 'list': viewMode === 'list'}">
+                    <div class="shop-product-wrap grid row" *ngIf="ListSanPham.length > 0" [ngClass]="{'grid': viewMode === 'grid', 'list': viewMode === 'list'}">
 
                         <ng-container *ngFor="let sp of ListSanPham | paginate: { itemsPerPage: pageSize, currentPage: p, totalItems: totalItems }">
                             <div class="col-lg-3 col-md-4 col-sm-6" *ngIf="viewMode === 'grid'">
@@ -201,12 +185,17 @@
                         
                     </div>
                     <!-- product item end -->
+
+                    <!-- Show message if no products -->
+                    <div class="text-center mt-4" *ngIf="ListSanPham.length === 0">
+                        <p>Không có sản phẩm nào.</p>
+                    </div>
                 </div>
 
                 <!-- product view wrapper area end -->
 
                 <!-- start pagination area -->
-                <div class="paginatoin-area text-center pt-30 pb-30">
+                <div class="paginatoin-area text-center pt-30 pb-30" *ngIf="ListSanPham.length > 0">
                     <div class="row mt-3">
                         <div class="col-12">
                             <pagination-controls class="pagination-controls"(pageChange)="getsanphamsearch($event)"(pageBoundsCorrection)="getsanphamsearch($event)"previousLabel="Trước"nextLabel="Sau"></pagination-controls>

@@ -18,6 +18,8 @@ export class DanhmucsanphamComponent {
   ListNhaSanXuat: NhaSanXuat[] = [];
   ListSanPham: SanPham[] = [];
   
+  KieuSapXep: string = 'ngaytao';
+  
   SoLuongSanPham: number = 0;
   p: number = 1;
   pageSize: number = 12;
@@ -51,14 +53,8 @@ export class DanhmucsanphamComponent {
       const SanPham = {
         page: p,
         pageSize: this.pageSize,
-        id: null,
-        ten: null,
-        tenNhaSanXuat: '',
-        tenLoai: '',
-        minGia: null,
-        maxGia: null,
-        idNhaSanXuat: null,
         idLoai: id,
+        kieuSapXep: this.KieuSapXep
       };
       this.sanPhamService.search(SanPham).subscribe(res => {
         this.ListSanPham = res.data;

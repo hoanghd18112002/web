@@ -97,7 +97,7 @@ namespace DAL
                 throw ex;
             }
         }
-        public List<SanPhamModel> Search(int pageIndex, int pageSize, out int total, int? id, string ten, string tennhasanxuat, string tenloai, int? mingia, int? maxgia, int? idnhasanxuat, int? idloai)
+        public List<SanPhamModel> Search(int pageIndex, int pageSize, out int total, string ten, int? mingia, int? maxgia, int? idnhasanxuat, int? idloai, string kieusapxep)
         {
             string msgError = "";
             total = 0;
@@ -106,14 +106,12 @@ namespace DAL
                 var dt = _dbHelper.ExecuteSProcedureReturnDataTable(out msgError, "sp_sanpham_search",
                     "@p_pageindex", pageIndex,
                     "@p_pagesize", pageSize,
-                    "@p_id", id,
                     "@p_ten", ten,
-                    "@p_tennhasanxuat", tennhasanxuat,
-                    "@p_tenloai", tenloai,
                     "@p_mingia", mingia,
                     "@p_maxgia", maxgia,
                     "@p_idnhasanxuat", idnhasanxuat,
-                    "@p_idloai", idloai);
+                    "@p_idloai", idloai,
+                    "@p_kieusapxep", kieusapxep);
                 if (!string.IsNullOrEmpty(msgError))
                     throw new Exception(msgError);
                 if (dt.Rows.Count > 0) total = (int)dt.Rows[0]["TotalCount"];

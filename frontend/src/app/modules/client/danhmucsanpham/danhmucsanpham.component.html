@@ -94,11 +94,11 @@
                                 <div class="top-bar-right">
                                     <div class="product-short">
                                         <p>Sắp xếp: </p>
-                                        <select class="nice-select" name="sortby">
-                                            <option value="trending">Ngày thêm</option>
-                                            <option value="sales">Bán chạy</option>
-                                            <option value="sales">Giảm giá</option>
-                                            <option value="sales">Ngẫu nhiên</option>
+                                        <select class="nice-select" name="sortby" [(ngModel)]="KieuSapXep" (change)="getsanphambyloai(p)">
+                                            <option value="ngaytao">Ngày thêm</option>
+                                            <option value="tangdan">Giá tăng dần</option>
+                                            <option value="giamdan">Giá giảm dần</option>
+                                            <option value="ngaunhien">Ngẫu nhiên</option>
                                         </select>
                                     </div>
                                 </div>
@@ -108,7 +108,7 @@
                     <!-- shop product top wrap start -->
 
                     <!-- product item start -->
-                    <div class="shop-product-wrap row" [ngClass]="{'grid': viewMode === 'grid', 'list': viewMode === 'list'}">
+                    <div class="shop-product-wrap row" *ngIf="ListSanPham.length > 0" [ngClass]="{'grid': viewMode === 'grid', 'list': viewMode === 'list'}">
                         
                         <ng-container *ngFor="let sp of ListSanPham | paginate: { itemsPerPage: pageSize, currentPage: p, totalItems: totalItems }">
                             <div class="col-lg-3 col-md-4 col-sm-6" *ngIf="viewMode === 'grid'">
@@ -172,11 +172,16 @@
                         </ng-container>
                     </div>
                     <!-- product item end -->
+
+                    <!-- Show message if no products -->
+                    <div class="text-center mt-4" *ngIf="ListSanPham.length === 0">
+                        <p>Không có sản phẩm nào.</p>
+                    </div>
                 </div>
                 <!-- product view wrapper area end -->
 
                 <!-- start pagination area -->
-                <div class="paginatoin-area pt-30 pb-30">
+                <div class="paginatoin-area pt-30 pb-30" *ngIf="ListSanPham.length > 0">
                     <div class="row mt-3">
                         <div class="col-12">
                             <div class="text-center mt-4">
@@ -186,7 +191,6 @@
                     </div>
                 </div>       
                 <!-- end pagination area -->
-
             </div>
             <!-- product main wrap end -->
         </div>

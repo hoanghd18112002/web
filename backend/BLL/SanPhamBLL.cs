@@ -36,9 +36,9 @@ namespace BLL
         {
             return _res.GetRandom(sl);
         }
-        public List<SanPhamModel> Search(int pageIndex, int pageSize, out int total, int? id, string ten, string tennhasanxuat, string tenloai, int? mingia, int? maxgia, int? idnhasanxuat, int? idloai)
+        public List<SanPhamModel> Search(int pageIndex, int pageSize, out int total, string ten, int? mingia, int? maxgia, int? idnhasanxuat, int? idloai, string kieusapxep)
         {
-            return _res.Search(pageIndex, pageSize, out total, id, ten, tennhasanxuat, tenloai, mingia, maxgia, idnhasanxuat, idloai);
+            return _res.Search(pageIndex, pageSize, out total, ten, mingia, maxgia, idnhasanxuat, idloai, kieusapxep);
         }
         public SanPhamModel GetNew()
         {

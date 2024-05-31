@@ -149,17 +149,8 @@ namespace Backend.Controllers
                 var page = int.Parse(formData["page"].ToString());
                 var pageSize = int.Parse(formData["pageSize"].ToString());
 
-                int? id = null;
-                if (formData.Keys.Contains("id") && !string.IsNullOrEmpty(Convert.ToString(formData["id"]))) { id = int.Parse(formData["id"].ToString()); }
-
                 string ten = "";
                 if (formData.Keys.Contains("ten") && !string.IsNullOrEmpty(Convert.ToString(formData["ten"]))){ ten = Convert.ToString(formData["ten"].ToString()); }
-
-                string tenNhaSanXuat = "";
-                if (formData.Keys.Contains("tenNhaSanXuat") && !string.IsNullOrEmpty(Convert.ToString(formData["tenNhaSanXuat"]))) { tenNhaSanXuat = Convert.ToString(formData["tenNhaSanXuat"].ToString()); }
-
-                string tenLoai = "";
-                if (formData.Keys.Contains("tenLoai") && !string.IsNullOrEmpty(Convert.ToString(formData["tenLoai"]))) { tenLoai = Convert.ToString(formData["tenLoai"].ToString()); }
 
                 int? minGia = null;
                 if (formData.Keys.Contains("minGia") && !string.IsNullOrEmpty(Convert.ToString(formData["minGia"]))) { minGia = int.Parse(formData["minGia"].ToString()); }
@@ -172,9 +163,12 @@ namespace Backend.Controllers
 
                 int? idLoai = null;
                 if (formData.Keys.Contains("idLoai") && !string.IsNullOrEmpty(Convert.ToString(formData["idLoai"]))) { idLoai = int.Parse(formData["idLoai"].ToString()); }
-                
+
+                string kieuSapXep = "";
+                if (formData.Keys.Contains("kieuSapXep") && !string.IsNullOrEmpty(Convert.ToString(formData["kieuSapXep"]))) { kieuSapXep = Convert.ToString(formData["kieuSapXep"].ToString()); }
+
                 int total = 0;
-                var data = _bll.Search(page, pageSize, out total, id, ten, tenNhaSanXuat, tenLoai, minGia, maxGia, idNhaSanXuat, idLoai);
+                var data = _bll.Search(page, pageSize, out total, ten, minGia, maxGia, idNhaSanXuat, idLoai, kieuSapXep);
 
                 var response = new
                 {

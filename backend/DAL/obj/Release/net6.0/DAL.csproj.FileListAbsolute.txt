@@ -1,0 +1,15 @@
+D:\PhamDucHoang\DoAn\DoAnTN\Web\backend\DAL\bin\Release\net6.0\DAL.deps.json
+D:\PhamDucHoang\DoAn\DoAnTN\Web\backend\DAL\bin\Release\net6.0\DAL.dll
+D:\PhamDucHoang\DoAn\DoAnTN\Web\backend\DAL\bin\Release\net6.0\DAL.pdb
+D:\PhamDucHoang\DoAn\DoAnTN\Web\backend\DAL\bin\Release\net6.0\Model.dll
+D:\PhamDucHoang\DoAn\DoAnTN\Web\backend\DAL\bin\Release\net6.0\Model.pdb
+D:\PhamDucHoang\DoAn\DoAnTN\Web\backend\DAL\obj\Release\net6.0\DAL.csproj.AssemblyReference.cache
+D:\PhamDucHoang\DoAn\DoAnTN\Web\backend\DAL\obj\Release\net6.0\DAL.GeneratedMSBuildEditorConfig.editorconfig
+D:\PhamDucHoang\DoAn\DoAnTN\Web\backend\DAL\obj\Release\net6.0\DAL.AssemblyInfoInputs.cache
+D:\PhamDucHoang\DoAn\DoAnTN\Web\backend\DAL\obj\Release\net6.0\DAL.AssemblyInfo.cs
+D:\PhamDucHoang\DoAn\DoAnTN\Web\backend\DAL\obj\Release\net6.0\DAL.csproj.CoreCompileInputs.cache
+D:\PhamDucHoang\DoAn\DoAnTN\Web\backend\DAL\obj\Release\net6.0\DAL.csproj.CopyComplete
+D:\PhamDucHoang\DoAn\DoAnTN\Web\backend\DAL\obj\Release\net6.0\DAL.dll
+D:\PhamDucHoang\DoAn\DoAnTN\Web\backend\DAL\obj\Release\net6.0\refint\DAL.dll
+D:\PhamDucHoang\DoAn\DoAnTN\Web\backend\DAL\obj\Release\net6.0\DAL.pdb
+D:\PhamDucHoang\DoAn\DoAnTN\Web\backend\DAL\obj\Release\net6.0\ref\DAL.dll

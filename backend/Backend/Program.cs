@@ -15,6 +15,8 @@ var builder = WebApplication.CreateBuilder(args);
 
 builder.WebHost.UseUrls("http://localhost:5226");
 
+//builder.WebHost.UseUrls("http://103.195.237.46:5226");
+
 // Cấu hình xác thực người dùng
 builder.Services.AddCors(options =>
 {

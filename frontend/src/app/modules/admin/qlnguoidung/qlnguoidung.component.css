@@ -30,3 +30,28 @@
     margin-top: 5px;
 }
 
+/* Ensures the select element looks like a button */
+.btn-group select {
+    border: none;
+    background-color: #28a745;
+    color: white;
+    padding: 0.375rem 0.75rem;
+    font-size: 1rem;
+    line-height: 1.5;
+    border-radius: 0.25rem;
+    cursor: pointer;
+    appearance: none; /* Removes the default dropdown arrow */
+}
+
+/* Adds a custom arrow for the dropdown */
+.btn-group select::after {
+    content: '\25BC'; /* Unicode for down arrow */
+    position: absolute;
+    right: 10px;
+    pointer-events: none;
+}
+
+/* Optional: Ensures the dropdown width does not expand excessively */
+.btn-group select {
+    width: auto; /* Adjusts width to fit the content */
+}

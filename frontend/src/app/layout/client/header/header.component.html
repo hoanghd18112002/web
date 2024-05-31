@@ -42,15 +42,6 @@
                                 <li>
                                     <a routerLink="/tracuudonhang">Tra cứu đơn hàng</a>
                                 </li>
-                                <li>
-                                    <a routerLink="/cart">Giỏ hàng</a>
-                                </li>
-                                <li>
-                                    <a routerLink="/lienhe">Liên hệ</a>
-                                </li>
-                                <li>
-                                    <a routerLink="/dieukhoandichvu">Điều khoản</a>
-                                </li>
                             </ul>
                         </nav>
                     </div>
@@ -106,7 +97,7 @@
                             <div class="header-middle-searchbox">
                                 <input type="text" [(ngModel)]="timkiem" placeholder="Bạn đang tìm gì..." (keyup)="onKeyUp($event)">
                                 <button (click)="search()" class="search-btn"><i class="fa fa-search"></i></button>
-                              </div>                              
+                            </div>                              
                             <a routerLink="/cart" class="header-mini-cart">
                                 <div class="mini-cart-btn">
                                     <i class="fa fa-shopping-cart"></i>

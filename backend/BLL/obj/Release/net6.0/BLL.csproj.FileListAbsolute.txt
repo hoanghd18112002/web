@@ -1,0 +1,17 @@
+D:\PhamDucHoang\DoAn\DoAnTN\Web\backend\BLL\bin\Release\net6.0\BLL.deps.json
+D:\PhamDucHoang\DoAn\DoAnTN\Web\backend\BLL\bin\Release\net6.0\BLL.dll
+D:\PhamDucHoang\DoAn\DoAnTN\Web\backend\BLL\bin\Release\net6.0\BLL.pdb
+D:\PhamDucHoang\DoAn\DoAnTN\Web\backend\BLL\bin\Release\net6.0\DAL.dll
+D:\PhamDucHoang\DoAn\DoAnTN\Web\backend\BLL\bin\Release\net6.0\Model.dll
+D:\PhamDucHoang\DoAn\DoAnTN\Web\backend\BLL\bin\Release\net6.0\DAL.pdb
+D:\PhamDucHoang\DoAn\DoAnTN\Web\backend\BLL\bin\Release\net6.0\Model.pdb
+D:\PhamDucHoang\DoAn\DoAnTN\Web\backend\BLL\obj\Release\net6.0\BLL.csproj.AssemblyReference.cache
+D:\PhamDucHoang\DoAn\DoAnTN\Web\backend\BLL\obj\Release\net6.0\BLL.GeneratedMSBuildEditorConfig.editorconfig
+D:\PhamDucHoang\DoAn\DoAnTN\Web\backend\BLL\obj\Release\net6.0\BLL.AssemblyInfoInputs.cache
+D:\PhamDucHoang\DoAn\DoAnTN\Web\backend\BLL\obj\Release\net6.0\BLL.AssemblyInfo.cs
+D:\PhamDucHoang\DoAn\DoAnTN\Web\backend\BLL\obj\Release\net6.0\BLL.csproj.CoreCompileInputs.cache
+D:\PhamDucHoang\DoAn\DoAnTN\Web\backend\BLL\obj\Release\net6.0\BLL.csproj.CopyComplete
+D:\PhamDucHoang\DoAn\DoAnTN\Web\backend\BLL\obj\Release\net6.0\BLL.dll
+D:\PhamDucHoang\DoAn\DoAnTN\Web\backend\BLL\obj\Release\net6.0\refint\BLL.dll
+D:\PhamDucHoang\DoAn\DoAnTN\Web\backend\BLL\obj\Release\net6.0\BLL.pdb
+D:\PhamDucHoang\DoAn\DoAnTN\Web\backend\BLL\obj\Release\net6.0\ref\BLL.dll

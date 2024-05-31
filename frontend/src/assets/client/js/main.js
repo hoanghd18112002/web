@@ -9,7 +9,7 @@ $(document).ready(function() {
 /*global jQuery */
 (function ($) {
 	"use strict";
-
+	
 	var $window = $(window);
 	$window.on('scroll', function () {
         // Sticky menu 

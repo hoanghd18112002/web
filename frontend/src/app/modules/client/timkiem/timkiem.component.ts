@@ -19,12 +19,13 @@ export class TimkiemComponent {
   ListDanhMuc: LoaiSanPham[] = [];
   ListNhaSanXuat: NhaSanXuat[] = [];
 
-  Ten: any = '';
+  Ten: string = '';
   IDLoai: any = "";
   IDNhaSanXuat: any = "";
   MinGia: any = ""; 
   MaxGia: any = "";
-  
+  KieuSapXep: string = 'ngaytao'
+
   p: number = 1;
   pageSize: number = 12;
   totalItems: number = 0;
@@ -60,6 +61,7 @@ export class TimkiemComponent {
         'idNhaSanXuat': this.IDNhaSanXuat,
         'minGia': this.MinGia,
         'maxGia': this.MaxGia,
+        'kieuSapxep': this.KieuSapXep
       } 
     });
   }  
@@ -87,18 +89,20 @@ export class TimkiemComponent {
       if (params.hasOwnProperty('maxGia')) {
         this.MaxGia = params['maxGia'];
       }
-  
+      
+      if (params.hasOwnProperty('kieuSapXep')) {
+        this.KieuSapXep = params['kieuSapXep'];
+      }
+
       const SanPham = {
         page: p,
         pageSize: this.pageSize,
-        id: null,
         ten: this.Ten,
-        tenNhaSanXuat: '',
-        tenLoai: '',
         minGia: this.MinGia,
         maxGia: this.MaxGia,
         idNhaSanXuat: this.IDNhaSanXuat,
         idLoai: this.IDLoai,
+        kieuSapXep: this.KieuSapXep
       };
 
       this.sanPhamService.search(SanPham).subscribe(res => {
