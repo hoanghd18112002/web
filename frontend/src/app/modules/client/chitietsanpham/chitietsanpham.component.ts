@@ -130,21 +130,11 @@ export class ChitietsanphamComponent implements OnInit {
     autoplayTimeout: 3000,
     dots: false,
     responsive: {
-      994: {
-        items: 4
-      },
-      768: {
-        items: 4
-      },
-      575: {
-        items: 3
-      },
-      479: {
-        items: 2
-      },
-      0: {
-        items: 1
-      }
+      994: { items: 4 },
+      768: { items: 4 },
+      575: { items: 3 },
+      479: { items: 2 },
+      0: { items: 1 }
     }
   };
 
@@ -156,21 +146,11 @@ export class ChitietsanphamComponent implements OnInit {
     smartSpeed: 1000,
     dots: false,
     responsive: {
-      994: {
-        items: 1
-      },
-      768: {
-        items: 1
-      },
-      575: {
-        items: 1
-      },
-      479: {
-        items: 1
-      },
-      0: {
-        items: 1
-      }
+      994: { items: 1 },
+      768: { items: 1 },
+      575: { items: 1 },
+      479: { items: 1 },
+      0: { items: 1 }
     }
   };
 }
