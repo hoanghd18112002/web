@@ -103,15 +103,7 @@ export class QlgiamgiaComponent {
       this.tenSanPham = this.selectedRow.ten;
       this.getsanpham(this.p)
       
-      // Đóng modal khi tạo thành công
-      const saveModal = this.saveModal.nativeElement;
-      saveModal.classList.remove('show');
-      saveModal.style.display = 'none';
-      document.body.classList.remove('modal-open');
-      const modalBackdrop = document.getElementsByClassName('modal-backdrop');
-      for (let i = 0; i < modalBackdrop.length; i++) {
-        modalBackdrop[i].remove();
-      }
+      this.closeModal(this.saveModal);
     }
   }
 
@@ -133,17 +125,18 @@ export class QlgiamgiaComponent {
 
         this.getsanpham(this.p);
 
-        // Đóng modal khi tạo thành công
-        const deleteModal = this.deleteModal.nativeElement;
-        deleteModal.classList.remove('show');
-        deleteModal.style.display = 'none';
-        document.body.classList.remove('modal-open');
-        const modalBackdrop = document.getElementsByClassName('modal-backdrop');
-        for (let i = 0; i < modalBackdrop.length; i++) {
-          modalBackdrop[i].remove();
-        }
+        this.closeModal(this.deleteModal);
       });
     }
+  }
+
+  // Đóng modal dùng chung
+  closeModal(modal: ElementRef) {
+    const modalElement = modal.nativeElement;
+    modalElement.classList.remove('show');
+    modalElement.style.display = 'none';
+    document.body.classList.remove('modal-open');
+    Array.from(document.getElementsByClassName('modal-backdrop')).forEach(element => element.remove());
   }
 
   // Xử lý khi ấn vào dòng

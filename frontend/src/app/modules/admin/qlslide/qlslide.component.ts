@@ -96,15 +96,7 @@ export class QlslideComponent {
         timer: 1500
       });(res.message);
   
-      // Đóng modal khi tạo thành công
-      const addModal = this.addModal.nativeElement;
-      addModal.classList.remove('show');
-      addModal.style.display = 'none';
-      document.body.classList.remove('modal-open');
-      const modalBackdrop = document.getElementsByClassName('modal-backdrop');
-      for (let i = 0; i < modalBackdrop.length; i++) {
-        modalBackdrop[i].remove();
-      }
+      this.closeModal(this.addModal);
     });
   }
 
@@ -131,15 +123,7 @@ export class QlslideComponent {
         });(res.message);
         this.selectedRow = null;
         
-        // Đóng modal khi tạo thành công
-        const updateModal = this.updateModal.nativeElement;
-        updateModal.classList.remove('show');
-        updateModal.style.display = 'none';
-        document.body.classList.remove('modal-open');
-        const modalBackdrop = document.getElementsByClassName('modal-backdrop');
-        for (let i = 0; i < modalBackdrop.length; i++) {
-          modalBackdrop[i].remove();
-        }
+        this.closeModal(this.updateModal);
       });
     }
   }
@@ -159,7 +143,7 @@ export class QlslideComponent {
             showConfirmButton: true,
             timer: 1500
           });
-          this.closeDeleteModal();
+          this.closeModal(this.deleteModal);
         },
         error => {
           swal.fire({
@@ -168,23 +152,20 @@ export class QlslideComponent {
             text: "Không thể xoá slide này", 
             showConfirmButton: true
           });
-          this.closeDeleteModal();
+          this.closeModal(this.deleteModal);
         }
       );
     }
   }
   
-  // Hàm đóng modal
-  private closeDeleteModal() {
-    const deleteModal = this.deleteModal.nativeElement;
-    deleteModal.classList.remove('show');
-    deleteModal.style.display = 'none';
+  // Đóng modal dùng chung
+  closeModal(modal: ElementRef) {
+    const modalElement = modal.nativeElement;
+    modalElement.classList.remove('show');
+    modalElement.style.display = 'none';
     document.body.classList.remove('modal-open');
-    const modalBackdrop = document.getElementsByClassName('modal-backdrop');
-    for (let i = 0; i < modalBackdrop.length; i++) {
-      modalBackdrop[i].remove();
-    }
-  }  
+    Array.from(document.getElementsByClassName('modal-backdrop')).forEach(element => element.remove());
+  }
 
   // Xử lý khi ấn vào dòng
   selectedRow: Slide | null = null;
