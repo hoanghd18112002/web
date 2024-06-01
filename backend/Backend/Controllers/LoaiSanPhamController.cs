@@ -16,7 +16,7 @@ namespace Backend.Controllers
         public LoaiSanPhamController(ILoaiSanPhamBLL bll, IConfiguration configuration)
         {
             _bll = bll;
-            _path = configuration["AppSettings:PATH_LOAISANPHAM"];
+            _path = configuration["AppSettings:PATH"];
         }
 
         [AllowAnonymous]

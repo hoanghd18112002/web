@@ -16,7 +16,7 @@ namespace Backend.Controllers
         public NhaSanXuatController(INhaSanXuatBLL bll, IConfiguration configuration)
         {
             _bll = bll;
-            _path = configuration["AppSettings:PATH_NHASANXUAT"];
+            _path = configuration["AppSettings:PATH"];
         }
 
         [AllowAnonymous]

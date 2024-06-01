@@ -16,7 +16,7 @@ namespace Backend.Controllers
         public ThamSoController(IThamSoBLL bll, IConfiguration configuration)
         {
             _bll = bll;
-            _path = configuration["AppSettings:PATH_THAMSO"];
+            _path = configuration["AppSettings:PATH"];
         }
 
         [AllowAnonymous]

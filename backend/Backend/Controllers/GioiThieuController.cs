@@ -16,7 +16,7 @@ namespace Backend.Controllers
         public GioiThieuController(IGioiThieuBLL bll, IConfiguration configuration)
         {
             _bll = bll;
-            _path = configuration["AppSettings:PATH_GIOITHIEU"];
+            _path = configuration["AppSettings:PATH"];
         }
 
         [AllowAnonymous]

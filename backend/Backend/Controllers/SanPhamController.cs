@@ -16,7 +16,7 @@ namespace Backend.Controllers
         public SanPhamController(ISanPhamBLL bll, IConfiguration configuration)
         {
             _bll = bll;
-            _path = configuration["AppSettings:PATH_SANPHAM"];
+            _path = configuration["AppSettings:PATH"];
         }
 
         [AllowAnonymous]

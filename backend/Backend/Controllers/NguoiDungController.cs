@@ -25,7 +25,7 @@ namespace Backend.Controllers
             _nguoiDungbll = nguoiDungbll;
             _emailbll = emailbll;
             _thamsobll = thamsobll;
-            _path = configuration["AppSettings:PATH_NGUOIDUNG"];
+            _path = configuration["AppSettings:PATH"];
         }
 
         [Route("login")]

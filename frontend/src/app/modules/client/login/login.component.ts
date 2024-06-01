@@ -72,6 +72,6 @@ export class LoginComponent {
                 text: res.message
             });
         }
-    },);
+    });
   }
 }

@@ -16,7 +16,7 @@ namespace Backend.Controllers
         public SlideController(ISlideBLL bll, IConfiguration configuration)
         {
             _bll = bll;
-            _path = configuration["AppSettings:PATH_SLIDE"];
+            _path = configuration["AppSettings:PATH"];
         }
 
         [AllowAnonymous]

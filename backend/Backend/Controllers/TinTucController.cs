@@ -16,7 +16,7 @@ namespace Backend.Controllers
         public TinTucController(ITinTucBLL bll, IConfiguration configuration)
         {
             _bll = bll;
-            _path = configuration["AppSettings:PATH_TINTUC"];
+            _path = configuration["AppSettings:PATH"];
         }
 
         [AllowAnonymous]
