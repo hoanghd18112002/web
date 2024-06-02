@@ -39,24 +39,14 @@ export class BrandComponent {
     autoplay: true,
     autoplayHoverPause: true,
     autoplayTimeout: 5000,
-    smartSpeed: 1000,
+    smartSpeed: 2000,
     dots: false,
     responsive: {
-      994: {
-        items: 5
-      },
-      768: {
-        items: 4
-      },
-      575: {
-        items: 3
-      },
-      479: {
-        items: 2
-      },
-      0: {
-        items: 2
-      }
+      994: { items: 5 },
+      768: { items: 4 },
+      575: { items: 3 },
+      479: { items: 2 },
+      0: { items: 2 }
     }
   };
 }

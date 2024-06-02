@@ -4,6 +4,7 @@ import { SanPham } from 'src/app/models/sanpham.model';
 import { TinTuc } from 'src/app/models/tintuc.model';
 import { SanPhamService } from 'src/app/service/sanpham.service';
 import { TinTucService } from 'src/app/service/tintuc.service';
+import swal from 'sweetalert2';
 
 @Component({
   selector: 'app-chitiettintuc',
@@ -34,7 +35,16 @@ export class ChitiettintucComponent {
     this._route.params.subscribe(params => {
       const id = params['id'];
       this.tinTucService.getbyid(id).subscribe(res => {
-        this.tintuc = res.data;
+        if (res.data.trangThai === 0) {
+          swal.fire({
+              icon: 'error',
+              title: 'Tin tức không khả dụng',
+              showConfirmButton: true,
+              timer: 1500
+          }).then(()=>{ this._router.navigate(['/']); });
+        } else {
+          this.tintuc = res.data;
+        }
       });
     });
   }

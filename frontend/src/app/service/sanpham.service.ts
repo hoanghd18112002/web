@@ -54,6 +54,10 @@ export class SanPhamService {
     return this.http.put<any>(`${this.apiUrl}/update`, object, { headers });
   }
 
+  updateQuantity(object: object): Observable<any> {
+    return this.http.put<any>(`${this.apiUrl}/update-Quantity`, object );
+  }
+
   detele(id: number): Observable<any> {
     return this.http.delete<any>(`${this.apiUrl}/delete/${id}`, { headers });
   } 

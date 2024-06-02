@@ -89,86 +89,107 @@ export class ThanhtoanComponent implements OnInit {
     }
   }
 
-  createDonHang() {
-    let enoughStock = true;
-  
+  async createDonHang() {
+    let allInStock = true;
+    
+    swal.fire({
+      icon: 'info',
+      title: 'Đang xử lý',
+      text: 'Đơn hàng của bạn đang được xử lý',
+      timer: 10000,
+      timerProgressBar: true,
+      didOpen: () => {
+        swal.showLoading()
+      }
+    });
+
     // Kiểm tra số lượng tồn kho của từng sản phẩm trong giỏ hàng
     for (let item of this.ListGioHang) {
-      this.sanPhamService.getbyid(item.id).subscribe(res => {
+      try {
+        const res = await this.sanPhamService.getbyid(item.id).toPromise();
         if (item.soluong > res.data.soLuong) {
-          enoughStock = false;
-          return;
+          allInStock = false;
+          swal.fire({
+            icon: 'error',
+            title: 'Cảnh báo',
+            text: 'Một số sản phẩm trong giỏ hàng không có đủ số lượng. Vui lòng kiểm tra lại giỏ hàng của bạn.'
+          }).then(() => {
+            this.router.navigate(['/cart']);
+          });
+          return; 
         }
-      });
-  
-      if (!enoughStock) {
-        break;
+      } catch (error) {
+        console.error('Error checking product stock:', error);
+        swal.fire({
+          icon: 'error',
+          title: 'Lỗi',
+          text: 'Đã xảy ra lỗi khi kiểm tra số lượng tồn kho. Vui lòng thử lại sau.'
+        });
+        return;
       }
     }
   
-    if (enoughStock) {
-      const donhang: any = {
-        ten: this.user.ten,
-        diaChi: this.user.diaChi,
-        sdt: this.user.sdt,
-        kieuGiaoHang: Number(this.loaiShip),
-        ghiChu: this.GhiChu,
-        trangThai: this.loaiThanhToan === 2 ? 3 : 0,
-        
-        idPhuongThuc: this.loaiThanhToan,
-        idNguoiDung: this.user.id,
+    if (!allInStock) {
+      return;
+    }
+  
+    const donhang: any = {
+      ten: this.user.ten,
+      diaChi: this.user.diaChi,
+      sdt: this.user.sdt,
+      kieuGiaoHang: Number(this.loaiShip),
+      ghiChu: this.GhiChu,
+      trangThai: this.loaiThanhToan === 2 ? 3 : 0,
+      idPhuongThuc: this.loaiThanhToan,
+      idNguoiDung: this.user.id,
+    };
+  
+    try {
+      const res = await this.donHangService.createDonHang(donhang).toPromise();
+      const newOrderRes = await this.donHangService.getnew().toPromise();
+      const id = newOrderRes.data.id;
+  
+      for (let i = 0; i < this.ListGioHang.length; i++) {
+        const ctdonhang: any = {
+          soLuong: this.ListGioHang[i].soluong,
+          gia: this.ListGioHang[i].gia,
+          idSanPham: this.ListGioHang[i].id,
+          idDonHang: id,
+        };
+        await this.giamSoLuong(this.ListGioHang[i].id, this.ListGioHang[i].soluong);
+        await this.donHangService.createCTDonHang(ctdonhang).toPromise();
+      }
+  
+      const email: any = {
+        email: this.user.email,
+        confirmationLink: `${window.location.origin}/tracuudonhang`,
+        id: id
       };
-
-      // Gọi phương thức tạo đơn hàng
-      this.donHangService.createDonHang(donhang).subscribe(res => {
-        // Xử lý sau khi tạo đơn hàng thành công
-        this.donHangService.getnew().subscribe(res => {
-          const id = res.data.id;
-          for (let i = 0; i < this.ListGioHang.length; i++) {
-            const ctdonhang: any = {
-              soLuong: this.ListGioHang[i].soluong,
-              gia: this.ListGioHang[i].gia,
-              idSanPham: this.ListGioHang[i].id,
-              idDonHang: id,
-            };
-            this.giamSoLuong(this.ListGioHang[i].id, this.ListGioHang[i].soluong);
-            this.donHangService.createCTDonHang(ctdonhang).subscribe(res => {});
-          }
-
-          const email: any = {
-            email: this.user.email,
-            confirmationLink: `${window.location.origin}/tracuudonhang`,
-            id: id
-          };
-
-          console.log(email);
-
-          switch (this.loaiShip) {
-            case '1':
-                email.ship = Number(this.thongthuong.noiDung); break;
-            case '2':
-                email.ship = Number(this.tietkiem.noiDung); break;
-            case '3':
-                email.ship = Number(this.nhanh.noiDung); break;
-            default: break;
-          }
-
-          this.donHangService.orderEmail(email).subscribe(res => {});
-
-          if (this.loaiThanhToan === 2) {
-            this.vnPay(id);
-          }
-        });
-      });
+  
+      switch (this.loaiShip) {
+        case '1':
+          email.ship = Number(this.thongthuong.noiDung); break;
+        case '2':
+          email.ship = Number(this.tietkiem.noiDung); break;
+        case '3':
+          email.ship = Number(this.nhanh.noiDung); break;
+        default: break;
+      }
+  
+      await this.donHangService.orderEmail(email).toPromise();
+  
+      if (this.loaiThanhToan === 2) {
+        this.vnPay(id);
+      }
   
       localStorage.removeItem('cart');
       this.cartService.load();
-
+  
       swal.fire({
         icon: 'success',
         title: 'Thành công!',
-        text: 'Thanh toán thành công! Đang xử lý',
-        timer: 5000, 
+        text: 'Đặt hàng thành công! Đang xử lý',
+        timer: 3000,
         timerProgressBar: true,
         didOpen: () => {
           swal.showLoading()
@@ -179,14 +200,15 @@ export class ThanhtoanComponent implements OnInit {
           this.router.navigate(['/']);
         }
       });
-    } else {
+    } catch (error) {
+      console.error('Error creating order:', error);
       swal.fire({
         icon: 'error',
-        title: 'Cảnh báo',
-        text: 'Một số sản phẩm trong giỏ hàng không có đủ số lượng. Vui lòng kiểm tra lại giỏ hàng của bạn.'
+        title: 'Lỗi',
+        text: 'Đã xảy ra lỗi khi tạo đơn hàng. Vui lòng thử lại sau.'
       });
     }
-  }  
+  }
 
   //Thanh toán online
   vnPay(id: number){
@@ -213,14 +235,16 @@ export class ThanhtoanComponent implements OnInit {
     });
   }
 
-  giamSoLuong(id: number, soluong: number){
-    this.sanPhamService.getbyid(id).subscribe(res => { 
+  async giamSoLuong(id: number, soluong: number) {
+    try {
+      const res = await this.sanPhamService.getbyid(id).toPromise();
       const formData = new FormData();
       formData.append('id', id.toString());
       formData.append('soLuong', (Number(res.data.soLuong) - Number(soluong)).toString());
-      
-      this.sanPhamService.update(formData).subscribe(res => {})
-    })
+      await this.sanPhamService.updateQuantity(formData).toPromise();
+    } catch (error) {
+      console.error('Error updating product quantity:', error);
+    }
   }
 
   //Đồng ý với các điều khoản

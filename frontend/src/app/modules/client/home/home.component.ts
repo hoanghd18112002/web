@@ -56,8 +56,8 @@ export class HomeComponent {
     margin: 15,
     autoplay: true,
     autoplayHoverPause: true,
-    autoplayTimeout: 3000,
-    smartSpeed: 1000,
+    autoplayTimeout: 5000,
+    smartSpeed: 2000,
     dots: false,
     responsive: {
       994: { items: 5 },

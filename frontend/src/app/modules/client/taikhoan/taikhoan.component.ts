@@ -62,7 +62,6 @@ export class TaikhoanComponent {
 
   ngOnInit(){
     this.loadUser();
-    this.loadDonHang(this.p);
   }
 
   //Thông tin đơn hàng
@@ -181,7 +180,7 @@ export class TaikhoanComponent {
 
     this.donHangService.update(donhang).subscribe(res => {
       for(var i = 0; i < this.ListCTDonHang.length; i++){
-        this.tangSoLuong(this.ListCTDonHang[i].id, this.ListCTDonHang[i].soLuong) ;
+        this.tangSoLuong(this.ListCTDonHang[i].idSanPham, this.ListCTDonHang[i].soLuong) ;
       }
       this.loadUser();
       
@@ -191,6 +190,8 @@ export class TaikhoanComponent {
           title: 'Huỷ thành công',
           text: res.message
       });
+
+      this.loadDonHang(this.p);
 
       // Đóng modal khi tạo thành công
       const updateModal = this.updateModal.nativeElement;
@@ -209,8 +210,7 @@ export class TaikhoanComponent {
       const formData = new FormData();
       formData.append('id', id.toString());
       formData.append('soLuong', (Number(res.data.soLuong) + Number(soluong)).toString());
-      
-      this.sanPhamService.update(formData).subscribe(res => {})
+      this.sanPhamService.updateQuantity(formData).subscribe(res => {})
     })
   }
 
@@ -253,6 +253,8 @@ export class TaikhoanComponent {
       this.NgayTao = this.formatDate(this.user.ngayTao);
       this.GioiTinh = this.user.gioiTinh;
       this.TenQuyen = this.user.tenQuyen;
+
+      this.loadDonHang(this.p);
     }
   } 
 

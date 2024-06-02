@@ -24,13 +24,20 @@ export class SigninComponent {
 
   ngOnInit(){}
 
-  //Đăng ký
+  // Đăng ký
   Signin() {
     if (!this.TaiKhoan || !this.MatKhau || !this.Ten || !this.SDT || !this.Email || !this.DiaChi) {
       swal.fire({
         icon: 'error',
         title: 'Lỗi',
         text: 'Vui lòng nhập đầy đủ thông tin'
+      });
+      return;
+    } else if (this.TaiKhoan.length < 6) {
+      swal.fire({
+        icon: 'error',
+        title: 'Lỗi',
+        text: 'Tài khoản phải có ít nhất 6 ký tự'
       });
       return;
     } else if (this.MatKhau !== this.NhapLaiMatKhau) {
@@ -76,40 +83,50 @@ export class SigninComponent {
       idQuyen: "2",
       confirmationLink: `${window.location.origin}/confirm`
     };
+
+    swal.fire({
+      icon: 'info',
+      title: 'Đang xử lý',
+      text: 'Thông tin đang được xử lý!',
+      timer: 10000,
+      timerProgressBar: true,
+      didOpen: () => {
+        swal.showLoading()
+      }
+    });
+
     this.nguoiDungService.create(nguoidung).subscribe(res => {
       if (res.success) {
         swal.fire({
-            icon: 'success',
-            title: 'Thành công',
-            text: res.message
+          icon: 'success',
+          title: 'Thành công',
+          text: res.message
         }).then(() => {
           this.router.navigate(['/login']);
         });
-      } else{
+      } else {
         swal.fire({
           icon: 'error',
           title: 'Lỗi',
           text: res.message
-      }).then(() => {
-          
-      });
+        }).then(() => {});
       }
     });
   }
-  
+
   // Kiểm tra email đúng định dạng
   isValidEmail(email: string): boolean {
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     return emailRegex.test(email);
   }
-  
+
   // Kiểm tra số điện thoại là 10 số
   isValidPhoneNumber(phoneNumber: string): boolean {
     const phoneRegex = /^\d{10}$/;
     return phoneRegex.test(phoneNumber);
   }  
 
-  //Đồng ý với các điều khoản
+  // Đồng ý với các điều khoản
   onTermsChange(event: any) {
     this.isTermsChecked = event.target.checked;
   }

@@ -79,7 +79,7 @@ export class QldonhangComponent {
         
         if(trangThai === 2){
           for(var i = 0; i < this.ListCTDonHang.length; i++){
-            this.tangSoLuong(this.ListCTDonHang[i].id, this.ListCTDonHang[i].soLuong) ;
+            this.tangSoLuong(this.ListCTDonHang[i].idSanPham, this.ListCTDonHang[i].soLuong) ;
           }
         }
 

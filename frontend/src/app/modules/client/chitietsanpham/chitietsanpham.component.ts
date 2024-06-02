@@ -9,6 +9,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { ThongSo } from 'src/app/models/thongso.model';
 import { CartService } from 'src/app/service/cart.service';
 import { ThongSoService } from 'src/app/service/thongso.service';
+import swal from 'sweetalert2';
 
 @Component({
   selector: 'app-chitietsanpham',
@@ -55,8 +56,18 @@ export class ChitietsanphamComponent implements OnInit {
     this._route.params.subscribe(params => {
       this.id = params['id'];
       this.sanPhamService.getbyid(this.id).subscribe(res => {
-        this.sanpham = res.data;
-        this.getsanphamtuongtu()
+        // Kiểm tra trạng thái sản phẩm
+        if (res.data.trangThai === 0) {
+          swal.fire({
+              icon: 'error',
+              title: 'Sản phẩm không khả dụng',
+              showConfirmButton: true,
+              timer: 1500
+          }).then(()=>{ this._router.navigate(['/']); });
+        } else {
+            this.sanpham = res.data;
+            this.getsanphamtuongtu();
+        }
       });
     });
   }
@@ -127,7 +138,8 @@ export class ChitietsanphamComponent implements OnInit {
     margin: 15,
     autoplay: true,
     autoplayHoverPause: true,
-    autoplayTimeout: 3000,
+    autoplayTimeout: 5000,
+    smartSpeed: 2000,
     dots: false,
     responsive: {
       994: { items: 4 },
@@ -142,8 +154,8 @@ export class ChitietsanphamComponent implements OnInit {
     loop: true,
     autoplay: true,
     autoplayHoverPause: true,
-    autoplayTimeout: 3000,
-    smartSpeed: 1000,
+    autoplayTimeout: 5000,
+    smartSpeed: 2000,
     dots: false,
     responsive: {
       994: { items: 1 },

@@ -14,63 +14,70 @@ export class CartService {
     ) {}
 
     addToCart(id: number, soluong: number) {
-        console.log(soluong);
-        if(soluong == 0){
+        if (soluong <= 0) {
             swal.fire({
                 icon: 'error',
                 title: 'Số lượng sản phẩm không hợp lệ!',
                 showConfirmButton: true,
                 timer: 1500
             });
-        }
-        else{
+        } else {
             this.sanPhamService.getbyid(id).subscribe(res => {
-
-                if (soluong > res.data.soLuong) {
+                const sanpham = {
+                    id: res.data.id,
+                    ten: res.data.ten,
+                    anh: res.data.anh,
+                    soluong: soluong,
+                    gia: res.data.gia,
+                };
+    
+                // Kiểm tra có giảm giá không
+                if (res.data.phanTram != null) {
+                    sanpham.gia = res.data.giaGiamGia;
+                }
+    
+                let cart: any[] = JSON.parse(localStorage.getItem('cart') || '[]');
+                const check = cart.find((item: any) => item.id === sanpham.id);
+    
+                let totalQuantity = soluong;
+                if (check) {
+                    totalQuantity += check.soluong;
+                }
+    
+                if (totalQuantity > res.data.soLuong) {
                     swal.fire({
                         icon: 'error',
                         title: 'Sản phẩm đã hết hàng',
                         text: 'Mời bạn mua sản phẩm khác',
                     });
+                } else if (totalQuantity > 5) {
+                    swal.fire({
+                        icon: 'error',
+                        title: 'Bạn không thể mua quá 5 sản phẩm',
+                        text: 'Vui lòng giảm số lượng sản phẩm',
+                    });
                 } else {
-                    const sanpham = {
-                        id: res.data.id,
-                        ten: res.data.ten,
-                        anh: res.data.anh,
-                        soluong: soluong,
-                        gia: res.data.gia,
-                    };
-        
-                    // Kiểm tra có giảm giá không
-                    if (res.data.phanTram != null) {
-                        sanpham.gia = res.data.giaGiamGia;
-                    }
-                
-                    let cart: any[] = JSON.parse(localStorage.getItem('cart') || '[]');
-                    
-                    const check = cart.find((item: any) => item.id === sanpham.id);
-                
                     // Đã tồn tại thì + soluong, chưa thì thêm mới
                     if (check) {
                         check.soluong += soluong;
                     } else {
                         cart.push({ ...sanpham });
                     }
-                
+    
                     localStorage.setItem('cart', JSON.stringify(cart));
-        
+    
                     swal.fire({
                         icon: 'success',
                         title: 'Đã thêm vào giỏ hàng!',
                         showConfirmButton: true,
                         timer: 1500
                     });
-        
+    
                     this.cartUpdated.next();
                 }
             });
         }
-    }    
+    }      
 
     // Load giỏ hàng header
     loadGioHang() {
@@ -87,9 +94,31 @@ export class CartService {
         const item = cart.find(item => item.id === id);
 
         if (item) {
-            item.soluong += 1;
-            localStorage.setItem('cart', JSON.stringify(cart));
-            this.cartUpdated.next();
+            this.sanPhamService.getbyid(id).subscribe(res => {
+                if (item.soluong + 1 > res.data.soLuong) {
+                    swal.fire({
+                        icon: 'error',
+                        title: 'Sản phẩm đã hết hàng',
+                        text: 'Không thể thêm nhiều hơn số lượng tồn kho',
+                    });
+                } else if (item.soluong + 1 > 5) {
+                    swal.fire({
+                        icon: 'error',
+                        title: 'Bạn không thể mua quá 5 sản phẩm',
+                        text: 'Vui lòng giảm số lượng sản phẩm',
+                    });
+                } else {
+                    item.soluong += 1;
+                    localStorage.setItem('cart', JSON.stringify(cart));
+                    this.cartUpdated.next();
+                    swal.fire({
+                        icon: 'success',
+                        title: 'Đã tăng số lượng sản phẩm!',
+                        showConfirmButton: true,
+                        timer: 1500
+                    });
+                }
+            });
         }
     }
     

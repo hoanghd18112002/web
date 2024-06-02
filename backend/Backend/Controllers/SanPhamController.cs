@@ -326,6 +326,27 @@ namespace Backend.Controllers
             }
         }
 
+        [AllowAnonymous]
+        [Route("update-quantity")]
+        [HttpPut]
+        public IActionResult UpdateQuantity([FromForm] SanPhamModel model)
+        {
+            try
+            {
+                SanPhamModel sanpham = new SanPhamModel();
+                sanpham.ID = model.ID;
+                sanpham.SoLuong = model.SoLuong;
+
+                _bll.Update(sanpham);
+
+                return Ok(new { success = true, message = "Cập nhật thành công" });
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, new { success = false, message = "Đã xảy ra lỗi: " + ex.Message });
+            }
+        }
+
         [Route("delete/{id}")]
         [HttpDelete]
         public IActionResult Delete(int id)

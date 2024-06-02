@@ -1,15 +1,8 @@
-$(document).ready(function() {
-    $('#mobile-menu').meanmenu({
-        meanMenuContainer: '.mobile-menu',
-        meanScreenWidth: "991"
-    });
-});
-
 
 /*global jQuery */
 (function ($) {
 	"use strict";
-	
+
 	var $window = $(window);
 	$window.on('scroll', function () {
         // Sticky menu 
@@ -45,6 +38,14 @@ $(document).ready(function() {
 		event.stopPropagation();
 		event.preventDefault();
 		$(".cart-list").slideToggle();
+	});
+
+	jQuery(document).ready(function($) {
+		// Your jQuery code here
+		$('#mobile-menu').meanmenu({
+			meanMenuContainer: '.mobile-menu',
+			meanScreenWidth: "991"
+		});
 	});
 
 	//  Category Menu
@@ -552,21 +553,21 @@ $('.category-menu').on('click', 'li a, li a .menu-expand', function (e) {
 		shopProductWrap.removeClass('grid list').addClass(viewMode);
 	});
 
-	// Checkout Page accordion
-	$("#create_pwd").on("change", function () {
-		$(".account-create").slideToggle("100");
-	});
+	// // Checkout Page accordion
+	// $("#create_pwd").on("change", function () {
+	// 	$(".account-create").slideToggle("100");
+	// });
 
-	$("#ship_to_different").on("change", function () {
-		$(".ship-to-different").slideToggle("100");
-	});
+	// $("#ship_to_different").on("change", function () {
+	// 	$(".ship-to-different").slideToggle("100");
+	// });
 
-	// Payment Method Accordion
-	$('input[name="paymentmethod"]').on('click', function () {
-		var $value = $(this).attr('value');
-		$('.payment-method-details').slideUp();
-		$('[data-method="' + $value + '"]').slideDown();
-	});
+	// // Payment Method Accordion
+	// $('input[name="paymentmethod"]').on('click', function () {
+	// 	var $value = $(this).attr('value');
+	// 	$('.payment-method-details').slideUp();
+	// 	$('[data-method="' + $value + '"]').slideDown();
+	// });
 
 	// scroll to top
 	$('body').on('click', '.scroll-top', function (e) {
