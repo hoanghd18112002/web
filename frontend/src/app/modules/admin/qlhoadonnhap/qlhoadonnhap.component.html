@@ -39,7 +39,7 @@
                                             <td>{{ (p - 1) * pageSize + i + 1 }}</td>
                                             <td>{{ hdn.tenNguoiDung }}</td>
                                             <td>{{ hdn.tenNhaCungCap }}</td>                                         
-                                            <td>{{ hdn.ngayNhap | date: 'dd/MM/yyyy' }}</td>
+                                            <td>{{ hdn.ngayNhap | date: 'HH:mm:ss dd/MM/yyyy' }}</td>
                                             <td>{{ hdn.tongTien | number:'1.0-0' }} đ</td>
                                         </tr>
                                     </tbody>                        
@@ -82,7 +82,7 @@
                                     <label for="tenNhaCungCap">Tên nhà cung cấp: <a class="text-success"> {{ tenNhaCungCap }} </a></label>
                                 </div>
                                 <div class="form-group col-md-4">
-                                    <label for="ngayNhap">Ngày nhập: <a class="text-success"> {{ ngayNhap | date: 'hh-mm-ss-dd/MM/yyyy' }} </a></label>
+                                    <label for="ngayNhap">Ngày nhập: <a class="text-success"> {{ ngayNhap | date: 'HH:mm:ss dd/MM/yyyy' }} </a></label>
                                 </div>
                             </div>
                             <div class="form-row">

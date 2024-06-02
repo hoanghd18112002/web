@@ -35,7 +35,7 @@ export class ChitiettintucComponent {
     this._route.params.subscribe(params => {
       const id = params['id'];
       this.tinTucService.getbyid(id).subscribe(res => {
-        if (res.data.trangThai === 0) {
+        if (res.data == null || res.data.trangThai === 0) {
           swal.fire({
               icon: 'error',
               title: 'Tin tức không khả dụng',

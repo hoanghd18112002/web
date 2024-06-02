@@ -56,6 +56,7 @@ export class QldonhangComponent {
       this.ListDonHang = res.data;
       this.totalItems = res.totalItems;
       this.p = p;
+      console.log(this.ListDonHang);
     });
   }
 

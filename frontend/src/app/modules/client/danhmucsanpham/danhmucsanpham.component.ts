@@ -7,7 +7,7 @@ import { CartService } from 'src/app/service/cart.service';
 import { LoaiSanPhamService } from 'src/app/service/loaisanpham.service';
 import { NhaSanXuatService } from 'src/app/service/nhasanxuat.service';
 import { SanPhamService } from 'src/app/service/sanpham.service';
-
+import swal from 'sweetalert2';
 @Component({
   selector: 'app-danhmucsanpham',
   templateUrl: './danhmucsanpham.component.html',
@@ -56,10 +56,21 @@ export class DanhmucsanphamComponent {
         idLoai: id,
         kieuSapXep: this.KieuSapXep
       };
-      this.sanPhamService.search(SanPham).subscribe(res => {
-        this.ListSanPham = res.data;
-        this.totalItems = res.totalItems;
-        this.p = p;
+      this.loaiSanPhamService.getbyid(id).subscribe(res => {
+        if (res.data == null || res.data.trangThai === 0) {
+          swal.fire({
+              icon: 'error',
+              title: 'Loại sản phẩm không khả dụng',
+              showConfirmButton: true,
+              timer: 1500
+          }).then(()=>{ this._router.navigate(['/']); });
+        } else {
+          this.sanPhamService.search(SanPham).subscribe(res => {
+            this.ListSanPham = res.data;
+            this.totalItems = res.totalItems;
+            this.p = p;
+          });
+        }
       });
     });
   }

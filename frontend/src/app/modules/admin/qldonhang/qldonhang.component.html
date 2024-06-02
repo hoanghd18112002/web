@@ -33,6 +33,7 @@
                                             <th>Ngày đặt</th>
                                             <th>Phương thức</th>
                                             <th>Tài khoản</th>
+                                            <th>Tổng tiền</th>
                                             <th>Trạng thái</th>
                                         </tr>
                                     </thead>
@@ -44,6 +45,7 @@
                                             <td>{{ dh.ngayDat | date: 'HH:mm:ss dd/MM/yyyy' }}</td>
                                             <td>{{ dh.tenPhuongThuc }}</td>
                                             <td>{{ dh.taiKhoan }}</td>
+                                            <td>{{ dh.tongTien | number:'1.0-0' }} đ</td>
                                             <td>
                                                 <span *ngIf="dh.trangThai === 0" class="badge badge-warning">Chờ xử lý</span>
                                                 <span *ngIf="dh.trangThai === 1" class="badge badge-success">Đã duyệt</span>

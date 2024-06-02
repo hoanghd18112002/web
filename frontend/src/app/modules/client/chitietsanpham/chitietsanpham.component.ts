@@ -57,7 +57,7 @@ export class ChitietsanphamComponent implements OnInit {
       this.id = params['id'];
       this.sanPhamService.getbyid(this.id).subscribe(res => {
         // Kiểm tra trạng thái sản phẩm
-        if (res.data.trangThai === 0) {
+        if (res.data == null || res.data.trangThai === 0) {
           swal.fire({
               icon: 'error',
               title: 'Sản phẩm không khả dụng',
