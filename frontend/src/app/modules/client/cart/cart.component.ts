@@ -75,6 +75,7 @@ export class CartComponent {
         return;
     }
 
-    this.router.navigate(['/thanhtoan']);
+    location.assign('/thanhtoan');
+    // this.router.navigate(['/thanhtoan']);
   }
 }

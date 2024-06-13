@@ -34,7 +34,7 @@
                                         <div class="dropdown-menu" aria-labelledby="myaccount">
                                             <a class="dropdown-item" *ngIf="!user" routerLink="/login">Đăng nhập</a>
                                             <a class="dropdown-item" *ngIf="!user" routerLink="/signin">Đăng ký</a>
-                                            <a class="dropdown-item" *ngIf="user" routerLink="/taikhoan">Tài khoản</a>
+                                            <a class="dropdown-item" *ngIf="user" (click)="taiKhoan()">Tài khoản</a>
                                             <a class="dropdown-item" *ngIf="user" (click)="deleteUser()">Đăng xuất</a>
                                         </div>
                                     </div>                                    

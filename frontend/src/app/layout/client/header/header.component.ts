@@ -69,6 +69,11 @@ export class HeaderComponent implements OnInit {
     this.user = this.authService.loadUser();
   }  
 
+  //Sang trang tài khoản
+  taiKhoan() {
+    location.assign('/taikhoan');
+  }  
+
   //Đăng xuất
   deleteUser() {
     this.authService.logout();

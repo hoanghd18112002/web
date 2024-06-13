@@ -70,7 +70,7 @@ namespace Backend.Controllers
                 return BadRequest(new { success = false, message = ex.Message });
             }
         }
-
+        [AllowAnonymous]
         [Route("get-by-id/{id}")]
         [HttpGet]
         public IActionResult GetByID(int id)

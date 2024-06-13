@@ -143,7 +143,7 @@ export class ThanhtoanComponent implements OnInit {
       idPhuongThuc: this.loaiThanhToan,
       idNguoiDung: this.user.id,
     };
-  
+
     try {
       const res = await this.donHangService.createDonHang(donhang).toPromise();
       const newOrderRes = await this.donHangService.getnew().toPromise();
@@ -255,9 +255,6 @@ export class ThanhtoanComponent implements OnInit {
   //Load người dùng
   loadUser() {
     this.user = this.authService.loadUser();
-    this.Ten = this.user.ten;
-    this.DiaChi = this.user.diaChi;
-    this.SDT = this.user.sdt;
   }  
   
   //Load giỏ hàng

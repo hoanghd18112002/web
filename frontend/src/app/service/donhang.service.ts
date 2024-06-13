@@ -36,6 +36,7 @@ export class DonHangService {
   } 
 
   createDonHang(donhang: object): Observable<any> {
+    console.log(headers);
     return this.http.post<any>(`${this.apiUrl}/create`, donhang, { headers });
   }  
 
